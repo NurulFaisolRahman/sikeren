@@ -13,15 +13,15 @@
   <body>
     <div class="container-fluid p-3">
       <div class="row d-flex justify-content-center">
-        <div class="col-sm-5">
+        <div class="col-lg-6">
           <div style="background-color: yellow;" class="card">
             <div class="card-header bg-danger text-light">
               <b>Kuisioner Alumni Yang Telah Bekerja</b>
             </div>
             <div class="card-body border border-primary">
               <div class="container-fluid">
-                <div class="row my-3">
-                  <div class="col-sm-8 my-1"> 
+                <div class="row my-1">
+                  <div class="col-lg-8 my-1"> 
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <label class="input-group-text bg-primary text-light"><b>Program Studi</b></label>
@@ -32,7 +32,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-sm-4 my-1">
+                  <div class="col-lg-4 my-1">
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <label class="input-group-text bg-primary text-light"><b>Alumni Tahun</b></label>
@@ -40,7 +40,7 @@
                       <input class="form-control form-control-sm" type="text" id="Tahun" data-inputmask='"mask": "9999"' data-mask value="20">
                     </div>
                   </div>
-                  <div class="col-sm-4 my-1">
+                  <div class="col-lg-4 my-1">
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <label class="input-group-text bg-primary text-light"><b>NIM</b></label>
@@ -48,7 +48,7 @@
                       <input class="form-control form-control-sm" type="text" id="NIM" data-inputmask='"mask": "999999999999"' data-mask>
                     </div>
                   </div> 
-                  <div class="col-sm-8 my-1">
+                  <div class="col-lg-8 my-1">
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <label class="input-group-text bg-primary text-light"><b>Nama</b></label>
@@ -56,10 +56,10 @@
                       <input class="form-control form-control-sm" type="text" id="Nama" placeholder="Input Nama">
                     </div>
                   </div> 
-                  <div class="col-sm-12 my-1"> 
+                  <div class="col-lg-12 my-1"> 
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
-                        <label class="input-group-text bg-primary text-light"><b>Waktu Tunggu Mendapatkan Pekerjaan (WT)</b></label>
+                        <label class="input-group-text bg-primary text-light text-wrap text-justify"><b>Waktu Tunggu Mendapatkan Pekerjaan (WT)</b></label>
                       </div>
                       <select class="custom-select custom-select-sm" id="TungguKerja">										
                         <option value="1">WT < 6 bulan</option>
@@ -68,10 +68,10 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-sm-12 my-1"> 
+                  <div class="col-lg-12 my-1"> 
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
-                        <label class="input-group-text bg-primary text-light"><b>Tingkat Kesesuaian Bidang Kerja</b></label>
+                        <label class="input-group-text bg-primary text-light"><b>Tingkat Kesesuaian Bidang Pekerjaan</b></label>
                       </div>
                       <select class="custom-select custom-select-sm" id="BidangKerja">										
                         <option value="1">Rendah</option>
@@ -80,10 +80,10 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-sm-12 my-1"> 
+                  <div class="col-lg-12 my-1"> 
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
-                        <label class="input-group-text bg-primary text-light"><b>Tingkat/Ukuran Tempat Kerja/Berwirausaha</b></label>
+                        <label class="input-group-text bg-primary text-light text-wrap text-justify"><b>Tingkat / Ukuran Tempat Kerja / Berwirausaha</b></label>
                       </div>
                       <select class="custom-select custom-select-sm" id="TingkatKerja">										
                         <option value="1">Lokal/Wilayah/Berwirausaha tidak Berbadan Hukum</option>
@@ -92,7 +92,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-sm-auto">
+                  <div class="col-lg-12">
                     <button type="button" class="btn btn-danger" id="Kirim"><b>Kirim</b></button>
                   </div>
                 </div>

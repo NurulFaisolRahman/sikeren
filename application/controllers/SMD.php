@@ -4,15 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SMD extends CI_Controller {
 
 	public function index(){
-		if ($this->session->userdata('Akun') == 'Dosen') {
-			redirect(base_url('Dashboard/Profil'));
-		} 
-		else if ($this->session->userdata('Akun') == 'Admin') {
-			redirect(base_url('Admin/AkunDosen'));
-		} 
-		else {
-			$this->load->view('Home');
-		}
+		$this->load->view('Index.php');
+	}
+
+	public function EvaluasiPBM(){
+		$this->load->view('EvaluasiPBM');
 	}
 
 	public function Kuisioner($Jenis){

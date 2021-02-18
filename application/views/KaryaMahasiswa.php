@@ -13,15 +13,15 @@
   <body>
     <div class="container-fluid p-3">
       <div class="row d-flex justify-content-center">
-        <div class="col-sm-6">
+        <div class="col-lg-6">
           <div style="background-color: yellow;" class="card">
             <div class="card-header bg-danger text-light">
               <b>Kuisioner Mahasiswa (Teknologi Tepat Guna, Produk, Karya Seni, Rekayasa Sosial)</b>
             </div>
             <div class="card-body border border-primary">
               <div class="container-fluid">
-                <div class="row my-3">
-                  <div class="col-sm-4 my-1">
+                <div class="row my-1">
+                  <div class="col-lg-4 my-1">
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <label class="input-group-text bg-primary text-light"><b>NIM</b></label>
@@ -29,7 +29,7 @@
                       <input class="form-control form-control-sm" type="text" id="NIM" data-inputmask='"mask": "999999999999"' data-mask>
                     </div>
                   </div>
-                  <div class="col-sm-8 my-1"> 
+                  <div class="col-lg-8 my-1"> 
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <label class="input-group-text bg-primary text-light"><b>Program Studi</b></label>
@@ -40,7 +40,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-sm-9 my-1">
+                  <div class="col-lg-9 my-1">
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <label class="input-group-text bg-primary text-light"><b>Judul</b></label>
@@ -48,7 +48,7 @@
                       <input class="form-control form-control-sm" type="text" id="Judul">
                     </div>
                   </div>
-                  <div class="col-sm-3 my-1">
+                  <div class="col-lg-3 my-1">
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <label class="input-group-text bg-primary text-light"><b>Tahun</b></label>
@@ -56,16 +56,16 @@
                       <input class="form-control form-control-sm" type="text" id="Tahun" data-inputmask='"mask": "9999"' data-mask value="20">
                     </div>
                   </div> 
-                  <div class="col-sm-12 my-1">
+                  <div class="col-lg-12 my-1">
                     <div class="input-group input-group-sm mb-2">
                       <div class="input-group-prepend">
-                        <span class="input-group-text bg-primary text-primary"><b>Upload Bukti</b></span>
+                        <span class="input-group-text bg-primary text-primary"><b>Bukti</b></span>
                       </div>
                       <input class="form-control" type="file" id="Bukti">
                     </div>
-                    <pre class="text-danger mb-1"><b>File Yang Diupload Dalam Format Pdf</b></pre>
+                    <pre class="text-danger mb-1"><b>Bukti Dalam Format Pdf!</b></pre>
                   </div>  
-                  <div class="col-sm-auto">
+                  <div class="col-lg-12">
                     <button type="button" class="btn btn-danger" id="Kirim"><b>Kirim</b></button>
                   </div>
                 </div>
