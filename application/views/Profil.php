@@ -12,7 +12,7 @@
 								<?php if ($Profil['Foto'] == '') { ?>
 									<img src="<?=base_url('img/Avatar.png')?>" width="230px">
 								<?php	} else { ?>
-									<img src="<?=base_url('img/'.$Profil['Foto'])?>" width="230px">
+									<img src="<?=base_url('FotoDosen/'.$Profil['Foto'])?>" width="230px">
 								<?php } ?>
 								<div class="input-group input-group-sm my-2">
 									<div class="input-group-prepend">

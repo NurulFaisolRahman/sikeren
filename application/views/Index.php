@@ -104,17 +104,50 @@
             <img src="<?=base_url('img/LogoUTM.png')?>" alt="Logo UTM" width="200">
           </div>
           <div class="col-lg-9">
-            <h1 class="display-4 font-weight-bold mt-1" style="color: #FFFF00;text-shadow: -1.5px -1.5px 0 #f00, 1.5px -1.5px 0 #f00, -1.5px 1.5px 0 #f00, 1.5px 1.5px 0 #f00;font-family: Verdana;">SIKEREN</h1>
-            <h2 class="font-weight-bold" style="color: #0000FF;text-shadow: -1px -1px 0 #0f0, 1px -1px 0 #0f0, -1px 1px 0 #0f0, 1px 1px 0 #0f0;">Sistem Informasi Kinerja dan Rencana Jurusan</h2>
-            <h3 class="font-weight-bold" style="color: #FFFF00;text-shadow: -1px -1px 0 #f00, 1px -1px 0 #f00, -1px 1px 0 #f00, 1px 1px 0 #f00;">Ilmu Ekonomi Fakultas Ekonomi dan Bisnis</h3>
-            <h3 class="font-weight-bold" style="color: #FF0000;text-shadow: -1px -1px 0 #ff0, 1px -1px 0 #ff0, -1px 1px 0 #ff0, 1px 1px 0 #ff0;">Universitas Trunojoyo Madura</h3>
+            <!-- <h1 class="font-weight-bold" style="color: #FFFF00;text-shadow: -1.5px -1.5px 0 #f00, 1.5px -1.5px 0 #f00, -1.5px 1.5px 0 #f00, 1.5px 1.5px 0 #f00;font-family: Verdana;">SIKEREN</h1> -->
+            <h2 class="font-weight-bold mt-2" style="color: #0000FF;text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">Sistem Informasi Kinerja dan Rencana Kerja</h2>
+            <h2 class="font-weight-bold" style="color: #FF0000;text-shadow: -1px -1px 0 #ff0, 1px -1px 0 #ff0, -1px 1px 0 #ff0, 1px 1px 0 #ff0;">Jurusan Ilmu Ekonomi</h2>
+            <h2 class="font-weight-bold" style="color: #FFFF00;text-shadow: -1px -1px 0 #f00, 1px -1px 0 #f00, -1px 1px 0 #f00, 1px 1px 0 #f00;">Fakultas Ekonomi dan Bisnis</h2>
+            <h2 class="font-weight-bold" style="color: #000000;text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">Universitas Trunojoyo Madura</h2>
           </div>
         </div>
       </div>
     </div>
     <div class="container-fluid">
-      <div class="row" style="height: 330px;">
-        <div class="col-lg-3 bg-danger" style="border-style: outset;border-color: yellow;">
+      <div class="row bg-success">
+        <div class="col-lg-3 col-sm-12 text-center">
+          <div class="card m-3">
+            <div class="card-header bg-warning border border-light"><button type="button" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN ADMIN</button></div>
+            <div class="card-body bg-primary text-light border border-light">
+              <a href=""><img class="my-2" src="<?=base_url('img/Admin.png')?>" alt="Admin" width="81%"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-12 text-center">
+          <div class="card m-3">
+            <div class="card-header bg-warning border border-light"><button type="button" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN DOSEN</button></div>
+            <div class="card-body bg-primary text-light border border-light">
+              <a href=""><img class="my-2" src="<?=base_url('img/Dosen.png')?>" alt="Dosen" width="81%"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-12 text-center">
+          <div class="card m-3">
+            <div class="card-header bg-warning border border-light"><button type="button" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">KUISIONER MAHASISWA</button></div>
+            <div class="card-body bg-primary text-light border border-light">
+              <a href=""><img class="my-2" src="<?=base_url('img/Mhs.png')?>" alt="Mahasiswa" width="81%"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-12 text-center">
+          <div class="card m-3">
+            <div class="card-header bg-warning border border-light"><button type="button" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">KUISIONER EVALUASI PBM</button></div>
+            <div class="card-body bg-primary text-light border border-light">
+              <a href=""><img class="my-2" src="<?=base_url('img/PBM.png')?>" alt="PBM" width="81%"></a>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-lg-3 bg-danger" style="border-style: outset;border-color: yellow;">
           <ul style="padding: 0;" id="accordion" class="accordion my-3">
             <li class="open">
               <div class="link text-primary" style="padding-top: 5px;padding-bottom: 5px;"><i class="text-primary fa fa-tasks"></i>Kuisioner Mahasiswa<i class="text-primary fa fa-chevron-down"></i></div>
@@ -129,11 +162,11 @@
                 <li><a href="<?=base_url('SMD/Kuisioner/BukuMahasiswa')?>">Buku ber-ISBN, Book Chapter</a></li>
                 <li><a href="<?=base_url('SMD/Kuisioner/Alumni')?>">Alumni Yang Telah Bekerja</a></li>
               </ul>
-            </li>
+            </li> -->
             <!-- <li>
               <div class="link text-primary" style="padding-top: 5px;padding-bottom: 5px;"><i class="text-primary fa fa-tasks"></i>Menu 2<i class="text-primary fa fa-chevron-down"></i></div>
             </li> -->
-          </ul>
+          <!-- </ul>
         </div>
         <div class="col-lg-9 d-flex align-items-center bg-primary" style="border-style: outset;border-color: yellow;">
           <div class="container-fluid">
@@ -178,7 +211,7 @@
             </div>
           </div>
           </div> 
-        </div>
+        </div> -->
       </div>
     </div>
     <script src="bootstrap/js/jquery.min.js"></script>
