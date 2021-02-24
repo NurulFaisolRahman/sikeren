@@ -104,7 +104,6 @@
             <img src="<?=base_url('img/LogoUTM.png')?>" alt="Logo UTM" width="200">
           </div>
           <div class="col-lg-9">
-            <!-- <h1 class="font-weight-bold" style="color: #FFFF00;text-shadow: -1.5px -1.5px 0 #f00, 1.5px -1.5px 0 #f00, -1.5px 1.5px 0 #f00, 1.5px 1.5px 0 #f00;font-family: Verdana;">SIKEREN</h1> -->
             <h2 class="font-weight-bold mt-2" style="color: #0000FF;text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">Sistem Informasi Kinerja dan Rencana Kerja</h2>
             <h2 class="font-weight-bold" style="color: #FF0000;text-shadow: -1px -1px 0 #ff0, 1px -1px 0 #ff0, -1px 1px 0 #ff0, 1px 1px 0 #ff0;">Jurusan Ilmu Ekonomi</h2>
             <h2 class="font-weight-bold" style="color: #FFFF00;text-shadow: -1px -1px 0 #f00, 1px -1px 0 #f00, -1px 1px 0 #f00, 1px 1px 0 #f00;">Fakultas Ekonomi dan Bisnis</h2>
@@ -117,25 +116,25 @@
       <div class="row bg-success">
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
-            <div class="card-header bg-warning border border-light"><button type="button" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN ADMIN</button></div>
+            <div class="card-header bg-warning border border-light"><button type="button" data-toggle="modal" data-target="#ModalSignIn" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN ADMIN</button></div>
             <div class="card-body bg-primary text-light border border-light">
-              <a href=""><img class="my-2" src="<?=base_url('img/Admin.png')?>" alt="Admin" width="81%"></a>
+              <a href="#" data-toggle="modal" data-target="#ModalSignIn"><img class="my-2" src="<?=base_url('img/Admin.png')?>" alt="Admin" width="81%"></a>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
-            <div class="card-header bg-warning border border-light"><button type="button" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN DOSEN</button></div>
+            <div class="card-header bg-warning border border-light"><button type="button" data-toggle="modal" data-target="#ModalSignIn" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN DOSEN</button></div>
             <div class="card-body bg-primary text-light border border-light">
-              <a href=""><img class="my-2" src="<?=base_url('img/Dosen.png')?>" alt="Dosen" width="81%"></a>
+              <a href="#" data-toggle="modal" data-target="#ModalSignIn"><img class="my-2" src="<?=base_url('img/Dosen.png')?>" alt="Dosen" width="81%"></a>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
-            <div class="card-header bg-warning border border-light"><button type="button" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">KUISIONER MAHASISWA</button></div>
+            <div class="card-header bg-warning border border-light"><button type="button" data-toggle="modal" data-target="#ModalMhs" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">KUISIONER MAHASISWA</button></div>
             <div class="card-body bg-primary text-light border border-light">
-              <a href=""><img class="my-2" src="<?=base_url('img/Mhs.png')?>" alt="Mahasiswa" width="81%"></a>
+              <a href="#" data-toggle="modal" data-target="#ModalMhs"><img class="my-2" src="<?=base_url('img/Mhs.png')?>" alt="Mahasiswa" width="81%"></a>
             </div>
           </div>
         </div>
@@ -143,75 +142,66 @@
           <div class="card m-3">
             <div class="card-header bg-warning border border-light"><button type="button" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">KUISIONER EVALUASI PBM</button></div>
             <div class="card-body bg-primary text-light border border-light">
-              <a href=""><img class="my-2" src="<?=base_url('img/PBM.png')?>" alt="PBM" width="81%"></a>
+              <a href="#"><img class="my-2" src="<?=base_url('img/PBM.png')?>" alt="PBM" width="81%"></a>
             </div>
           </div>
         </div>
-        <!-- <div class="col-lg-3 bg-danger" style="border-style: outset;border-color: yellow;">
-          <ul style="padding: 0;" id="accordion" class="accordion my-3">
-            <li class="open">
-              <div class="link text-primary" style="padding-top: 5px;padding-bottom: 5px;"><i class="text-primary fa fa-tasks"></i>Kuisioner Mahasiswa<i class="text-primary fa fa-chevron-down"></i></div>
-              <ul style="padding: 0;max-height: 170px;overflow: scroll;" class="submenu font-weight-bold bg-warning mx-0">
-                <li><a href="<?=base_url('SMD/Kuisioner/KepuasanMahasiswa')?>">Kepuasan Terhadap Proses Pendidikan</a></li>
-                <li><a href="<?=base_url('SMD/Kuisioner/PrestasiMahasiswa')?>">Prestasi Akademik & Non Akademik</a></li>
-                <li><a href="<?=base_url('SMD/Kuisioner/PublikasiMahasiswa')?>">Publikasi Ilmiah</a></li>
-                <li><a href="<?=base_url('SMD/Kuisioner/SitasiMahasiswa')?>">Karya Ilmiah Yang Disitasi</a></li>
-                <li><a href="<?=base_url('SMD/Kuisioner/PatenMahasiswa')?>">HKI (Paten, Paten Sederhana)</a></li>
-                <li><a href="<?=base_url('SMD/Kuisioner/HKIMahasiswa')?>">HKI (Hak Cipta, Desain Produk Industri, dll.)</a></li>
-                <li><a href="<?=base_url('SMD/Kuisioner/KaryaMahasiswa')?>">Teknologi Tepat Guna, Produk, Karya Seni, Rekayasa Sosial</a></li>
-                <li><a href="<?=base_url('SMD/Kuisioner/BukuMahasiswa')?>">Buku ber-ISBN, Book Chapter</a></li>
-                <li><a href="<?=base_url('SMD/Kuisioner/Alumni')?>">Alumni Yang Telah Bekerja</a></li>
-              </ul>
-            </li> -->
-            <!-- <li>
-              <div class="link text-primary" style="padding-top: 5px;padding-bottom: 5px;"><i class="text-primary fa fa-tasks"></i>Menu 2<i class="text-primary fa fa-chevron-down"></i></div>
-            </li> -->
-          <!-- </ul>
-        </div>
-        <div class="col-lg-9 d-flex align-items-center bg-primary" style="border-style: outset;border-color: yellow;">
-          <div class="container-fluid">
-          <div class="row my-2">
-            <div class="col-lg-4 my-1">
-              <div class="card border border-light">
-                <div class="card-header bg-light font-weight-bold text-primary">SIGN IN DOSEN</div>
-                <div class="card-body bg-danger">
-                  <div class="input-group input-group-sm mb-2">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-primary text-light"><b>NIP</b></span>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalSignIn">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-transparent">
+          <div class="modal-body">
+            <div class="container">
+							<div class="row d-flex justify-content-center">
+								<div class="col-lg-9 col-sm-12 my-1">
+                  <div class="card border border-light">
+                    <div class="card-body bg-danger">
+                      <div class="input-group input-group-sm mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-primary text-light"><b>Username</b></span>
+                        </div>
+                        <input type="text" class="form-control" id="nip">
+                      </div>
+                      <div class="input-group input-group-sm mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-primary text-light"><b>Password</b></span>
+                        </div>
+                        <input type="password" class="form-control" id="sandi">
+                      </div>
+                      <div class="btn btn-primary text-light d-flex justify-content-center" id="Masuk"><b>SIGN IN</b></div>
                     </div>
-                    <input type="text" class="form-control" id="nip">
                   </div>
-                  <div class="input-group input-group-sm mb-2">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-primary text-light"><b>Password</b></span>
-                    </div>
-                    <input type="password" class="form-control" id="sandi">
-                  </div>
-                  <div class="btn btn-primary text-light d-flex justify-content-center" id="Masuk"><b>SIGN IN</b></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 my-1">
-              <div class="card border border-light">
-                <div class="card-header bg-light font-weight-bold text-primary">S1 Ekonomi Pembangunan</div>
-                <div class="card-body bg-danger text-light">
-                  <h5 class="card-title font-weight-bold">Kunjungi Website</h5>
-                  <p class="card-text"><a class="btn btn-primary font-weight-bold text-white" href="http://ie.trunojoyo.ac.id/ep/">http://ie.trunojoyo.ac.id/ep/</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 my-1">
-              <div class="card border border-light">
-                <div class="card-header bg-light font-weight-bold text-primary">S2 Ilmu Ekonomi</div>
-                <div class="card-body bg-danger text-light">
-                  <h5 class="card-title font-weight-bold">Kunjungi Website</h5>
-                  <p class="card-text"><a class="btn btn-primary font-weight-bold text-white" href="http://ie.trunojoyo.ac.id/mie/">http://ie.trunojoyo.ac.id/mie/</a></p>
                 </div>
               </div>
             </div>
           </div>
-          </div> 
-        </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalMhs">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-transparent">
+          <div class="modal-body">
+            <div class="container-fluid">
+							<div class="row d-flex justify-content-center">
+								<div class="col-sm-12 my-1">
+                  <ul class="list-group">
+                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/KepuasanMahasiswa')?>">1. Kepuasan Terhadap Proses Pendidikan</a></li>
+                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/KepuasanMahasiswa')?>">2. Kepuasan Terhadap Proses Pendidikan</a></li>
+                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PublikasiMahasiswa')?>">3. Publikasi Ilmiah</a></li>
+                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/SitasiMahasiswa')?>">4. Karya Ilmiah Yang Disitasi</a></li>
+                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PatenMahasiswa')?>">5. HKI (Paten, Paten Sederhana)</a></li>
+                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/HKIMahasiswa')?>">6. HKI (Hak Cipta, Desain Produk Industri, dll.)</a></li>
+                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/KaryaMahasiswa')?>">7. Teknologi Tepat Guna, Produk, Karya Seni, Rekayasa Sosial</a></li>
+                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/BukuMahasiswa')?>">8. Buku ber-ISBN, Book Chapter</a></li>
+                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/Alumni')?>">9. Alumni Yang Telah Bekerja</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script src="bootstrap/js/jquery.min.js"></script>

@@ -187,13 +187,13 @@
 										</div>
 										<div class="input-group input-group-sm mb-2">
 											<div class="input-group-prepend">
-												<label class="input-group-text bg-primary"><b>Kesesuaian Bidang Keahlian dengan Kompetensi Inti Program Studi</b></label>
+												<label class="input-group-text bg-primary text-wrap"><b>Kesesuaian Bidang Keahlian dengan Kompetensi Inti Program Studi</b></label>
 											</div>
 											<input type="text" class="form-control" value="<?= $Profil['KesesuaianKompetensi'] == null ? '' : ($Profil['KesesuaianKompetensi'] == 1 ? 'Sesuai' : 'Tidak Sesuai');?>" disabled>
 										</div>
 										<div class="input-group input-group-sm mb-2">
 											<div class="input-group-prepend">
-												<label class="input-group-text bg-primary"><b>Kesesuaian Bidang Keahlian dengan Mata Kuliah yang Diampu</b></label>
+												<label class="input-group-text bg-primary text-wrap"><b>Kesesuaian Bidang Keahlian dengan Mata Kuliah yang Diampu</b></label>
 											</div>
 											<input type="text" class="form-control" value="<?= $Profil['KesesuaianBidang'] == null ? '' : ($Profil['KesesuaianBidang'] == 1 ? 'Sesuai' : 'Tidak Sesuai');?>" disabled>
 										</div>
@@ -453,7 +453,7 @@
                   </div>
 									<div class="input-group input-group-sm mb-2">
                     <div class="input-group-prepend">
-                      <label class="input-group-text bg-primary"><b>Kesesuaian Bidang Keahlian Dengan Kompetensi Inti Program Studi</b></label>
+                      <label class="input-group-text bg-primary text-wrap"><b>Kesesuaian Bidang Keahlian Dengan Kompetensi Inti Program Studi</b></label>
                     </div>
                     <select class="custom-select" id="KesesuaianKompetensi">
                       <option value="1" <?=$Profil['KesesuaianKompetensi']==1?'selected':''?>>Sesuai</option>
@@ -462,7 +462,7 @@
                   </div>
                   <div class="input-group input-group-sm mb-2">
                     <div class="input-group-prepend">
-                      <label class="input-group-text bg-primary"><b>Kesesuaian Bidang Keahlian Dengan Mata Kuliah Yang Diampu</b></label>
+                      <label class="input-group-text bg-primary text-wrap"><b>Kesesuaian Bidang Keahlian Dengan Mata Kuliah Yang Diampu</b></label>
                     </div>
                     <select class="custom-select" id="KesesuaianBidang">
 											<option value="1" <?=$Profil['KesesuaianBidang']==1?'selected':''?>>Sesuai</option>

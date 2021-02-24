@@ -79,6 +79,37 @@
                         'YUNI RIMAWATI, SE., MSAk.,Ak.,CA','YUSTINA CHRISMARDANI, S.Si., MM','VIDI HADYARTI, S.M., M.M.',
                         'WIDITA KURNIASARI, S.E., M.E,DR','ZAKIK, SE., M.Si');
   ?>
+  <?php $Question = array('1. Seberapa jelas rencana pembelajaran / kontrak? (1) Tidak Pernah Dijelaskan (2) Dijelaskan Dengan Lisan (3) Dijelaskan Tertulis dibahan Kuliah (4) Dijelaskan Tertulis, Tercetak dan Dibagikan',
+                          '2. Apakah rencana pembelajaran / kontrak tersebut terlaksana dengan baik? (1) Tidak Tahu Karena tidak dijelaskan (2) Terlaksana < 50% (3) Terlaksana 50% - 80% (4) Terlaksana ≥ 80%',
+                          '3. Ketepatan waktu mulai dan mengakhiri kuliah (kedisiplinan)? (1) Selalu tidak tepat waktu (2) Jarang tepat waktu (3) Sering tepat waktu (4) (hampir) selalu tepat waktu',
+                          '4. Kejelasan penyampaian materi dan jawaban terhadap pertanyaan di kelas? (1) Sangat tidak jelas (2) Tidak jelas (3) Jelas (4) Sangat jelas',
+                          '5. Rata-rata lama diskusi / kerja kelompok / praktek / presentasi mahasiswa? (1) Sangat sedikit < 10% (2) Sedikit 10% - 30% (3) Banyak 30% - 40% (4) Sangat banyak ≥ 40%',
+                          '6. Intensitas pemberian tugas? (1) Sangat sedikit < 20% pertemuan (2) Sedikit 20% - 50% petemuan (3) Banyak 50% - 80% pertemuan (4) Sangat banyak ≥ 80% pertemuan',
+                          '7. Seberapa besar manfaat tugas yg diberikan? (1) Sangat tidak bermanfaat (2) Sedikit menambah kemampuan (3) Banyak menambah kemampuan (4) Sangat banyak menambah kemampuan',
+                          '8. Apakah ada pembahasan terhadap tugas yang diberikan? (1) Tidak pernah dibahas (2) Dibahas secara umum (3) Dibahas secara rinci (4) Dibahas, tugas dikoreksi, dikembalikan',
+                          '9. Kesesuaian materi ujian dan atau tugas dengan materi kuliah? (1) Tidak sesuai sama sekali (2) Yang sesuai < 50% (3) Yang sesuai 50% - 80% (4) Sangat sesuai ≥ 80% sesuai',
+                          '10. Transparansi / objektifitas sistem penilaian yang diberikan dosen? (1) Sangat Tidak transparan (2) Tidak transparan / objektif (3) Transparan / objektif (4) Sangat transparan dan objektif',
+                          '11. Seberapa banyak Anda mendapat materi dari jurnal / hasil penelitian / informasi baru / konteks nyata saat ini? (1) Sangat Kurang (2) Kurang (3) Banyak (4) Sangat banyak',
+                          '12. Penguasaan dosen akan isu-isu mutakhir dalam bidang yang diajarkan? (1) Sangat Kurang (2) Kurang (3) Banyak (4) Sangat banyak',
+                          '13. Kemampuan menerima kritik, saran, dan pendapat orang lain? (1) Sangat tidak bisa menerima (2) Tidak bisa menerima (3) Bisa menerima (4) Sangat bisa menerima (Terbuka)',
+                          '14. Kesabaran, kemampuan menahan emosi saat mengajar / mendidik? (1) Sangat tidak sabar (2) Tidak sabar (3) Sabar (4) Sangat sabar',
+                          '15. Kemampuan dosen meningkatkan motivasi / minat belajar mahasiswa? (1) Sangat tidak bisa memotivasi (2) Tidak bisa memotivasi (3) Mudah memotivasi (4) Sangat memotivasi',
+                          '16. Perlengkapan kuliah (Bangku, papan tulis, spidol, penghapus, kipas angin, LCD)? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '17. Kondisi ruang kuliah (kerapian, kebersihan, penerangan, ketenangan, dan kenyamanan)? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '18. Layanan petugas administrasi (daftar hadir dan kunci ruangan)? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '19. Layanan perpustakaan dan/atau ruang baca FE? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '20. Kondisi toilet ? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '21. Layanan pengumuman / informasi? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '22. Layanan wifi ? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '23. Penyediaan / Ketersediaan berita acara dan presensi perkuliahan? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '24. Penyediaan kelengkapan administrasi UTS / UAS? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '25. Kecepatan Pelayanan administrasi oleh petugas? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '26. Keramahan dalam pelayanan administrasi akademik? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '27. Bagaimana Kejelasan Penyampaian materi melalui daring? (1) Sangat Kurang Jelas (2) Kuran Jelas (3) Cukup Jelas (4) Sangat Jelas',
+                          '28. Rencana Pembelajaran terlaksana dengan Baik? (1) Sangat Kurang Terlaksana (2) Terlaksana < 50% (3) Terlaksana >50% (4) Terlaksana > 80%',
+                          '29. Intensitas Pemberian tugas Selama LFH (Learn From Home)? (1) Sangat Kurang (2) Kurang (3) Cukup (4) Sangat Cukup',
+                          '30. Berapa rata-rata penggunaan paket data setiap pertemuan perkuliahan? (1) 100 Mb - 200 Mb (2) 200 Mb - 500 Mb (3) 500 mb - 1 Gb (4) 1 Gb'); 
+  ?>
     <div class="container">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-8">
@@ -151,7 +182,6 @@
                     </select>
                   </div>
                 </div>
-                <!-- <div class="col-lg-6 col-sm-12 my-1"></div> -->
                 <div class="col-lg-6 col-sm-12 my-1">
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
@@ -171,37 +201,6 @@
                     <input class="form-control form-control-sm" type="text" id="Dosen1Lain" placeholder="Sebutkan Jika Dosen Yang Lain" disabled>
                   </div>
                 </div>
-                <?php $Question = array('1. Seberapa jelas rencana pembelajaran / kontrak? (1) Tidak Pernah Dijelaskan (2) Dijelaskan Dengan Lisan (3) Dijelaskan Tertulis dibahan Kuliah (4) Dijelaskan Tertulis, Tercetak dan Dibagikan',
-                                        '2. Apakah rencana pembelajaran / kontrak tersebut terlaksana dengan baik? (1) Tidak Tahu Karena tidak dijelaskan (2) Terlaksana < 50% (3) Terlaksana 50% - 80% (4) Terlaksana ≥ 80%',
-                                        '3. Ketepatan waktu mulai dan mengakhiri kuliah (kedisiplinan)? (1) Selalu tidak tepat waktu (2) Jarang tepat waktu (3) Sering tepat waktu (4) (hampir) selalu tepat waktu',
-                                        '4. Kejelasan penyampaian materi dan jawaban terhadap pertanyaan di kelas? (1) Sangat tidak jelas (2) Tidak jelas (3) Jelas (4) Sangat jelas',
-                                        '5. Rata-rata lama diskusi / kerja kelompok / praktek / presentasi mahasiswa? (1) Sangat sedikit < 10% (2) Sedikit 10% - 30% (3) Banyak 30% - 40% (4) Sangat banyak ≥ 40%',
-                                        '6. Intensitas pemberian tugas? (1) Sangat sedikit < 20% pertemuan (2) Sedikit 20% - 50% petemuan (3) Banyak 50% - 80% pertemuan (4) Sangat banyak ≥ 80% pertemuan',
-                                        '7. Seberapa besar manfaat tugas yg diberikan? (1) Sangat tidak bermanfaat (2) Sedikit menambah kemampuan (3) Banyak menambah kemampuan (4) Sangat banyak menambah kemampuan',
-                                        '8. Apakah ada pembahasan terhadap tugas yang diberikan? (1) Tidak pernah dibahas (2) Dibahas secara umum (3) Dibahas secara rinci (4) Dibahas, tugas dikoreksi, dikembalikan',
-                                        '9. Kesesuaian materi ujian dan atau tugas dengan materi kuliah? (1) Tidak sesuai sama sekali (2) Yang sesuai < 50% (3) Yang sesuai 50% - 80% (4) Sangat sesuai ≥ 80% sesuai',
-                                        '10. Transparansi / objektifitas sistem penilaian yang diberikan dosen? (1) Sangat Tidak transparan (2) Tidak transparan / objektif (3) Transparan / objektif (4) Sangat transparan dan objektif',
-                                        '11. Seberapa banyak Anda mendapat materi dari jurnal / hasil penelitian / informasi baru / konteks nyata saat ini? (1) Sangat Kurang (2) Kurang (3) Banyak (4) Sangat banyak',
-                                        '12. Penguasaan dosen akan isu-isu mutakhir dalam bidang yang diajarkan? (1) Sangat Kurang (2) Kurang (3) Banyak (4) Sangat banyak',
-                                        '13. Kemampuan menerima kritik, saran, dan pendapat orang lain? (1) Sangat tidak bisa menerima (2) Tidak bisa menerima (3) Bisa menerima (4) Sangat bisa menerima (Terbuka)',
-                                        '14. Kesabaran, kemampuan menahan emosi saat mengajar / mendidik? (1) Sangat tidak sabar (2) Tidak sabar (3) Sabar (4) Sangat sabar',
-                                        '15. Kemampuan dosen meningkatkan motivasi / minat belajar mahasiswa? (1) Sangat tidak bisa memotivasi (2) Tidak bisa memotivasi (3) Mudah memotivasi (4) Sangat memotivasi',
-                                        '16. Perlengkapan kuliah (Bangku, papan tulis, spidol, penghapus, kipas angin, LCD)? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                                        '17. Kondisi ruang kuliah (kerapian, kebersihan, penerangan, ketenangan, dan kenyamanan)? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                                        '18. Layanan petugas administrasi (daftar hadir dan kunci ruangan)? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                                        '19. Layanan perpustakaan dan/atau ruang baca FE? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                                        '20. Kondisi toilet ? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                                        '21. Layanan pengumuman / informasi? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                                        '22. Layanan wifi ? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                                        '23. Penyediaan / Ketersediaan berita acara dan presensi perkuliahan? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                                        '24. Penyediaan kelengkapan administrasi UTS / UAS? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                                        '25. Kecepatan Pelayanan administrasi oleh petugas? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                                        '26. Keramahan dalam pelayanan administrasi akademik? (1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                                        '27. Bagaimana Kejelasan Penyampaian materi melalui daring? (1) Sangat Kurang Jelas (2) Kuran Jelas (3) Cukup Jelas (4) Sangat Jelas',
-                                        '28. Rencana Pembelajaran terlaksana dengan Baik? (1) Sangat Kurang Terlaksana (2) Terlaksana < 50% (3) Terlaksana >50% (4) Terlaksana > 80%',
-                                        '29. Intensitas Pemberian tugas Selama LFH (Learn From Home)? (1) Sangat Kurang (2) Kurang (3) Cukup (4) Sangat Cukup',
-                                        '30. Berapa rata-rata penggunaan paket data setiap pertemuan perkuliahan? (1) 100 Mb - 200 Mb (2) 200 Mb - 500 Mb (3) 500 mb - 1 Gb (4) 1 Gb'); 
-                ?>
                 <?php for ($i=0; $i < 15; $i++) { ?>
                   <div class="col-lg-12 col-sm-12 my-1">
                     <div class="input-group input-group-sm">
@@ -210,24 +209,27 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-auto col-sm-12 my-1">
-                    <div class="input-group input-group-sm d-flex justify-content-center">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text bg-primary text-light"><b>Nilai Untuk Dosen 1</b></label>
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-lg-auto col-sm-12 my-1">
+                        <div class="input-group input-group-sm d-flex justify-content-center">
+                          <div class="input-group-prepend">
+                            <label class="input-group-text bg-primary text-light"><b>Nilai Untuk Dosen 1</b></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-auto col-sm-12 d-flex align-items-center my-1">
+                        <div class="input-group input-group-sm d-flex justify-content-center">
+                          <?php for ($j=1; $j < 5; $j++) { ?>
+                            <div class="form-check form-check-inline mx-3">
+                              <input class="form-check-input" type="radio" name="Input<?=$i?>" id="I<?=$i.$j?>" value="<?=$j?>">
+                              <label class="form-check-label font-weight-bold" for="I<?=$i.$j?>"><?=$j?></label>
+                            </div>
+                          <?php } ?>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-lg-auto col-sm-12 d-flex align-items-center my-1">
-                    <div class="input-group input-group-sm d-flex justify-content-center">
-                      <?php for ($j=1; $j < 5; $j++) { ?>
-                        <div class="form-check form-check-inline mx-3">
-                          <input class="form-check-input" type="radio" name="Input<?=$i?>" id="I<?=$i.$j?>" value="<?=$j?>">
-                          <label class="form-check-label font-weight-bold" for="I<?=$i.$j?>"><?=$j?></label>
-                        </div>
-                      <?php } ?>
-                    </div>
-                  </div>
-                  <div class="col-4"></div>
+                  </div> 
                 <?php } ?>
                 <?php for ($i=15; $i < count($Question); $i++) { ?>
                   <div class="col-lg-12 col-sm-12 my-1">
