@@ -142,7 +142,7 @@
           <div class="card m-3">
             <div class="card-header bg-warning border border-light"><button type="button" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">KUISIONER EVALUASI PBM</button></div>
             <div class="card-body bg-primary text-light border border-light">
-              <a href="#"><img class="my-2" src="<?=base_url('img/PBM.png')?>" alt="PBM" width="81%"></a>
+              <a href="<?=base_url('SMD/EvaluasiPBM')?>"><img class="my-2" src="<?=base_url('img/PBM.png')?>" alt="PBM" width="81%"></a>
             </div>
           </div>
         </div>

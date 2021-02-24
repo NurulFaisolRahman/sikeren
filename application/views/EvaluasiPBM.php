@@ -182,24 +182,29 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-lg-6 col-sm-12 my-1">
-                  <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text bg-primary text-light"><b>Dosen 1</b></label>
+                <div class="container-fluid" id="DaftarDosen">
+                  <?php for ($j=1; $j <= 1; $j++) { ?>
+                    <div class="row">
+                      <div class="col-lg-6 col-sm-12 my-1">
+                        <div class="input-group input-group-sm">
+                          <div class="input-group-prepend">
+                            <label class="input-group-text bg-primary text-light"><b>Dosen <?=$j?></b></label>
+                          </div>
+                          <select class="custom-select custom-select-sm" id="Dosen<?=$j?>">
+                            <option value="Lain">Pilih Dosen <?=$j?></option>	
+                            <?php for ($i=0; $i < count($Dosen); $i++) { ?>
+                              <option value="<?=$Dosen[$i]?>"><?=$Dosen[$i]?></option>
+                            <?php } ?>									
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-sm-12 my-1">
+                        <div class="input-group input-group-sm">
+                          <input class="form-control form-control-sm" type="text" id="Dosen<?=$j?>Lain" placeholder="Sebutkan Jika Dosen Yang Lain">
+                        </div>
+                      </div>
                     </div>
-                    <select class="custom-select custom-select-sm" id="Dosen1">
-                      <option value="Lain">Pilih Dosen 1</option>	
-                      <?php for ($i=0; $i < count($Dosen); $i++) { ?>
-                        <option value="<?=$Dosen[$i]?>"><?=$Dosen[$i]?></option>
-                      <?php } ?>									
-                      <option value="Lain">Dosen Yang Lain</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-sm-12 my-1">
-                  <div class="input-group input-group-sm">
-                    <input class="form-control form-control-sm" type="text" id="Dosen1Lain" placeholder="Sebutkan Jika Dosen Yang Lain" disabled>
-                  </div>
+                  <?php } ?>									
                 </div>
                 <?php for ($i=0; $i < 15; $i++) { ?>
                   <div class="col-lg-12 col-sm-12 my-1">
@@ -209,25 +214,27 @@
                       </div>
                     </div>
                   </div>
-                  <div class="container-fluid">
+                  <div class="container-fluid" id="NilaiDosen<?=$i?>">
                     <div class="row">
-                      <div class="col-lg-auto col-sm-12 my-1">
-                        <div class="input-group input-group-sm d-flex justify-content-center">
-                          <div class="input-group-prepend">
-                            <label class="input-group-text bg-primary text-light"><b>Nilai Untuk Dosen 1</b></label>
+                      <?php for ($k=1; $k <= 1; $k++) { ?>
+                        <div class="col-lg-auto col-sm-12 my-1">
+                          <div class="input-group input-group-sm d-flex justify-content-center">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text bg-primary text-light"><b>Nilai Untuk Dosen <?=$k?></b></label>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="col-lg-auto col-sm-12 d-flex align-items-center my-1">
-                        <div class="input-group input-group-sm d-flex justify-content-center">
-                          <?php for ($j=1; $j < 5; $j++) { ?>
-                            <div class="form-check form-check-inline mx-3">
-                              <input class="form-check-input" type="radio" name="Input<?=$i?>" id="I<?=$i.$j?>" value="<?=$j?>">
-                              <label class="form-check-label font-weight-bold" for="I<?=$i.$j?>"><?=$j?></label>
-                            </div>
-                          <?php } ?>
+                        <div class="col-lg-auto col-sm-12 d-flex align-items-center my-1">
+                          <div class="input-group input-group-sm d-flex justify-content-center">
+                            <?php for ($j=1; $j < 5; $j++) { ?>
+                              <div class="form-check form-check-inline mx-3">
+                                <input class="form-check-input" type="radio" name="Input<?=$i.$k?>" id="I<?=$i.$j.$k?>" value="<?=$j?>">
+                                <label class="form-check-label font-weight-bold" for="I<?=$i.$j.$k?>"><?=$j?></label>
+                              </div>
+                            <?php } ?>
+                          </div>
                         </div>
-                      </div>
+                      <?php } ?>
                     </div>
                   </div> 
                 <?php } ?>
@@ -322,6 +329,72 @@
       $(document).ready(function(){
         $('[data-mask]').inputmask()
         var BaseURL = '<?=base_url()?>'
+        var Dosen = ['ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MSA., Ak., CA','ADI DARMAWAN ERVANTO,S.E.,M.A.,Ak.,CA',
+                        'AHMAD KAMIL, S.E., M.Ec. Dev','AHMAD MUZAWWIR S, M.Pd.I','ALEXANDER ANGGONO, SE., M.Si., Ph.D',
+                        'ALVIN S. PRASETYO, S.E., M.SE.','ATIK EMILIA SULA, S.E., M.Ak.','ALIFAH ROKHMAH IDIALIS, SE., M.Sc',
+                        'ANDRI WIJANARKO, SE, ME','ALVIN SUGENG PRASETYO, S.E., M.SE.','ANIS WULANDARI, SE., MSA., AK.,CA',
+                        'ANITA CAROLINA, SE., MBusAdv., AK., QIA.,CA','ANITA KRISTINA, S.E., M.Si ,Dr.','ANUGRAHINI IRAWATI, Dra., MM',
+                        'APRILINA SUSANDINI, SE., MSM','ARDI HAMZAH, SE., MSI., AK','ARIE SETYO DWI PURNOMO S.PD., M.SC.',
+                        'BAMBANG HARYADI, DR. SE., MSI., AK.,CA','BAMBANG SUDARSONO, Drs., M.M','BONDAN SATRIAWAN, SE., M.Econ, ST',
+                        'BOY SINGGIH GITAYUDA, S.E.,MM','CITRA NURHAYATI, SE., MA., Ak., CA','CHAIRUL ANAM, Drs Ec., M.Kes, Dr.',
+                        'CITRA LUTFIA, S.E., M.A.','CRISANTY SUTRITYANINGTYAS TITIK, S.E., M.E.',
+                        'DIAH WAHYUNINGSIH, S.E., M.Si ,Dr.','ECHSAN GANI, SE., M.Si','EMI RAHMAWATI, SE., MSI',
+                        'ENI SRI RAHAYUNINGSIH, S.E., M.E, Dr.','ERFAN MUHAMMAD, S.E., M.Ak., CPA','EVALIATI AMANIYAH, SE., MSM',
+                        'FAIDAL S.E., M.M','FARIYANA KUSUMAWATI, SE., MSI','FATHOR AS, SE., MM',
+                        'FITRI AHMAD KURNIAWAN, SE, M.AK, AK, CA','FRIDA FANANI ROHMA, S.AKUN., M.SC.','GATOT HERU PRANJOTO, SE., MM',
+                        'GITA ARASY HARWIDA, SE., MTax., AK., QIA.,CA','HABIBULLAH, S.E., M.Akun','HADI PURNOMO, SE.,MM',
+                        'HANIF YUSUF SEPUTRO S.PD., M.AK.','HELMI BUYUNG AULIA SAFRIZAL, ST.,SE.,MMT','HENNY OKTAVIANTI, SE., M.Si.',
+                        'HERY PURWANTO, S.PT., ME.','HERRY YULISTIYO, SE., M.Si','IMAM AGUS FAISOL, SE., M.Ak',
+                        'DARUL ISLAM, S.E., M.M.','IRIANI ISMAIL, Dra., M.M., Dr.','JAKFAR SADIK, SE., ME',
+                        'JUNAIDI, SE., MSI., AK.,CA','KHYSH NUSRI LEAPATRA CHAMALINDA , S.E., M.Akun','KURNIYATI INDAHSARI, M.Si, Dr.',
+                        'MERIE SATYA ANGRAINI, S.E., M. AK.','MOCHAMAD REZA ADIYANTO S.P., M.M.','MOHAMAD TAMBRIN, Drs., MM',
+                        'MOHAMMAD ARIEF, S.E., M.M., Dr.','MOHAMMAD YASKUN, S.E., M.M.','MOHTAR RASYID, S.E., M.Si, Dr.',
+                        'MUDJI KUSWINARNO, Drs. Ec., M.Si','MUH. SYARIF, Drs. Ec, M.Si, Dr.','MUHAMMAD ALKIROM WILDAN, S.E., M.Si. Dr.',
+                        "MUHAMMAD ASIM ASY'ARI SE.,M.Ak.",'MUHAMMAD SYAM KUSUFI, S.E., M.Sc.','MUHAMMAD ZAINURI, Ir., M. Sc., Prof. Dr.',
+                        'MUKHAMMAD BAHKRUDDIN, M.Pd. I','NIZARUL ALIM, SE., M.Si., Ak,Prof. Dr.','NORITA VIBRIYANTO, S.E, M.Si',
+                        'NUR AZIZAH, SE., MM','NURITA ANDRIANI, Ir., M.M., Dr.','NUR HAYATI, S.E., MSA., Ak.,DR QIA., CA',
+                        'PRASETYO NUGROHO, S.Pi.,MM','PRASETYONO, SE., MSI., AK, Dr.','PRIBANUS WANTARA, Drs.,MM, Dr.',
+                        'PURNAMAWATI, SE, M.Si','RAHAYU DEWI ZAKIYAH RF, S.E., M.AKUN.','RIFAI AFIN, S.E, M.Sc',
+                        'RIS YUWONO YUDHO NUGROHO, S.E., M.Si','RITA YULIANA, SE., M.SA., Ak., CA, Dr.','RM. MOCH. WISPANDONO, S.E., M.S, Dr.',
+                        'ROBIATUL AULIYAH, SE, MSA','R. JOHNNY HADI RAHARJO, SE., MM','SANIMAN, SE., M.PSDM',
+                        'SARIYANI, S.E., M.SE.','SELAMET JOKO U, SE., ME','SITI MUSYAROFAH, SE., M.Si., Ak, Dr.',
+                        'SUMARTO, S.E., M.E','SUTIKNO, S.E., M.E, Dr.','SUYONO, S.E.,M.S.M',
+                        'SAMSUKI, S.E., M.SM.','TARJO, S.E, M.Si, Dr., CFE','TITO IM. RAHMAN HAKIM, S.E., M.S.A.',
+                        "TITOV CHUK'S MAYVANI, SE., ME",'USWATUN HASANAH, S.E.,M.Sc','MIFTAHUL JANNAH, S.E., M.SC',
+                        'YAHYA SURYA WINATA, S.E., M.Si, Dr.','YUDHI PRASETYA MADA, SE., MM','YUFITA, S.E., M.E.',
+                        'YUNI RIMAWATI, SE., MSAk.,Ak.,CA','YUSTINA CHRISMARDANI, S.Si., MM','VIDI HADYARTI, S.M., M.M.',
+                        'WIDITA KURNIASARI, S.E., M.E,DR','ZAKIK, SE., M.Si'];
+        $("#JumlahDosen").change(function (){
+          var JumlahDosen = $("#JumlahDosen").val() 
+          var DaftarDosen = ''
+          for (let i = 1; i <= JumlahDosen; i++) {
+            DaftarDosen += '<div class="row"><div class="col-lg-6 col-sm-12 my-1"><div class="input-group input-group-sm">'
+            DaftarDosen += '<div class="input-group-prepend"><label class="input-group-text bg-primary text-light"><b>Dosen '+i+'</b></label></div>'
+            DaftarDosen += '<select class="custom-select custom-select-sm" id="Dosen'+i+'"><option value="Lain">Pilih Dosen '+i+'</option>'
+            for (let j = 0; j < Dosen.length; j++) {
+              DaftarDosen += '<option value="'+Dosen[j]+'">'+Dosen[j]+'</option>'
+            }
+            DaftarDosen += '</select></div></div><div class="col-lg-6 col-sm-12 my-1"><div class="input-group input-group-sm">'
+            DaftarDosen += '<input class="form-control form-control-sm" type="text" id="Dosen'+i+'Lain" placeholder="Sebutkan Jika Dosen Yang Lain">'
+            DaftarDosen += '</div></div></div>'
+          }
+          $("#DaftarDosen").html(DaftarDosen)
+          for (let k = 0; k <= 15; k++) {
+            var NilaiDosen = ''
+            for (let i = 1; i <= JumlahDosen; i++) {
+              NilaiDosen += '<div class="row"><div class="col-lg-auto col-sm-12 my-1"><div class="input-group input-group-sm d-flex justify-content-center">'
+              NilaiDosen += '<div class="input-group-prepend"><label class="input-group-text bg-primary text-light"><b>Nilai Untuk Dosen '+i+'</b></label>'
+              NilaiDosen += '</div></div></div><div class="col-lg-auto col-sm-12 d-flex align-items-center my-1"><div class="input-group input-group-sm d-flex justify-content-center">'
+              for (let j = 1; j <= 4; j++) {
+                NilaiDosen += '<div class="form-check form-check-inline mx-3">'
+                NilaiDosen += '<input class="form-check-input" type="radio" name="Input'+k+i+'" id="I'+k+j+i+'" value="'+j+'">'
+                NilaiDosen += '<label class="form-check-label font-weight-bold" for="I'+k+j+i+'">'+j+'</label></div>'
+              }
+              NilaiDosen += '</div></div></div>'
+            }
+            $("#NilaiDosen"+k).html(NilaiDosen)
+          }
+        })
         // $("#Kirim").click(function() {
         //   if (isNaN($("#NIM").val()) || $("#NIM").val() === "") {
         //     alert('Input NIM Hanya Boleh 12 Digit Angka!')
