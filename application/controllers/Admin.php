@@ -230,7 +230,7 @@ class Admin extends CI_Controller {
 
 	public function PenelitianDosenMhs(){
 		$Data['Halaman'] = 'Dosen';
-		$Data['SubMenu'] = 'Pengabdian';
+		$Data['SubMenu'] = 'Penelitian';
 		$Data['PenelitianDosenMhs'] = $this->db->get("PenelitianDosenMhs")->result_array();
     $this->load->view('HeaderAdmin',$Data);
     $this->load->view('PenelitianDosenMhs',$Data); 
@@ -732,7 +732,7 @@ class Admin extends CI_Controller {
 	public function PrestasiMhs(){
 		$Data['Halaman'] = 'Mahasiswa';
 		$Data['SubMenu'] = 'Prestasi Mahasiswa';
-		$Data['PrestasiMhs'] = $this->db->query("SELECT * FROM prestasimahasiswa")->result_array();
+		$Data['PrestasiMhs'] = $this->db->query("SELECT * FROM PrestasiMahasiswa")->result_array();
     $this->load->view('HeaderAdmin',$Data);
     $this->load->view('PrestasiMhs',$Data); 
 	}
@@ -910,8 +910,8 @@ class Admin extends CI_Controller {
 			$Data['PenggunaLulusan'][5][$Pisah[5]-1] += 1;
 			$Data['PenggunaLulusan'][6][$Pisah[6]-1] += 1;
 		}
-		$Data['PrestasiAkademik'] = $this->db->query("SELECT * FROM prestasimahasiswa WHERE JenisPrestasi=1 AND Homebase = '".$Homebase."' AND TahunPrestasi > ".($TS-5)." AND TahunPrestasi <= ".$TS)->result_array();
-		$Data['PrestasiNonAkademik'] = $this->db->query("SELECT * FROM prestasimahasiswa WHERE JenisPrestasi=2 AND Homebase = '".$Homebase."' AND TahunPrestasi > ".($TS-5)." AND TahunPrestasi <= ".$TS)->result_array();
+		$Data['PrestasiAkademik'] = $this->db->query("SELECT * FROM PrestasiMahasiswa WHERE JenisPrestasi=1 AND Homebase = '".$Homebase."' AND TahunPrestasi > ".($TS-5)." AND TahunPrestasi <= ".$TS)->result_array();
+		$Data['PrestasiNonAkademik'] = $this->db->query("SELECT * FROM PrestasiMahasiswa WHERE JenisPrestasi=2 AND Homebase = '".$Homebase."' AND TahunPrestasi > ".($TS-5)." AND TahunPrestasi <= ".$TS)->result_array();
 		$Data['EWMP'] = array();
 		if ($Homebase == 'S1') {
 			foreach ($this->db->get('Dosen')->result_array() as $key) {
