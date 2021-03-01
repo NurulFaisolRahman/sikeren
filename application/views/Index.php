@@ -97,7 +97,7 @@
       </style>
   </head>
   <body>
-    <div class="jumbotron jumbotron-fluid mb-0" style="background-image: url(<?=base_url('img/Header.png')?>);background-repeat: no-repeat;background-size: cover;padding-top: 2rem;padding-bottom: 2rem;">
+    <div class="jumbotron jumbotron-fluid mb-0" style="background-image: url(<?=base_url('img/Header.jpg')?>);background-repeat: no-repeat;background-size: cover;padding-top: 2rem;padding-bottom: 2rem;">
       <div class="container">
         <div class="row">
           <div class="col-lg-3 d-flex justify-content-center">
