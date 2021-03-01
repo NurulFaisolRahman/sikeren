@@ -552,7 +552,9 @@
                          AppDosen: AppDosen,
                          PBM: PBM,
                          Kendala: Kendala,
-                         Saran: $("#Saran").val() }
+                         Saran: $("#Saran").val(),
+                         SMT: "Ganjil",
+                         Tahun: "2020" }
             $("#Kirim").prop('disabled', true);
             $.post(BaseURL+"SMD/InputEvaluasiPBM", Data).done(function(Respon) {
               if (Respon == '1') {
