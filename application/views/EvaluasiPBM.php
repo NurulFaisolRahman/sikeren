@@ -553,7 +553,7 @@
                          PBM: PBM,
                          Kendala: Kendala,
                          Saran: $("#Saran").val() }
-            // console.log(Data)
+            $("#Kirim").prop('disabled', true);
             $.post(BaseURL+"SMD/InputEvaluasiPBM", Data).done(function(Respon) {
               if (Respon == '1') {
                 alert('Terima Kasih Telah Mengisi Kuisioner :)')
