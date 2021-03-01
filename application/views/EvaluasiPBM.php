@@ -290,7 +290,7 @@
                     <div class="input-group input-group-sm d-flex justify-content-center">
                       <?php for ($j=1; $j < 5; $j++) { ?>
                         <div class="form-check form-check-inline mx-3">
-                          <input class="form-check-input" type="radio" name="Input<?=$i?>" id="PBM<?=$i.$j?>" value="<?=$j?>">
+                          <input class="form-check-input" type="radio" name="PBM<?=$i?>" id="PBM<?=$i.$j?>" value="<?=$j?>">
                           <label class="form-check-label font-weight-bold" for="PBM<?=$i.$j?>"><?=$j?></label>
                         </div>
                       <?php } ?>
@@ -512,11 +512,11 @@
             }
             Tampung = []
             for (let i = 18; i < 30; i++) {
-              if ($("input[name='Input"+i+"']:checked").val() == undefined) {
+              if ($("input[name='PBM"+i+"']:checked").val() == undefined) {
                 alert('Pertanyaan Nomer '+(i+2)+', Wajib Di Isi!')
                 return true
               } else {
-                Tampung.push($("input[name='Input"+i+"']:checked").val())
+                Tampung.push($("input[name='PBM"+i+"']:checked").val())
               }
             }
             var PBM = Tampung.join("|")
