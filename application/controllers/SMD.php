@@ -11,6 +11,15 @@ class SMD extends CI_Controller {
 		$this->load->view('EvaluasiPBM');
 	}
 
+	public function InputEvaluasiPBM(){
+		$this->db->insert('EvaluasiPBM',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Mengirim Kuisioner!'; 
+		}
+	}
+
 	public function Kuisioner($Jenis){
 		if ($Jenis == 'KepuasanMahasiswa') {
 			$this->load->view('KepuasanMahasiswa');
@@ -40,7 +49,7 @@ class SMD extends CI_Controller {
 		if ($this->db->affected_rows()){
 			echo '1';
 		} else {
-			echo 'Gagal Mengirim Survei!'; 
+			echo 'Gagal Mengirim Kuisioner!'; 
 		}
 	}
 
