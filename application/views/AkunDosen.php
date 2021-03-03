@@ -47,17 +47,8 @@
     <div class="modal fade" id="ModalSertifikat">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
-          <div class="modal-header bg-primary">
-            <h5 class="modal-title font-weight-bold">Sertifikat Dosen</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
           <div class="modal-body">
-            <embed id="PathSertifikat" src="" type="application/pdf" width="100%" height="400"/>
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Tutup</b></button>
+            <embed id="PathSertifikat" src="" type="application/pdf" width="100%" height="520"/>
           </div>
         </div>
       </div>

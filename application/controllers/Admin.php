@@ -742,8 +742,12 @@ class Admin extends CI_Controller {
 			$this->db->insert('Dosen',array('Homebase' => $_POST['Homebase'], 
 																			'NIP' => $_POST['NIP'], 
 																			'KreditLama' => 0,
-																			'Semester' => 'Genap', 
+																			'Semester' => 'Ganjil', 
 																			'Tahun' => 0, 
+																			'Rektor' => 'Dr. Drs. Ec. H. Muh. Syarif M.Si|1963113020011210012',
+																			'KetuaPAK' => 'Ir. Muhammad Fakhry MP.|196208141988031003',
+																			'Dekan' => 'Dr. H. Pribanus Wantara M.M|196012031988111001',
+																			'WakilDekan' => 'Dr. Mohtar Rasyid S.E., M.Sc|197604152003121001|Penata/IIIc|Lektor',
 																			'Nama' => htmlentities($_POST['Nama'])));
 			$this->db->insert('Akun',array('NIP' => $_POST['NIP'],'Password' => password_hash($_POST['NIP'], PASSWORD_DEFAULT),'JenisAkun' => '1'));
 			echo '1';

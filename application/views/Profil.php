@@ -71,7 +71,7 @@
 											<tr style="font-size: 12px;" class="text-center align-middle font-weight-bold">	
 												<td class="py-1" colspan="2">Jumlah Kredit</td>
 												<td class="py-1"><?=number_format(array_sum($KreditBidang),2)?></td>
-												<td class="py-1">100%</td>
+												<td class="py-1"><?=$Total==1?'0%':'100%';?></td>
 												<td class="py-1">100%</td>
 											</tr>
 										</tbody>
@@ -146,6 +146,10 @@
 												<span class="input-group-text bg-primary"><b>Kredit Yang Belum Divalidasi Asesor</b></span>
 											</div>
 											<input type="text" class="form-control" value="<?=str_replace('.',',',number_format($KreditBaru,2))?>" disabled>
+											<div class="input-group-prepend">
+												<span class="input-group-text bg-primary"><b>Homebase</b></span>
+											</div>
+											<input type="text" class="form-control" value="<?=$Profil['Homebase']?>" disabled>
 										</div>
 									</div>
 									<div class="col-sm-12">
@@ -406,8 +410,15 @@
                     <select class="custom-select" id="Gender">
                       <option value="Laki-Laki" <?=$Profil['Gender']=='Laki-Laki'?'selected':''?>>Laki-Laki</option>
                       <option value="Perempuan" <?=$Profil['Gender']=='Perempuan'?'selected':''?>>Perempuan</option>
+										</select>
+										<div class="input-group-prepend">
+                      <label class="input-group-text bg-primary"><b>Homebase</b></label>
+                    </div>
+                    <select class="custom-select" id="HomebaseDosen">
+                      <option value="S1" <?=$Profil['Homebase']=='S1'?'selected':''?>>S1</option>
+                      <option value="S2" <?=$Profil['Homebase']=='S2'?'selected':''?>>S2</option>
                     </select>
-                  </div>
+									</div>
                 </div>
                 <div class="col-sm-12">
 									<div class="input-group input-group-sm mb-2">
@@ -546,21 +557,23 @@
 					var Tahun = $('#Tahun').val()
 					var Pisah = Tahun.split('-')
 					window.location = BaseURL + 'Dashboard/PAK/'+$('#Homebase').val()+'/'+$('#Semester').val()+'/'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[0]))+'-'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[1]))
-					// var PAK = ['Pendidikan','Penelitian','Pengabdian','Penunjang']
-					// for (let i = 1; i < 5; i++) {
-					// 	$.post(BaseURL+"Dashboard"+"/Lampiran/"+$('#Homebase').val()+'/'+$('#Semester').val()+'/'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[0]))+'-'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[1]))+'/'+PAK[i-1]).done(function(Respon) {
-					// 		var array = JSON.parse(Respon)
-					// 		var NomorLampiran = 1
-					// 		array.forEach(function(object) {
-					// 			if (object.Bukti != null) {
-					// 				$('#LampiranPAK').attr('href',BaseURL+PAK[i-1]+'/'+object.Bukti)		
-					// 				$('#LampiranPAK').attr('Download','Lampiran '+i+'.'+NomorLampiran+'.pdf') 
-					// 				$('#LampiranPAK')[0].click()
-					// 			}
-					// 			NomorLampiran++;
-					// 		})
-					// 	}) 	
-					// }
+					if (document.getElementById("BuktiExcel").checked) {
+						var PAK = ['Pendidikan','Penelitian','Pengabdian','Penunjang']
+						for (let i = 1; i < 5; i++) {
+							$.post(BaseURL+"Dashboard"+"/Lampiran/"+$('#Homebase').val()+'/'+$('#Semester').val()+'/'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[0]))+'-'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[1]))+'/'+PAK[i-1]).done(function(Respon) {
+								var array = JSON.parse(Respon)
+								var NomorLampiran = 1
+								array.forEach(function(object) {
+									if (object.Bukti != null) {
+										$('#LampiranPAK').attr('href',BaseURL+PAK[i-1]+'/'+object.Bukti)		
+										$('#LampiranPAK').attr('Download','Lampiran '+i+'.'+NomorLampiran+'.pdf') 
+										$('#LampiranPAK')[0].click()
+									}
+									NomorLampiran++;
+								})
+							}) 	
+						}	
+					}
 				}) 
 
 				$("#CancelSertifikat").click(function() {
@@ -568,24 +581,32 @@
 				})
 
 				$("#bkd").click(function() {
-					var Tahun = $('#Tahun').val()
-					var Pisah = Tahun.split('-')
-					window.location = BaseURL + 'Dashboard/BKD/'+$('#Homebase').val()+'/'+$('#Semester').val()+'/'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[0]))+'-'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[1]))
-					// var PAK = ['Pendidikan','Penelitian','Pengabdian','Penunjang']
-					// for (let i = 1; i < 5; i++) {
-					// 	$.post(BaseURL+"Dashboard"+"/LampiranBKD/"+$('#Homebase').val()+'/'+$('#Semester').val()+'/'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[0]))+'-'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[1]))+'/'+PAK[i-1]).done(function(Respon) {
-					// 		var array = JSON.parse(Respon)
-					// 		var NomorLampiran = 1
-					// 		array.forEach(function(object) {
-					// 			if (object.Bukti != null) {
-					// 				$('#LampiranPAK').attr('href',BaseURL+PAK[i-1]+'/'+object.Bukti)		
-					// 				$('#LampiranPAK').attr('Download','Lampiran '+i+'.'+NomorLampiran+'.pdf') 
-					// 				$('#LampiranPAK')[0].click()
-					// 			}
-					// 			NomorLampiran++;
-					// 		})
-					// 	}) 	
-					// }
+					if (isNaN($('#DariTahun').val()) || $('#DariTahun').val() == "") {
+						alert('Input Tahun Dari Semester Belum Benar!')
+					} else if (isNaN($('#HinggaTahun').val()) || $('#HinggaTahun').val() == "") {
+						alert('Input Tahun Hingga Semester Belum Benar!')
+					} else if ($('#DariTahun').val() > $('#HinggaTahun').val()) {
+						alert('Input Tahun Dari Semester Harus Lebih Kecil Atau Sama Dengan Input Tahun Hingga Semester!')
+					}	else {
+						window.location = BaseURL + 'Dashboard/BKD/'+($('#DariSemester').val()+'-'+$('#HinggaSemester').val())+'/'+($('#DariTahun').val()+'-'+$('#HinggaTahun').val())
+						if (document.getElementById("BuktiExcel").checked) {
+							var PAK = ['Pendidikan','Penelitian','Pengabdian','Penunjang']
+							for (let i = 1; i < 5; i++) {
+								$.post(BaseURL+"Dashboard"+"/LampiranBKD/"+($('#DariSemester').val()+'-'+$('#HinggaSemester').val())+'/'+($('#DariTahun').val()+'-'+$('#HinggaTahun').val())+'/'+PAK[i-1]).done(function(Respon) {
+									var array = JSON.parse(Respon)
+									var NomorLampiran = 1
+									array.forEach(function(object) {
+										if (object.Bukti != null) {
+											$('#LampiranPAK').attr('href',BaseURL+PAK[i-1]+'/'+object.Bukti)		
+											$('#LampiranPAK').attr('Download','Lampiran '+i+'.'+NomorLampiran+'.pdf') 
+											$('#LampiranPAK')[0].click()
+										}
+										NomorLampiran++;
+									})
+								}) 	
+							}
+						}	
+					}
 				}) 
 
 				$("#NamaPejabat").click(function() {
@@ -640,6 +661,7 @@
 						fd.append('KarPeg',$("#KarPeg").val())
 						fd.append('Nama',$("#Nama").val())
 						fd.append('Gender',$("#Gender").val())
+						fd.append('Homebase',$("#HomebaseDosen").val())
 						fd.append('Kelahiran',$("#Kelahiran").val())
 						fd.append('Pangkat',Pangkat[0])
 						fd.append('Golongan',Pangkat[1])

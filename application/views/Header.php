@@ -132,36 +132,38 @@
       </div>
     </div>
     <div class="modal fade" id="Excel">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-warning">
           <div class="modal-body">
-            <div class="input-group mb-1">
+            <div class="input-group mb-2">
               <div class="input-group-prepend">
-                <label class="input-group-text bg-primary"><b>Homebase</b></label>
+                <label class="input-group-text bg-primary"><b>Dari Semester</b></label>
               </div>
-              <select class="custom-select" id="Homebase">										
-                <option value="S1">S1</option>
-                <option value="S2">S2</option>
-                <option value="S">S1 & S2</option>
-              </select>
-            </div>
-            <div class="input-group mb-1">
-              <div class="input-group-prepend">
-                <label class="input-group-text bg-primary"><b>Semester</b></label>
-              </div>
-              <select class="custom-select" id="Semester">										
+              <select class="custom-select" id="DariSemester">										
                 <option value="Ganjil">Ganjil</option>
                 <option value="Genap">Genap</option>
-                <option value="G">Ganjil & Genap</option>
               </select>
-            </div>
-            <div class="input-group mb-1">
               <div class="input-group-prepend">
                 <label class="input-group-text bg-primary"><b>Tahun</b></label>
               </div>
-              <input class="form-control" type="text" id="Tahun"  data-inputmask='"mask": "9999-9999"' data-mask>
-              <a id="LampiranPAK" href="LampiranPAK" download="LampiranPAK"></a>
+              <input class="form-control" type="text" id="DariTahun"  data-inputmask='"mask": "9999"' value="20" data-mask>
             </div>
+            <div class="input-group mt-2">
+              <div class="input-group-prepend">
+                <label class="input-group-text bg-primary"><b>Hingga Semester</b></label>
+              </div>
+              <select class="custom-select" id="HinggaSemester">										
+                <option value="Ganjil">Ganjil</option>
+                <option value="Genap">Genap</option>
+              </select>
+              <div class="input-group-prepend">
+                <label class="input-group-text bg-primary"><b>Tahun</b></label>
+              </div>
+              <input class="form-control" type="text" id="HinggaTahun"  data-inputmask='"mask": "9999"' value="20" data-mask>
+            </div>
+            <input class="mt-3" type="checkbox" id="BuktiExcel">
+            <label class="font-weight-bold text-dark" for="BuktiExcel"> Download Beserta Lampiran</label>
+            <a id="LampiranPAK" href="LampiranPAK" download="LampiranPAK"></a>
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Tutup</b></button>

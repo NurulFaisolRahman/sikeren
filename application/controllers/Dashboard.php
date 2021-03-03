@@ -144,6 +144,7 @@ class Dashboard extends CI_Controller {
 															'KarPeg' => htmlentities($_POST['KarPeg']),
 															'Nama' => htmlentities($_POST['Nama']),
 															'Gender' => $_POST['Gender'],
+															'Homebase' => $_POST['Homebase'],
 															'Kelahiran' => htmlentities($_POST['Kelahiran']),
 															'Jabatan' => $_POST['Jabatan'],
 															'Pangkat' => $_POST['Pangkat'],
@@ -211,8 +212,8 @@ class Dashboard extends CI_Controller {
 		} else {
 			$Tipe = pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
 			$NamaFoto = date('Ymd',time()).substr(password_hash('Foto', PASSWORD_DEFAULT),7,3).'.'.$Tipe;
-			move_uploaded_file($_FILES['file']['tmp_name'], "img/".$NamaFoto);
-			if ($_POST['NamaFoto'] != '') { unlink('img/'.$_POST['NamaFoto']); }
+			move_uploaded_file($_FILES['file']['tmp_name'], "FotoDosen/".$NamaFoto);
+			if ($_POST['NamaFoto'] != '') { unlink('FotoDosen/'.$_POST['NamaFoto']); }
 			$this->db->where('NIP', $this->session->userdata('NIP'));
 			$this->db->update('Dosen',array('Foto' => $NamaFoto));
 			echo '1';
@@ -504,36 +505,87 @@ class Dashboard extends CI_Controller {
 
 	public function BKD(){
 		$NIP = $this->session->userdata('NIP');
-		$Jenjang = $this->uri->segment('3');
-		$Semester = $this->uri->segment('4');
-		$Tahun = explode('-',$this->uri->segment('5'));
-		$Data['Pendidikan'] = $this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Jenjang LIKE "."'%".$Jenjang."%'"." AND Semester LIKE "."'%".$Semester."%'"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".$Tahun[1])->result_array();
-		$Data['Penelitian'] = $this->db->query("SELECT * FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Jenjang LIKE "."'%".$Jenjang."%'"." AND Semester LIKE "."'%".$Semester."%'"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".$Tahun[1])->result_array();
-		$Data['Pengabdian'] = $this->db->query("SELECT * FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Jenjang LIKE "."'%".$Jenjang."%'"." AND Semester LIKE "."'%".$Semester."%'"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".$Tahun[1])->result_array();
-		$Data['Penunjang'] = $this->db->query("SELECT * FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Jenjang LIKE "."'%".$Jenjang."%'"." AND Semester LIKE "."'%".$Semester."%'"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".$Tahun[1])->result_array();
-		if ($Jenjang != 'S1' && $Jenjang != 'S2') {
-			if ($Semester != 'Ganjil' && $Semester != 'Genap') {
-				$Data['Filter'] = $this->uri->segment('5').'_Ganjil_Genap_S1_S2';
-			} else {
-				$Data['Filter'] = $this->uri->segment('5').'_'.$Semester.'_S1_S2';
+		$Semester = explode('-',$this->uri->segment('3'));
+		$Tahun = explode('-',$this->uri->segment('4'));
+		$Data['Pendidikan'] = $Data['Penelitian'] =  $Data['Pengabdian'] = $Data['Penunjang'] = array();
+		if ($Semester[0] == $Semester[1] && $Tahun[0] == $Tahun[1]) {
+			$Data['Pendidikan'] = array_merge($Data['Pendidikan'],$this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Penelitian'] = array_merge($Data['Penelitian'],$this->db->query("SELECT * FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Pengabdian'] = array_merge($Data['Pengabdian'],$this->db->query("SELECT * FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Penunjang'] = array_merge($Data['Penunjang'],$this->db->query("SELECT * FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+		} else if ($Tahun[0] == $Tahun[1]) {
+			$Data['Pendidikan'] = array_merge($Data['Pendidikan'],$this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Penelitian'] = array_merge($Data['Penelitian'],$this->db->query("SELECT * FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Pengabdian'] = array_merge($Data['Pengabdian'],$this->db->query("SELECT * FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Penunjang'] = array_merge($Data['Penunjang'],$this->db->query("SELECT * FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun = ".$Tahun[0])->result_array());
+		} else if ($Semester[0] == 'Ganjil' && $Semester[1] == 'Genap') {
+			$Data['Pendidikan'] = array_merge($Data['Pendidikan'],$this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".$Tahun[1])->result_array());
+			$Data['Penelitian'] = array_merge($Data['Penelitian'],$this->db->query("SELECT * FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".$Tahun[1])->result_array());
+			$Data['Pengabdian'] = array_merge($Data['Pengabdian'],$this->db->query("SELECT * FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".$Tahun[1])->result_array());
+			$Data['Penunjang'] = array_merge($Data['Penunjang'],$this->db->query("SELECT * FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".$Tahun[1])->result_array());
+		} else if ($Semester[0] == 'Genap' && $Semester[1] == 'Ganjil') {
+			$Data['Pendidikan'] = array_merge($Data['Pendidikan'],$this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Penelitian'] = array_merge($Data['Penelitian'],$this->db->query("SELECT * FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Pengabdian'] = array_merge($Data['Pengabdian'],$this->db->query("SELECT * FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Penunjang'] = array_merge($Data['Penunjang'],$this->db->query("SELECT * FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Pendidikan'] = array_merge($Data['Pendidikan'],$this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->result_array());
+			$Data['Penelitian'] = array_merge($Data['Penelitian'],$this->db->query("SELECT * FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->result_array());
+			$Data['Pengabdian'] = array_merge($Data['Pengabdian'],$this->db->query("SELECT * FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->result_array());
+			$Data['Penunjang'] = array_merge($Data['Penunjang'],$this->db->query("SELECT * FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->result_array());
+			if (($Tahun[1] - $Tahun[0]) > 1) {
+				$Data['Pendidikan'] = array_merge($Data['Pendidikan'],$this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".($Tahun[1]-1))->result_array());
+				$Data['Penelitian'] = array_merge($Data['Penelitian'],$this->db->query("SELECT * FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".($Tahun[1]-1))->result_array());
+				$Data['Pengabdian'] = array_merge($Data['Pengabdian'],$this->db->query("SELECT * FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".($Tahun[1]-1))->result_array());
+				$Data['Penunjang'] = array_merge($Data['Penunjang'],$this->db->query("SELECT * FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".($Tahun[1]-1))->result_array());
 			}
-		} else {
-			if ($Semester != 'Ganjil' && $Semester != 'Genap') {
-				$Data['Filter'] = $this->uri->segment('5').'_Ganjil_Genap_'.$Jenjang;
-			} else {
-				$Data['Filter'] = $this->uri->segment('5').'_'.$Semester.'_'.$Jenjang;
-			}
-		}
+		} else if ($Semester[0] == 'Ganjil' && $Semester[1] == 'Ganjil') {
+			$Data['Pendidikan'] = array_merge($Data['Pendidikan'],$this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".($Tahun[1]-1))->result_array());
+			$Data['Penelitian'] = array_merge($Data['Penelitian'],$this->db->query("SELECT * FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".($Tahun[1]-1))->result_array());
+			$Data['Pengabdian'] = array_merge($Data['Pengabdian'],$this->db->query("SELECT * FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".($Tahun[1]-1))->result_array());
+			$Data['Penunjang'] = array_merge($Data['Penunjang'],$this->db->query("SELECT * FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".($Tahun[1]-1))->result_array());
+			$Data['Pendidikan'] = array_merge($Data['Pendidikan'],$this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->result_array());
+			$Data['Penelitian'] = array_merge($Data['Penelitian'],$this->db->query("SELECT * FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->result_array());
+			$Data['Pengabdian'] = array_merge($Data['Pengabdian'],$this->db->query("SELECT * FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->result_array());
+			$Data['Penunjang'] = array_merge($Data['Penunjang'],$this->db->query("SELECT * FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->result_array());
+		} else if ($Semester[0] == 'Genap' && $Semester[1] == 'Genap') {
+			$Data['Pendidikan'] = array_merge($Data['Pendidikan'],$this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Penelitian'] = array_merge($Data['Penelitian'],$this->db->query("SELECT * FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Pengabdian'] = array_merge($Data['Pengabdian'],$this->db->query("SELECT * FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Penunjang'] = array_merge($Data['Penunjang'],$this->db->query("SELECT * FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data['Pendidikan'] = array_merge($Data['Pendidikan'],$this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".$Tahun[1])->result_array());
+			$Data['Penelitian'] = array_merge($Data['Penelitian'],$this->db->query("SELECT * FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".$Tahun[1])->result_array());
+			$Data['Pengabdian'] = array_merge($Data['Pengabdian'],$this->db->query("SELECT * FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".$Tahun[1])->result_array());
+			$Data['Penunjang'] = array_merge($Data['Penunjang'],$this->db->query("SELECT * FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".$Tahun[1])->result_array());
+		} 
+		$Data['Filter'] = $Semester[0].'_'.$Tahun[0].'_'.$Semester[1].'_'.$Tahun[1];
 		$this->load->view('ExcelBKD',$Data);
 	}
 
 	public function LampiranBKD(){
 		$NIP = $this->session->userdata('NIP');
-		$Jenjang = $this->uri->segment('3');
-		$Semester = $this->uri->segment('4');
-		$Tahun = explode('-',$this->uri->segment('5'));
-		$Kegiatan = $this->uri->segment('6');
-		$Data = $this->db->query("SELECT * FROM Realisasi".$Kegiatan."  WHERE NIP = ".$NIP." AND KreditBkd != '' AND Jenjang LIKE "."'%".$Jenjang."%'"." AND Semester LIKE "."'%".$Semester."%'"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".$Tahun[1])->result_array();
+		$Semester = explode('-',$this->uri->segment('3'));
+		$Tahun = explode('-',$this->uri->segment('4'));
+		$Kegiatan = $this->uri->segment('5');
+		$Data = array();
+		if ($Semester[0] == $Semester[1] && $Tahun[0] == $Tahun[1]) {
+			$Data = array_merge($Data,$this->db->query("SELECT Bukti FROM Realisasi".$Kegiatan." WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+		} else if ($Tahun[0] == $Tahun[1]) {
+			$Data = array_merge($Data,$this->db->query("SELECT Bukti FROM Realisasi".$Kegiatan." WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun = ".$Tahun[0])->result_array());
+		} else if ($Semester[0] == 'Ganjil' && $Semester[1] == 'Genap') {
+			$Data = array_merge($Data,$this->db->query("SELECT Bukti FROM Realisasi".$Kegiatan." WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".$Tahun[1])->result_array());
+		} else if ($Semester[0] == 'Genap' && $Semester[1] == 'Ganjil') {
+			$Data = array_merge($Data,$this->db->query("SELECT Bukti FROM Realisasi".$Kegiatan." WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data = array_merge($Data,$this->db->query("SELECT Bukti FROM Realisasi".$Kegiatan." WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->result_array());
+			if (($Tahun[1] - $Tahun[0]) > 1) {
+				$Data = array_merge($Data,$this->db->query("SELECT Bukti FROM Realisasi".$Kegiatan." WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".($Tahun[1]-1))->result_array());
+			}
+		} else if ($Semester[0] == 'Ganjil' && $Semester[1] == 'Ganjil') {
+			$Data = array_merge($Data,$this->db->query("SELECT Bukti FROM Realisasi".$Kegiatan." WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".($Tahun[1]-1))->result_array());
+			$Data = array_merge($Data,$this->db->query("SELECT Bukti FROM Realisasi".$Kegiatan." WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->result_array());
+		} else if ($Semester[0] == 'Genap' && $Semester[1] == 'Genap') {
+			$Data = array_merge($Data,$this->db->query("SELECT Bukti FROM Realisasi".$Kegiatan." WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->result_array());
+			$Data = array_merge($Data,$this->db->query("SELECT Bukti FROM Realisasi".$Kegiatan." WHERE NIP = ".$NIP." AND KreditBkd != ''"." AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".$Tahun[1])->result_array());
+		} 
 		echo json_encode($Data);
 	}
 }
