@@ -37,7 +37,7 @@ class Pendidikan extends CI_Controller {
 		else if ($_POST['IdKegiatan'] == 'PND2') {
 			$Satuan = ''; $Volume = $_POST['Volume']; $JumlahKredit = $_POST['Volume']*3; $Kredit = '3';
 		}
-		else if ($_POST['IdKegiatan'] == 'PND3') {
+		else if ($_POST['IdKegiatan'] == 'PND3') { 
 			$Satuan = '10 sks Pertama';$Kredit = '1';$JumlahKredit = $_POST['KreditPAK'];$Volume = $_POST['Volume'];$KreditBkd = $_POST['KreditBKD'];
 		}
 		else if ($_POST['IdKegiatan'] == 'PND4') {

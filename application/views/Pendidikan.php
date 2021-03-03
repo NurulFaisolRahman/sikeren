@@ -67,24 +67,32 @@
 				}) 
 
 				$("#pak").click(function() {
-					var Tahun = $('#Tahun').val()
-					var Pisah = Tahun.split('-')
-					window.location = BaseURL + 'Dashboard/PAK/'+$('#Homebase').val()+'/'+$('#Semester').val()+'/'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[0]))+'-'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[1]))
-					// var PAK = ['Pendidikan','Penelitian','Pengabdian','Penunjang']
-					// for (let i = 1; i < 5; i++) {
-					// 	$.post(BaseURL+"Dashboard"+"/Lampiran/"+$('#Homebase').val()+'/'+$('#Semester').val()+'/'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[0]))+'-'+(isNaN(parseInt(Pisah[0]))? 0 : parseInt(Pisah[1]))+'/'+PAK[i-1]).done(function(Respon) {
-					// 		var array = JSON.parse(Respon)
-					// 		var NomorLampiran = 1
-					// 		array.forEach(function(object) {
-					// 			if (object.Bukti != null) {
-					// 				$('#LampiranPAK').attr('href',BaseURL+PAK[i-1]+'/'+object.Bukti)		
-					// 				$('#LampiranPAK').attr('Download','Lampiran '+i+'.'+NomorLampiran+'.pdf') 
-					// 				$('#LampiranPAK')[0].click()
-					// 			}
-					// 			NomorLampiran++;
-					// 		})
-					// 	}) 	
-					// }
+					if (isNaN($('#DariTahun').val()) || $('#DariTahun').val() == "") {
+						alert('Input Tahun Dari Semester Belum Benar!')
+					} else if (isNaN($('#HinggaTahun').val()) || $('#HinggaTahun').val() == "") {
+						alert('Input Tahun Hingga Semester Belum Benar!')
+					} else if ($('#DariTahun').val() > $('#HinggaTahun').val()) {
+						alert('Input Tahun Dari Semester Harus Lebih Kecil Atau Sama Dengan Input Tahun Hingga Semester!')
+					}	else {
+						window.location = BaseURL + 'Dashboard/PAK/'+($('#DariSemester').val()+'-'+$('#HinggaSemester').val())+'/'+($('#DariTahun').val()+'-'+$('#HinggaTahun').val())
+						if (document.getElementById("BuktiExcel").checked) {
+							var PAK = ['Pendidikan','Penelitian','Pengabdian','Penunjang']
+							for (let i = 1; i < 5; i++) {
+								$.post(BaseURL+"Dashboard"+"/Lampiran/"+($('#DariSemester').val()+'-'+$('#HinggaSemester').val())+'/'+($('#DariTahun').val()+'-'+$('#HinggaTahun').val())+'/'+PAK[i-1]).done(function(Respon) {
+									var array = JSON.parse(Respon)
+									var NomorLampiran = 1
+									array.forEach(function(object) {
+										if (object.Bukti != null) {
+											$('#LampiranPAK').attr('href',BaseURL+PAK[i-1]+'/'+object.Bukti)		
+											$('#LampiranPAK').attr('Download','Lampiran '+i+'.'+NomorLampiran+'.pdf') 
+											$('#LampiranPAK')[0].click()
+										}
+										NomorLampiran++;
+									})
+								}) 	
+							}	
+						}
+					}
 				})
 
 				$("#bkd").click(function() {
@@ -480,7 +488,7 @@
 						fd.append('SK',$("#SK").val())
 						fd.append('Kegiatan',$("#Uraian").val())		
 						fd.append('TanggalKegiatan',$("#TanggalKegiatan").val())
-						fd.append('Volume',parseFloat($("#Volume").val().replace(',','.')))
+						fd.append('Volume',parseInt($("#Volume").val()))
 						if ($("#InputIdKegiatanPendidikan").val() == 'PND1') {
 							$("#Jenjang").val() == 200? fd.append('Kode','0') : fd.append('Kode','1')
 							fd.append('KreditPND1',$("#KreditPND1").val())
@@ -498,7 +506,7 @@
 							} else if ($("#JenjangMengajar").val() == 'S4') {
 								fd.append('KreditBKD',(MengajarS2[$("#JumlahDosen").val()][$("#JumlahMhs").val()])*$("#JumlahKelas").val())
 							}
-							fd.append('KreditPAK',parseFloat($("#Volume").val().replace(',','.'))*$("#JumlahKelas").val()/(parseInt($("#JumlahDosen").val())+1))
+							fd.append('KreditPAK',parseInt($("#Volume").val()))
 							fd.append('Kode','0')
 						}
 						else if ($("#InputIdKegiatanPendidikan").val() == 'PND5') {

@@ -31024,7 +31024,7 @@ Content-Type: text/html; charset="us-ascii"
     <td class=3D"xl79" x:str>2</td>
     <td class=3D"xl80" colspan=3D"3" style=3D'border-right:none;border-bottom:.5pt solid windowtext;' x:str>NIP</td>
     <td class=3D"xl85"></td>
-    <td class=3D"xl107" colspan=3D"3" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><?=$Profil['NIP']?></td>
+    <td class=3D"xl107" colspan=3D"3" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str><?=$Profil['NIP']?></td>
     <td class=3D"xl102"></td>
     <td class=3D"xl69" colspan=3D"6" style=3D'mso-ignore:colspan;'></td>
     <td class=3D"xl68" colspan=3D"2" style=3D'mso-ignore:colspan;'></td>
