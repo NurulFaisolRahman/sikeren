@@ -7,6 +7,11 @@ class SMD extends CI_Controller {
 		$this->load->view('Index.php');
 	}
 
+	public function pdf(){
+		$this->load->library('Pdf');
+		$this->load->view('pdf');
+  }
+
 	public function EvaluasiPBM(){
 		$this->load->view('EvaluasiPBM');
 	}

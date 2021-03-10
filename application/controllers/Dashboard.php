@@ -24,63 +24,22 @@ class Dashboard extends CI_Controller {
 		$TahunKreditLama = $this->db->query("SELECT Tahun FROM Dosen WHERE NIP=".$NIP)->row_array()['Tahun']+1; 
 		$Data['KreditBaru'] = 0;
 		$Data['KreditBidang'] = array(0,0,0,0);
-		if ($TahunKreditLama != null) {
+		for ($i=0; $i < 3; $i++) { 
+			$Kredit = $this->db->query("SELECT SUM(JumlahKredit) AS JumlahKredit FROM Realisasi".$Bidang[$i]." WHERE NIP=".$NIP." AND JumlahKredit != '' AND Tahun >= ".$TahunKreditLama)->row_array()['JumlahKredit'];
+			$Data['KreditBaru'] += $Kredit;
+			$Data['KreditBidang'][$i] += $Kredit;
+		}
+		if ($Data['Profil']['Semester'] == 'Genap') {
 			for ($i=0; $i < 3; $i++) { 
-				$Kredit = $this->db->query("SELECT SUM(JumlahKredit) AS JumlahKredit FROM Realisasi".$Bidang[$i]." WHERE NIP=".$NIP." AND JumlahKredit != '' AND Tahun >= ".$TahunKreditLama)->row_array()['JumlahKredit'];
+				$Kredit = $this->db->query("SELECT SUM(JumlahKredit) AS JumlahKredit FROM Realisasi".$Bidang[$i]." WHERE NIP=".$NIP." AND Semester = 'Ganjil' AND JumlahKredit != '' AND Tahun = ".($TahunKreditLama-1))->row_array()['JumlahKredit'];
 				$Data['KreditBaru'] += $Kredit;
 				$Data['KreditBidang'][$i] += $Kredit;
 			}
-			if ($Data['Profil']['Semester'] == 'Genap') {
-				for ($i=0; $i < 3; $i++) { 
-					$Kredit = $this->db->query("SELECT SUM(JumlahKredit) AS JumlahKredit FROM Realisasi".$Bidang[$i]." WHERE NIP=".$NIP." AND Semester = 'Ganjil' AND JumlahKredit != '' AND Tahun = ".($TahunKreditLama-1))->row_array()['JumlahKredit'];
-					$Data['KreditBaru'] += $Kredit;
-					$Data['KreditBidang'][$i] += $Kredit;
-				}
-				$Kredit = $this->db->query("SELECT SUM(JumlahKredit) AS JumlahKredit FROM `RealisasiPendidikan` WHERE NIP = ".$NIP." AND Semester = 'Ganjil' AND JumlahKredit != '' AND IdKegiatan != 'PND3' AND Tahun = ".($TahunKreditLama-1))->row_array()['JumlahKredit'];
-				$Data['KreditBaru'] += $Kredit;
-				$Data['KreditBidang'][3] += $Kredit;
-				$Sortir = $this->db->query("SELECT DISTINCT Jenjang,Semester,Tahun FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND Semester = 'Ganjil' AND IdKegiatan = 'PND3' AND Tahun = ".($TahunKreditLama-1))->result_array();
-				$data = $this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND Semester = 'Ganjil' AND IdKegiatan = 'PND3' AND Tahun = ".($TahunKreditLama-1))->result_array();
-				$Mk = array();
-				for ($i=0; $i < count($Sortir); $i++) { 
-					$Cek = true;
-					for ($j=0; $j < count($data); $j++) {
-						if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
-							if ($Cek) {
-								$Mk[$i] = $data[$j];
-								$Cek = false;
-							} 
-							else {
-								$Mk[$i]['JumlahKredit'] += $data[$j]['JumlahKredit'];
-							}
-						} 
-					}
-				}
-				for ($i=0; $i < count($Mk); $i++) {
-					if ($Mk[$i]['JumlahKredit'] > 10) {
-						if ($Mk[$i]['Jabatan'] == 'Asisten Ahli') {
-							$Mk[$i]['JumlahKredit'] = 5+(($Mk[$i]['JumlahKredit']-10)*0.25);
-						} else {
-							$Mk[$i]['JumlahKredit'] = 10+(($Mk[$i]['JumlahKredit']-10)*0.5);
-						}
-					} else {
-						if ($Mk[$i]['Jabatan'] == 'Asisten Ahli') {
-							$Mk[$i]['JumlahKredit'] = $Mk[$i]['JumlahKredit']*0.5;
-						} else {
-							$Mk[$i]['JumlahKredit'] = $Mk[$i]['JumlahKredit'];
-						}
-					}
-				}
-				for ($i=0; $i < count($Mk); $i++) {
-					$Data['KreditBaru'] += $Mk[$i]['JumlahKredit'];
-					$Data['KreditBidang'][3] += $Mk[$i]['JumlahKredit'];
-				} 
-			}
-			$Kredit = $this->db->query("SELECT SUM(JumlahKredit) AS JumlahKredit FROM `RealisasiPendidikan` WHERE NIP = ".$NIP." AND JumlahKredit != '' AND IdKegiatan != 'PND3' AND Tahun >= ".$TahunKreditLama)->row_array()['JumlahKredit'];
+			$Kredit = $this->db->query("SELECT SUM(JumlahKredit) AS JumlahKredit FROM `RealisasiPendidikan` WHERE NIP = ".$NIP." AND Semester = 'Ganjil' AND JumlahKredit != '' AND IdKegiatan != 'PND3' AND Tahun = ".($TahunKreditLama-1))->row_array()['JumlahKredit'];
 			$Data['KreditBaru'] += $Kredit;
 			$Data['KreditBidang'][3] += $Kredit;
-			$Sortir = $this->db->query("SELECT DISTINCT Jenjang,Semester,Tahun FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND3' AND Tahun >= ".$TahunKreditLama)->result_array();
-			$data = $this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND3' AND Tahun >= ".$TahunKreditLama)->result_array();
+			$Sortir = $this->db->query("SELECT DISTINCT Jenjang,Semester,Tahun FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND Semester = 'Ganjil' AND IdKegiatan = 'PND3' AND Tahun = ".($TahunKreditLama-1))->result_array();
+			$data = $this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND Semester = 'Ganjil' AND IdKegiatan = 'PND3' AND Tahun = ".($TahunKreditLama-1))->result_array();
 			$Mk = array();
 			for ($i=0; $i < count($Sortir); $i++) { 
 				$Cek = true;
@@ -115,6 +74,45 @@ class Dashboard extends CI_Controller {
 				$Data['KreditBaru'] += $Mk[$i]['JumlahKredit'];
 				$Data['KreditBidang'][3] += $Mk[$i]['JumlahKredit'];
 			} 
+		}
+		$Kredit = $this->db->query("SELECT SUM(JumlahKredit) AS JumlahKredit FROM `RealisasiPendidikan` WHERE NIP = ".$NIP." AND JumlahKredit != '' AND IdKegiatan != 'PND3' AND Tahun >= ".$TahunKreditLama)->row_array()['JumlahKredit'];
+		$Data['KreditBaru'] += $Kredit;
+		$Data['KreditBidang'][3] += $Kredit;
+		$Sortir = $this->db->query("SELECT DISTINCT Jenjang,Semester,Tahun FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND3' AND Tahun >= ".$TahunKreditLama)->result_array();
+		$data = $this->db->query("SELECT * FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND3' AND Tahun >= ".$TahunKreditLama)->result_array();
+		$Mk = array();
+		for ($i=0; $i < count($Sortir); $i++) { 
+			$Cek = true;
+			for ($j=0; $j < count($data); $j++) {
+				if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+					if ($Cek) {
+						$Mk[$i] = $data[$j];
+						$Cek = false;
+					} 
+					else {
+						$Mk[$i]['JumlahKredit'] += $data[$j]['JumlahKredit'];
+					}
+				} 
+			}
+		}
+		for ($i=0; $i < count($Mk); $i++) {
+			if ($Mk[$i]['JumlahKredit'] > 10) {
+				if ($Mk[$i]['Jabatan'] == 'Asisten Ahli') {
+					$Mk[$i]['JumlahKredit'] = 5+(($Mk[$i]['JumlahKredit']-10)*0.25);
+				} else {
+					$Mk[$i]['JumlahKredit'] = 10+(($Mk[$i]['JumlahKredit']-10)*0.5);
+				}
+			} else {
+				if ($Mk[$i]['Jabatan'] == 'Asisten Ahli') {
+					$Mk[$i]['JumlahKredit'] = $Mk[$i]['JumlahKredit']*0.5;
+				} else {
+					$Mk[$i]['JumlahKredit'] = $Mk[$i]['JumlahKredit'];
+				}
+			}
+		}
+		for ($i=0; $i < count($Mk); $i++) {
+			$Data['KreditBaru'] += $Mk[$i]['JumlahKredit'];
+			$Data['KreditBidang'][3] += $Mk[$i]['JumlahKredit'];
 		}
 		$this->load->view('Header',$Data);
 		$this->load->view('Profil',$Data);
