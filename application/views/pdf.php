@@ -66,12 +66,12 @@
   </tr>
   <tr>
     <td></td>
-    <td colspan="2"><p>Nama	: </p></td>
+    <td colspan="2"><p>Nama	: '.$this->session->userdata('NamaDosen').'</p></td>
     <td></td>
   </tr>
   <tr>
     <td></td>
-    <td colspan="2"><p>NIP : </p></td>
+    <td colspan="2"><p>NIP : '.$this->session->userdata('NIPDosen').'</p></td>
     <td></td>
   </tr>
 </table>

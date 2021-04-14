@@ -23,10 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-// $config['base_url'] = 'http://localhost/sikeren';
-// $config['base_url'] = 'http://192.168.100.50/sikeren';
-$config['base_url'] = 'http://192.168.100.225/sikeren';
-// $config['base_url'] = 'http://sikeren.com';
+// $config['base_url'] = 'https://localhost/sikeren';
+// $config['base_url'] = 'https://192.168.100.50/sikeren';
+$config['base_url'] = 'https://192.168.100.225/sikeren';
+// $config['base_url'] = 'https://www.sikeren.com';
 
 /*
 |--------------------------------------------------------------------------
@@ -103,7 +103,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

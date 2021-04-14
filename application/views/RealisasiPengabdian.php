@@ -76,7 +76,7 @@
   </div>
 </div>
 <div class="modal fade" id="InputRealisasiPengabdian">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content bg-warning">
       <div class="modal-body">
         <div class="container">
@@ -282,7 +282,7 @@
   </div>
 </div>
 <div class="modal fade" id="EditRealisasiPengabdian">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content bg-warning">
       <div class="modal-body">
         <div class="container">

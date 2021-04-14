@@ -15,6 +15,16 @@ class Dashboard extends CI_Controller {
 		}
 	}
 
+	public function SesiNotif(){
+		$this->session->set_userdata('NamaDosen', $_POST['NamaDosen']);
+		$this->session->set_userdata('NIPDosen', $_POST['NIPDosen']);
+	}
+	
+	public function PDF(){
+		$this->load->library('Pdf');
+		$this->load->view('pdf');
+  }
+
 	public function Profil(){ 
 		$NIP = $this->session->userdata('NIP');
     $Data['Halaman'] = 'Profil';

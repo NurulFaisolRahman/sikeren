@@ -563,7 +563,7 @@
 					}	else {
 						window.location = BaseURL + 'Dashboard/PAK/'+($('#DariSemester').val()+'-'+$('#HinggaSemester').val())+'/'+($('#DariTahun').val()+'-'+$('#HinggaTahun').val())
 						if (document.getElementById("BuktiExcel").checked) {
-							var PAK = ['Pendidikan','Penelitian','Pengabdian','Penunjang']
+							var PAK = ['Pendidikan','Penelitian','Pengabdian','Penunjang'] 
 							for (let i = 1; i < 5; i++) {
 								$.post(BaseURL+"Dashboard"+"/Lampiran/"+($('#DariSemester').val()+'-'+$('#HinggaSemester').val())+'/'+($('#DariTahun').val()+'-'+$('#HinggaTahun').val())+'/'+PAK[i-1]).done(function(Respon) {
 									var array = JSON.parse(Respon)
