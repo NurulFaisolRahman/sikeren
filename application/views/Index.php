@@ -117,7 +117,7 @@
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
             <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalSignIn" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN ADMIN</button></div>
-            <div class="card-body bg-primary text-light border border-light">
+            <div class="card-body bg-primary text-light border border-light py-3">
               <a href="#" data-toggle="modal" data-target="#ModalSignIn"><img class="my-2" src="<?=base_url('img/Admin.png')?>" alt="Admin" width="81%"></a>
             </div>
           </div>
@@ -125,7 +125,7 @@
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
             <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalSignIn" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN DOSEN</button></div>
-            <div class="card-body bg-primary text-light border border-light">
+            <div class="card-body bg-primary text-light border border-light py-3">
               <a href="#" data-toggle="modal" data-target="#ModalSignIn"><img class="my-2" src="<?=base_url('img/Dosen.png')?>" alt="Dosen" width="81%"></a>
             </div>
           </div>
@@ -133,7 +133,7 @@
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
             <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalMhs" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">KUISIONER MAHASISWA</button></div>
-            <div class="card-body bg-primary text-light border border-light">
+            <div class="card-body bg-primary text-light border border-light py-3">
               <a href="#" data-toggle="modal" data-target="#ModalMhs"><img class="my-2" src="<?=base_url('img/Mhs.png')?>" alt="Mahasiswa" width="81%"></a>
             </div>
           </div>
@@ -141,7 +141,7 @@
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
             <div class="card-header bg-warning border border-light"><a href="<?=base_url('SMD/EvaluasiPBM')?>" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">KUISIONER EVALUASI PBM</a></div>
-            <div class="card-body bg-primary text-light border border-light">
+            <div class="card-body bg-primary text-light border border-light py-3">
               <a href="<?=base_url('SMD/EvaluasiPBM')?>"><img class="my-2" src="<?=base_url('img/PBM.png')?>" alt="PBM" width="81%"></a>
             </div>
           </div>
