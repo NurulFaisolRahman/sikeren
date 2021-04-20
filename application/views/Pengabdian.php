@@ -294,6 +294,9 @@
 							data: fd,
 							contentType: false,
 							processData: false,
+							beforeSend: function(){
+								$("#LoadingInput").show();
+							},
 							success: function(Respon){
 								if (Respon == '1') {
 									window.location = BaseURL + "Dashboard/Pengabdian"
@@ -342,6 +345,9 @@
 						data: fd,
 						contentType: false,
 						processData: false,
+						beforeSend: function(){
+							$("#LoadingUpdate").show();
+						},
 						success: function(Respon){
 							if (Respon == '1') {
 								window.location = BaseURL + "Dashboard/Pengabdian"

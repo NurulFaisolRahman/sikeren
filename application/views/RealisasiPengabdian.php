@@ -276,6 +276,7 @@
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Tutup</b></button>
+        <div id="LoadingInput" class="spinner-border text-success" role="status" style="display: none;"></div>
         <button type="submit" class="btn btn-success" id="TambahRealisasiPengabdian"><b>Simpan</b></button>
       </div>
     </div>
@@ -360,6 +361,7 @@
       </div>  
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Tutup</b></button>
+        <div id="LoadingUpdate" class="spinner-border text-success" role="status" style="display: none;"></div>
         <button type="submit" class="btn btn-success" id="UpdateRealisasiPengabdian"><b>Simpan</b></button>
       </div>
     </div>
