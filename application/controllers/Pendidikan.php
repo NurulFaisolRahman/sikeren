@@ -247,8 +247,8 @@ class Pendidikan extends CI_Controller {
 														'Satuan' => $Satuan,
 														'Volume' => $Volume,
 														'Kredit' => $Kredit,
-														'JumlahKredit' => floatval(number_format($JumlahKredit,2)),
-														'KreditBkd' => floatval(number_format($KreditBkd,2)),
+														'JumlahKredit' => floatval(number_format((float)$JumlahKredit,2)),
+														'KreditBkd' => floatval(number_format((float)$KreditBkd,2)),
 														'Bukti' => $NamaPdf.'.'.$Tipe));
 					if ($this->db->affected_rows()){
 						$this->session->set_userdata('IdKegiatanPendidikan', $_POST['IdKegiatan']);
