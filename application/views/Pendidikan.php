@@ -490,7 +490,7 @@
 						fd.append('TanggalKegiatan',$("#TanggalKegiatan").val())
 						fd.append('Volume',parseInt($("#Volume").val()))
 						if ($("#InputIdKegiatanPendidikan").val() == 'PND1') {
-							$("#Jenjang").val() == 200? fd.append('Kode','0') : fd.append('Kode','1')
+							$("#KreditPND1").val() == 200? fd.append('Kode','0') : fd.append('Kode','1')
 							fd.append('KreditPND1',$("#KreditPND1").val())
 						}
 						else if ($("#InputIdKegiatanPendidikan").val() == 'PND2' || $("#InputIdKegiatanPendidikan").val() == 'PND4' || $("#InputIdKegiatanPendidikan").val() == 'PND8' || $("#InputIdKegiatanPendidikan").val() == 'PND9') {
