@@ -217,6 +217,8 @@ class Dashboard extends CI_Controller {
 		} else {
 			$Tipe = pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
 			$NamaFoto = date('Ymd',time()).substr(password_hash('Foto', PASSWORD_DEFAULT),7,3).'.'.$Tipe;
+			$NamaFoto = str_replace("/","E",$NamaFoto);
+			$NamaFoto = str_replace(".","F",$NamaFoto);
 			move_uploaded_file($_FILES['file']['tmp_name'], "FotoDosen/".$NamaFoto);
 			if ($_POST['NamaFoto'] != '') { unlink('FotoDosen/'.$_POST['NamaFoto']); }
 			$this->db->where('NIP', $this->session->userdata('NIP'));
