@@ -486,7 +486,7 @@
 						fd.append('Tahun',$("#TahunRealisasi").val())
 						fd.append('IdKegiatan',$("#InputIdKegiatanPendidikan").val())
 						fd.append('SK',$("#SK").val())
-						fd.append('Kegiatan',$("#Uraian").val())		
+						fd.append('Kegiatan',$("#Uraian").val())		 
 						fd.append('TanggalKegiatan',$("#TanggalKegiatan").val())
 						fd.append('Volume',parseInt($("#Volume").val()))
 						if ($("#InputIdKegiatanPendidikan").val() == 'PND1') {
