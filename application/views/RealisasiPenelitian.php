@@ -448,7 +448,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text bg-primary"><b>Surat Tugas/SK</b></span>
                 </div>
-                <input class="form-control" type="text" id="SK">
+                <input class="form-control" type="text" id="SK" value="Surat Tugas / SK">
               </div>
             </div>
             <div class="col-sm-12">
