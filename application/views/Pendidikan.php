@@ -607,6 +607,7 @@
 								}
 								else {
 									alert(Respon)
+									$("#LoadingInput").hide();
 								}
 							}
 						});
@@ -657,6 +658,7 @@
 							}
 							else {
 								alert(Respon)
+								$("#LoadingUpdate").hide();
 							}
 						}
 					});
