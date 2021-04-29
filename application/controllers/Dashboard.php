@@ -54,7 +54,7 @@ class Dashboard extends CI_Controller {
 			for ($i=0; $i < count($Sortir); $i++) { 
 				$Cek = true;
 				for ($j=0; $j < count($data); $j++) {
-					if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+					if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 						if ($Cek) {
 							$Mk[$i] = $data[$j];
 							$Cek = false;
@@ -94,7 +94,7 @@ class Dashboard extends CI_Controller {
 		for ($i=0; $i < count($Sortir); $i++) { 
 			$Cek = true;
 			for ($j=0; $j < count($data); $j++) {
-				if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+				if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 					if ($Cek) {
 						$Mk[$i] = $data[$j];
 						$Cek = false;
@@ -352,7 +352,7 @@ class Dashboard extends CI_Controller {
 			for ($i=0; $i < count($Sortir); $i++) { 
 				$Cek = true;
 				for ($j=0; $j < count($data); $j++) {
-					if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+					if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 						if ($Cek) {
 							$Mk[$i] = $data[$j];
 							$Cek = false;
@@ -442,7 +442,7 @@ class Dashboard extends CI_Controller {
 			for ($i=0; $i < count($Sortir); $i++) { 
 				$Cek = true;
 				for ($j=0; $j < count($data); $j++) {
-					if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+					if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 						if ($Cek) {
 							$Mk[$i] = $data[$j];
 							$Cek = false;
@@ -532,7 +532,7 @@ class Dashboard extends CI_Controller {
 			for ($i=0; $i < count($Sortir); $i++) { 
 				$Cek = true;
 				for ($j=0; $j < count($data); $j++) {
-					if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+					if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 						if ($Cek) {
 							$Mk[$i] = $data[$j];
 							$Cek = false;
@@ -622,7 +622,7 @@ class Dashboard extends CI_Controller {
 			for ($i=0; $i < count($Sortir); $i++) { 
 				$Cek = true;
 				for ($j=0; $j < count($data); $j++) {
-					if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+					if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 						if ($Cek) {
 							$Mk[$i] = $data[$j];
 							$Cek = false;
@@ -712,7 +712,7 @@ class Dashboard extends CI_Controller {
 			for ($i=0; $i < count($Sortir); $i++) { 
 				$Cek = true;
 				for ($j=0; $j < count($data); $j++) {
-					if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+					if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 						if ($Cek) {
 							$Mk[$i] = $data[$j];
 							$Cek = false;
@@ -801,7 +801,7 @@ class Dashboard extends CI_Controller {
 				for ($i=0; $i < count($Sortir); $i++) { 
 					$Cek = true;
 					for ($j=0; $j < count($data); $j++) {
-						if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+						if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 							if ($Cek) {
 								$Mk[$i] = $data[$j];
 								$Cek = false;
@@ -891,7 +891,7 @@ class Dashboard extends CI_Controller {
 			for ($i=0; $i < count($Sortir); $i++) { 
 				$Cek = true;
 				for ($j=0; $j < count($data); $j++) {
-					if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+					if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 						if ($Cek) {
 							$Mk[$i] = $data[$j];
 							$Cek = false;
@@ -981,7 +981,7 @@ class Dashboard extends CI_Controller {
 			for ($i=0; $i < count($Sortir); $i++) { 
 				$Cek = true;
 				for ($j=0; $j < count($data); $j++) {
-					if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+					if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 						if ($Cek) {
 							$Mk[$i] = $data[$j];
 							$Cek = false;
@@ -1069,7 +1069,7 @@ class Dashboard extends CI_Controller {
 			for ($i=0; $i < count($Sortir); $i++) { 
 				$Cek = true;
 				for ($j=0; $j < count($data); $j++) {
-					if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+					if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 						if ($Cek) {
 							$Mk[$i] = $data[$j];
 							$Cek = false;
@@ -1159,7 +1159,7 @@ class Dashboard extends CI_Controller {
 			for ($i=0; $i < count($Sortir); $i++) { 
 				$Cek = true;
 				for ($j=0; $j < count($data); $j++) {
-					if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+					if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 						if ($Cek) {
 							$Mk[$i] = $data[$j];
 							$Cek = false;
@@ -1283,7 +1283,7 @@ class Dashboard extends CI_Controller {
 				for ($i=0; $i < count($Sortir); $i++) { 
 					$Cek = true;
 					for ($j=0; $j < count($data); $j++) {
-						if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+						if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 							if ($Cek) {
 								$Mk[$i] = $data[$j];
 								$Cek = false;
@@ -1301,7 +1301,7 @@ class Dashboard extends CI_Controller {
 				for ($i=0; $i < count($Sortir); $i++) { 
 					$Cek = true;
 					for ($j=0; $j < count($data); $j++) {
-						if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+						if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 							if ($Cek) {
 								$Mk[$i] = $data[$j];
 								$Cek = false;
@@ -1319,7 +1319,7 @@ class Dashboard extends CI_Controller {
 				for ($i=0; $i < count($Sortir); $i++) { 
 					$Cek = true;
 					for ($j=0; $j < count($data); $j++) {
-						if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+						if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 							if ($Cek) {
 								$Mk[$i] = $data[$j];
 								$Cek = false;
@@ -1337,7 +1337,7 @@ class Dashboard extends CI_Controller {
 				for ($i=0; $i < count($Sortir); $i++) { 
 					$Cek = true;
 					for ($j=0; $j < count($data); $j++) {
-						if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+						if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 							if ($Cek) {
 								$Mk[$i] = $data[$j];
 								$Cek = false;
@@ -1354,7 +1354,7 @@ class Dashboard extends CI_Controller {
 				for ($i=0; $i < count($Sortir); $i++) { 
 					$Cek = true;
 					for ($j=0; $j < count($data); $j++) {
-						if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+						if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 							if ($Cek) {
 								$Mk[$i] = $data[$j];
 								$Cek = false;
@@ -1374,7 +1374,7 @@ class Dashboard extends CI_Controller {
 					for ($i=0; $i < count($Sortir); $i++) { 
 						$Cek = true;
 						for ($j=0; $j < count($data); $j++) {
-							if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+							if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 								if ($Cek) {
 									$Mk[$i] = $data[$j];
 									$Cek = false;
@@ -1393,7 +1393,7 @@ class Dashboard extends CI_Controller {
 				for ($i=0; $i < count($Sortir); $i++) { 
 					$Cek = true;
 					for ($j=0; $j < count($data); $j++) {
-						if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+						if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 							if ($Cek) {
 								$Mk[$i] = $data[$j];
 								$Cek = false;
@@ -1410,7 +1410,7 @@ class Dashboard extends CI_Controller {
 				for ($i=0; $i < count($Sortir); $i++) { 
 					$Cek = true;
 					for ($j=0; $j < count($data); $j++) {
-						if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+						if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 							if ($Cek) {
 								$Mk[$i] = $data[$j];
 								$Cek = false;
@@ -1431,7 +1431,7 @@ class Dashboard extends CI_Controller {
 				for ($i=0; $i < count($Sortir); $i++) { 
 					$Cek = true;
 					for ($j=0; $j < count($data); $j++) {
-						if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+						if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 							if ($Cek) {
 								$Mk[$i] = $data[$j];
 								$Cek = false;
@@ -1448,7 +1448,7 @@ class Dashboard extends CI_Controller {
 				for ($i=0; $i < count($Sortir); $i++) { 
 					$Cek = true;
 					for ($j=0; $j < count($data); $j++) {
-						if ($Sortir[$i]['Jenjang'] == $data[$j]['Jenjang'] && $Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
+						if ($Sortir[$i]['Semester'] == $data[$j]['Semester'] && $Sortir[$i]['Tahun'] == $data[$j]['Tahun']) {
 							if ($Cek) {
 								$Mk[$i] = $data[$j];
 								$Cek = false;
