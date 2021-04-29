@@ -47,7 +47,27 @@
                     'SMT 7 - SEMINAR EKONOMI MONETER DAN PERBANKAN (KONS EK. MONETER DAN PERBANKAN)','SMT 7 - SEMINAR PERENCANAAN PEMBANGUNAN (KONS PERENCANAAN PEMBANGUNAN)',
                     'SMT 7 - SEMINAR EKONOMI PUBLIK (KONS EK PUBLIK)','SMT 7 - EKONOMI POLITIK (MATKUL PILIHAN)',
                     'SMT 7 - EKONOMI PERDESAAN DAN PERTANIAN (MATKUL PILIHAN)','SMT 7 - EKONOMI MONETER INTERNASIONAL (MATKUL PILIHAN)',
-                    'SMT 7 - ISLAM DAN EKONOMI (MATKUL PILIHAN)','SMT 7 - BADAN LEMBAGA KEUANGAN SYARIAH (MATKUL PILIHAN)','SMT 7 - KKN'); 
+                    'SMT 7 - ISLAM DAN EKONOMI (MATKUL PILIHAN)','SMT 7 - BADAN LEMBAGA KEUANGAN SYARIAH (MATKUL PILIHAN)','SMT 7 - KKN');
+        $MK2 = array('SMT 1 - EKONOMETRIKA TERAPAN',
+                     'SMT 1 - EKONOMI SYARIAH',
+                     'SMT 1 - SEJARAH PEMIKIRAN EKONOMI',
+                     'SMT 1 - TEORI EKONOMI MAKRO INTERMEDIATE',
+                     'SMT 1 - TEORI EKONOMI MIKRO INTERMEDIATE',
+                     'SMT 2 - PEMIKIRAN EKONOMI ISLAM',
+                     'SMT 2 - EKONOMI KELAUTAN DAN MARITIM (BLUE ECONOMY)',
+                     'SMT 2 - KELEMBAGAAN KEUANGAN SYARIAH',
+                     'SMT 2 - METODE PENELITIAN KUALITATIF',
+                     'SMT 2 - METODE PENELITIAN KUANTITATIF',
+                     'SMT 2 - PERENCANAAN PEMBANGUNAN DAN PENGANGGARAN DAERAH',
+                     'SMT 2 - TEKNIK DAN ANALISIS DALAM PERENCANAAN PEMBANGUNAN DAERAH',
+                     'SMT 3 - ANALISIS DAYA DUKUNG WILAYAH',
+                     'SMT 3 - EKONOMI POLITIK DAN KELEMBAGAAN',
+                     'SMT 3 - ETIKA EKONOMI ISLAM',
+                     'SMT 3 - EVALUASI DAMPAK KEBIJAKAN PUBLIK',
+                     'SMT 3 - EVALUASI DAMPAK LINGKUNGAN',
+                     'SMT 3 - MANAJEMEN KEUANGAN DAERAH',
+                     'SMT 3 - METODE RISET EKONOMI SYARIAH',
+                     'SMT 3 - PEMETAAN POTENSI PESISIR DAN PULAU-PULAU KECIL'); 
         $Dosen = array('ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MSA., Ak., CA','ADI DARMAWAN ERVANTO,S.E.,M.A.,Ak.,CA',
                         'AHMAD KAMIL, S.E., M.Ec. Dev','AHMAD MUZAWWIR S, M.Pd.I','ALEXANDER ANGGONO, SE., M.Si., Ph.D',
                         'ALVIN S. PRASETYO, S.E., M.SE.','ATIK EMILIA SULA, S.E., M.Ak.','ALIFAH ROKHMAH IDIALIS, SE., M.Sc',
@@ -120,11 +140,11 @@
         <div class="col-lg-8">
           <div class="card my-1 bg-danger">
             <div class="card-body p-2 text-light">
-              <p class="font-weight-bold" style="font-size: 25px;">Evaluasi Proses Belajar Mengajar S1 Ekonomi Pembangunan Semester Genap 2020/2021</p>
+              <p class="font-weight-bold" style="font-size: 25px;">Evaluasi Proses Belajar Mengajar (PBM) Oleh Mahasiswa FEB UTM Semester Genap 2020/2021</p>
               <p class="text-justify">Berilah penilaian secara jujur, objektif, dan penuh tanggung jawab terhadap dosen Saudara. Informasi yang Saudara berikan hanya akan dipergunakan dalam proses PBM dan tidak akan berpengaruh terhadap nilai akhir mata kuliah yang Anda tempuh.</p>
               <p class="text-justify font-weight-bold">SEMUA PERTANYAAN WAJIB DI ISI *</p>
               <div class="row">
-                <div class="col-lg-3 col-sm-12 my-1">
+                <div class="col-lg-6 my-1">
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <label class="input-group-text bg-primary text-light"><b>NIM</b></label>
@@ -132,7 +152,7 @@
                     <input class="form-control form-control-sm" type="text" id="NIM" data-inputmask='"mask": "999999999999"' data-mask>
                   </div>
                 </div>
-                <div class="col-lg-5 col-sm-12 my-1">
+                <div class="col-lg-6 my-1">
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <label class="input-group-text bg-primary text-light"><b>Nama</b></label>
@@ -140,7 +160,18 @@
                     <input class="form-control form-control-sm" type="text" id="Nama">
                   </div>
                 </div>
-                <div class="col-lg-4 col-sm-12 my-1">
+                <div class="col-lg-6 my-1">
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text bg-primary text-light"><b>Homebase</b></label>
+                    </div>
+                    <select class="custom-select custom-select-sm" id="Homebase">										
+                      <option value="S1">S1 Ekonomi Pembangunan</option>
+                      <option value="S2">S2 Ilmu Ekonomi</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6 my-1">
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <label class="input-group-text bg-primary text-light"><b>Semester</b></label>
@@ -163,14 +194,19 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-lg-12 col-sm-12 my-1">
+                <div class="col-lg-12 my-1">
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <label class="input-group-text bg-primary text-light"><b>Mata Kuliah</b></label>
                     </div>
-                    <select class="custom-select custom-select-sm" id="MataKuliah">	
+                    <select class="custom-select custom-select-sm" id="MKS1">	
                       <?php for ($i=0; $i < count($MK); $i++) { ?>
                         <option value="<?=$MK[$i]?>"><?=$MK[$i]?></option>
+                      <?php } ?>									
+                    </select>
+                    <select class="custom-select custom-select-sm" id="MKS2" style="display: none;">	
+                      <?php for ($i=0; $i < count($MK2); $i++) { ?>
+                        <option value="<?=$MK2[$i]?>"><?=$MK2[$i]?></option>
                       <?php } ?>									
                     </select>
                   </div>
@@ -191,7 +227,7 @@
                 <div class="container-fluid" id="DaftarDosen">
                   <?php for ($j=1; $j <= 1; $j++) { ?>
                     <div class="row">
-                      <div class="col-lg-6 col-sm-12 my-1">
+                      <div class="col-lg-6 my-1">
                         <div class="input-group input-group-sm">
                           <div class="input-group-prepend">
                             <label class="input-group-text bg-primary text-light"><b>Dosen <?=$j?></b></label>
@@ -204,7 +240,7 @@
                           </select>
                         </div>
                       </div>
-                      <div class="col-lg-6 col-sm-12 my-1">
+                      <div class="col-lg-6 my-1">
                         <div class="input-group input-group-sm">
                           <input class="form-control form-control-sm" type="text" id="Dosen<?=$j?>Lain" placeholder="Sebutkan Jika Dosen Yang Lain">
                         </div>
@@ -213,7 +249,7 @@
                   <?php } ?>									
                 </div>
                 <?php for ($i=0; $i < 18; $i++) { ?>
-                  <div class="col-lg-12 col-sm-12 my-1">
+                  <div class="col-lg-12 my-1">
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <label class="input-group-text bg-primary text-light text-wrap text-left"><b><?=$Question[$i]?></b></label>
@@ -223,14 +259,14 @@
                   <div class="container-fluid" id="NilaiDosen<?=$i?>">
                     <div class="row">
                       <?php for ($k=1; $k <= 1; $k++) { ?>
-                        <div class="col-lg-auto col-sm-12 my-1">
+                        <div class="col-lg-auto my-1">
                           <div class="input-group input-group-sm d-flex justify-content-center">
                             <div class="input-group-prepend">
                               <label class="input-group-text bg-primary text-light"><b>Nilai Untuk Dosen <?=$k?></b></label>
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-auto col-sm-12 d-flex align-items-center my-1">
+                        <div class="col-lg-auto d-flex align-items-center my-1">
                           <div class="input-group input-group-sm d-flex justify-content-center">
                             <?php for ($j=1; $j < 5; $j++) { ?>
                               <div class="form-check form-check-inline mx-3">
@@ -254,7 +290,7 @@
                 <div class="container-fluid" id="AplikasiDosen">
                   <div class="row">
                     <?php for ($k=1; $k <= 1; $k++) { ?>
-                      <div class="col-lg-auto col-sm-12 my-1">
+                      <div class="col-lg-auto my-1">
                         <div class="input-group input-group-sm d-flex justify-content-center">
                           <div class="input-group-prepend">
                             <label class="input-group-text bg-primary text-light"><b>Aplikasi Yang Digunakan Dosen <?=$k?></b></label>
@@ -270,7 +306,7 @@
                           </div>
                         <?php } ?>
                       </div>
-                      <div class="col-lg-6 col-sm-12 mb-2 ml-3">
+                      <div class="col-lg-6 mb-2 ml-3">
                         <div class="input-group input-group-sm">
                           <input class="form-control form-control-sm" type="text" id="AppLain<?=$k?>" placeholder="Sebutkan Jika Ada Aplikasi Lainnya">
                         </div>
@@ -279,14 +315,14 @@
                   </div>
                 </div> 
                 <?php for ($i=18; $i < count($Question); $i++) { ?>
-                  <div class="col-lg-12 col-sm-12 my-1">
+                  <div class="col-lg-12 my-1">
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <label class="input-group-text bg-primary text-light text-wrap text-left"><b><?=$Question[$i]?></b></label>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-auto col-sm-12 d-flex align-items-center my-1">
+                  <div class="col-lg-auto d-flex align-items-center my-1">
                     <div class="input-group input-group-sm d-flex justify-content-center">
                       <?php for ($j=1; $j < 5; $j++) { ?>
                         <div class="form-check form-check-inline mx-3">
@@ -314,12 +350,12 @@
                     </div>
                   <?php } ?>
                 </div>
-                <div class="col-lg-6 col-sm-12 mb-2 ml-3">
+                <div class="col-lg-6 mb-2 ml-3">
                   <div class="input-group input-group-sm">
                     <input class="form-control form-control-sm" type="text" id="KendalaLain" placeholder="Sebutkan Jika Ada Kendala Lainnya">
                   </div>
                 </div>
-                <div class="col-lg-12 col-sm-12 my-1">
+                <div class="col-lg-12 my-1">
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <label class="input-group-text bg-primary text-light text-wrap text-left"><b>33. Mohon menuliskan saran bagi pengembangan proses belajar mengajar di FEB UTM</b></label>
@@ -348,6 +384,15 @@
       $(document).ready(function(){
         $('[data-mask]').inputmask()
         var BaseURL = '<?=base_url()?>'
+        $("#Homebase").change(function (){
+          if ($("#Homebase").val() == "S2") {
+            $("#MKS2").show() 
+            $("#MKS1").hide() 
+          } else {
+            $("#MKS1").show() 
+            $("#MKS2").hide() 
+          }
+        })
         var Dosen = ['ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MSA., Ak., CA','ADI DARMAWAN ERVANTO,S.E.,M.A.,Ak.,CA',
                         'AHMAD KAMIL, S.E., M.Ec. Dev','AHMAD MUZAWWIR S, M.Pd.I','ALEXANDER ANGGONO, SE., M.Si., Ph.D',
                         'ALVIN S. PRASETYO, S.E., M.SE.','ATIK EMILIA SULA, S.E., M.Ak.','ALIFAH ROKHMAH IDIALIS, SE., M.Sc',
@@ -389,13 +434,13 @@
           JumlahDosen = $("#JumlahDosen").val() 
           var DaftarDosen = ''
           for (let i = 1; i <= JumlahDosen; i++) {
-            DaftarDosen += '<div class="row"><div class="col-lg-6 col-sm-12 my-1"><div class="input-group input-group-sm">'
+            DaftarDosen += '<div class="row"><div class="col-lg-6 my-1"><div class="input-group input-group-sm">'
             DaftarDosen += '<div class="input-group-prepend"><label class="input-group-text bg-primary text-light"><b>Dosen '+i+'</b></label></div>'
             DaftarDosen += '<select class="custom-select custom-select-sm" id="Dosen'+i+'"><option value="Lain">Pilih Dosen '+i+'</option>'
             for (let j = 0; j < Dosen.length; j++) {
               DaftarDosen += '<option value="'+Dosen[j]+'">'+Dosen[j]+'</option>'
             }
-            DaftarDosen += '</select></div></div><div class="col-lg-6 col-sm-12 my-1"><div class="input-group input-group-sm">'
+            DaftarDosen += '</select></div></div><div class="col-lg-6 my-1"><div class="input-group input-group-sm">'
             DaftarDosen += '<input class="form-control form-control-sm" type="text" id="Dosen'+i+'Lain" placeholder="Sebutkan Jika Dosen Yang Lain">'
             DaftarDosen += '</div></div></div>'
           }
@@ -403,9 +448,9 @@
           for (let k = 0; k < 18; k++) {
             var NilaiDosen = ''
             for (let i = 1; i <= JumlahDosen; i++) {
-              NilaiDosen += '<div class="row"><div class="col-lg-auto col-sm-12 my-1"><div class="input-group input-group-sm d-flex justify-content-center">'
+              NilaiDosen += '<div class="row"><div class="col-lg-auto my-1"><div class="input-group input-group-sm d-flex justify-content-center">'
               NilaiDosen += '<div class="input-group-prepend"><label class="input-group-text bg-primary text-light"><b>Nilai Untuk Dosen '+i+'</b></label>'
-              NilaiDosen += '</div></div></div><div class="col-lg-auto col-sm-12 d-flex align-items-center my-1"><div class="input-group input-group-sm d-flex justify-content-center">'
+              NilaiDosen += '</div></div></div><div class="col-lg-auto d-flex align-items-center my-1"><div class="input-group input-group-sm d-flex justify-content-center">'
               for (let j = 1; j <= 4; j++) {
                 NilaiDosen += '<div class="form-check form-check-inline mx-3">'
                 NilaiDosen += '<input class="form-check-input" type="radio" name="Input'+k+i+'" id="I'+k+j+i+'" value="'+j+'">'
@@ -417,7 +462,7 @@
           }
           var AplikasiDosen = ''
           for (let i = 1; i <= JumlahDosen; i++) {
-            AplikasiDosen += '<div class="row"><div class="col-lg-auto col-sm-12 my-1"><div class="input-group input-group-sm d-flex justify-content-center">'
+            AplikasiDosen += '<div class="row"><div class="col-lg-auto my-1"><div class="input-group input-group-sm d-flex justify-content-center">'
             AplikasiDosen += '<div class="input-group-prepend"><label class="input-group-text bg-primary text-light"><b>Aplikasi Yang Digunakan Dosen '+i+'</b></label>'
             AplikasiDosen += '</div></div></div><div class="col-sm-12 my-1">'
             for (let j = 0; j < App.length; j++) {
@@ -425,7 +470,7 @@
               AplikasiDosen += '<input class="form-check-input" type="checkbox" value="'+App[j]+'" name="App'+i+'" id="App'+i+j+'">'
               AplikasiDosen += '<label class="form-check-label" for="App'+i+j+'">'+App[j]+'</label></div>'
             }
-            AplikasiDosen += '</div><div class="col-lg-6 col-sm-12 mb-2 ml-3"><div class="input-group input-group-sm">'
+            AplikasiDosen += '</div><div class="col-lg-6 mb-2 ml-3"><div class="input-group input-group-sm">'
             AplikasiDosen += '<input class="form-control form-control-sm" type="text" id="AppLain'+i+'" placeholder="Sebutkan Jika Ada Aplikasi Lainnya"></div></div></div>'
           }
           $("#AplikasiDosen").html(AplikasiDosen)
@@ -545,7 +590,7 @@
             var Data = { NIM: $("#NIM").val(),
                          Nama: $("#Nama").val(),
                          Semester: $("#Semester").val(),
-                         MataKuliah: $("#MataKuliah").val(),
+                         MataKuliah: $("#Homebase").val() == "S1" ? $("#MKS1").val() : $("#MKS2").val(),
                          JumlahDosen: $("#JumlahDosen").val(),
                          DaftarDosen: DaftarDosen,
                          PoinDosen: PoinDosen,
@@ -553,7 +598,7 @@
                          PBM: PBM,
                          Kendala: Kendala,
                          Saran: $("#Saran").val(),
-                         SMT: "Ganjil",
+                         SMT: "Genap",
                          Tahun: "2020" }
             $("#Kirim").prop('disabled', true);
             $.post(BaseURL+"SMD/InputEvaluasiPBM", Data).done(function(Respon) {
