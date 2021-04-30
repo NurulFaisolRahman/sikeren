@@ -75,6 +75,27 @@
             <td class="text-center align-middle" style="width: 6%;"><?=$key['Tahun']?></td>
             <?php if ($key['IdKegiatan'] == 'PND3') { ?>
               <td class="align-middle"  style="width: 51%;"><?='Berdasarkan '.$key['SK'].' Mengajar Mata Kuliah '.$key['Kegiatan']?></td>
+            <?php } else if ($key['IdKegiatan'] == 'PND6') { 
+              $Pembimbing = ""; 
+              if ($key['Kode'][0] == 1) {
+                if ($key['Kode'][2] == 1) {
+                  $Pembimbing .= "I Disertasi a.n "; 
+                } else if ($key['Kode'][2] == 2) {
+                  $Pembimbing .= "I Tesis a.n ";
+                } else {
+                  $Pembimbing .= "I Skripsi a.n ";
+                }
+              } else {
+                if ($key['Kode'][2] == 1) {
+                  $Pembimbing .= "II Disertasi a.n "; 
+                } else if ($key['Kode'][2] == 2) {
+                  $Pembimbing .= "II Tesis a.n ";
+                } else {
+                  $Pembimbing .= "II Skripsi a.n ";
+                }
+              }
+               ?>
+              <td class="align-middle"  style="width: 51%;"><?='Berdasarkan '.$key['SK'].' Sebagai Pembimbing '.$Pembimbing.$key['Kegiatan']?></td>
             <?php } else { ?>
               <td class="align-middle"  style="width: 51%;"><?='Berdasarkan '.$key['SK'].' '.$key['Kegiatan']?></td>
             <?php } ?>

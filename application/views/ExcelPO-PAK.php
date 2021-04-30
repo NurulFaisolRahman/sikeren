@@ -1466,7 +1466,7 @@ Content-Type: text/html; charset="us-ascii"
       <?php } ?>
         <tr style=3D'mso-height-source:userset;'>
           <td class=3D"xl88pak" x:str><?=$No++?></td>
-          <td class=3D"xl89pak" x:str><?='Berdasarkan '.$Pendidikan[$i]['SK'].' '.$Pendidikan[$i]['Kegiatan']?></td>
+          <td class=3D"xl89pak" x:str><?='Berdasarkan '.$Pendidikan[$i]['SK'].' Sebagai Pembimbing I a.n : '.$Pendidikan[$i]['Kegiatan']?></td>
           <td class=3D"xl90pak" x:str><?=$Pendidikan[$i]['TanggalKegiatan']?></td>
           <td class=3D"xl91pak" x:str><?=$Pendidikan[$i]['Satuan']?></td>
           <td class=3D"xl101pak" x:str><?=$Pendidikan[$i]['Volume']?></td>
