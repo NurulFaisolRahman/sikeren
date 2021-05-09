@@ -78,12 +78,35 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="Auth" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="input-group input-group-sm mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-primary text-light"><b>Password</b></span>
+              </div>
+              <input type="password" class="form-control" id="sandi">
+              <button type="button" class="btn btn-sm btn-danger" id="Buka"><b>Open</b></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="../../bootstrap/js/jquery.min.js"></script>
     <script src="../../bootstrap/js/popper.min.js" ></script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <script src="../../bootstrap/inputmask/min/jquery.inputmask.bundle.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
+        $("#Auth").modal("show");
+        $("#Buka").click(function() {
+          if ($("#sandi").val() == "8fPBv") {
+            $("#Auth").modal("hide");
+          } else {
+            alert("Password Salah!")
+          }
+        })
         $('[data-mask]').inputmask()
         var BaseURL = '<?=base_url()?>'
         $("#Kirim").click(function() {

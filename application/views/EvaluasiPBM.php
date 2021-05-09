@@ -376,6 +376,21 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="Auth" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="input-group input-group-sm mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-primary text-light"><b>Password</b></span>
+              </div>
+              <input type="password" class="form-control" id="sandi">
+              <button type="button" class="btn btn-sm btn-danger" id="Buka"><b>Open</b></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
     <script src="<?=base_url('bootstrap/js/popper.min.js')?>" ></script>
     <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
@@ -384,6 +399,14 @@
       $(document).ready(function(){
         $('[data-mask]').inputmask()
         var BaseURL = '<?=base_url()?>'
+        $("#Auth").modal("show");
+        $("#Buka").click(function() {
+          if ($("#sandi").val() == "F4YaR") {
+            $("#Auth").modal("hide");
+          } else {
+            alert("Password Salah!")
+          }
+        })
         $("#Homebase").change(function (){
           if ($("#Homebase").val() == "S2") {
             $("#MKS2").show() 

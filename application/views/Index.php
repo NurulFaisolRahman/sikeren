@@ -196,6 +196,7 @@
                     <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/KaryaMahasiswa')?>">7. Teknologi Tepat Guna, Produk, Karya Seni, Rekayasa Sosial</a></li>
                     <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/BukuMahasiswa')?>">8. Buku ber-ISBN, Book Chapter</a></li>
                     <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/Alumni')?>">9. Alumni Yang Telah Bekerja</a></li>
+                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PenggunaLulusan')?>">10. Pengguna Lulusan</a></li>
                   </ul>
                 </div>
               </div>
