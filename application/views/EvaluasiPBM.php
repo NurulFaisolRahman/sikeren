@@ -48,26 +48,27 @@
                     'SMT 7 - SEMINAR EKONOMI PUBLIK (KONS EK PUBLIK)','SMT 7 - EKONOMI POLITIK (MATKUL PILIHAN)',
                     'SMT 7 - EKONOMI PERDESAAN DAN PERTANIAN (MATKUL PILIHAN)','SMT 7 - EKONOMI MONETER INTERNASIONAL (MATKUL PILIHAN)',
                     'SMT 7 - ISLAM DAN EKONOMI (MATKUL PILIHAN)','SMT 7 - BADAN LEMBAGA KEUANGAN SYARIAH (MATKUL PILIHAN)','SMT 7 - KKN');
-        $MK2 = array('SMT 1 - EKONOMETRIKA TERAPAN',
-                     'SMT 1 - EKONOMI SYARIAH',
-                     'SMT 1 - SEJARAH PEMIKIRAN EKONOMI',
-                     'SMT 1 - TEORI EKONOMI MAKRO INTERMEDIATE',
-                     'SMT 1 - TEORI EKONOMI MIKRO INTERMEDIATE',
+        $MK2 = array('SMT 1 - EKONOMI MIKRO LANJUTAN',
+                     'SMT 1 - EKONOMI MAKRO LANJUTAN',
+                     'SMT 1 - METODE PENELITIAN KUANTITATIF',
+                     'SMT 1 - METODE PENELITIAN KUALITATIF',
+                     'SMT 1 - EKONOMETRIKA TERAPAN',
+                     'SMT 2 - KEBIJAKAN PEMBANGUNAN EKONOMI',
+                     'SMT 2 - EKONOMI INTERNASIONAL',
+                     'SMT 2 - EKONOMI KELEMBAGAAN',
+                     'SMT 2 - EKONOMI PUBLIK',
+                     'SMT 2 - PERENCANAAN DAN PENGANGGARAN PEMBANGUNAN DAERAH',
+                     'SMT 2 - TEKNIK ANALISIS PERENCANAAN PEMBANGUNAN EKONOMI REGIONAL',
+                     'SMT 2 - PEMBANGUNAN EKONOMI LOKAL & PERENCANAAN PARTISIPATIF',
+                     'SMT 2 - EKONOMI KELAUTAN DAN MARITIM',
+                     'SMT 2 - ANALISIS DAYA DUKUNG WILAYAH PESISIR & PULAU KECIL',
+                     'SMT 2 - PEMETAAN POTENSI WILAYAH PESISIR & PULAU KECIL',
+                     'SMT 2 - EKONOMI SYARIAH',
                      'SMT 2 - PEMIKIRAN EKONOMI ISLAM',
-                     'SMT 2 - EKONOMI KELAUTAN DAN MARITIM (BLUE ECONOMY)',
                      'SMT 2 - KELEMBAGAAN KEUANGAN SYARIAH',
-                     'SMT 2 - METODE PENELITIAN KUALITATIF',
-                     'SMT 2 - METODE PENELITIAN KUANTITATIF',
-                     'SMT 2 - PERENCANAAN PEMBANGUNAN DAN PENGANGGARAN DAERAH',
-                     'SMT 2 - TEKNIK DAN ANALISIS DALAM PERENCANAAN PEMBANGUNAN DAERAH',
-                     'SMT 3 - ANALISIS DAYA DUKUNG WILAYAH',
-                     'SMT 3 - EKONOMI POLITIK DAN KELEMBAGAAN',
-                     'SMT 3 - ETIKA EKONOMI ISLAM',
-                     'SMT 3 - EVALUASI DAMPAK KEBIJAKAN PUBLIK',
-                     'SMT 3 - EVALUASI DAMPAK LINGKUNGAN',
-                     'SMT 3 - MANAJEMEN KEUANGAN DAERAH',
-                     'SMT 3 - METODE RISET EKONOMI SYARIAH',
-                     'SMT 3 - PEMETAAN POTENSI PESISIR DAN PULAU-PULAU KECIL'); 
+                     'SMT 3 - FILOSOFI ILMU EKONOMI',
+                     'SMT 3 - FIQIH EKONOMI',
+                     'SMT 3 - METODE RISET EKONOMI SYARIAH'); 
         $Dosen = array('ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MSA., Ak., CA','ADI DARMAWAN ERVANTO,S.E.,M.A.,Ak.,CA',
                         'AHMAD KAMIL, S.E., M.Ec. Dev','AHMAD MUZAWWIR S, M.Pd.I','ALEXANDER ANGGONO, SE., M.Si., Ph.D',
                         'ALVIN S. PRASETYO, S.E., M.SE.','ATIK EMILIA SULA, S.E., M.Ak.','ALIFAH ROKHMAH IDIALIS, SE., M.Sc',
@@ -401,7 +402,7 @@
         var BaseURL = '<?=base_url()?>'
         $("#Auth").modal("show");
         $("#Buka").click(function() {
-          if ($("#sandi").val() == "F4YaR") {
+          if ($("#sandi").val() == "pbmie") {
             $("#Auth").modal("hide");
           } else {
             alert("Password Salah!")
