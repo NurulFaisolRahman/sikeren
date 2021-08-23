@@ -14,7 +14,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 border border-primary" style="width: 800px;">
-				<div class="login100-form-title" style="background-image: url(../img/Skripsi.jpg);">
+				<div class="login100-form-title" style="background-image: url(<?=base_url('img/Skripsi.jpg')?>);">
 					<span class="login100-form-title-1">
             Nilai Sidang Skripsi
 					</span>
