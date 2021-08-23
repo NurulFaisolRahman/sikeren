@@ -16,7 +16,7 @@
 			<div class="wrap-login100 border border-primary">
 				<div class="login100-form-title" style="background-image: url(<?=base_url('img/Skripsi.jpg')?>);">
 					<span class="login100-form-title-1">
-            Form Input Nilai Sidang Skripsi
+            Form Bagi Dosen Penguji<br>Input Nilai Sidang Skripsi
 					</span>
 				</div>
 				<div class="card">
@@ -50,12 +50,12 @@
                 <div class="col-sm-12 col-lg-8">
                   <div class="input-group input-group-sm mb-2">
                     <div class="input-group-prepend">
-                      <label class="input-group-text bg-danger text-light"><b>Penguji Ke</b></label>
+                      <label class="input-group-text bg-danger text-light"><b>Penguji</b></label>
                     </div>
                     <select class="custom-select" id="Penguji">  
-                      <option value="1">Penguji 1</option>
-                      <option value="2">Penguji 2</option>
-                      <option value="3">Penguji 3</option>
+                      <option value="1"><?=$Mhs['Penguji1']?></option>
+                      <option value="2"><?=$Mhs['Penguji2']?></option>
+                      <option value="3"><?=$Mhs['Penguji3']?></option>
                     </select>
                   </div>
                 </div>

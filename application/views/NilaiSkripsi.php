@@ -45,32 +45,35 @@
                 <div class="row">
                   <div class="col-sm-12 col-lg-4">
                     <div class="card border border-light">
-                      <div class="card-header border border-light bg-danger text-center p-1"><b class="text-light" id="Nilai1">Nilai Penguji 1 = </b></div>
+                      <div class="card-header border border-light bg-danger text-center p-1"><b class="text-light" id="Nilai1" style="font-size: 14px;">Nilai Penguji 1 = ?</b></div>
                       <div class="card-body border border-light bg-warning p-1">
                         <div class="input-group input-group-sm">
                           <textarea class="p-1" style="font-size: 13px;" name="Catatan" id="Catatan1" cols="15" rows="10" placeholder="Catatan :"></textarea>
                         </div>
                       </div>
+                      <div class="card-footer border border-light bg-danger text-center p-1"><b class="text-light" id="Penguji1" style="font-size: 13px;">Penguji 1</b></div>
                     </div>
                   </div>
                   <div class="col-sm-12 col-lg-4">
                     <div class="card border border-light">
-                      <div class="card-header border border-light bg-danger text-center p-1"><b class="text-light" id="Nilai2">Nilai Penguji 2 = </b></div>
+                      <div class="card-header border border-light bg-danger text-center p-1"><b class="text-light" id="Nilai2" style="font-size: 14px;">Nilai Penguji 2 = ?</b></div>
                       <div class="card-body border border-light bg-warning p-1">
                         <div class="input-group input-group-sm">
                           <textarea class="p-1" style="font-size: 13px;" name="Catatan" id="Catatan2" cols="15" rows="10" placeholder="Catatan :"></textarea>
                         </div>
                       </div>
+                      <div class="card-footer border border-light bg-danger text-center p-1"><b class="text-light" id="Penguji2" style="font-size: 13px;">Penguji 2</b></div>
                     </div>
                   </div>
                   <div class="col-sm-12 col-lg-4">
                     <div class="card border border-light">
-                      <div class="card-header border border-light bg-danger text-center p-1"><b class="text-light" id="Nilai3">Nilai Penguji 3 = </b></div>
+                      <div class="card-header border border-light bg-danger text-center p-1"><b class="text-light" id="Nilai3" style="font-size: 14px;">Nilai Penguji 3 = ?</b></div>
                       <div class="card-body border border-light bg-warning p-1">
                         <div class="input-group input-group-sm">
                           <textarea class="p-1" style="font-size: 13px;" name="Catatan" id="Catatan3" cols="15" rows="10" placeholder="Catatan :"></textarea>
                         </div>
                       </div>
+                      <div class="card-footer border border-light bg-danger text-center p-1"><b class="text-light" id="Penguji3" style="font-size: 13px;">Penguji 3</b></div>
                     </div>
                   </div>
                 </div>
@@ -104,6 +107,9 @@
             $("#Catatan1").html('Catatan : '+ Data.Catatan1)
             $("#Catatan2").html('Catatan : '+ Data.Catatan2)
             $("#Catatan3").html('Catatan : '+ Data.Catatan3)
+            $("#Penguji1").html(Data.Penguji1)
+            $("#Penguji2").html(Data.Penguji2)
+            $("#Penguji3").html(Data.Penguji3)
           }
         })                   
 			})	
