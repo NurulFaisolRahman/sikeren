@@ -13,7 +13,7 @@ class Admin extends CI_Controller {
 				redirect(base_url());
 			}
 		}
-	}  
+	}
  
   public function AkunDosen(){
 		$Data['Halaman'] = 'Dosen';

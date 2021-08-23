@@ -97,7 +97,7 @@
       </style>
   </head>
   <body>
-    <div class="jumbotron jumbotron-fluid mb-0" style="background-image: url(<?=base_url('img/Header.jpg')?>);background-repeat: no-repeat;background-size: cover;padding-top: 2rem;padding-bottom: 2rem;">
+    <div class="jumbotron jumbotron-fluid mb-0" style="background-image: url(<?=base_url('img/Header.jpg')?>);background-repeat: no-repeat;background-size: cover;height: 265px;">
       <div class="container">
         <div class="row">
           <div class="col-lg-3 d-flex justify-content-center">
@@ -113,7 +113,7 @@
       </div>
     </div>
     <div class="container-fluid">
-      <div class="row bg-success">
+      <div class="row bg-success py-2">
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
             <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalSignIn" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN ADMIN</button></div>
@@ -148,6 +148,11 @@
         </div>
       </div>
     </div>
+    <footer class="bg-danger">
+      <div class="inner">
+        <p class="text-center py-1" style="color: #ffffff;"><b>Copyright © 2021 SIKEREN Jurusan Ilmu Ekonomi FEB UTM</b></p>
+      </div>
+    </footer>
     <div class="modal fade" id="ModalSignIn">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-transparent">
@@ -169,7 +174,7 @@
                         </div>
                         <input type="password" class="form-control" id="sandi">
                       </div>
-                      <div class="btn btn-primary text-light d-flex justify-content-center" id="Masuk"><b>SIGN IN</b></div>
+                      <div class="btn btn-primary text-light d-flex justify-content-center mt-3" id="Masuk"><b>SIGN IN</b></div>
                     </div>
                   </div>
                 </div>
@@ -251,25 +256,6 @@
           }                      
         })
       })
-      $(function() {
-        var Accordion = function(el, multiple) {
-          this.el = el || {};
-          this.multiple = multiple || false;
-          var links = this.el.find('.link');
-          links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-        }
-        Accordion.prototype.dropdown = function(e) {
-          var $el = e.data.el;
-            $this = $(this),
-            $next = $this.next();
-          $next.slideToggle();
-          $this.parent().toggleClass('open');
-          if (!e.data.multiple) {
-            $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-          };
-        }	
-        var accordion = new Accordion($('#accordion'), false);
-      });
     </script>
   </body>
 </html>

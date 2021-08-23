@@ -29,7 +29,7 @@
                                 <td class="align-middle"><?=$key['KodeMK']?></td>
                                 <td class="align-middle"><?=$key['NamaMK']?></td>
                                 <td class="align-middle">
-                                  <button Edit="<?=$key['Id']."|".$key['Homebase']."|".$key['Semester']."|".$key['KodeMK']."|".$key['NamaMK']."|".$key['KompetensiMK']."|".$key['Kuliah']."|".$key['Seminar']."|".$key['Praktikum']."|".$key['Jam']."|".$key['Dokumen']."|".$key['Bukti']."|".$key['Unit']."|".$key['Tahun']?>" class="btn btn-sm btn-warning Edit"><i class="fas fa-edit"></i></button>
+                                  <button Edit="<?=$key['Id']."|".$key['Homebase']."|".$key['Semester']."|".$key['KodeMK']."|".$key['NamaMK']."|".$key['KompetensiMK']."|".$key['Kuliah']."|".$key['Seminar']."|".$key['Praktikum']."|".$key['Jam']."|".$key['Dokumen']."|".$key['Bukti']."|".$key['Unit']?>" class="btn btn-sm btn-warning Edit"><i class="fas fa-edit"></i></button>
                                   <button Hapus="<?=$key['Id']."|".$key['Bukti']?>" class="btn btn-sm btn-danger Hapus"><i class="fas fa-trash"></i></button>  
                                   <button LihatSertifikat="<?=base_url('Kurikulum/'.$key['Bukti'])?>" class="btn btn-sm btn-primary LihatSertifikat"><i class="fas fa-download"></i></button>  
                                 </td> 
@@ -70,17 +70,15 @@
                       <span class="input-group-text bg-primary"><b>Semester</b></span>
                     </div>
                     <select class="custom-select" id="semester">
-                      <option value="Ganjil">Ganjil</option>
-                      <option value="Genap">Genap</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
                     </select>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="input-group input-group-sm mb-2">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-primary"><b>Tahun</b></span>
-                    </div>
-                    <input type="text" class="form-control" id="tahun" data-inputmask='"mask": "9999"' data-mask value="20"> 
                   </div>
                 </div>
                 <div class="col-sm-4">
@@ -91,7 +89,7 @@
                     <input type="text" class="form-control" id="kode"> 
                   </div>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                   <div class="input-group input-group-sm mb-2">
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-primary"><b>Nama Matakuliah</b></span>
@@ -195,7 +193,7 @@
                 <div class="col-sm-6">
                   <div class="input-group input-group-sm mb-2">
 										<div class="input-group-prepend">
-											<span class="input-group-text bg-primary"><b>Upload Bukti</b></span>
+											<span class="input-group-text bg-primary"><b>Upload RPS</b></span>
 										</div>
 										<input class="form-control" type="file" id="bukti">
                   </div>
@@ -245,17 +243,15 @@
                       <span class="input-group-text bg-primary"><b>Semester</b></span>
                     </div>
                     <select class="custom-select" id="Editsemester">
-                      <option value="Ganjil">Ganjil</option>
-                      <option value="Genap">Genap</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
                     </select>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="input-group input-group-sm mb-2">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-primary"><b>Tahun</b></span>
-                    </div>
-                    <input type="text" class="form-control" id="Edittahun" data-inputmask='"mask": "9999"' data-mask value="20"> 
                   </div>
                 </div>
                 <div class="col-sm-4">
@@ -266,7 +262,7 @@
                     <input type="text" class="form-control" id="Editkode"> 
                   </div>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                   <div class="input-group input-group-sm mb-2">
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-primary"><b>Nama Matakuliah</b></span>
@@ -308,8 +304,8 @@
                     </div>
                     <input type="text" class="form-control" id="Editpraktikum" placeholder="0"> 
                   </div>
-                </div>
                 <div class="col-sm-4">
+                </div>
                   <div class="input-group input-group-sm mb-2">
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-primary"><b>Konversi Kredit ke Jam</b></span>
@@ -350,7 +346,7 @@
                   <div class="input-group input-group-sm mb-2">
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-primary"><b>Capaian Pembelajaran</b></span>
-                    </div>
+                    </div>  
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-danger"><b>Keterampilan Umum</b></span>
                     </div>
@@ -370,7 +366,7 @@
                 <div class="col-sm-6">
                   <div class="input-group input-group-sm mb-2">
 										<div class="input-group-prepend">
-											<span class="input-group-text bg-primary"><b>Upload Bukti</b></span>
+											<span class="input-group-text bg-primary"><b>Upload RPS</b></span>
                     </div>
                     <input class="form-control" type="hidden" id="buktiLama">
 										<input class="form-control" type="file" id="Editbukti">
@@ -403,17 +399,8 @@
     <div class="modal fade" id="ModalSertifikat">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
-          <div class="modal-header bg-primary">
-            <h5 class="modal-title font-weight-bold">Sertifikat Dosen</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
           <div class="modal-body">
-            <embed id="PathSertifikat" src="" type="application/pdf" width="100%" height="400"/>
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Tutup</b></button>
+            <embed id="PathSertifikat" src="" type="application/pdf" width="100%" height="520"/>
           </div>
         </div>
       </div>
@@ -432,7 +419,7 @@
 
 				$('[data-mask]').inputmask()
 
-				var BaseURL = '<?=base_url()?>';
+				var BaseURL = '<?=base_url()?>'; 
 
         $(document).on("click",".LihatSertifikat",function(){
 					var Path = $(this).attr('LihatSertifikat')
@@ -441,9 +428,7 @@
 				}) 
 
         $("#InputKurikulum").click(function() {
-          if (isNaN($("#tahun").val()) || $("#tahun").val() == "") {
-            alert('Input Tahun Belum Benar!')
-          } else if ($("#kode").val() == '') {
+          if ($("#kode").val() == '') {
             alert('Mohon Input Kode Matakuliah!')
           } else if ($("#nama").val() == '') {
             alert('Mohon Input Nama Matakuliah!')
@@ -463,7 +448,6 @@
             var fd = new FormData()
 						fd.append('Homebase',$("#homebase").val())
             fd.append('Semester',$("#semester").val())
-						fd.append('Tahun',$("#tahun").val())
 						fd.append('KodeMK',$("#kode").val())
 						fd.append('NamaMK',$("#nama").val())
 						fd.append('KompetensiMK',$("#kompetensi").val()+'$'+$("#sikap").val()+'$'+$("#pengetahuan").val()+'$'+$("#umum").val()+'$'+$("#khusus").val())
@@ -517,14 +501,11 @@
           $('#Editdokumen').val(Pisah[10])
           $('#buktiLama').val(Pisah[11])
           $('#Editunit').val(Pisah[12])
-          $('#Edittahun').val(Pisah[13])
           $('#ModalEditKurikulum').modal("show")
 				}) 
 
 				$("#UpdateKurikulum").click(function() {
-					if (isNaN($("#Edittahun").val()) || $("#Edittahun").val() == "") {
-            alert('Input Tahun Belum Benar!')
-          } else if ($("#Editkode").val() == '') {
+					if ($("#Editkode").val() == '') {
             alert('Mohon Input Kode Matakuliah!')
           } else if ($("#Editnama").val() == '') {
             alert('Mohon Input Nama Matakuliah!')
@@ -545,7 +526,6 @@
             fd.append('Id',$("#Id").val())
 						fd.append('Homebase',$("#Edithomebase").val())
             fd.append('Semester',$("#Editsemester").val())
-						fd.append('Tahun',$("#Edittahun").val())
 						fd.append('KodeMK',$("#Editkode").val())
 						fd.append('NamaMK',$("#Editnama").val())
 						fd.append('KompetensiMK',$("#Editkompetensi").val()+'$'+$("#Editsikap").val()+'$'+$("#Editpengetahuan").val()+'$'+$("#Editumum").val()+'$'+$("#Editkhusus").val())
