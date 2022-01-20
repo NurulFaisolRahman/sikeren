@@ -31224,7 +31224,7 @@ Content-Type: text/html; charset="us-ascii"
     <td class=3D"xl76" colspan=3D"2" style=3D'mso-ignore:colspan;' x:str>Pelaksanaan penelitian</td>
     <td class=3D"xl116"></td>
     <td class=3D"xl81">0</td>
-    <td class=3D"xl81"><?=str_replace(".",",",number_format($KreditPenelitian['Kredit'],2))?></td>
+    <td class=3D"xl81"><?=str_replace(".",",",number_format($KreditPenelitian,2))?></td>
     <td class=3D"xl81" x:fmla=3D"=3DG36+H36" x:str>0</td>
     <td class=3D"xl69" colspan=3D"7" style=3D'mso-ignore:colspan;'></td>
     <td class=3D"xl68" colspan=3D"2" style=3D'mso-ignore:colspan;'></td>
@@ -31236,7 +31236,7 @@ Content-Type: text/html; charset="us-ascii"
     <td class=3D"xl94" x:str>D</td>
     <td class=3D"xl95" colspan=3D"3" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Pelaksanaan pengabdian kepada masyarakat</td>
     <td class=3D"xl81">0</td>
-    <td class=3D"xl81"><?=str_replace(".",",",number_format($KreditPengabdian['Kredit'],2))?></td>
+    <td class=3D"xl81"><?=str_replace(".",",",number_format($KreditPengabdian,2))?></td>
     <td class=3D"xl81" x:fmla=3D"=3DG37+H37" x:str>0</td>
     <td class=3D"xl69" colspan=3D"7" style=3D'mso-ignore:colspan;'></td>
     <td class=3D"xl68" colspan=3D"2" style=3D'mso-ignore:colspan;'></td>
