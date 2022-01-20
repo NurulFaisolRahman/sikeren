@@ -31272,7 +31272,7 @@ Content-Type: text/html; charset="us-ascii"
     <td class=3D"xl76" colspan=3D"3" style=3D'mso-ignore:colspan;' x:str>Penunjang Tugas Dosen</td>
     <td class=3D"xl85"></td>
     <td class=3D"xl81">0</td>
-    <td class=3D"xl81"><?=str_replace(".",",",number_format($KreditPenunjang['Kredit'],2))?></td>
+    <td class=3D"xl81"><?=str_replace(".",",",number_format($KreditPenunjang,2))?></td>
     <td class=3D"xl81" x:fmla=3D"=3DG40+H40" x:str>0</td>
     <td class=3D"xl69" colspan=3D"7" style=3D'mso-ignore:colspan;'></td>
     <td class=3D"xl68" colspan=3D"2" style=3D'mso-ignore:colspan;'></td>
