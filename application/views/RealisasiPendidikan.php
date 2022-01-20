@@ -17,7 +17,7 @@
           'Membimbing KKN, PKL, Magang',
           'Membimbing disertasi/tesis/skripsi',
           'Menguji ujian akhir/Profesi (setiap mahasiswa)',
-          'Membina mahasiswa di bidang akademik/kemahasiswaan (Selain Perwalian)',
+          'Membina mahasiswa di bidang akademik/kemahasiswaan',
           'Mengembangkan program kuliah yang mempunyai nilai kebaharuan metode/substansi',
           'Mengembangkan bahan pengajaran yang mempunyai nilai kebaharuan',
           'Menyampaikan orasi ilmiah di tingkat perguruan tinggi',
