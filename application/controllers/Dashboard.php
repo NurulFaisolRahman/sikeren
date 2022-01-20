@@ -664,11 +664,6 @@ class Dashboard extends CI_Controller {
 			$Data['Penunjang'] = $this->db->query("SELECT * FROM `RealisasiPenunjang` WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0]." ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4), Kode ASC")->result_array();
 			$Data['KreditPendidikan1a'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND1'"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->row_array()['Kredit'];
 			$Data['KreditPendidikan1b'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND2'"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->row_array()['Kredit'];
-			for ($i=0; $i < count($Data['Pendidikan']); $i++) {
-				if ($Data['Pendidikan'][$i]['IdKegiatan'] != 'PND1' && $Data['Pendidikan'][$i]['IdKegiatan'] != 'PND2') {
-					$Data['KreditPendidikan2'] += $Data['Pendidikan'][$i]['JumlahKredit'];
-				}
-			}
 			$Data['KreditPenelitian'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->row_array()['Kredit'];
 			$Data['KreditPengabdian'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->row_array()['Kredit'];
 			$Data['KreditPenunjang'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->row_array()['Kredit'];
@@ -756,18 +751,17 @@ class Dashboard extends CI_Controller {
 			usort($Data['Penunjang'], function($a, $b) {return strnatcmp($a['IdKegiatan'], $b['IdKegiatan']);});
 			$Data['KreditPendidikan1a'] += $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND1'"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->row_array()['Kredit'];
 			$Data['KreditPendidikan1b'] += $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND2'"." AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->row_array()['Kredit'];
-			for ($i=0; $i < count($Data['Pendidikan']); $i++) {
-				if ($Data['Pendidikan'][$i]['IdKegiatan'] != 'PND1' && $Data['Pendidikan'][$i]['IdKegiatan'] != 'PND2') {
-					$Data['KreditPendidikan2'] += $Data['Pendidikan'][$i]['JumlahKredit'];
-				}
-			}
 			$Data['KreditPenelitian'] += $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->row_array()['Kredit'];
 			$Data['KreditPengabdian'] += $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->row_array()['Kredit'];
 			$Data['KreditPenunjang'] += $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1])->row_array()['Kredit'];
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Pendidikan = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPendidikan'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPendidikan'][$key['IdKegiatan']])) {
+					$Data['UsulPendidikan'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPendidikan'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 			$Mengajar = 0;
 			foreach ($Mk as $key) {
@@ -777,17 +771,29 @@ class Dashboard extends CI_Controller {
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Penelitian = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPenelitian'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPenelitian'][$key['IdKegiatan']])) {
+					$Data['UsulPenelitian'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPenelitian'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Pengabdian = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPengabdian'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPengabdian'][$key['IdKegiatan']])) {
+					$Data['UsulPengabdian'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPengabdian'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Penunjang = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPenunjang'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPenunjang'][$key['IdKegiatan']])) {
+					$Data['UsulPenunjang'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPenunjang'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 			// merge
 			if (($Tahun[1] - $Tahun[0]) > 1) {
@@ -856,7 +862,11 @@ class Dashboard extends CI_Controller {
 				$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".($Tahun[1]-1)." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 				$Pendidikan = array();
 				foreach ($Tampung as $key) {
-					$Data['UsulPendidikan'][$key['IdKegiatan']] += $key['Kredit'];
+					if (empty($Data['UsulPendidikan'][$key['IdKegiatan']])) {
+						$Data['UsulPendidikan'][$key['IdKegiatan']] = $key['Kredit'];
+					} else {
+						$Data['UsulPendidikan'][$key['IdKegiatan']] += $key['Kredit'];
+					}
 				}
 				$Mengajar = 0;
 				foreach ($Mk as $key) {
@@ -866,17 +876,29 @@ class Dashboard extends CI_Controller {
 				$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".($Tahun[1]-1)." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 				$Penelitian = array();
 				foreach ($Tampung as $key) {
-					$Data['UsulPenelitian'][$key['IdKegiatan']] += $key['Kredit'];
+					if (empty($Data['UsulPenelitian'][$key['IdKegiatan']])) {
+						$Data['UsulPenelitian'][$key['IdKegiatan']] = $key['Kredit'];
+					} else {
+						$Data['UsulPenelitian'][$key['IdKegiatan']] += $key['Kredit'];
+					}
 				}
 				$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".($Tahun[1]-1)." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 				$Pengabdian = array();
 				foreach ($Tampung as $key) {
-					$Data['UsulPengabdian'][$key['IdKegiatan']] += $key['Kredit'];
+					if (empty($Data['UsulPengabdian'][$key['IdKegiatan']])) {
+						$Data['UsulPengabdian'][$key['IdKegiatan']] = $key['Kredit'];
+					} else {
+						$Data['UsulPengabdian'][$key['IdKegiatan']] += $key['Kredit'];
+					}
 				}
 				$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".($Tahun[1]-1)." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 				$Penunjang = array();
 				foreach ($Tampung as $key) {
-					$Data['UsulPenunjang'][$key['IdKegiatan']] += $key['Kredit'];
+					if (empty($Data['UsulPenunjang'][$key['IdKegiatan']])) {
+						$Data['UsulPenunjang'][$key['IdKegiatan']] = $key['Kredit'];
+					} else {
+						$Data['UsulPenunjang'][$key['IdKegiatan']] += $key['Kredit'];
+					}
 				}
 			}
 
@@ -932,11 +954,6 @@ class Dashboard extends CI_Controller {
 			$Data['Penunjang'] = $this->db->query("SELECT * FROM `RealisasiPenunjang` WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".$Tahun[0]." AND Tahun <= ".($Tahun[1]-1)." ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4), Kode ASC")->result_array();
 			$Data['KreditPendidikan1a'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND1'"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".($Tahun[1]-1))->row_array()['Kredit'];
 			$Data['KreditPendidikan1b'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND2'"." AND Tahun >= ".$Tahun[0]." AND Tahun <= ".($Tahun[1]-1))->row_array()['Kredit'];
-			for ($i=0; $i < count($Data['Pendidikan']); $i++) {
-				if ($Data['Pendidikan'][$i]['IdKegiatan'] != 'PND1' && $Data['Pendidikan'][$i]['IdKegiatan'] != 'PND2') {
-					$Data['KreditPendidikan2'] += $Data['Pendidikan'][$i]['JumlahKredit'];
-				}
-			}
 			$Data['KreditPenelitian'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".$Tahun[0]." AND Tahun <= ".($Tahun[1]-1))->row_array()['Kredit'];
 			$Data['KreditPengabdian'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".$Tahun[0]." AND Tahun <= ".($Tahun[1]-1))->row_array()['Kredit'];
 			$Data['KreditPenunjang'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".$Tahun[0]." AND Tahun <= ".($Tahun[1]-1))->row_array()['Kredit'];
@@ -1035,7 +1052,11 @@ class Dashboard extends CI_Controller {
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Pendidikan = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPendidikan'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPendidikan'][$key['IdKegiatan']])) {
+					$Data['UsulPendidikan'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPendidikan'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 			$Mengajar = 0;
 			foreach ($Mk as $key) {
@@ -1045,17 +1066,29 @@ class Dashboard extends CI_Controller {
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Penelitian = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPenelitian'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPenelitian'][$key['IdKegiatan']])) {
+					$Data['UsulPenelitian'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPenelitian'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Pengabdian = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPengabdian'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPengabdian'][$key['IdKegiatan']])) {
+					$Data['UsulPengabdian'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPengabdian'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[1]."' AND Tahun = ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Penunjang = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPenunjang'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPenunjang'][$key['IdKegiatan']])) {
+					$Data['UsulPenunjang'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPenunjang'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 		} else if ($Semester[0] == 'Genap' && $Semester[1] == 'Genap') {
 			$Data['Pendidikan'] = $this->db->query("SELECT * FROM `RealisasiPendidikan` WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND IdKegiatan != 'PND3' AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0]." ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4), Kode ASC")->result_array();
@@ -1109,11 +1142,6 @@ class Dashboard extends CI_Controller {
 			$Data['Penunjang'] = $this->db->query("SELECT * FROM `RealisasiPenunjang` WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0]." ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4), Kode ASC")->result_array();
 			$Data['KreditPendidikan1a'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND1'"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->row_array()['Kredit'];
 			$Data['KreditPendidikan1b'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND IdKegiatan = 'PND2'"." AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->row_array()['Kredit'];
-			for ($i=0; $i < count($Data['Pendidikan']); $i++) {
-				if ($Data['Pendidikan'][$i]['IdKegiatan'] != 'PND1' && $Data['Pendidikan'][$i]['IdKegiatan'] != 'PND2') {
-					$Data['KreditPendidikan2'] += $Data['Pendidikan'][$i]['JumlahKredit'];
-				}
-			}
 			$Data['KreditPenelitian'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->row_array()['Kredit'];
 			$Data['KreditPengabdian'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->row_array()['Kredit'];
 			$Data['KreditPenunjang'] = $this->db->query("SELECT SUM(JumlahKredit) as Kredit FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Semester = '".$Semester[0]."' AND Tahun = ".$Tahun[0])->row_array()['Kredit'];
@@ -1212,7 +1240,11 @@ class Dashboard extends CI_Controller {
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPendidikan WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Pendidikan = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPendidikan'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPendidikan'][$key['IdKegiatan']])) {
+					$Data['UsulPendidikan'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPendidikan'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 			$Mengajar = 0;
 			foreach ($Mk as $key) {
@@ -1222,17 +1254,29 @@ class Dashboard extends CI_Controller {
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPenelitian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Penelitian = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPenelitian'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPenelitian'][$key['IdKegiatan']])) {
+					$Data['UsulPenelitian'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPenelitian'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPengabdian WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Pengabdian = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPengabdian'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPengabdian'][$key['IdKegiatan']])) {
+					$Data['UsulPengabdian'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPengabdian'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 			$Tampung = $this->db->query("SELECT SUM(JumlahKredit) as Kredit,IdKegiatan FROM RealisasiPenunjang WHERE NIP = ".$NIP." AND JumlahKredit != 0 AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".$Tahun[1]." GROUP BY IdKegiatan ORDER BY SUBSTR(IdKegiatan FROM 1 FOR 3), CAST(SUBSTR(IdKegiatan FROM 4) AS UNSIGNED), SUBSTR(IdKegiatan FROM 4)")->result_array();
 			$Penunjang = array();
 			foreach ($Tampung as $key) {
-				$Data['UsulPenunjang'][$key['IdKegiatan']] += $key['Kredit'];
+				if (empty($Data['UsulPenunjang'][$key['IdKegiatan']])) {
+					$Data['UsulPenunjang'][$key['IdKegiatan']] = $key['Kredit'];
+				} else {
+					$Data['UsulPenunjang'][$key['IdKegiatan']] += $key['Kredit'];
+				}
 			}
 		}
 		$Data['Filter'] = $Semester[0].'_'.$Tahun[0].'_'.$Semester[1].'_'.$Tahun[1];
