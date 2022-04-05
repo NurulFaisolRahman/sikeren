@@ -237,7 +237,7 @@
           if (isNaN($("#nip").val())) {
             $.post(BaseURL+"SMD/AdminMasuk", Akun).done(function(Respon) {
               if (Respon == '1') {
-                window.location = BaseURL + "Admin/AkunDosen"
+                window.location = BaseURL + "Admin/AkunDosen" 
               }
               else {
                 alert(Respon)

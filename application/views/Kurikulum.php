@@ -14,9 +14,9 @@
                             <tr>
                               <th class="text-center align-middle">No</th>
                               <th class="align-middle">Homebase</th>
-                              <th class="align-middle">Semester</th>
                               <th class="align-middle">Kode MK</th>
                               <th class="align-middle">Nama Mata Kuliah</th>
+                              <th class="align-middle">Semester</th>
                               <th class="align-middle">Aksi</th>
                             </tr>
                           </thead>
@@ -25,9 +25,9 @@
                               <tr>	
                                 <td class="text-center align-middle"><?=$No++?></td>
                                 <td class="align-middle"><?=$key['Homebase']?></td>
-                                <td class="align-middle"><?=$key['Semester']?></td>
                                 <td class="align-middle"><?=$key['KodeMK']?></td>
                                 <td class="align-middle"><?=$key['NamaMK']?></td>
+                                <td class="align-middle"><?=$key['Semester']?></td>
                                 <td class="align-middle">
                                   <button Edit="<?=$key['Id']."|".$key['Homebase']."|".$key['Semester']."|".$key['KodeMK']."|".$key['NamaMK']."|".$key['KompetensiMK']."|".$key['Kuliah']."|".$key['Seminar']."|".$key['Praktikum']."|".$key['Jam']."|".$key['Dokumen']."|".$key['Bukti']."|".$key['Unit']?>" class="btn btn-sm btn-warning Edit"><i class="fas fa-edit"></i></button>
                                   <button Hapus="<?=$key['Id']."|".$key['Bukti']?>" class="btn btn-sm btn-danger Hapus"><i class="fas fa-trash"></i></button>  

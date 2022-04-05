@@ -6,12 +6,7 @@ class Admin extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		if($this->session->userdata('Akun') != 'Admin'){
-			if ($this->session->userdata('Akun') == 'Dosen') {
-				redirect(base_url('Dashboard/Profil'));
-			} 
-			else {
-				redirect(base_url());
-			}
+			redirect(base_url());
 		}
 	}
  
@@ -620,6 +615,51 @@ class Admin extends CI_Controller {
 		} else {
 			echo 'Gagal Menghapus';
 		}
+	}
+
+	public function RPS(){
+		$Data['Halaman'] = 'Prodi';
+		$Data['SubMenu'] = 'RPS';
+		$Data['RPS'] = $this->db->query('SELECT Homebase,KodeMK,NamaMK,Semester FROM `rps`')->result_array();
+    $this->load->view('HeaderAdmin',$Data);
+		$this->load->view('RPS',$Data);
+	}
+
+	public function InputRPS(){
+		if($this->db->get_where('rps', array('KodeMK' => $_POST['KodeMK']))->num_rows() === 0){
+			$this->db->insert('rps',$_POST);
+			if ($this->db->affected_rows()){
+				echo '1';
+			} else {
+				echo 'Gagal Input Data RPS!'; 
+			}
+		} else {
+			echo 'Mata Kuliah Dengan Kode '.$_POST['KodeMK'].' Sudah Ada!'; 
+		}
+	}
+
+	public function UpdateRPS(){
+		if($this->db->get_where('rps', array('KodeMK' => $_POST['KodeMK']))->num_rows() === 0 || ($_POST['KodeMK'] == $_POST['KodeMKLama'])){
+			$this->db->where('KodeMK',$_POST['KodeMKLama']);
+			unset($_POST['KodeMKLama']);
+			$this->db->update('rps', $_POST);
+			echo '1';
+		} else {
+			echo "Data RPS Dengan Kode MK ".$_POST['KodeMK']." Sudah Ada!";
+		}
+	}
+
+	public function HapusRPS(){
+		$this->db->delete('rps', array('KodeMK' => $_POST['KodeMK']));
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menghapus!';
+		}
+	}
+
+	public function GetRPS($KodeMK){
+    echo json_encode($this->db->get_where('rps', array('KodeMK' => $KodeMK))->row_array());
 	}
 	
 	public function IPKLulusan(){

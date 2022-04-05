@@ -7,8 +7,58 @@ class SMD extends CI_Controller {
 		$this->load->view('Index.php');
 	}
 
+	public function MhsMasuk(){
+		$CekLogin = $this->db->get_where('mahasiswa', array('NIM' => htmlentities($_POST['NIM'])));
+		if($CekLogin->num_rows() == 0){
+			echo "NIM Tidak Terdaftar!";
+		}
+		else{
+			$Akun = $CekLogin->result_array();
+			if (password_verify($_POST['Password'], $Akun[0]['Password'])) {
+				$Session = array('Akun' => 'Mhs',
+												 'NIM' => $_POST['NIM'],
+												 'Nama' => $Akun[0]['Nama']);
+				$this->session->set_userdata($Session);
+				echo '1';
+			} else {
+				echo "Password Salah!";
+			}
+		}
+	}
+
+	public function MhsDaftar(){
+		if ($this->db->get('mahasiswa',array('NIM' => $_POST['NIM']))->num_rows() === 0) {
+			$_POST['Password'] = password_hash($_POST['Password'], PASSWORD_DEFAULT);
+			$this->db->insert('mahasiswa',$_POST);
+			if ($this->db->affected_rows()){
+				$Session = array('Akun' => 'Mhs',
+												 'NIM' => $_POST['NIM'],
+												 'Nama' => $_POST['Nama']);
+				$this->session->set_userdata($Session);
+				echo '1';
+			} else {
+				echo 'Gagal Daftar Akun!'; 
+			}
+		} else {
+			echo 'Akun Mahasiswa Dengan NIM '.$_POST['NIM'].' Sudah Terdaftar!'; 
+		}
+	}
+
+	public function MhsSignOut(){
+		$this->session->sess_destroy();
+		redirect(base_url('SMD/SIDP'));
+	}
+
 	public function EvaluasiPBM(){
 		$this->load->view('EvaluasiPBM');
+	}
+
+	public function SIDP(){
+		if ($this->session->userdata('Akun') == 'Mhs') {
+			redirect(base_url('Mhs/Profil'));
+		} else {
+			$this->load->view('SIDP');
+		}
 	}
 
 	public function InputEvaluasiPBM(){
@@ -20,7 +70,7 @@ class SMD extends CI_Controller {
 		}
 	}
 
-	public function Kuisioner($Jenis){
+public function Kuisioner($Jenis){
 		if ($Jenis == 'KepuasanMahasiswa') {
 			$this->load->view('KepuasanMahasiswa');
 		} else if ($Jenis == 'PrestasiMahasiswa') {

@@ -6,13 +6,8 @@ class Dashboard extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		if($this->session->userdata('Akun') != 'Dosen'){
-			if ($this->session->userdata('Akun') == 'Admin') {
-				redirect(base_url('Admin/AkunDosen'));
-			} 
-			else {
-				redirect(base_url());
-			}
-		}
+			redirect(base_url()); 
+		} 
 	}
 
 	public function SesiNotif(){
