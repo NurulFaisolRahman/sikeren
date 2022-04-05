@@ -1098,7 +1098,7 @@ class Admin extends CI_Controller {
 		$Data['HakCipta'] = $this->db->query("SELECT Kegiatan,Tahun FROM `RealisasiPenelitian` WHERE Jenjang="."'".$Homebase."' AND IdKegiatan = 'PNL6' AND Tahun <= ".$TS." AND Tahun > ".($TS-3))->result_array();		
 		$Data['Rekognisi'] = array();
 
-		foreach ($this->db->query("SELECT Dosen.Nama,Dosen.BidangKeahlian,RealisasiPenunjang.Kode,RealisasiPenunjang.Tahun FROM Dosen,RealisasiPenunjang WHERE RealisasiPenunjang.NIP=dosen.NIP AND Jenjang="."'".$Homebase."' AND RealisasiPenunjang.IdKegiatan = 'PNJ6' AND RealisasiPenunjang.Tahun <= ".$TS." AND RealisasiPenunjang.Tahun > ".($TS-3))->result_array() as $key => $value) {
+		foreach ($this->db->query("SELECT Dosen.Nama,Dosen.BidangKeahlian,RealisasiPenunjang.Kode,RealisasiPenunjang.Tahun FROM Dosen,RealisasiPenunjang WHERE RealisasiPenunjang.NIP=Dosen.NIP AND Jenjang="."'".$Homebase."' AND RealisasiPenunjang.IdKegiatan = 'PNJ6' AND RealisasiPenunjang.Tahun <= ".$TS." AND RealisasiPenunjang.Tahun > ".($TS-3))->result_array() as $key => $value) {
 			if ($value['Kode'][0] == 1 || $value['Kode'][0] == 4) {
 				$value['Kode'] = 3;
 			} else if ($value['Kode'][0] == 2 || $value['Kode'][0] == 5) {
@@ -1109,12 +1109,12 @@ class Admin extends CI_Controller {
 			$value['Bukti'] = 'Pertemuan Ilmiah';
 			array_push($Data['Rekognisi'],$value);
 		}
-		foreach ($this->db->query("SELECT Dosen.Nama,Dosen.BidangKeahlian,RealisasiPengabdian.Kode,RealisasiPengabdian.Tahun FROM Dosen,RealisasiPengabdian WHERE RealisasiPengabdian.NIP=dosen.NIP AND Jenjang="."'".$Homebase."' AND RealisasiPengabdian.IdKegiatan = 'PNB7' AND RealisasiPengabdian.Tahun <= ".$TS." AND RealisasiPengabdian.Tahun > ".($TS-3))->result_array() as $key => $value) {
+		foreach ($this->db->query("SELECT Dosen.Nama,Dosen.BidangKeahlian,RealisasiPengabdian.Kode,RealisasiPengabdian.Tahun FROM Dosen,RealisasiPengabdian WHERE RealisasiPengabdian.NIP=Dosen.NIP AND Jenjang="."'".$Homebase."' AND RealisasiPengabdian.IdKegiatan = 'PNB7' AND RealisasiPengabdian.Tahun <= ".$TS." AND RealisasiPengabdian.Tahun > ".($TS-3))->result_array() as $key => $value) {
 			$value['Kode'][0] == 1 ? $value['Kode'] = 3 : $value['Kode'] = 2 ;
 			$value['Bukti'] = 'Editor / Mitra Bestari';
 			array_push($Data['Rekognisi'],$value);
 		}
-		foreach ($this->db->query("SELECT Dosen.Nama,Dosen.BidangKeahlian,RealisasiPengabdian.Kode,RealisasiPengabdian.Tahun FROM Dosen,RealisasiPengabdian WHERE RealisasiPengabdian.NIP=dosen.NIP AND Jenjang="."'".$Homebase."' AND RealisasiPengabdian.IdKegiatan = 'PNB3' AND RealisasiPengabdian.Tahun <= ".$TS." AND RealisasiPengabdian.Tahun > ".($TS-3))->result_array() as $key => $value) {
+		foreach ($this->db->query("SELECT Dosen.Nama,Dosen.BidangKeahlian,RealisasiPengabdian.Kode,RealisasiPengabdian.Tahun FROM Dosen,RealisasiPengabdian WHERE RealisasiPengabdian.NIP=Dosen.NIP AND Jenjang="."'".$Homebase."' AND RealisasiPengabdian.IdKegiatan = 'PNB3' AND RealisasiPengabdian.Tahun <= ".$TS." AND RealisasiPengabdian.Tahun > ".($TS-3))->result_array() as $key => $value) {
 			if ($value['Kode'][0] == 1 || $value['Kode'][0] == 4) {
 				$value['Kode'] = 3;
 			} else if ($value['Kode'][0] == 2 || $value['Kode'][0] == 5) {
@@ -1125,7 +1125,7 @@ class Admin extends CI_Controller {
 			$value['Bukti'] = 'Staf Ahli / Narasumber';
 			array_push($Data['Rekognisi'],$value);
 		}
-		foreach ($this->db->query("SELECT Dosen.Nama,Dosen.BidangKeahlian,RealisasiPenunjang.Kode,RealisasiPenunjang.Tahun FROM Dosen,RealisasiPenunjang WHERE RealisasiPenunjang.NIP=dosen.NIP AND Jenjang="."'".$Homebase."' AND RealisasiPenunjang.IdKegiatan = 'PNJ7' AND RealisasiPenunjang.Tahun <= ".$TS." AND RealisasiPenunjang.Tahun > ".($TS-3))->result_array() as $key => $value) {
+		foreach ($this->db->query("SELECT Dosen.Nama,Dosen.BidangKeahlian,RealisasiPenunjang.Kode,RealisasiPenunjang.Tahun FROM Dosen,RealisasiPenunjang WHERE RealisasiPenunjang.NIP=Dosen.NIP AND Jenjang="."'".$Homebase."' AND RealisasiPenunjang.IdKegiatan = 'PNJ7' AND RealisasiPenunjang.Tahun <= ".$TS." AND RealisasiPenunjang.Tahun > ".($TS-3))->result_array() as $key => $value) {
 			if ($value['Kode'][0] == 4) {
 				$value['Kode'] = 3;
 			} else if ($value['Kode'][0] == 5) {
