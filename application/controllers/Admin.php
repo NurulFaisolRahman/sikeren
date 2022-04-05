@@ -821,7 +821,7 @@ class Admin extends CI_Controller {
 		$Data['Tahun'] = $TS;
 		$Data['IPKLulusan'] = array();
 		for ($i=($TS-2); $i <= $TS; $i++) { 
-			$IPKLulusan = $this->db->query("SELECT * FROM ipklulusan WHERE Homebase = '".$Homebase."' AND Tahun = ".$i)->row_array();	
+			$IPKLulusan = $this->db->query("SELECT * FROM IPKLulusan WHERE Homebase = '".$Homebase."' AND Tahun = ".$i)->row_array();	
 			$IPKLulusan == '' ? array_push($Data['IPKLulusan'],array(0,0,0,0)) : array_push($Data['IPKLulusan'],array($IPKLulusan['JumlahLulusan'],$IPKLulusan['Min'],$IPKLulusan['Average'],$IPKLulusan['Max']));
 		}
 		$Data['PenggunaanDana'] = array(array(0,0,0,0,0,0,0,0),array(0,0,0,0,0,0,0,0),array(0,0,0,0,0,0,0,0),
@@ -831,7 +831,7 @@ class Admin extends CI_Controller {
 																		array(0,0,0,0,0,0,0,0)); 
 		$x = 0; $y = 4;
 		for ($i=($TS-2); $i <= $TS; $i++) { 
-			$Dana = $this->db->query("SELECT * FROM penggunaandana WHERE Homebase = '".$Homebase."' AND Tahun = ".$i)->result_array();	
+			$Dana = $this->db->query("SELECT * FROM PenggunaanDana WHERE Homebase = '".$Homebase."' AND Tahun = ".$i)->result_array();	
 			if (count($Dana) == 1) {
 				$Pisah = explode("/",$Dana[0]['Dosen']);
 				$Data['PenggunaanDana'][0][$x] = $Pisah[0];
@@ -866,9 +866,9 @@ class Admin extends CI_Controller {
 			}
 			$x+=1;$y+=1;
 		}
-		$Data['KerjaSamaPendidikan'] = $this->db->query("SELECT * FROM `kerjasama` WHERE Bidang='Pendidikan' AND Homebase="."'".$Homebase."'"." AND Tahun <= ".$TS." AND Tahun > ".($TS-3))->result_array(); 
-		$Data['KerjaSamaPenelitian'] = $this->db->query("SELECT * FROM `kerjasama` WHERE Bidang='Penelitian' AND Homebase="."'".$Homebase."'"." AND Tahun <= ".$TS." AND Tahun > ".($TS-3))->result_array(); 
-		$Data['KerjaSamaPengabdian'] = $this->db->query("SELECT * FROM `kerjasama` WHERE Bidang='Pengabdian' AND Homebase="."'".$Homebase."'"." AND Tahun <= ".$TS." AND Tahun > ".($TS-3))->result_array(); 
+		$Data['KerjaSamaPendidikan'] = $this->db->query("SELECT * FROM `KerjaSama` WHERE Bidang='Pendidikan' AND Homebase="."'".$Homebase."'"." AND Tahun <= ".$TS." AND Tahun > ".($TS-3))->result_array(); 
+		$Data['KerjaSamaPenelitian'] = $this->db->query("SELECT * FROM `KerjaSama` WHERE Bidang='Penelitian' AND Homebase="."'".$Homebase."'"." AND Tahun <= ".$TS." AND Tahun > ".($TS-3))->result_array(); 
+		$Data['KerjaSamaPengabdian'] = $this->db->query("SELECT * FROM `KerjaSama` WHERE Bidang='Pengabdian' AND Homebase="."'".$Homebase."'"." AND Tahun <= ".$TS." AND Tahun > ".($TS-3))->result_array(); 
 		$Data['MahasiswaBaru'] = array(); 
 		for ($i = $TS; $i > ($TS-5); $i--) { 
 			$Tampung = $this->db->query("SELECT * FROM MahasiswaBaru WHERE Homebase = '".$Homebase."' AND Tahun = ".$i)->row_array();		
@@ -902,7 +902,7 @@ class Admin extends CI_Controller {
 			$Tampung = $this->db->query("SELECT * FROM InfoAkademik WHERE Homebase = '".$Homebase."' AND Tahun = ".$i)->row_array();		
 			$Tampung == '' ? array_push($Data['MhsLulusan'],array(0,0,0,0)) : array_push($Data['MhsLulusan'],explode("$",$Tampung['MhsLulus']));
 		}
-		$KepuasanMhs = $this->db->query("SELECT * FROM kepuasanmahasiswa WHERE Homebase = '".$Homebase."' AND Tahun = ".$TS)->result_array();
+		$KepuasanMhs = $this->db->query("SELECT * FROM KepuasanMahasiswa WHERE Homebase = '".$Homebase."' AND Tahun = ".$TS)->result_array();
 		$Data['KepuasanMhs'] = array(array(0,0,0,0),array(0,0,0,0),array(0,0,0,0),array(0,0,0,0),array(0,0,0,0),array(0,0,0,0)); 
 		count($KepuasanMhs) > 0 ? $Data['KepuasanMhs'][5][0] = count($KepuasanMhs) : $Data['KepuasanMhs'][5][0] = 1;
 		for ($i=0; $i < count($KepuasanMhs); $i++) { 
@@ -987,7 +987,7 @@ class Admin extends CI_Controller {
 			$Data['Dosen'] = $this->db->get('Dosen')->result_array();
 			for ($i=0; $i < count($Data['Dosen']); $i++) { 
 				$PS = $PSLain = "";
-				$mk = $this->db->query("SELECT Kode,Kegiatan FROM `realisasipendidikan` WHERE NIP=".$Data['Dosen'][$i]['NIP']." AND Jenjang="."'".$Homebase."' AND Tahun <= ".$TS." AND Tahun > ".($TS-3))->result_array();
+				$mk = $this->db->query("SELECT Kode,Kegiatan FROM `RealisasiPendidikan` WHERE NIP=".$Data['Dosen'][$i]['NIP']." AND Jenjang="."'".$Homebase."' AND Tahun <= ".$TS." AND Tahun > ".($TS-3))->result_array();
 				for ($j=0; $j < count($mk); $j++) { 
 					if ($mk[$j]['Kode']==0) {
 						$PS .= $mk[$j]['Kegiatan'];
@@ -1004,7 +1004,7 @@ class Admin extends CI_Controller {
 			$Data['Dosen'] = $this->db->get_where('Dosen',array('Homebase' => 'S2'))->result_array();
 			for ($i=0; $i < count($Data['Dosen']); $i++) { 
 				$PS = $PSLain = "";
-				$mk = $this->db->query("SELECT Kode,Kegiatan FROM `realisasipendidikan` WHERE NIP=".$Data['Dosen'][$i]['NIP']." AND Jenjang="."'".$Homebase."' AND Tahun <= ".$TS." AND Tahun > ".($TS-3))->result_array();
+				$mk = $this->db->query("SELECT Kode,Kegiatan FROM `RealisasiPendidikan` WHERE NIP=".$Data['Dosen'][$i]['NIP']." AND Jenjang="."'".$Homebase."' AND Tahun <= ".$TS." AND Tahun > ".($TS-3))->result_array();
 				for ($j=0; $j < count($mk); $j++) { 
 					if ($mk[$j]['Kode']==0) {
 						$PS .= $mk[$j]['Kegiatan'];
