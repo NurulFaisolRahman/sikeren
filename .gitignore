@@ -21,26 +21,26 @@ SitasiMahasiswa/*
 FotoDosen/*
 application/config/config.php
 application/config/database.php
-akuntansi/BukuMahasiswa/*
-akuntansi/DosenKontrak/*
-akuntansi/DTPS/*
-akuntansi/HKIMahasiswa/*
-akuntansi/Integrasi/*
-akuntansi/KaryaMahasiswa/*
-akuntansi/KerjaSama/*
-akuntansi/Kurikulum/*
-akuntansi/Panduan/*
-akuntansi/PatenMahasiswa/*
-akuntansi/Pendidikan/*
-akuntansi/Penelitian/*
-akuntansi/PenelitianDosenMhs/*
-akuntansi/Pengabdian/*
-akuntansi/Penunjang/*
-akuntansi/PkMDosenMhs/*
-akuntansi/PrestasiMahasiswa/*
-akuntansi/PublikasiMahasiswa/*
-akuntansi/RujukanTesis/*
-akuntansi/SitasiMahasiswa/*
-akuntansi/FotoDosen/*
+# akuntansi/BukuMahasiswa/*
+# akuntansi/DosenKontrak/*
+# akuntansi/DTPS/*
+# akuntansi/HKIMahasiswa/*
+# akuntansi/Integrasi/*
+# akuntansi/KaryaMahasiswa/*
+# akuntansi/KerjaSama/*
+# akuntansi/Kurikulum/*
+# akuntansi/Panduan/*
+# akuntansi/PatenMahasiswa/*
+# akuntansi/Pendidikan/*
+# akuntansi/Penelitian/*
+# akuntansi/PenelitianDosenMhs/*
+# akuntansi/Pengabdian/*
+# akuntansi/Penunjang/*
+# akuntansi/PkMDosenMhs/*
+# akuntansi/PrestasiMahasiswa/*
+# akuntansi/PublikasiMahasiswa/*
+# akuntansi/RujukanTesis/*
+# akuntansi/SitasiMahasiswa/*
+# akuntansi/FotoDosen/*
 akuntansi/application/config/configakuntansi/php
 akuntansi/application/config/databaseakuntansi/php
