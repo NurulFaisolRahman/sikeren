@@ -19,8 +19,8 @@ PublikasiMahasiswa/*
 RujukanTesis/*
 SitasiMahasiswa/*
 FotoDosen/*
-# application/config/config.php
-# application/config/database.php
+application/config/config.php
+application/config/database.php
 # akuntansi/BukuMahasiswa/*
 # akuntansi/DosenKontrak/*
 # akuntansi/DTPS/*
@@ -42,5 +42,5 @@ FotoDosen/*
 # akuntansi/RujukanTesis/*
 # akuntansi/SitasiMahasiswa/*
 # akuntansi/FotoDosen/*
-# akuntansi/application/config/configakuntansi/php
-# akuntansi/application/config/databaseakuntansi/php
+akuntansi/application/config/configakuntansi/php
+akuntansi/application/config/databaseakuntansi/php
