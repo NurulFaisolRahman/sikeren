@@ -21,26 +21,49 @@ SitasiMahasiswa/*
 FotoDosen/*
 application/config/config.php
 application/config/database.php
-# akuntansi/BukuMahasiswa/*
-# akuntansi/DosenKontrak/*
-# akuntansi/DTPS/*
-# akuntansi/HKIMahasiswa/*
-# akuntansi/Integrasi/*
-# akuntansi/KaryaMahasiswa/*
-# akuntansi/KerjaSama/*
-# akuntansi/Kurikulum/*
-# akuntansi/Panduan/*
-# akuntansi/PatenMahasiswa/*
-# akuntansi/Pendidikan/*
-# akuntansi/Penelitian/*
-# akuntansi/PenelitianDosenMhs/*
-# akuntansi/Pengabdian/*
-# akuntansi/Penunjang/*
-# akuntansi/PkMDosenMhs/*
-# akuntansi/PrestasiMahasiswa/*
-# akuntansi/PublikasiMahasiswa/*
-# akuntansi/RujukanTesis/*
-# akuntansi/SitasiMahasiswa/*
-# akuntansi/FotoDosen/*
-akuntansi/application/config/configakuntansi/php
-akuntansi/application/config/databaseakuntansi/php
+akuntansi/BukuMahasiswa/*
+akuntansi/DosenKontrak/*
+akuntansi/DTPS/*
+akuntansi/HKIMahasiswa/*
+akuntansi/Integrasi/*
+akuntansi/KaryaMahasiswa/*
+akuntansi/KerjaSama/*
+akuntansi/Kurikulum/*
+akuntansi/Panduan/*
+akuntansi/PatenMahasiswa/*
+akuntansi/Pendidikan/*
+akuntansi/Penelitian/*
+akuntansi/PenelitianDosenMhs/*
+akuntansi/Pengabdian/*
+akuntansi/Penunjang/*
+akuntansi/PkMDosenMhs/*
+akuntansi/PrestasiMahasiswa/*
+akuntansi/PublikasiMahasiswa/*
+akuntansi/RujukanTesis/*
+akuntansi/SitasiMahasiswa/*
+akuntansi/FotoDosen/*
+akuntansi/application/config/config.php
+akuntansi/application/config/database.php
+# manajemen/BukuMahasiswa/*
+# manajemen/DosenKontrak/*
+# manajemen/DTPS/*
+# manajemen/HKIMahasiswa/*
+# manajemen/Integrasi/*
+# manajemen/KaryaMahasiswa/*
+# manajemen/KerjaSama/*
+# manajemen/Kurikulum/*
+# manajemen/Panduan/*
+# manajemen/PatenMahasiswa/*
+# manajemen/Pendidikan/*
+# manajemen/Penelitian/*
+# manajemen/PenelitianDosenMhs/*
+# manajemen/Pengabdian/*
+# manajemen/Penunjang/*
+# manajemen/PkMDosenMhs/*
+# manajemen/PrestasiMahasiswa/*
+# manajemen/PublikasiMahasiswa/*
+# manajemen/RujukanTesis/*
+# manajemen/SitasiMahasiswa/*
+# manajemen/FotoDosen/*
+manajemen/application/config/config.php
+manajemen/application/config/database.php
