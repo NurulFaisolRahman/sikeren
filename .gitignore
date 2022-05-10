@@ -44,26 +44,26 @@ akuntansi/SitasiMahasiswa/*
 akuntansi/FotoDosen/*
 akuntansi/application/config/config.php
 akuntansi/application/config/database.php
-# manajemen/BukuMahasiswa/*
-# manajemen/DosenKontrak/*
-# manajemen/DTPS/*
-# manajemen/HKIMahasiswa/*
-# manajemen/Integrasi/*
-# manajemen/KaryaMahasiswa/*
-# manajemen/KerjaSama/*
-# manajemen/Kurikulum/*
-# manajemen/Panduan/*
-# manajemen/PatenMahasiswa/*
-# manajemen/Pendidikan/*
-# manajemen/Penelitian/*
-# manajemen/PenelitianDosenMhs/*
-# manajemen/Pengabdian/*
-# manajemen/Penunjang/*
-# manajemen/PkMDosenMhs/*
-# manajemen/PrestasiMahasiswa/*
-# manajemen/PublikasiMahasiswa/*
-# manajemen/RujukanTesis/*
-# manajemen/SitasiMahasiswa/*
-# manajemen/FotoDosen/*
-manajemen/application/config/config.php
-manajemen/application/config/database.php
+manajemen/BukuMahasiswa/*
+manajemen/DosenKontrak/*
+manajemen/DTPS/*
+manajemen/HKIMahasiswa/*
+manajemen/Integrasi/*
+manajemen/KaryaMahasiswa/*
+manajemen/KerjaSama/*
+manajemen/Kurikulum/*
+manajemen/Panduan/*
+manajemen/PatenMahasiswa/*
+manajemen/Pendidikan/*
+manajemen/Penelitian/*
+manajemen/PenelitianDosenMhs/*
+manajemen/Pengabdian/*
+manajemen/Penunjang/*
+manajemen/PkMDosenMhs/*
+manajemen/PrestasiMahasiswa/*
+manajemen/PublikasiMahasiswa/*
+manajemen/RujukanTesis/*
+manajemen/SitasiMahasiswa/*
+manajemen/FotoDosen/*
+# manajemen/application/config/config.php
+# manajemen/application/config/database.php
