@@ -60,7 +60,7 @@
                     <p><b>Profil</b></p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="<?=base_url("Dashboard/ValidasiBimbingan")?>" class="nav-link <?php if ($Halaman == "Validasi Bimbingan") { echo "active";} ?>">
                     <i class="nav-icon fas fa-users"></i>
                     <p><b>Validasi Bimbingan</b></p>
@@ -79,7 +79,7 @@
                       <p><b>Dosen Pembimbing</b></p>
                       </a>
                   </li>
-                <?php } ?>
+                <?php } ?> -->
                 <li class="nav-item has-treeview <?php if ($Halaman == "Kegiatan") { echo "menu-open"; } ?>">
                     <a href="#" class="nav-link <?php if ($Halaman == "Kegiatan") { echo "active"; } ?>">
                     <i class="nav-icon fas fa-tasks"></i>
