@@ -65,5 +65,5 @@ manajemen/PublikasiMahasiswa/*
 manajemen/RujukanTesis/*
 manajemen/SitasiMahasiswa/*
 manajemen/FotoDosen/*
-# manajemen/application/config/config.php
-# manajemen/application/config/database.php
+manajemen/application/config/config.php
+manajemen/application/config/database.php

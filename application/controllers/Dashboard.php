@@ -5,7 +5,7 @@ class Dashboard extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		if($this->session->userdata('Akun') != 'Dosen'){
+		if($this->session->userdata('AkunDosen') != 'Dosen'){
 			redirect(base_url()); 
 		} 
 	}
@@ -211,13 +211,13 @@ class Dashboard extends CI_Controller {
 			echo 'Mohon Upload jpg/jpeg/png';
 		} else {
 			$Tipe = pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
-			$NamaFoto = date('Ymd',time()).substr(password_hash('Foto', PASSWORD_DEFAULT),7,3).'.'.$Tipe;
+			$NamaFoto = date('Ymd',time()).substr(password_hash('Foto', PASSWORD_DEFAULT),7,3);
 			$NamaFoto = str_replace("/","E",$NamaFoto);
 			$NamaFoto = str_replace(".","F",$NamaFoto);
-			move_uploaded_file($_FILES['file']['tmp_name'], "FotoDosen/".$NamaFoto);
+			move_uploaded_file($_FILES['file']['tmp_name'], "FotoDosen/".$NamaFoto.'.'.$Tipe);
 			if ($_POST['NamaFoto'] != '') { unlink('FotoDosen/'.$_POST['NamaFoto']); }
 			$this->db->where('NIP', $this->session->userdata('NIP'));
-			$this->db->update('Dosen',array('Foto' => $NamaFoto));
+			$this->db->update('Dosen',array('Foto' => $NamaFoto.'.'.$Tipe));
 			echo '1';
 		}
 	}
@@ -1581,5 +1581,46 @@ class Dashboard extends CI_Controller {
 			$Data = array_merge($Data,$this->db->query("SELECT Bukti FROM Realisasi".$Kegiatan." WHERE NIP = ".$NIP." AND KreditBkd != 0"." AND Tahun >= ".($Tahun[0]+1)." AND Tahun <= ".$Tahun[1])->result_array());
 		} 
 		echo json_encode($Data);
+	}
+
+	public function DosenPembimbing(){
+		$Data['Halaman'] = 'Dosen Pembimbing';
+		$Data['SubMenu'] = '';
+		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Korprodi' or StatusProposal LIKE 'Ditolak Oleh Pembimbing%'")->result_array();
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM dosen")->result_array();
+    $this->load->view('Header',$Data);
+    $this->load->view('_DosenPembimbing',$Data); 
+	}
+
+	public function ValidasiProposal(){
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
+	public function UpdateBimbingan(){
+    $this->db->where('Id', $_POST['Id']);
+		$this->db->update('bimbingan',$_POST);
+		echo '1';
+	}
+
+	public function ValidasiBimbingan(){
+		$Data['Halaman'] = 'Validasi Bimbingan';
+		$Data['SubMenu'] = '';
+		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Pembimbing'")->result_array();
+    $this->load->view('Header',$Data);
+    $this->load->view('ValidasiBimbingan',$Data); 
+	}
+
+	public function BimbinganSkripsi(){
+		$Data['Halaman'] = 'Bimbingan Skripsi';
+		$Data['SubMenu'] = '';
+		$Data['Bimbingan'] = $this->db->query("SELECT bimbingan.*,mahasiswa.Nama FROM bimbingan,mahasiswa WHERE bimbingan.DosenPembimbing = "."'".$this->session->userdata('NIP')."' ORDER BY bimbingan.TanggalBimbingan DESC")->result_array(); 
+    $this->load->view('Header',$Data);
+    $this->load->view('BimbinganSkripsi',$Data); 
 	}
 }

@@ -15,7 +15,7 @@ class SMD extends CI_Controller {
 		else{
 			$Akun = $CekLogin->result_array();
 			if (password_verify($_POST['Password'], $Akun[0]['Password'])) {
-				$Session = array('Akun' => 'Mhs',
+				$Session = array('AkunMhs' => 'Mhs',
 												 'NIM' => $_POST['NIM'],
 												 'Nama' => $Akun[0]['Nama']);
 				$this->session->set_userdata($Session);
@@ -27,11 +27,11 @@ class SMD extends CI_Controller {
 	}
 
 	public function MhsDaftar(){
-		if ($this->db->get('mahasiswa',array('NIM' => $_POST['NIM']))->num_rows() === 0) {
+		if ($this->db->get_where('mahasiswa',array('NIM' => $_POST['NIM']))->num_rows() === 0) {
 			$_POST['Password'] = password_hash($_POST['Password'], PASSWORD_DEFAULT);
 			$this->db->insert('mahasiswa',$_POST);
 			if ($this->db->affected_rows()){
-				$Session = array('Akun' => 'Mhs',
+				$Session = array('AkunMhs' => 'Mhs',
 												 'NIM' => $_POST['NIM'],
 												 'Nama' => $_POST['Nama']);
 				$this->session->set_userdata($Session);
@@ -81,7 +81,7 @@ public function Kuisioner($Jenis){
 			$this->load->view('SitasiMahasiswa');
 		} else if ($Jenis == 'PatenMahasiswa') {
 			$this->load->view('PatenMahasiswa');
-		} else if ($Jenis == 'HKIMahasiswa') {
+		} else if ($Jenis == 'HKIMahasiswa') { 
 			$this->load->view('HKIMahasiswa');
 		} else if ($Jenis == 'KaryaMahasiswa') {
 			$this->load->view('KaryaMahasiswa');
@@ -261,7 +261,7 @@ public function Kuisioner($Jenis){
 			$Akun = $CekLogin->result_array();
 			if (password_verify($_POST['Password'], $Akun[0]['Password'])) {
 				$Jabatan = $this->db->get_where('Dosen', array('NIP' => $_POST['NIP']))->result_array();
-				$Session = array('Akun' => 'Dosen',
+				$Session = array('AkunDosen' => 'Dosen',
 												 'NIP' => $_POST['NIP'], 
 												 'Jabatan' => $Jabatan[0]['Jabatan'], 
 												 'IdKegiatanPendidikan' => 'PND1',
@@ -274,6 +274,8 @@ public function Kuisioner($Jenis){
 												 'SubPenunjang' => 'Rencana');
 				if ($Akun[0]['JenisAkun'] == 2) {
 					$Session['Kajur'] = true;
+				} else if ($Akun[0]['JenisAkun'] == 3) {
+					$Session['Kaprodi'] = true;
 				}
 				$this->session->set_userdata($Session);
 				echo '1';
@@ -291,7 +293,7 @@ public function Kuisioner($Jenis){
 		else{
 			$Akun = $CekLogin->result_array();
 			if (password_verify($_POST['Password'], $Akun[0]['Password'])) {
-				$Session = array('Akun' => 'Admin');
+				$Session = array('AkunAdmin' => 'Admin');
 				$this->session->set_userdata($Session);
 				echo '1';
 			} else {

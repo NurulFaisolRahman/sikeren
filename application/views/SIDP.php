@@ -11,20 +11,20 @@
   <body>
     <div class="main">
       <div class="container a-container" id="a-container">
-        <form class="form" id="a-form" method="" action="">
+        <form class="form" id="FormDaftar">
           <h2 class="form_title title">Daftar Akun</h2>
           <input class="form__input" type="text" placeholder="NIM" id="_NIM">
           <input class="form__input" type="text" placeholder="Nama" id="_Nama">
           <input class="form__input" type="password" placeholder="Password" id="_Password">
-          <button class="form__button button submit" id="Daftar">Daftar</button>
+          <button class="form__button button" id="Daftar">Daftar</button>
         </form>
       </div>
       <div class="container b-container" id="b-container">
-        <form class="form" id="b-form" method="" action="">
+        <form class="form" id="FormLogin">>
           <h2 class="form_title title">Silahkan Masuk</h2>
           <input class="form__input" type="text" placeholder="NIM" id="NIM">
           <input class="form__input" type="password" placeholder="Password" id="Password">
-          <button class="form__button button submit" id="Masuk">Masuk</button>
+          <button class="form__button button" id="Masuk">Masuk</button>
         </form>
       </div>
       <div class="switch" id="switch-cnt">
@@ -50,6 +50,18 @@
   <script>
     $(document).ready(function(){
       var BaseURL = '<?=base_url()?>'
+      $("#FormLogin").submit(function(e) {
+          e.preventDefault()
+      })
+      $("#FormDaftar").submit(function(e) {
+          e.preventDefault()
+      })
+      $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+          event.preventDefault()
+          return false
+        }
+      })
       $("#Masuk").click(function() {
         var Akun = { NIM: $("#NIM").val(),
                      Password: $("#Password").val() } 
@@ -65,9 +77,9 @@
       $("#Daftar").click(function() {
         if ($("#_NIM").val() === "" || isNaN($("#_NIM").val()) || $("#_NIM").val().length != 12) {
           alert('Mohon Input NIM 12 Digit Angka!')
-        } else if ($("#_NIM").val() === "") {
+        } else if ($("#_Nama").val() === "") {
           alert('Mohon Input Nama!')
-        } else if ($("#_NIM").val() === "") {
+        } else if ($("#_Password").val() === "") {
           alert('Mohon Input Password!')
         } else {
           var Mhs = { NIM: $("#_NIM").val(),

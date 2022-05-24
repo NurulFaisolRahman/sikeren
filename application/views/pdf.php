@@ -26,7 +26,10 @@
     <td rowspan="7" style="width:8%;"></td>
   </tr> 
   <tr>
-    <td style="width:64%;"><p style="text-align:center;margin:20px;"><b>KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN</b></p></td>
+    <td style="width:64%;"><p style="text-align:center;margin:20px;"><b>KEMENTERIAN PENDIDIKAN, KEBUDAYAAN, RISET DAN TEKNOLOGI </b></p></td>
+  </tr>
+  <tr>
+    <td style="width:64%;"><p style="text-align:center;margin:20px;"><b>RISET DAN TEKNOLOGI </b></p></td>
   </tr>
   <tr>
     <td><p style="text-align:center;"><b>UNIVERSITAS TRUNOJOYO MADURA</b></p></td>

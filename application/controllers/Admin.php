@@ -5,7 +5,7 @@ class Admin extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		if($this->session->userdata('Akun') != 'Admin'){
+		if($this->session->userdata('AkunAdmin') != 'Admin'){
 			redirect(base_url());
 		}
 	}
@@ -106,6 +106,24 @@ class Admin extends CI_Controller {
 			echo '1';
 		} else {
 			echo 'Gagal Menghapus';
+		}
+	}
+
+	public function DosenPembimbing(){
+		$Data['Halaman'] = 'Mahasiswa';
+		$Data['SubMenu'] = 'Dosen Pembimbing';
+		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Diajukan'")->result_array();
+    $this->load->view('HeaderAdmin',$Data);
+    $this->load->view('DosenPembimbing',$Data); 
+	}
+
+	public function ValidasiProposal(){
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
 		}
 	}
 

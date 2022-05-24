@@ -60,6 +60,26 @@
                     <p><b>Profil</b></p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?=base_url("Dashboard/ValidasiBimbingan")?>" class="nav-link <?php if ($Halaman == "Validasi Bimbingan") { echo "active";} ?>">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p><b>Validasi Bimbingan</b></p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?=base_url("Dashboard/BimbinganSkripsi")?>" class="nav-link <?php if ($Halaman == "Bimbingan Skripsi") { echo "active";} ?>">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p><b>Bimbingan Skripsi</b></p>
+                    </a>
+                </li>
+                <?php if ($this->session->userdata('Kaprodi')) { ?> 
+                  <li class="nav-item">
+                      <a href="<?=base_url("Dashboard/DosenPembimbing")?>" class="nav-link <?php if ($Halaman == "Dosen Pembimbing") { echo "active";} ?>">
+                      <i class="nav-icon fas fa-users"></i>
+                      <p><b>Dosen Pembimbing</b></p>
+                      </a>
+                  </li>
+                <?php } ?>
                 <li class="nav-item has-treeview <?php if ($Halaman == "Kegiatan") { echo "menu-open"; } ?>">
                     <a href="#" class="nav-link <?php if ($Halaman == "Kegiatan") { echo "active"; } ?>">
                     <i class="nav-icon fas fa-tasks"></i>
