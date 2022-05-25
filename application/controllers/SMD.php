@@ -46,7 +46,7 @@ class SMD extends CI_Controller {
 
 	public function MhsSignOut(){
 		$this->session->sess_destroy();
-		redirect(base_url('SMD/SIDP'));
+		redirect(base_url('SMD/TA'));
 	}
 
 	public function EvaluasiPBM(){
