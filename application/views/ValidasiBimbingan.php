@@ -109,7 +109,7 @@
 														<select class="custom-select custom-select-sm" id="Konsentrasi" disabled>										
 															<option value="Perencanaan Pembangunan">Perencanaan Pembangunan</option>
 															<option value="Ekonomi Publik">Ekonomi Publik</option>
-															<option value="Ekonomi Moneter">Ekonomi Moneter</option>
+															<option value="Ekonomi Moneter & Perbankan">Ekonomi Moneter & Perbankan</option>
 														</select>
 													</div>
 												</div>
@@ -177,7 +177,7 @@
                       StatusProposal: 'Disetujui Pembimbing' }
           $("#ValidasiProposal").attr("disabled", true); 
           $("#LoadingValidasi").show();                             
-          $.post(BaseURL+"Dashboard/ValidasiProposal", Mhs).done(function(Respon) {
+          $.post(BaseURL+"Dashboard/TerimaBimbingan", Mhs).done(function(Respon) {
             if (Respon == '1') {
               window.location = BaseURL + "Dashboard/ValidasiBimbingan"
             } else {
@@ -213,7 +213,7 @@
         $('#TabelValidasi').DataTable( {
 					// dom:'lfrtip',
 					"ordering": false,
-          "lengthMenu": [ 5, 10, 20, 30 ],
+          "lengthMenu": [[ 5, 10, 20, 30, -1 ],[ 5, 10, 20, 30, "All"]],
 					"language": {
 						"paginate": {
 							'previous': '<b class="text-primary"><</b>',

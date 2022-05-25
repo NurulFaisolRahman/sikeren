@@ -20,20 +20,18 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <?php $No = 1; foreach ($DosenPembimbing as $key) { ?>
+                            <?php $No = 1; foreach ($UjianProposal as $key) { ?>
                               <tr>	
                                 <td class="text-center align-middle"><?=$No++?></td>
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
                                 <td class="align-middle"><?=$key['JudulProposal']?></td>
                                 <td class="align-middle text-center">
-                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['Gender']."|".$key['Alamat']."|".$key['HP']."|".$key['Konsentrasi']."|".$key['JudulProposal']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
+                                  <button CekData="<?=$key['NIM'].'|'.$key['Nama']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
                                 </td>
                                 <td class="text-center align-middle">
-                                <button LihatPersetujuanJudul="<?=base_url('Proposal/'.$key['PersetujuanJudul'])?>" class="btn btn-sm btn-primary LihatPersetujuanJudul"><i class="fas fa-file-pdf"></i></button>  
-                                  <button LihatKRS="<?=base_url('Proposal/'.$key['KRS'])?>" class="btn btn-sm btn-warning text-white LihatKRS"><i class="fas fa-file-pdf"></i></button>  
-                                  <button LihatTranskrip="<?=base_url('Proposal/'.$key['Transkrip'])?>" class="btn btn-sm btn-success LihatTranskrip"><i class="fas fa-file-pdf"></i></button>  
-                                  <button LihatProposal="<?=base_url('Proposal/'.$key['DraftProposal'])?>" class="btn btn-sm btn-danger LihatProposal"><i class="fas fa-file-pdf"></i></button>  
+                                  <button LihatKartuBimbingan="<?=base_url('Proposal/'.$key['KartuBimbinganProposal'])?>" class="btn btn-sm btn-danger LihatKartuBimbingan"><i class="fas fa-file-pdf"></i></button>  
+                                  <button LihatPlagiasi="<?=base_url('Proposal/'.$key['PlagiasiProposal'])?>" class="btn btn-sm btn-warning LihatPlagiasi"><i class="fas fa-file-pdf"></i></button>  
                                 </td> 
                               </tr>
                             <?php } ?>
@@ -57,7 +55,7 @@
 							<div class="row">
                 <div class="col-12">
 									<div class="card-header bg-danger text-light mt-2">
-										<b>Form Pengajuan Dosen Pembimbing Skripsi</b>
+										<b>Form Pengajuan Ujian Proposal Skripsi</b>
 									</div>
 									<div class="card-body border border-primary bg-warning">
 										<div class="container-fluid">
@@ -78,53 +76,6 @@
 														<input class="form-control form-control-sm" type="text" id="Nama" disabled>
 													</div>
 												</div>
-												<div class="col-4 my-1">
-													<div class="input-group input-group-sm">
-														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Jenis Kelamin</b></label>
-														</div>
-														<select class="custom-select custom-select-sm" id="Gender" disabled>								
-															<option value="Laki-Laki">Laki-Laki</option>
-															<option value="Perempuan">Perempuan</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-8 my-1"> 
-													<div class="input-group input-group-sm">
-														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Alamat</b></label>
-														</div>
-														<input class="form-control form-control-sm" type="text" id="Alamat" disabled>
-													</div>
-												</div>
-												<div class="col-4 my-1">
-													<div class="input-group input-group-sm">
-														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Telpon/HP</b></label>
-														</div>
-														<input class="form-control form-control-sm" type="text" id="HP" disabled>
-													</div>
-												</div>
-												<div class="col-8 my-1"> 
-													<div class="input-group input-group-sm">
-														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Konsentrasi</b></label>
-														</div>
-														<select class="custom-select custom-select-sm" id="Konsentrasi" disabled>										
-															<option value="Perencanaan Pembangunan">Perencanaan Pembangunan</option>
-															<option value="Ekonomi Publik">Ekonomi Publik</option>
-															<option value="Ekonomi Moneter & Perbankan">Ekonomi Moneter & Perbankan</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-12 my-1">
-													<div class="input-group input-group-sm">
-														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Judul Proposal</b></label>
-														</div>
-														<input class="form-control form-control-sm" type="text" id="JudulProposal" disabled>
-													</div>
-												</div>
 												<div class="col-12 my-1">
                           <div class="input-group input-group-sm">
                             <button type="button" class="btn btn-sm btn-primary" id="ValidasiProposal"><b>VALIDASI&nbsp;<div id="LoadingValidasi" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
@@ -142,38 +93,20 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="ModalPersetujuanJudul">
+    <div class="modal fade" id="ModalKartuBimbingan">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-body">
-            <embed id="PathPersetujuanJudul" src="" type="application/pdf" width="100%" height="520"/>
+            <embed id="PathKartuBimbingan" src="" type="application/pdf" width="100%" height="520"/>
           </div>
         </div>
       </div>
     </div>
-    <div class="modal fade" id="ModalKRS">
+    <div class="modal fade" id="ModalPlagiasi">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-body">
-            <embed id="PathKRS" src="" type="application/pdf" width="100%" height="520"/>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="ModalTranskrip">
-      <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-          <div class="modal-body">
-            <embed id="PathTranskrip" src="" type="application/pdf" width="100%" height="520"/>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="ModalProposal">
-      <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-          <div class="modal-body">
-            <embed id="PathProposal" src="" type="application/pdf" width="100%" height="520"/>
+            <embed id="PathPlagiasi" src="" type="application/pdf" width="100%" height="520"/>
           </div>
         </div>
       </div>
@@ -194,23 +127,18 @@
 					var Data = $(this).attr('CekData')
 					var Pisah = Data.split("|")
 					$("#NIM").val(Pisah[0])
-					$("#Nama").val(Pisah[1])
-					$("#Gender").val(Pisah[2])
-					$("#Alamat").val(Pisah[3])
-					$("#HP").val(Pisah[4])
-					$("#Konsentrasi").val(Pisah[5])
-					$("#JudulProposal").val(Pisah[6])
+          $("#Nama").val(Pisah[1])
 					$('#ModalValidasiProposal').modal("show")
         })
         
         $("#ValidasiProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
-                      StatusProposal: 'Menunggu Persetujuan KPS' }
+                      StatusUjianProposal: 'Menunggu Persetujuan KPS' }
           $("#ValidasiProposal").attr("disabled", true); 
           $("#LoadingValidasi").show();                             
-          $.post(BaseURL+"Admin/ValidasiProposal", Mhs).done(function(Respon) {
+          $.post(BaseURL+"Admin/ValidasiUjianProposal", Mhs).done(function(Respon) {
             if (Respon == '1') {
-              window.location = BaseURL + "Admin/DosenPembimbing"
+              window.location = BaseURL + "Admin/UjianProposalAdmin"
             } else {
               alert(Respon)
               $("#ValidasiProposal").attr("disabled", false); 
@@ -221,12 +149,12 @@
 
         $("#TolakProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
-                      StatusProposal: 'Ditolak Oleh Admin Karena '+ $("#Penolakan").val()}
+                      StatusUjianProposal: 'Ditolak Oleh Admin Karena '+ $("#Penolakan").val()}
           $("#TolakProposal").attr("disabled", true); 
           $("#LoadingDitolak").show();                             
-          $.post(BaseURL+"Admin/ValidasiProposal", Mhs).done(function(Respon) {
+          $.post(BaseURL+"Admin/ValidasiUjianProposal", Mhs).done(function(Respon) {
             if (Respon == '1') {
-              window.location = BaseURL + "Admin/DosenPembimbing"
+              window.location = BaseURL + "Admin/UjianProposalAdmin"
             } else {
               alert(Respon)
               $("#TolakProposal").attr("disabled", false); 
@@ -235,28 +163,16 @@
           })
         })
         
-        $(document).on("click",".LihatPersetujuanJudul",function(){
-					var Path = $(this).attr('LihatPersetujuanJudul')
-          $('#PathPersetujuanJudul').attr('src',Path)		
-          $('#ModalPersetujuanJudul').modal("show")
+        $(document).on("click",".LihatKartuBimbingan",function(){
+					var Path = $(this).attr('LihatKartuBimbingan')
+          $('#PathKartuBimbingan').attr('src',Path)		
+          $('#ModalKartuBimbingan').modal("show")
 				})
 
-        $(document).on("click",".LihatKRS",function(){
-					var Path = $(this).attr('LihatKRS')
-          $('#PathKRS').attr('src',Path)		
-          $('#ModalKRS').modal("show")
-				}) 
-
-        $(document).on("click",".LihatTranskrip",function(){
-					var Path = $(this).attr('LihatTranskrip')
-          $('#PathTranskrip').attr('src',Path)		
-          $('#ModalTranskrip').modal("show")
-				}) 
-        
-        $(document).on("click",".LihatProposal",function(){
-					var Path = $(this).attr('LihatProposal')
-          $('#PathProposal').attr('src',Path)		
-          $('#ModalProposal').modal("show")
+        $(document).on("click",".LihatPlagiasi",function(){
+					var Path = $(this).attr('LihatPlagiasi')
+          $('#PathPlagiasi').attr('src',Path)		
+          $('#ModalPlagiasi').modal("show")
 				}) 
 
         $('#TabelDosenPembimbing').DataTable( {

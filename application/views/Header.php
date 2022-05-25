@@ -60,7 +60,7 @@
                     <p><b>Profil</b></p>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="<?=base_url("Dashboard/ValidasiBimbingan")?>" class="nav-link <?php if ($Halaman == "Validasi Bimbingan") { echo "active";} ?>">
                     <i class="nav-icon fas fa-users"></i>
                     <p><b>Validasi Bimbingan</b></p>
@@ -72,14 +72,44 @@
                     <p><b>Bimbingan Skripsi</b></p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?=base_url("Dashboard/ValidasiPengujiProposal")?>" class="nav-link <?php if ($Halaman == "Validasi Proposal") { echo "active";} ?>">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p><b>Validasi Proposal</b></p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?=base_url("Dashboard/PengujiProposal")?>" class="nav-link <?php if ($Halaman == "Ujian Proposal") { echo "active";} ?>">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p><b>Ujian Proposal</b></p>
+                    </a>
+                </li>
                 <?php if ($this->session->userdata('Kaprodi')) { ?> 
-                  <li class="nav-item">
-                      <a href="<?=base_url("Dashboard/DosenPembimbing")?>" class="nav-link <?php if ($Halaman == "Dosen Pembimbing") { echo "active";} ?>">
-                      <i class="nav-icon fas fa-users"></i>
-                      <p><b>Dosen Pembimbing</b></p>
-                      </a>
+                  <li class="nav-item has-treeview <?php if ($Halaman == "Validasi") { echo "menu-open"; } ?>">
+                    <a href="#" class="nav-link <?php if ($Halaman == "Validasi") { echo "active"; } ?>">
+                    <i class="nav-icon fas fa-tasks"></i>
+                    <p>
+                      <b>Validasi</b>
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                    </a>
+                    <?php
+                      $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal");
+                      $NamaKegiatan = array("Dosen Pembimbing","Penguji Proposal");
+                      $Icon = array("users","users");
+                    ?>
+                    <?php for ($i=0; $i < count($JenisKegiatan); $i++) {?>
+                    <ul class="nav nav-treeview <ml-1></ml-3>">
+                        <li class="nav-item">
+                        <a href="<?=base_url("Dashboard/").$JenisKegiatan[$i]?>" class="nav-link <?php if ($SubMenu == $JenisKegiatan[$i]) { echo "active"; } ?>">
+                            <i class="fas fa-<?=$Icon[$i]?> nav-icon text-primary"></i>
+                            <p class="font-weight-bold text-primary"><?=$NamaKegiatan[$i]?></p>
+                        </a>
+                        </li>
+                    </ul>
+                    <?php } ?>
                   </li>
-                <?php } ?> -->
+                <?php } ?>
                 <li class="nav-item has-treeview <?php if ($Halaman == "Kegiatan") { echo "menu-open"; } ?>">
                     <a href="#" class="nav-link <?php if ($Halaman == "Kegiatan") { echo "active"; } ?>">
                     <i class="nav-icon fas fa-tasks"></i>

@@ -6,6 +6,22 @@
               <div class="col-sm-12 mt-2">
                 <div class="container-fluid border border-warning rounded bg-light">
                   <div class="row align-items-center">
+                    <div class="col-6 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text bg-primary text-light"><b>Bimbingan</b></label>
+                        </div>
+                        <select class="custom-select custom-select-sm" id="Bimbingan">					
+                          <?php foreach ($Bimbingan as $key) { ?>
+                            <option value="<?=$key['NIM']?>"><?=$key['Nama']?></option>
+                          <?php } ?>
+                        </select>
+                        <div class="input-group-prepend">
+                          <label class="input-group-text bg-danger text-light" id="Lihat"><b>Lihat</b></label>
+                          <label class="input-group-text bg-primary text-light" id="Foto"><b>Foto</b></label>
+                        </div>
+                      </div>
+                    </div>
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
                         <table id="TabelBimbingan" class="table table-bordered table-striped">
@@ -15,25 +31,23 @@
                               <th style="width: 10%;">NIM</th>
                               <th style="width: 15%;">Nama</th>
                               <th>Tanggal</th>
-                              <th>Poin Bimbingan</th>
                               <th>Catatan Dosen</th>
                               <th style="width: 7%;text-align: center;">Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <?php $No = 1; foreach ($Bimbingan as $key) { ?>
-                              <tr>	
+                            <?php $No = 1; foreach ($DataBimbingan as $key) { ?>
+                              <tr>
                                 <td class="text-center align-middle"><?=$No++?></td>
                                 <td class="align-middle"><?=$key['NIM']?></td>
-                                <td class="align-middle"><?=$key['Nama']?></td>
+                                <td class="align-middle"><?=$this->session->userdata('NamaBimbingan')?></td>
                                 <td class="align-middle"><?=$key['TanggalBimbingan']?></td>
-                                <td class="align-middle"><?=$key['PoinBimbingan']?></td>
                                 <td class="align-middle"><?=$key['CatatanDosen']?></td>
                                 <td class="text-center align-middle">
-                                  <button UpdateBimbingan="<?=$key['Id'].'|'.$key['CatatanMahasiswa'].'|'.$key['CatatanDosen']?>" class="btn btn-sm btn-warning UpdateBimbingan"><i class="fas fa-edit"></i></button>  
-                                  <button LihatProposal="<?=base_url('Proposal/'.$key['FileBimbingan'])?>" class="btn btn-sm btn-danger LihatProposal"><i class="fas fa-file-pdf"></i></button>  
-                                </td> 
-                              </tr>
+                                  <button UpdateBimbingan="<?=$key['Id'].'|'.$key['CatatanMahasiswa'].'|'.$key['CatatanDosen'].'|'.$key['PoinBimbingan']?>" class="btn btn-sm btn-warning UpdateBimbingan"><i class="fas fa-edit"></i></button>
+                                  <button LihatProposal="<?=base_url('Proposal/'.$key['FileBimbingan'])?>" class="btn btn-sm btn-danger LihatProposal"><i class="fas fa-file-pdf"></i></button>
+                                </td>
+                              </tr>  
                             <?php } ?>
                           </tbody>
                         </table>
@@ -63,6 +77,14 @@
                         <div class="col-lg-12 my-1">
 													<div class="input-group input-group-sm"> 
 														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Poin Bimbingan</b></label>
+														</div>
+														<textarea class="form-control" id="PoinBimbingan" rows="2"></textarea>
+													</div>
+												</div>
+                        <div class="col-lg-12 my-1">
+													<div class="input-group input-group-sm"> 
+														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Catatan Mahasiswa</b></label>
 														</div>
 														<textarea class="form-control" id="CatatanMahasiswa" rows="3"></textarea>
@@ -73,7 +95,7 @@
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Catatan Dosen</b></label>
 														</div>
-														<textarea class="form-control" id="CatatanDosen" rows="3"></textarea>
+														<textarea class="form-control" id="CatatanDosen" rows="3" placeholder="Input Catatan Bimbingan"></textarea>
 													</div>
                         </div>
                         <input class="form-control" type="hidden" id="IdBimbingan">
@@ -99,6 +121,15 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="ModalFoto">
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content bg-transparent" width="170px">
+          <div class="modal-body text-center">
+            <img id="PathFoto" src="" width="150px" height="180px" alt="FotoMahasiswa">
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
     <script src="<?=base_url('bootstrap/js/popper.min.js')?>" ></script>
     <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
@@ -116,6 +147,34 @@
           $('#PathProposal').attr('src',Path)		
           $('#ModalProposal').modal("show")
 				}) 
+
+        $("#Lihat").click(function() {
+          if ($("#Bimbingan").val() == null) {
+            alert('Belum Ada Bimbingan!')
+          } else {
+            var Data = {NIMBimbingan: $("#Bimbingan").val(),NamaBimbingan: $("#Bimbingan option:selected").text()}
+            $.post(BaseURL+"Dashboard/SesiBimbingan", Data).done(function(Respon) {
+              window.location = BaseURL + "Dashboard/BimbinganSkripsi"
+            })
+          }
+				})
+
+        $("#Foto").click(function() {
+          if ($("#Bimbingan").val() == null) {
+            alert('Belum Ada Bimbingan!')
+          } else {
+            var Foto = {NIM: $("#Bimbingan").val()}
+            $.post(BaseURL+"Dashboard/FotoBimbingan", Foto).done(function(Respon) {
+              if (Respon != '') {
+                $('#PathFoto').attr('src',BaseURL+'FotoMhs/'+Respon)		
+                $('#ModalFoto').modal("show")
+              } else {
+                $('#PathFoto').attr('src',BaseURL+'img/Profil.jpg')		
+                $('#ModalFoto').modal("show")
+              }
+            })
+          }
+				})
 
         $("#UpdateBimbingan").click(function() {
 					var Catatan = {Id: $("#IdBimbingan").val(),CatatanDosen: $("#CatatanDosen").val()}
@@ -138,6 +197,7 @@
 					$("#IdBimbingan").val(Pisah[0])
 					$("#CatatanMahasiswa").val(Pisah[1])
 					$("#CatatanDosen").val(Pisah[2])
+          $("#PoinBimbingan").val(Pisah[3])
 					$('#ModalUpdateBimbingan').modal("show")
 				})
         

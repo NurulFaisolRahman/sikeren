@@ -5,14 +5,112 @@ class Mhs extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		if ($this->session->userdata('AkunMhs') != 'Mhs') {
-			redirect(base_url('SMD/SIDP'));
+			redirect(base_url('SMD/TA'));
 		} 
 	}
  
   public function Profil(){ 
-		// $Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa")->result_array();
-		$this->load->view('Mhs/Header'); 
-		$this->load->view('Mhs/Profil'); 
+		$Data['Mhs'] = $this->db->query("SELECT Foto FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$this->load->view('Mhs/Header',$Data); 
+		$this->load->view('Mhs/Profil',$Data); 
+	}
+
+	public function DosPem(){ 
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$Data['Bimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIM'))->result_array();
+		$this->load->view('Mhs/Header',$Data); 
+		$this->load->view('Mhs/DosPem',$Data); 
+	}
+
+	public function UjianProposal(){ 
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$Data['KetuaPenguji'] = $this->db->query("SELECT Nama FROM dosen WHERE NIP = "."'".$Data['Mhs']['PengujiProposal1']."'")->row_array()['Nama'];
+		$Data['AnggotaPenguji'] = $this->db->query("SELECT Nama FROM dosen WHERE NIP = "."'".$Data['Mhs']['PengujiProposal2']."'")->row_array()['Nama'];
+		$this->load->view('Mhs/Header',$Data); 
+		$this->load->view('Mhs/UjianProposal',$Data); 
+	}
+
+	public function InputUjianProposal(){
+		$NamaKartuBimbinganProposal = date('Ymd',time()).substr(password_hash('KartuBimbinganProposal', PASSWORD_DEFAULT),7,7);
+		$NamaKartuBimbinganProposal = str_replace("/","E",$NamaKartuBimbinganProposal);
+		$NamaKartuBimbinganProposal = str_replace(".","F",$NamaKartuBimbinganProposal);
+		move_uploaded_file($_FILES['KartuBimbinganProposal']['tmp_name'], "Proposal/".$NamaKartuBimbinganProposal.".pdf");
+		$_POST['KartuBimbinganProposal'] = $NamaKartuBimbinganProposal.".pdf";
+		$NamaPlagiasiProposal = date('Ymd',time()).substr(password_hash('PlagiasiProposal', PASSWORD_DEFAULT),7,7);
+		$NamaPlagiasiProposal = str_replace("/","E",$NamaPlagiasiProposal);
+		$NamaPlagiasiProposal = str_replace(".","F",$NamaPlagiasiProposal);
+		move_uploaded_file($_FILES['PlagiasiProposal']['tmp_name'], "Proposal/".$NamaPlagiasiProposal.".pdf");
+		$_POST['PlagiasiProposal'] = $NamaPlagiasiProposal.".pdf";
+		$_POST['StatusUjianProposal'] = 'Diajukan';
+		$this->db->where('NIM', $this->session->userdata('NIM'));
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpan Data!';
+		}
+	}
+
+	public function EditUjianProposal(){
+		if (count($_FILES) == 0) {
+      $this->db->where('NIM', $this->session->userdata('NIM'));
+			$this->db->update('mahasiswa',$_POST);
+			echo '1';
+    } else if (count($_FILES) > 0) {
+      if (!empty($_POST['_KartuBimbingan_'])) {
+				unlink('Proposal/'.$_POST['_KartuBimbingan_']);
+				unset($_POST['_KartuBimbingan_']);
+				$NamaKartuBimbingan = date('Ymd',time()).substr(password_hash('KartuBimbingan', PASSWORD_DEFAULT),7,7);
+				$NamaKartuBimbingan = str_replace("/","E",$NamaKartuBimbingan);
+				$NamaKartuBimbingan = str_replace(".","F",$NamaKartuBimbingan);
+				move_uploaded_file($_FILES['KartuBimbingan']['tmp_name'], "Proposal/".$NamaKartuBimbingan.".pdf");
+				$_POST['KartuBimbinganProposal'] = $NamaKartuBimbingan.".pdf";
+			}
+			if (!empty($_POST['_Plagiasi_'])) {
+				unlink('Proposal/'.$_POST['_Plagiasi_']);
+				unset($_POST['_Plagiasi_']);
+				$NamaPlagiasi = date('Ymd',time()).substr(password_hash('Plagiasi', PASSWORD_DEFAULT),7,7);
+				$NamaPlagiasi = str_replace("/","E",$NamaPlagiasi);
+				$NamaPlagiasi = str_replace(".","F",$NamaPlagiasi);
+				move_uploaded_file($_FILES['Plagiasi']['tmp_name'], "Proposal/".$NamaPlagiasi.".pdf");
+				$_POST['PlagiasiProposal'] = $NamaPlagiasi.".pdf";
+			}
+			$this->db->where('NIM', $this->session->userdata('NIM'));
+			$this->db->update('mahasiswa',$_POST);
+			echo '1';
+		}
+	}
+
+	public function AjukanUjianProposal(){
+		if (count($_FILES) == 0) {
+			$_POST['StatusUjianProposal'] = 'Diajukan';
+      $this->db->where('NIM', $this->session->userdata('NIM'));
+			$this->db->update('mahasiswa',$_POST);
+			echo '1';
+    } else if (count($_FILES) > 0) {
+      if (!empty($_POST['_KartuBimbingan_'])) {
+				unlink('Proposal/'.$_POST['_KartuBimbingan_']);
+				unset($_POST['_KartuBimbingan_']);
+				$NamaKartuBimbingan = date('Ymd',time()).substr(password_hash('KartuBimbingan', PASSWORD_DEFAULT),7,7);
+				$NamaKartuBimbingan = str_replace("/","E",$NamaKartuBimbingan);
+				$NamaKartuBimbingan = str_replace(".","F",$NamaKartuBimbingan);
+				move_uploaded_file($_FILES['KartuBimbingan']['tmp_name'], "Proposal/".$NamaKartuBimbingan.".pdf");
+				$_POST['KartuBimbinganProposal'] = $NamaKartuBimbingan.".pdf";
+			}
+			if (!empty($_POST['_Plagiasi_'])) {
+				unlink('Proposal/'.$_POST['_Plagiasi_']);
+				unset($_POST['_Plagiasi_']);
+				$NamaPlagiasi = date('Ymd',time()).substr(password_hash('Plagiasi', PASSWORD_DEFAULT),7,7);
+				$NamaPlagiasi = str_replace("/","E",$NamaPlagiasi);
+				$NamaPlagiasi = str_replace(".","F",$NamaPlagiasi);
+				move_uploaded_file($_FILES['Plagiasi']['tmp_name'], "Proposal/".$NamaPlagiasi.".pdf");
+				$_POST['PlagiasiProposal'] = $NamaPlagiasi.".pdf";
+			}
+			$_POST['StatusUjianProposal'] = 'Diajukan';
+			$this->db->where('NIM', $this->session->userdata('NIM'));
+			$this->db->update('mahasiswa',$_POST);
+			echo '1';
+		}
 	}
 
 	public function GantiPassword(){
@@ -27,20 +125,34 @@ class Mhs extends CI_Controller {
 
 	public function Foto(){
 		$Tipe = pathinfo($_FILES['Foto']['name'],PATHINFO_EXTENSION);
-		$NamaFoto = date('Ymd',time()).substr(password_hash('Foto', PASSWORD_DEFAULT),7,3).'.'.$Tipe;
+		$NamaFoto = date('Ymd',time()).substr(password_hash('Foto', PASSWORD_DEFAULT),7,3);
 		$NamaFoto = str_replace("/","E",$NamaFoto);
 		$NamaFoto = str_replace(".","F",$NamaFoto);
-		move_uploaded_file($_FILES['Foto']['tmp_name'], "FotoMhs/".$NamaFoto);
-		if ($_POST['NamaFoto'] != '') { unlink('FotoDosen/'.$_POST['NamaFoto']); }
+		move_uploaded_file($_FILES['Foto']['tmp_name'], "FotoMhs/".$NamaFoto.'.'.$Tipe);
+		if ($_POST['NamaFoto'] != '') { unlink('FotoMhs/'.$_POST['NamaFoto']); }
 		$this->db->where('NIM', $this->session->userdata('NIM'));
-		$this->db->update('mahasiswa',array('Foto' => $NamaFoto));
+		$this->db->update('mahasiswa',array('Foto' => $NamaFoto.'.'.$Tipe));
+		echo '1';
 	}
 
 	public function PersetujuanPembimbing(){
 		$this->load->library('Pdf');
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
-		$Data['QRCode'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".explode("$",$Data['Mhs']['DosenPembimbing'])[0])->row_array()['QRCode'];
+		$Tanggal = explode("-",$Data['Mhs']['TanggalDisetujuiPembimbing']);$Data['Tanggal'] = $Tanggal[2].'-'.$Tanggal[1].'-'.$Tanggal[0];
+		$Data['QRCode'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$this->load->view('PersetujuanPembimbing',$Data);
+	}
+
+	public function PersetujuanUjianProposal(){
+		$this->load->library('Pdf');
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianProposal']);$Data['Tanggal'] = $Tanggal[2].'-'.$Tanggal[1].'-'.$Tanggal[0];
+		$Data['Ketua'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['QRCode'];
+		$Data['Anggota'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['QRCode'];
+		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
+		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
+		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$this->load->view('PersetujuanUjianProposal',$Data);
 	}
 	
 	public function KartuBimbingan(){
@@ -49,18 +161,9 @@ class Mhs extends CI_Controller {
 		$Data['Bimbingan'] = $this->db->query("SELECT TanggalBimbingan,PoinBimbingan FROM bimbingan WHERE NIM = ".$this->session->userdata('NIM'))->result_array();
 		$Awal = explode("-",$Data['Bimbingan'][0]['TanggalBimbingan']);$Data['Awal'] = $Awal[2].'-'.$Awal[1].'-'.$Awal[0];
 		$Akhir = explode("-",$Data['Bimbingan'][count($Data['Bimbingan'])-1]['TanggalBimbingan']);$Data['Akhir'] = $Akhir[2].'-'.$Akhir[1].'-'.$Akhir[0];
-		$DosenPembimbing = $this->db->query("SELECT DosenPembimbing FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array()['DosenPembimbing'];
-		$Data['NIP'] = explode("$",$DosenPembimbing)[0];$Data['DosenPembimbing'] = explode("$",$DosenPembimbing)[1];
-		$Data['QRCode'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".explode("$",$Data['Mhs']['DosenPembimbing'])[0])->row_array()['QRCode'];
+		$Data['QRCode'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$this->load->view('KartuBimbingan',$Data);
   }
-
-	public function DosPem(){ 
-		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
-		$Data['Bimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIM'))->result_array();
-		$this->load->view('Mhs/Header',$Data); 
-		$this->load->view('Mhs/DosPem',$Data); 
-	}
 
 	public function InputBimbingan(){
 		$NamaFileBimbingan = date('Ymd',time()).substr(password_hash('FileBimbingan', PASSWORD_DEFAULT),7,7);
@@ -109,6 +212,11 @@ class Mhs extends CI_Controller {
 	}
 
 	public function InputProposal(){
+		$NamaPersetujuanJudul = date('Ymd',time()).substr(password_hash('PersetujuanJudul', PASSWORD_DEFAULT),7,7);
+		$NamaPersetujuanJudul = str_replace("/","E",$NamaPersetujuanJudul);
+		$NamaPersetujuanJudul = str_replace(".","F",$NamaPersetujuanJudul);
+		move_uploaded_file($_FILES['PersetujuanJudul']['tmp_name'], "Proposal/".$NamaPersetujuanJudul.".pdf");
+		$_POST['PersetujuanJudul'] = $NamaPersetujuanJudul.".pdf";
 		$NamaKRS = date('Ymd',time()).substr(password_hash('KRS', PASSWORD_DEFAULT),7,7);
 		$NamaKRS = str_replace("/","E",$NamaKRS);
 		$NamaKRS = str_replace(".","F",$NamaKRS);
@@ -141,6 +249,15 @@ class Mhs extends CI_Controller {
 			$this->db->update('mahasiswa',$_POST);
 			echo '1';
     } else if (count($_FILES) > 0) {
+			if (!empty($_POST['_PersetujuanJudul_'])) {
+				unlink('Proposal/'.$_POST['_PersetujuanJudul_']);
+				unset($_POST['_PersetujuanJudul_']);
+				$NamaPersetujuanJudul = date('Ymd',time()).substr(password_hash('PersetujuanJudul', PASSWORD_DEFAULT),7,7);
+				$NamaPersetujuanJudul = str_replace("/","E",$NamaPersetujuanJudul);
+				$NamaPersetujuanJudul = str_replace(".","F",$NamaPersetujuanJudul);
+				move_uploaded_file($_FILES['PersetujuanJudul']['tmp_name'], "Proposal/".$NamaPersetujuanJudul.".pdf");
+				$_POST['PersetujuanJudul'] = $NamaPersetujuanJudul.".pdf";
+			}
       if (!empty($_POST['_KRS_'])) {
 				unlink('Proposal/'.$_POST['_KRS_']);
 				unset($_POST['_KRS_']);
@@ -181,6 +298,15 @@ class Mhs extends CI_Controller {
 			$this->db->update('mahasiswa',$_POST);
 			echo '1';
     } else if (count($_FILES) > 0) {
+			if (!empty($_POST['_PersetujuanJudul_'])) {
+				unlink('Proposal/'.$_POST['_PersetujuanJudul_']);
+				unset($_POST['_PersetujuanJudul_']);
+				$NamaPersetujuanJudul = date('Ymd',time()).substr(password_hash('PersetujuanJudul', PASSWORD_DEFAULT),7,7);
+				$NamaPersetujuanJudul = str_replace("/","E",$NamaPersetujuanJudul);
+				$NamaPersetujuanJudul = str_replace(".","F",$NamaPersetujuanJudul);
+				move_uploaded_file($_FILES['PersetujuanJudul']['tmp_name'], "Proposal/".$NamaPersetujuanJudul.".pdf");
+				$_POST['PersetujuanJudul'] = $NamaPersetujuanJudul.".pdf";
+			}
       if (!empty($_POST['_KRS_'])) {
 				unlink('Proposal/'.$_POST['_KRS_']);
 				unset($_POST['_KRS_']);
@@ -207,7 +333,8 @@ class Mhs extends CI_Controller {
 				$NamaProposal = str_replace(".","F",$NamaProposal);
 				move_uploaded_file($_FILES['DraftProposal']['tmp_name'], "Proposal/".$NamaProposal.".pdf");
 				$_POST['DraftProposal'] = $NamaProposal.".pdf";
-      }
+			}
+			$_POST['TanggalProposal'] = date("Y-m-d");
 			$_POST['StatusProposal'] = 'Diajukan';
 			$this->db->where('NIM', $this->session->userdata('NIM'));
 			$this->db->update('mahasiswa',$_POST);

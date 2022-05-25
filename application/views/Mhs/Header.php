@@ -24,7 +24,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="<?=base_url('img/Profil.jpg')?>" alt="..." class="img-circle profile_img">
+                <?php if ($Mhs['Foto'] == '') { ?>
+                    <img src="<?=base_url('img/Profil.jpg')?>" alt="Avatar" class="img-circle profile_img">
+                  <?php	} else { ?>
+                    <img src="<?=base_url('FotoMhs/'.$Mhs['Foto'])?>" alt="FotoMhs" class="img-circle profile_img">
+                  <?php } ?>
               </div>
               <div class="profile_info">
                 <span class="font-weight-bold"><?=$this->session->userdata('NIM')?></span>
@@ -42,10 +46,10 @@
 									<li><a href="<?=base_url('Mhs/DosPem')?>"><i class="fa fa-users"></i> <b>Dosen Pembimbing</b> </a></li>
                 </ul>
                 <ul class="nav side-menu">
-									<li><a href="<?=base_url('Mhs/Proposal')?>"><i class="fa fa-book"></i> <b>Ujian Proposal</b> </a></li>
+									<li><a href="<?=base_url('Mhs/UjianProposal')?>"><i class="fa fa-book"></i> <b>Ujian Proposal</b> </a></li>
                 </ul>
                 <ul class="nav side-menu">
-									<li><a href="<?=base_url('Mhs/Skripsi')?>"><i class="fa fa-book"></i> <b>Ujian Skripsi</b> </a></li>
+									<li><a href="#"><i class="fa fa-book"></i> <b>Ujian Skripsi</b> </a></li>
                 </ul>
 								<ul class="nav side-menu">
 									<li><a href="<?=base_url('SMD/MhsSignOut')?>"><i class="fa fa-sign-out"></i> <b>Keluar</b> </a></li>

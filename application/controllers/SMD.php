@@ -53,7 +53,7 @@ class SMD extends CI_Controller {
 		$this->load->view('EvaluasiPBM');
 	}
 
-	public function SIDP(){
+	public function TA(){
 		if ($this->session->userdata('Akun') == 'Mhs') {
 			redirect(base_url('Mhs/Profil'));
 		} else {
@@ -271,7 +271,9 @@ public function Kuisioner($Jenis){
 												 'SubPendidikan' => 'Rencana',
 												 'SubPenelitian' => 'Rencana',
 												 'SubPengabdian' => 'Rencana',
-												 'SubPenunjang' => 'Rencana');
+												 'SubPenunjang' => 'Rencana',
+												 'NIMBimbingan' => '',
+												 'NamaBimbingan' => '');
 				if ($Akun[0]['JenisAkun'] == 2) {
 					$Session['Kajur'] = true;
 				} else if ($Akun[0]['JenisAkun'] == 3) {

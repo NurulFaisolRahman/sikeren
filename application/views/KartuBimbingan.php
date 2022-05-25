@@ -4,6 +4,8 @@
   $pdf->setPrintHeader(false);  
   $pdf->setPrintFooter(false);         
   $pdf->setLeftMargin(10);
+  $pdf->setTopMargin(5);
+  $pdf->setRightMargin(5);
   $pdf->SetAuthor('nurulfaisolrahman@gmail.com');
   $pdf->SetDisplayMode('real', 'default');
   $pdf->AddPage('P', 'A4');
@@ -84,7 +86,7 @@
   </tr>
   <tr>
     <td></td>
-    <td colspan="2"><p>Dosen Pembimmbing : '.$DosenPembimbing.'</p></td>
+    <td colspan="2"><p>Dosen Pembimmbing : '.$Mhs['NamaPembimbing'].'</p></td>
     <td></td>
   </tr>
   <tr>
@@ -119,14 +121,14 @@
   </tr>
   <tr>
     <td></td>
-    <td><p>'.$DosenPembimbing.'</p></td>
+    <td><p>'.$Mhs['NamaPembimbing'].'</p></td>
   </tr>
   <tr>
     <td></td>
-    <td><p>NIP : '.$NIP.'</p></td>
+    <td><p>NIP : '.$Mhs['NIPPembimbing'].'</p></td>
   </tr>
 </table>
 ';
   $pdf->writeHTML($html, true, false, true, false, '');
-  $pdf->Output('KartuBimbingan.pdf', 'I');
+  $pdf->Output('Kartu_Bimbingan.pdf', 'I');
  ?>

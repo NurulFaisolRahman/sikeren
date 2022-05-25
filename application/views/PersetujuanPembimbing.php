@@ -4,6 +4,8 @@
   $pdf->setPrintHeader(false);  
   $pdf->setPrintFooter(false);         
   $pdf->setLeftMargin(10);
+  $pdf->setTopMargin(5);
+  $pdf->setRightMargin(5);
   $pdf->SetAuthor('nurulfaisolrahman@gmail.com');
   $pdf->SetDisplayMode('real', 'default');
   $pdf->AddPage('P', 'A4');
@@ -93,7 +95,7 @@
 <table>
   <tr>
     <td style="width:55%;"></td>
-    <td style="width:45%;"><p><br><br><br>Bangkalan,</p></td> 
+    <td style="width:45%;"><p><br><br><br>Bangkalan, '.$Tanggal.'</p></td> 
   </tr>
   <tr>
     <td></td>
@@ -101,14 +103,14 @@
   </tr>
   <tr>
     <td></td>
-    <td><p>'.explode("$",$Mhs['DosenPembimbing'])[1].'</p></td>
+    <td><p>'.$Mhs['NamaPembimbing'].'</p></td>
   </tr>
   <tr>
     <td></td>
-    <td><p>NIP : '.explode("$",$Mhs['DosenPembimbing'])[0].'</p></td>
+    <td><p>NIP : '.$Mhs['NIPPembimbing'].'</p></td>
   </tr>
 </table>
 ';
   $pdf->writeHTML($html, true, false, true, false, '');
-  $pdf->Output('SuratPersetujuanPembimbing.pdf', 'I');
+  $pdf->Output('Surat_Persetujuan_Pembimbing.pdf', 'I');
  ?>

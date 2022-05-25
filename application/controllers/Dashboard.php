@@ -1584,12 +1584,146 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function DosenPembimbing(){
-		$Data['Halaman'] = 'Dosen Pembimbing';
-		$Data['SubMenu'] = '';
-		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Korprodi' or StatusProposal LIKE 'Ditolak Oleh Pembimbing%'")->result_array();
+		$Data['Halaman'] = 'Validasi';
+		$Data['SubMenu'] = 'DosenPembimbing';
+		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' or StatusProposal LIKE 'Ditolak Oleh Pembimbing%'")->result_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM dosen")->result_array();
+		$Data['Bimbingan'] = $this->db->query("SELECT NamaPembimbing,COUNT(DISTINCT(NIPPembimbing)) AS Jumlah FROM `mahasiswa`")->result_array();
     $this->load->view('Header',$Data);
     $this->load->view('_DosenPembimbing',$Data); 
+	}
+
+	public function ValidasiPengujiProposal(){
+		$Data['Halaman'] = 'Validasi Proposal';
+		$Data['SubMenu'] = '';
+		$Data['PengujiProposal'] = array();
+		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan Penguji' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal1 = ''")->result_array();
+		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan Penguji' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal2 = ''")->result_array();
+		for ($i=0; $i < count($Penguji1); $i++) { 
+			array_push($Data['PengujiProposal'],$Penguji1[$i]);
+		}
+		for ($i=0; $i < count($Penguji2); $i++) { 
+			array_push($Data['PengujiProposal'],$Penguji2[$i]);
+		}
+    $this->load->view('Header',$Data);
+    $this->load->view('ValidasiPengujiProposal',$Data); 
+	}
+
+	public function PengujiProposal(){
+		$Data['Halaman'] = 'Ujian Proposal';
+		$Data['SubMenu'] = '';
+		$Data['PengujiProposal'] = array();
+		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal1 = 'Setuju' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal1 = ''")->result_array();
+		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal1 = 'Setuju' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal2 = ''")->result_array();
+		$Penguji3 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal1 = 'Setuju' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal3 = ''")->result_array();
+		for ($i=0; $i < count($Penguji1); $i++) { 
+			array_push($Data['PengujiProposal'],$Penguji1[$i]);
+		}
+		for ($i=0; $i < count($Penguji2); $i++) { 
+			array_push($Data['PengujiProposal'],$Penguji2[$i]);
+		}
+		for ($i=0; $i < count($Penguji3); $i++) { 
+			array_push($Data['PengujiProposal'],$Penguji3[$i]);
+		}
+    $this->load->view('Header',$Data);
+    $this->load->view('PengujiProposal',$Data); 
+	}
+
+	public function MenilaiProposal(){
+		$Data['PengujiProposal'] = $this->db->query("SELECT PengujiProposal1,PengujiProposal2,NIPPembimbing FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		if ($Data['PengujiProposal']['PengujiProposal1'] == $this->session->userdata('NIP')) {
+			$_POST['NilaiProposal1'] = $_POST['Nilai'];
+			$_POST['CatatanProposal1'] = $_POST['Catatan'];
+			unset($_POST['Nilai']);unset($_POST['Catatan']);
+		} else if ($Data['PengujiProposal']['PengujiProposal2'] == $this->session->userdata('NIP')) {
+			$_POST['NilaiProposal2'] = $_POST['Nilai'];
+			$_POST['CatatanProposal2'] = $_POST['Catatan'];
+			unset($_POST['Nilai']);unset($_POST['Catatan']);
+		} else if ($Data['PengujiProposal']['NIPPembimbing'] == $this->session->userdata('NIP')) {
+			$_POST['NilaiProposal3'] = $_POST['Nilai'];
+			$_POST['CatatanProposal3'] = $_POST['Catatan'];
+			unset($_POST['Nilai']);unset($_POST['Catatan']);
+		} 
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
+	public function TerimaMengujiProposal(){
+		$Data['PengujiProposal'] = $this->db->query("SELECT PengujiProposal1,PengujiProposal2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		if ($Data['PengujiProposal']['PengujiProposal1'] == $this->session->userdata('NIP')) {
+			$_POST['StatusPengujiProposal1'] = 'Setuju';
+		} else if ($Data['PengujiProposal']['PengujiProposal2'] == $this->session->userdata('NIP')) {
+			$_POST['StatusPengujiProposal2'] = 'Setuju';
+		} 
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
+	public function TolakMengujiProposal(){
+		$Data['PengujiProposal'] = $this->db->query("SELECT PengujiProposal1,PengujiProposal2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		if ($Data['PengujiProposal']['PengujiProposal1'] == $this->session->userdata('NIP')) {
+			$_POST['StatusPengujiProposal1'] = 'Ditolak Karena '.$_POST['Alasan'];
+		} else if ($Data['PengujiProposal']['PengujiProposal2'] == $this->session->userdata('NIP')) {
+			$_POST['StatusPengujiProposal2'] = 'Ditolak Karena '.$_POST['Alasan'];
+		} 
+		unset($_POST['Alasan']);
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
+	public function ValidasiUjianProposal(){
+		$Data['Halaman'] = 'Validasi';
+		$Data['SubMenu'] = 'ValidasiUjianProposal';
+		$Data['UjianProposal'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan KPS' or StatusPengujiProposal1 LIKE 'Ditolak%' or StatusPengujiProposal2 LIKE 'Ditolak%'")->result_array();
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM dosen")->result_array();
+    $this->load->view('Header',$Data);
+    $this->load->view('ValidasiUjianProposal',$Data); 
+	}
+
+	public function TerimaBimbingan(){
+		$_POST['TanggalDisetujuiPembimbing'] = date("Y-m-d");
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
+	public function KPSMemilihPenguji(){
+		if ($_POST['PengujiProposal1'] != '') {
+			$_POST['StatusPengujiProposal1'] = '';
+		} else {
+			unset($_POST['PengujiProposal1']);
+		}
+		if ($_POST['PengujiProposal2'] != '') {
+			$_POST['StatusPengujiProposal2'] = '';
+		} else {
+			unset($_POST['PengujiProposal2']);
+		}
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
 	}
 
 	public function ValidasiProposal(){
@@ -1611,16 +1745,30 @@ class Dashboard extends CI_Controller {
 	public function ValidasiBimbingan(){
 		$Data['Halaman'] = 'Validasi Bimbingan';
 		$Data['SubMenu'] = '';
-		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Pembimbing'")->result_array();
+		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array();
     $this->load->view('Header',$Data);
     $this->load->view('ValidasiBimbingan',$Data); 
+	}
+
+	public function SesiBimbingan(){
+		$this->session->set_userdata('NIMBimbingan', $_POST['NIMBimbingan']);
+		$this->session->set_userdata('NamaBimbingan', $_POST['NamaBimbingan']);
 	}
 
 	public function BimbinganSkripsi(){
 		$Data['Halaman'] = 'Bimbingan Skripsi';
 		$Data['SubMenu'] = '';
-		$Data['Bimbingan'] = $this->db->query("SELECT bimbingan.*,mahasiswa.Nama FROM bimbingan,mahasiswa WHERE bimbingan.DosenPembimbing = "."'".$this->session->userdata('NIP')."' ORDER BY bimbingan.TanggalBimbingan DESC")->result_array(); 
+		$Data['Bimbingan'] = $this->db->query("SELECT NIM,Nama FROM mahasiswa WHERE NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array(); 
+		$Data['DataBimbingan'] = array();
+		if ($this->session->userdata('NIMBimbingan') != '') {
+			$Data['DataBimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->result_array(); 
+		}
     $this->load->view('Header',$Data);
     $this->load->view('BimbinganSkripsi',$Data); 
+	}
+
+	public function FotoBimbingan(){
+		$Foto = $this->db->query("SELECT Foto FROM mahasiswa WHERE NIM = ".$_POST['NIM'])->row_array()['Foto']; 
+    echo $Foto;
 	}
 }

@@ -1,9 +1,14 @@
 							<div class="row p-3">
 								<div class="col-2 d-flex justify-content-center pl-0 pr-0">
 									<label for="InputFoto">
-										<img src="<?=base_url('img/Profil.jpg')?>" alt="..." class="img-circle profile_img mt-1" width="130px;">
+										<?php if ($Mhs['Foto'] == '') { ?>
+											<img src="<?=base_url('img/Profil.jpg')?>" alt="..." class="img-circle profile_img mt-1" width="130px;">
+										<?php	} else { ?>
+											<img src="<?=base_url('FotoMhs/'.$Mhs['Foto'])?>" class="mt-1" width="130px" height="130px">
+										<?php } ?>
 									</label>
 									<input type="file" id="InputFoto" style="display:none" onchange="Foto()"/> 
+									<input type="hidden" id="NamaFoto" value="<?=$Mhs['Foto']?>">
 								</div>
 								<div class="col-4">
 									<div class="row">
@@ -72,6 +77,7 @@
 					var BaseURL = '<?=base_url()?>';
 					var fd = new FormData()
 					fd.append("Foto", $('#InputFoto')[0].files[0])
+					fd.append("NamaFoto", $('#NamaFoto').val())
 					$.ajax({
 						url: BaseURL+'Mhs/Foto',
 						type: 'post',
