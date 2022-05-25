@@ -20,6 +20,7 @@ PublikasiMahasiswa/*
 RujukanTesis/*
 SitasiMahasiswa/*
 FotoDosen/*
+FotoMhs/*
 application/config/config.php
 application/config/database.php
 akuntansi/BukuMahasiswa/*
