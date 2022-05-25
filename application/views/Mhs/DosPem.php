@@ -2,7 +2,7 @@
 								<div class="col-sm-12">
 									<a href="<?=base_url('Panduan/FormPersetujuanJudulProposal.doc')?>" class="btn btn-sm border-light btn-sm btn-primary"><i class="fa fa-file-word-o"> <b>Form Persetujuan Judul Proposal</b></i></a>  
 									<?php if ($Mhs['DraftProposal'] == "") { ?>
-										<button type="button" class="btn btn-sm btn-primary border-white mb-2" data-toggle="modal" data-target="#ModalInputProposal"><b>Ajukan Dosen Pembimbing</b></button>
+										<button type="button" class="btn btn-sm btn-primary border-white" data-toggle="modal" data-target="#ModalInputProposal"><b>Ajukan Dosen Pembimbing</b></button>
 									<?php } else { ?>
 										<button Edit="<?=$Mhs['NIM']."|".$Mhs['Nama']."|".$Mhs['Gender']."|".$Mhs['Alamat']."|".$Mhs['HP']."|".$Mhs['Konsentrasi']."|".$Mhs['JudulProposal']."|".$Mhs['DraftProposal']."|".$Mhs['KRS']."|".$Mhs['Transkrip']."|".$Mhs['PersetujuanJudul']?>" class="btn btn-sm btn-warning border-light Edit text-white"><i class="fa fa-edit"> <b>Edit Data Proposal</b></i></button>
 									<?php } ?>
