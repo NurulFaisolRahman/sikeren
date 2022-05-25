@@ -1587,7 +1587,7 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'DosenPembimbing';
 		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' or StatusProposal LIKE 'Ditolak Oleh Pembimbing%'")->result_array();
-		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM dosen")->result_array();
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
 		$Data['Bimbingan'] = $this->db->query("SELECT NamaPembimbing,COUNT(DISTINCT(NIPPembimbing)) AS Jumlah FROM `mahasiswa`")->result_array();
     $this->load->view('Header',$Data);
     $this->load->view('_DosenPembimbing',$Data); 
@@ -1690,7 +1690,7 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'ValidasiUjianProposal';
 		$Data['UjianProposal'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan KPS' or StatusPengujiProposal1 LIKE 'Ditolak%' or StatusPengujiProposal2 LIKE 'Ditolak%'")->result_array();
-		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM dosen")->result_array();
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
     $this->load->view('Header',$Data);
     $this->load->view('ValidasiUjianProposal',$Data); 
 	}

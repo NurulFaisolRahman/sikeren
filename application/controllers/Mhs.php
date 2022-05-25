@@ -24,8 +24,8 @@ class Mhs extends CI_Controller {
 
 	public function UjianProposal(){ 
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
-		$Data['KetuaPenguji'] = $this->db->query("SELECT Nama FROM dosen WHERE NIP = "."'".$Data['Mhs']['PengujiProposal1']."'")->row_array()['Nama'];
-		$Data['AnggotaPenguji'] = $this->db->query("SELECT Nama FROM dosen WHERE NIP = "."'".$Data['Mhs']['PengujiProposal2']."'")->row_array()['Nama'];
+		$Data['KetuaPenguji'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = "."'".$Data['Mhs']['PengujiProposal1']."'")->row_array()['Nama'];
+		$Data['AnggotaPenguji'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = "."'".$Data['Mhs']['PengujiProposal2']."'")->row_array()['Nama'];
 		$this->load->view('Mhs/Header',$Data); 
 		$this->load->view('Mhs/UjianProposal',$Data); 
 	}
@@ -139,7 +139,7 @@ class Mhs extends CI_Controller {
 		$this->load->library('Pdf');
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
 		$Tanggal = explode("-",$Data['Mhs']['TanggalDisetujuiPembimbing']);$Data['Tanggal'] = $Tanggal[2].'-'.$Tanggal[1].'-'.$Tanggal[0];
-		$Data['QRCode'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$Data['QRCode'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$this->load->view('PersetujuanPembimbing',$Data);
 	}
 
@@ -147,11 +147,11 @@ class Mhs extends CI_Controller {
 		$this->load->library('Pdf');
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
 		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianProposal']);$Data['Tanggal'] = $Tanggal[2].'-'.$Tanggal[1].'-'.$Tanggal[0];
-		$Data['Ketua'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['QRCode'];
-		$Data['Anggota'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['QRCode'];
-		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
-		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
-		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$Data['Ketua'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['QRCode'];
+		$Data['Anggota'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['QRCode'];
+		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
+		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
+		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$this->load->view('PersetujuanUjianProposal',$Data);
 	}
 	
@@ -161,7 +161,7 @@ class Mhs extends CI_Controller {
 		$Data['Bimbingan'] = $this->db->query("SELECT TanggalBimbingan,PoinBimbingan FROM bimbingan WHERE NIM = ".$this->session->userdata('NIM'))->result_array();
 		$Awal = explode("-",$Data['Bimbingan'][0]['TanggalBimbingan']);$Data['Awal'] = $Awal[2].'-'.$Awal[1].'-'.$Awal[0];
 		$Akhir = explode("-",$Data['Bimbingan'][count($Data['Bimbingan'])-1]['TanggalBimbingan']);$Data['Akhir'] = $Akhir[2].'-'.$Akhir[1].'-'.$Akhir[0];
-		$Data['QRCode'] = $this->db->query("SELECT QRCode FROM dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$Data['QRCode'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$this->load->view('KartuBimbingan',$Data);
   }
 
