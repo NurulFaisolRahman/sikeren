@@ -1713,6 +1713,12 @@ class Dashboard extends CI_Controller {
 		}
 	}
 
+	public function RekapDosenPembimbing(){
+		$this->load->library('Pdf');
+		$Data['Mhs'] = $this->db->get("mahasiswa")->result_array();
+		$this->load->view('RekapDosenPembimbing',$Data);
+	}
+
 	public function TerimaMengujiSkripsi(){
 		$Data['PengujiSkripsi'] = $this->db->query("SELECT PengujiSkripsi1,PengujiSkripsi2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
 		if ($Data['PengujiSkripsi']['PengujiSkripsi1'] == $this->session->userdata('NIP')) {

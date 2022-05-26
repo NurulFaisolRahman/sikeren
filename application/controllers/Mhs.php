@@ -275,15 +275,39 @@ class Mhs extends CI_Controller {
 	public function PersetujuanPembimbing(){
 		$this->load->library('Pdf');
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
-		$Tanggal = explode("-",$Data['Mhs']['TanggalDisetujuiPembimbing']);$Data['Tanggal'] = $Tanggal[2].'-'.$Tanggal[1].'-'.$Tanggal[0];
+		$Tanggal = explode("-",$Data['Mhs']['TanggalDisetujuiPembimbing']);$Data['Tanggal'] = $Tanggal[2].' - '.$Tanggal[1].' - '.$Tanggal[0];
 		$Data['QRCode'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$this->load->view('PersetujuanPembimbing',$Data);
+	}
+
+	public function BeritaAcaraUjianProposal(){
+		$this->load->library('Pdf');
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianProposal']);$Data['Tanggal'] = $Tanggal[2].' - '.$Tanggal[1].' - '.$Tanggal[0];
+		$Data['Ketua'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['QRCode'];
+		$Data['Anggota'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['QRCode'];
+		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
+		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
+		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$this->load->view('BeritaAcaraUjianProposal',$Data);
+	}
+
+	public function BeritaAcaraUjianSkripsi(){
+		$this->load->library('Pdf');
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianSkripsi']);$Data['Tanggal'] = $Tanggal[2].' - '.$Tanggal[1].' - '.$Tanggal[0];
+		$Data['Ketua'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['QRCode'];
+		$Data['Anggota'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['QRCode'];
+		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
+		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
+		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$this->load->view('BeritaAcaraUjianSkripsi',$Data);
 	}
 
 	public function PersetujuanUjianProposal(){
 		$this->load->library('Pdf');
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
-		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianProposal']);$Data['Tanggal'] = $Tanggal[2].'-'.$Tanggal[1].'-'.$Tanggal[0];
+		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianProposal']);$Data['Tanggal'] = $Tanggal[2].' - '.$Tanggal[1].' - '.$Tanggal[0];
 		$Data['Ketua'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['QRCode'];
 		$Data['Anggota'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['QRCode'];
 		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
@@ -295,7 +319,7 @@ class Mhs extends CI_Controller {
 	public function PersetujuanUjianSkripsi(){
 		$this->load->library('Pdf');
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
-		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianSkripsi']);$Data['Tanggal'] = $Tanggal[2].'-'.$Tanggal[1].'-'.$Tanggal[0];
+		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianSkripsi']);$Data['Tanggal'] = $Tanggal[2].' - '.$Tanggal[1].' - '.$Tanggal[0];
 		$Data['Ketua'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['QRCode'];
 		$Data['Anggota'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['QRCode'];
 		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
@@ -308,8 +332,8 @@ class Mhs extends CI_Controller {
 		$this->load->library('Pdf');
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
 		$Data['Bimbingan'] = $this->db->query("SELECT TanggalBimbingan,PoinBimbingan FROM bimbingan WHERE NIM = ".$this->session->userdata('NIM'))->result_array();
-		$Awal = explode("-",$Data['Bimbingan'][0]['TanggalBimbingan']);$Data['Awal'] = $Awal[2].'-'.$Awal[1].'-'.$Awal[0];
-		$Akhir = explode("-",$Data['Bimbingan'][count($Data['Bimbingan'])-1]['TanggalBimbingan']);$Data['Akhir'] = $Akhir[2].'-'.$Akhir[1].'-'.$Akhir[0];
+		$Awal = explode("-",$Data['Bimbingan'][0]['TanggalBimbingan']);$Data['Awal'] = $Awal[2].' - '.$Awal[1].' - '.$Awal[0];
+		$Akhir = explode("-",$Data['Bimbingan'][count($Data['Bimbingan'])-1]['TanggalBimbingan']);$Data['Akhir'] = $Akhir[2].' - '.$Akhir[1].' - '.$Akhir[0];
 		$Data['QRCode'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$this->load->view('KartuBimbingan',$Data);
   }

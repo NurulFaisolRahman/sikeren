@@ -46,6 +46,9 @@
 									</div>
 								</div>
 								<div class="col-12">
+									<?php if ($Mhs['StatusPengujiSkripsi1'] == 'Setuju' && $Mhs['StatusPengujiSkripsi2'] == 'Setuju') { ?>
+										<a href="<?=base_url('Mhs/BeritaAcaraUjianSkripsi')?>" class="btn btn-sm border-light btn-sm btn-danger mt-4"><i class="fa fa-file-pdf-o"> <b>Berita Acara Ujian Skripsi</b></i></a>  
+									<?php } ?>
 									<div class="card-header bg-danger text-light mt-2">
 										<b>Status Ujian Skripsi Skripsi</b>
 									</div>
