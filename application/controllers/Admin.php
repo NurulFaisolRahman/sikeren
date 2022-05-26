@@ -125,6 +125,14 @@ class Admin extends CI_Controller {
     $this->load->view('UjianProposalAdmin',$Data); 
 	}
 
+	public function UjianSkripsi(){
+		$Data['Halaman'] = 'Mahasiswa';
+		$Data['SubMenu'] = 'Ujian Skripsi';
+		$Data['UjianSkripsi'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Diajukan'")->result_array();
+    $this->load->view('HeaderAdmin',$Data);
+    $this->load->view('UjianSkripsiAdmin',$Data); 
+	}
+
 	public function ValidasiProposal(){
     $this->db->where('NIM', $_POST['NIM']);
 		$this->db->update('mahasiswa',$_POST);

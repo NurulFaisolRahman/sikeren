@@ -77,9 +77,9 @@
               </p>
               </a>
               <?php
-                $Menu = array("Dosen Pembimbing","Ujian Proposal","Mahasiswa Baru","Mahasiswa Asing","Prestasi Mahasiswa","IPK Lulusan");
-                $URL = array("DosenPembimbing","UjianProposal","MahasiswaBaru","MahasiswaAsing","PrestasiMhs","IPKLulusan");
-                $Icon = array("users","users","users","users","trophy","chart-bar");
+                $Menu = array("Dosen Pembimbing","Ujian Proposal","Ujian Skripsi","Mahasiswa Baru","Mahasiswa Asing","Prestasi Mahasiswa","IPK Lulusan");
+                $URL = array("DosenPembimbing","UjianProposal","UjianSkripsi","MahasiswaBaru","MahasiswaAsing","PrestasiMhs","IPKLulusan");
+                $Icon = array("users","users","users","users","users","trophy","chart-bar");
               ?>
               <?php for ($i=0; $i < count($Menu); $i++) {?>
               <ul class="nav nav-treeview <ml-1></ml-3>">

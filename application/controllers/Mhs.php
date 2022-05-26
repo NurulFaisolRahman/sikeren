@@ -30,6 +30,143 @@ class Mhs extends CI_Controller {
 		$this->load->view('Mhs/UjianProposal',$Data); 
 	}
 
+	public function UjianSkripsi(){ 
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$Data['KetuaPenguji'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = "."'".$Data['Mhs']['PengujiSkripsi1']."'")->row_array()['Nama'];
+		$Data['AnggotaPenguji'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = "."'".$Data['Mhs']['PengujiSkripsi2']."'")->row_array()['Nama'];
+		$this->load->view('Mhs/Header',$Data); 
+		$this->load->view('Mhs/UjianSkripsi',$Data); 
+	}
+
+	public function InputUjianSkripsi(){
+		$NamaAdministrasi = date('Ymd',time()).substr(password_hash('Administrasi', PASSWORD_DEFAULT),7,7);
+		$NamaAdministrasi = str_replace("/","E",$NamaAdministrasi);
+		$NamaAdministrasi = str_replace(".","F",$NamaAdministrasi);
+		move_uploaded_file($_FILES['Administrasi']['tmp_name'], "Proposal/".$NamaAdministrasi.".pdf");
+		$_POST['Administrasi'] = $NamaAdministrasi.".pdf";
+		$NamaIjazahKHS = date('Ymd',time()).substr(password_hash('IjazahKHS', PASSWORD_DEFAULT),7,7);
+		$NamaIjazahKHS = str_replace("/","E",$NamaIjazahKHS);
+		$NamaIjazahKHS = str_replace(".","F",$NamaIjazahKHS);
+		move_uploaded_file($_FILES['IjazahKHS']['tmp_name'], "Proposal/".$NamaIjazahKHS.".pdf");
+    $_POST['IjazahKHS'] = $NamaIjazahKHS.".pdf";
+    $NamaRevisiProposalBimbingan = date('Ymd',time()).substr(password_hash('RevisiProposalBimbingan', PASSWORD_DEFAULT),7,7);
+		$NamaRevisiProposalBimbingan = str_replace("/","E",$NamaRevisiProposalBimbingan);
+		$NamaRevisiProposalBimbingan = str_replace(".","F",$NamaRevisiProposalBimbingan);
+		move_uploaded_file($_FILES['RevisiProposalBimbingan']['tmp_name'], "Proposal/".$NamaRevisiProposalBimbingan.".pdf");
+    $_POST['RevisiProposalBimbingan'] = $NamaRevisiProposalBimbingan.".pdf";
+    $NamaToeflSertifikat = date('Ymd',time()).substr(password_hash('ToeflSertifikat', PASSWORD_DEFAULT),7,7);
+		$NamaToeflSertifikat = str_replace("/","E",$NamaToeflSertifikat);
+		$NamaToeflSertifikat = str_replace(".","F",$NamaToeflSertifikat);
+		move_uploaded_file($_FILES['ToeflSertifikat']['tmp_name'], "Proposal/".$NamaToeflSertifikat.".pdf");
+		$_POST['ToeflSertifikat'] = $NamaToeflSertifikat.".pdf";
+		$_POST['StatusUjianSkripsi'] = 'Diajukan';
+		$this->db->where('NIM', $this->session->userdata('NIM'));
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpan Data!';
+		}
+	}
+
+	public function EditUjianSkripsi(){
+		if (count($_FILES) == 0) {
+      $this->db->where('NIM', $this->session->userdata('NIM'));
+			$this->db->update('mahasiswa',$_POST);
+			echo '1';
+    } else if (count($_FILES) > 0) {
+      if (!empty($_POST['_Administrasi_'])) {
+				unlink('Proposal/'.$_POST['_Administrasi_']);
+				unset($_POST['_Administrasi_']);
+				$NamaAdministrasi = date('Ymd',time()).substr(password_hash('Administrasi', PASSWORD_DEFAULT),7,7);
+        $NamaAdministrasi = str_replace("/","E",$NamaAdministrasi);
+        $NamaAdministrasi = str_replace(".","F",$NamaAdministrasi);
+        move_uploaded_file($_FILES['Administrasi']['tmp_name'], "Proposal/".$NamaAdministrasi.".pdf");
+        $_POST['Administrasi'] = $NamaAdministrasi.".pdf";
+			}
+			if (!empty($_POST['_IjazahKHS_'])) {
+				unlink('Proposal/'.$_POST['_IjazahKHS_']);
+				unset($_POST['_IjazahKHS_']);
+        $NamaIjazahKHS = date('Ymd',time()).substr(password_hash('IjazahKHS', PASSWORD_DEFAULT),7,7);
+        $NamaIjazahKHS = str_replace("/","E",$NamaIjazahKHS);
+        $NamaIjazahKHS = str_replace(".","F",$NamaIjazahKHS);
+        move_uploaded_file($_FILES['IjazahKHS']['tmp_name'], "Proposal/".$NamaIjazahKHS.".pdf");
+        $_POST['IjazahKHS'] = $NamaIjazahKHS.".pdf";
+      }
+      if (!empty($_POST['_RevisiProposalBimbingan_'])) {
+				unlink('Proposal/'.$_POST['_RevisiProposalBimbingan_']);
+				unset($_POST['_RevisiProposalBimbingan_']);
+				$NamaRevisiProposalBimbingan = date('Ymd',time()).substr(password_hash('RevisiProposalBimbingan', PASSWORD_DEFAULT),7,7);
+        $NamaRevisiProposalBimbingan = str_replace("/","E",$NamaRevisiProposalBimbingan);
+        $NamaRevisiProposalBimbingan = str_replace(".","F",$NamaRevisiProposalBimbingan);
+        move_uploaded_file($_FILES['RevisiProposalBimbingan']['tmp_name'], "Proposal/".$NamaRevisiProposalBimbingan.".pdf");
+        $_POST['RevisiProposalBimbingan'] = $NamaRevisiProposalBimbingan.".pdf";
+			}
+			if (!empty($_POST['_ToeflSertifikat_'])) {
+				unlink('Proposal/'.$_POST['_ToeflSertifikat_']);
+				unset($_POST['_ToeflSertifikat_']);
+				$NamaToeflSertifikat = date('Ymd',time()).substr(password_hash('ToeflSertifikat', PASSWORD_DEFAULT),7,7);
+        $NamaToeflSertifikat = str_replace("/","E",$NamaToeflSertifikat);
+        $NamaToeflSertifikat = str_replace(".","F",$NamaToeflSertifikat);
+        move_uploaded_file($_FILES['ToeflSertifikat']['tmp_name'], "Proposal/".$NamaToeflSertifikat.".pdf");
+        $_POST['ToeflSertifikat'] = $NamaToeflSertifikat.".pdf";
+			}
+			$this->db->where('NIM', $this->session->userdata('NIM'));
+			$this->db->update('mahasiswa',$_POST);
+			echo '1';
+		}
+	}
+
+	public function AjukanUjianSkripsi(){
+		if (count($_FILES) == 0) {
+			$_POST['StatusUjianSkripsi'] = 'Diajukan';
+      $this->db->where('NIM', $this->session->userdata('NIM'));
+			$this->db->update('mahasiswa',$_POST);
+			echo '1';
+    } else if (count($_FILES) > 0) {
+      if (!empty($_POST['_Administrasi_'])) {
+				unlink('Proposal/'.$_POST['_Administrasi_']);
+				unset($_POST['_Administrasi_']);
+				$NamaAdministrasi = date('Ymd',time()).substr(password_hash('Administrasi', PASSWORD_DEFAULT),7,7);
+        $NamaAdministrasi = str_replace("/","E",$NamaAdministrasi);
+        $NamaAdministrasi = str_replace(".","F",$NamaAdministrasi);
+        move_uploaded_file($_FILES['Administrasi']['tmp_name'], "Proposal/".$NamaAdministrasi.".pdf");
+        $_POST['Administrasi'] = $NamaAdministrasi.".pdf";
+			}
+			if (!empty($_POST['_IjazahKHS_'])) {
+				unlink('Proposal/'.$_POST['_IjazahKHS_']);
+				unset($_POST['_IjazahKHS_']);
+        $NamaIjazahKHS = date('Ymd',time()).substr(password_hash('IjazahKHS', PASSWORD_DEFAULT),7,7);
+        $NamaIjazahKHS = str_replace("/","E",$NamaIjazahKHS);
+        $NamaIjazahKHS = str_replace(".","F",$NamaIjazahKHS);
+        move_uploaded_file($_FILES['IjazahKHS']['tmp_name'], "Proposal/".$NamaIjazahKHS.".pdf");
+        $_POST['IjazahKHS'] = $NamaIjazahKHS.".pdf";
+      }
+      if (!empty($_POST['_RevisiProposalBimbingan_'])) {
+				unlink('Proposal/'.$_POST['_RevisiProposalBimbingan_']);
+				unset($_POST['_RevisiProposalBimbingan_']);
+				$NamaRevisiProposalBimbingan = date('Ymd',time()).substr(password_hash('RevisiProposalBimbingan', PASSWORD_DEFAULT),7,7);
+        $NamaRevisiProposalBimbingan = str_replace("/","E",$NamaRevisiProposalBimbingan);
+        $NamaRevisiProposalBimbingan = str_replace(".","F",$NamaRevisiProposalBimbingan);
+        move_uploaded_file($_FILES['RevisiProposalBimbingan']['tmp_name'], "Proposal/".$NamaRevisiProposalBimbingan.".pdf");
+        $_POST['RevisiProposalBimbingan'] = $NamaRevisiProposalBimbingan.".pdf";
+			}
+			if (!empty($_POST['_ToeflSertifikat_'])) {
+				unlink('Proposal/'.$_POST['_ToeflSertifikat_']);
+				unset($_POST['_ToeflSertifikat_']);
+				$NamaToeflSertifikat = date('Ymd',time()).substr(password_hash('ToeflSertifikat', PASSWORD_DEFAULT),7,7);
+        $NamaToeflSertifikat = str_replace("/","E",$NamaToeflSertifikat);
+        $NamaToeflSertifikat = str_replace(".","F",$NamaToeflSertifikat);
+        move_uploaded_file($_FILES['ToeflSertifikat']['tmp_name'], "Proposal/".$NamaToeflSertifikat.".pdf");
+        $_POST['ToeflSertifikat'] = $NamaToeflSertifikat.".pdf";
+			}
+			$_POST['StatusUjianSkripsi'] = 'Diajukan';
+			$this->db->where('NIM', $this->session->userdata('NIM'));
+			$this->db->update('mahasiswa',$_POST);
+			echo '1';
+		}
+	}
+
 	public function InputUjianProposal(){
 		$NamaKartuBimbinganProposal = date('Ymd',time()).substr(password_hash('KartuBimbinganProposal', PASSWORD_DEFAULT),7,7);
 		$NamaKartuBimbinganProposal = str_replace("/","E",$NamaKartuBimbinganProposal);
@@ -153,6 +290,18 @@ class Mhs extends CI_Controller {
 		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
 		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$this->load->view('PersetujuanUjianProposal',$Data);
+	}
+
+	public function PersetujuanUjianSkripsi(){
+		$this->load->library('Pdf');
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianSkripsi']);$Data['Tanggal'] = $Tanggal[2].'-'.$Tanggal[1].'-'.$Tanggal[0];
+		$Data['Ketua'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['QRCode'];
+		$Data['Anggota'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['QRCode'];
+		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
+		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
+		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$this->load->view('PersetujuanUjianSkripsi',$Data);
 	}
 	
 	public function KartuBimbingan(){

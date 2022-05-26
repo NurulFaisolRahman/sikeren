@@ -1609,6 +1609,22 @@ class Dashboard extends CI_Controller {
     $this->load->view('ValidasiPengujiProposal',$Data); 
 	}
 
+	public function ValidasiPengujiSkripsi(){
+		$Data['Halaman'] = 'Validasi Skripsi';
+		$Data['SubMenu'] = '';
+		$Data['PengujiSkripsi'] = array();
+		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan Penguji' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi1 = ''")->result_array();
+		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan Penguji' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi2 = ''")->result_array();
+		for ($i=0; $i < count($Penguji1); $i++) { 
+			array_push($Data['PengujiSkripsi'],$Penguji1[$i]);
+		}
+		for ($i=0; $i < count($Penguji2); $i++) { 
+			array_push($Data['PengujiSkripsi'],$Penguji2[$i]);
+		}
+    $this->load->view('Header',$Data);
+    $this->load->view('ValidasiPengujiSkripsi',$Data); 
+	}
+
 	public function PengujiProposal(){
 		$Data['Halaman'] = 'Ujian Proposal';
 		$Data['SubMenu'] = '';
@@ -1629,6 +1645,26 @@ class Dashboard extends CI_Controller {
     $this->load->view('PengujiProposal',$Data); 
 	}
 
+	public function PengujiSkripsi(){
+		$Data['Halaman'] = 'Ujian Skripsi';
+		$Data['SubMenu'] = '';
+		$Data['PengujiSkripsi'] = array();
+		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi1 = 'Setuju' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi1 = ''")->result_array();
+		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi1 = 'Setuju' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi2 = ''")->result_array();
+		$Penguji3 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi1 = 'Setuju' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi3 = ''")->result_array();
+		for ($i=0; $i < count($Penguji1); $i++) { 
+			array_push($Data['PengujiSkripsi'],$Penguji1[$i]);
+		}
+		for ($i=0; $i < count($Penguji2); $i++) { 
+			array_push($Data['PengujiSkripsi'],$Penguji2[$i]);
+		}
+		for ($i=0; $i < count($Penguji3); $i++) { 
+			array_push($Data['PengujiSkripsi'],$Penguji3[$i]);
+		}
+    $this->load->view('Header',$Data);
+    $this->load->view('PengujiSkripsi',$Data); 
+	}
+
 	public function MenilaiProposal(){
 		$Data['PengujiProposal'] = $this->db->query("SELECT PengujiProposal1,PengujiProposal2,NIPPembimbing FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
 		if ($Data['PengujiProposal']['PengujiProposal1'] == $this->session->userdata('NIP')) {
@@ -1644,6 +1680,63 @@ class Dashboard extends CI_Controller {
 			$_POST['CatatanProposal3'] = $_POST['Catatan'];
 			unset($_POST['Nilai']);unset($_POST['Catatan']);
 		} 
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
+	public function MenilaiSkripsi(){
+		$Data['PengujiSkripsi'] = $this->db->query("SELECT PengujiSkripsi1,PengujiSkripsi2,NIPPembimbing FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		if ($Data['PengujiSkripsi']['PengujiSkripsi1'] == $this->session->userdata('NIP')) {
+			$_POST['NilaiSkripsi1'] = $_POST['Nilai'];
+			$_POST['CatatanSkripsi1'] = $_POST['Catatan'];
+			unset($_POST['Nilai']);unset($_POST['Catatan']);
+		} else if ($Data['PengujiSkripsi']['PengujiSkripsi2'] == $this->session->userdata('NIP')) {
+			$_POST['NilaiSkripsi2'] = $_POST['Nilai'];
+			$_POST['CatatanSkripsi2'] = $_POST['Catatan'];
+			unset($_POST['Nilai']);unset($_POST['Catatan']);
+		} else if ($Data['PengujiSkripsi']['NIPPembimbing'] == $this->session->userdata('NIP')) {
+			$_POST['NilaiSkripsi3'] = $_POST['Nilai'];
+			$_POST['CatatanSkripsi3'] = $_POST['Catatan'];
+			unset($_POST['Nilai']);unset($_POST['Catatan']);
+		} 
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
+	public function TerimaMengujiSkripsi(){
+		$Data['PengujiSkripsi'] = $this->db->query("SELECT PengujiSkripsi1,PengujiSkripsi2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		if ($Data['PengujiSkripsi']['PengujiSkripsi1'] == $this->session->userdata('NIP')) {
+			$_POST['StatusPengujiSkripsi1'] = 'Setuju';
+		} else if ($Data['PengujiSkripsi']['PengujiSkripsi2'] == $this->session->userdata('NIP')) {
+			$_POST['StatusPengujiSkripsi2'] = 'Setuju';
+		} 
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
+	public function TolakMengujiSkripsi(){
+		$Data['PengujiSkripsi'] = $this->db->query("SELECT PengujiSkripsi1,PengujiSkripsi2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		if ($Data['PengujiSkripsi']['PengujiSkripsi1'] == $this->session->userdata('NIP')) {
+			$_POST['StatusPengujiSkripsi1'] = 'Ditolak Karena '.$_POST['Alasan'];
+		} else if ($Data['PengujiSkripsi']['PengujiSkripsi2'] == $this->session->userdata('NIP')) {
+			$_POST['StatusPengujiSkripsi2'] = 'Ditolak Karena '.$_POST['Alasan'];
+		} 
+		unset($_POST['Alasan']);
     $this->db->where('NIM', $_POST['NIM']);
 		$this->db->update('mahasiswa',$_POST);
 		if ($this->db->affected_rows()){
@@ -1684,7 +1777,7 @@ class Dashboard extends CI_Controller {
 		} else {
 			echo 'Gagal Menyimpnan Data!';
 		}
-	}
+	} 
 
 	public function ValidasiUjianProposal(){
 		$Data['Halaman'] = 'Validasi';
@@ -1706,7 +1799,7 @@ class Dashboard extends CI_Controller {
 		}
 	}
 
-	public function KPSMemilihPenguji(){
+	public function KPSMemilihPengujiProposal(){
 		if ($_POST['PengujiProposal1'] != '') {
 			$_POST['StatusPengujiProposal1'] = '';
 		} else {

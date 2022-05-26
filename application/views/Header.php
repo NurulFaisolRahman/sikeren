@@ -75,13 +75,25 @@
                 <li class="nav-item">
                     <a href="<?=base_url("Dashboard/ValidasiPengujiProposal")?>" class="nav-link <?php if ($Halaman == "Validasi Proposal") { echo "active";} ?>">
                     <i class="nav-icon fas fa-users"></i>
-                    <p><b>Validasi Proposal</b></p>
+                    <p><b>Penguji Proposal</b></p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?=base_url("Dashboard/PengujiProposal")?>" class="nav-link <?php if ($Halaman == "Ujian Proposal") { echo "active";} ?>">
                     <i class="nav-icon fas fa-users"></i>
                     <p><b>Ujian Proposal</b></p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?=base_url("Dashboard/ValidasiPengujiSkripsi")?>" class="nav-link <?php if ($Halaman == "Validasi Skripsi") { echo "active";} ?>">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p><b>Penguji Skripsi</b></p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?=base_url("Dashboard/PengujiSkripsi")?>" class="nav-link <?php if ($Halaman == "Ujian Skripsi") { echo "active";} ?>">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p><b>Ujian Skripsi</b></p>
                     </a>
                 </li>
                 <?php if ($this->session->userdata('Kaprodi')) { ?> 

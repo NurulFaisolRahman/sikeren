@@ -30,7 +30,7 @@
                                   <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['Gender']."|".$key['Alamat']."|".$key['HP']."|".$key['Konsentrasi']."|".$key['JudulProposal']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
                                 </td>
                                 <td class="text-center align-middle">
-                                <button LihatPersetujuanJudul="<?=base_url('Proposal/'.$key['PersetujuanJudul'])?>" class="btn btn-sm btn-primary LihatPersetujuanJudul"><i class="fas fa-file-pdf"></i></button>  
+                                  <button LihatPersetujuanJudul="<?=base_url('Proposal/'.$key['PersetujuanJudul'])?>" class="btn btn-sm btn-primary LihatPersetujuanJudul"><i class="fas fa-file-pdf"></i></button>  
                                   <button LihatKRS="<?=base_url('Proposal/'.$key['KRS'])?>" class="btn btn-sm btn-warning text-white LihatKRS"><i class="fas fa-file-pdf"></i></button>  
                                   <button LihatTranskrip="<?=base_url('Proposal/'.$key['Transkrip'])?>" class="btn btn-sm btn-success LihatTranskrip"><i class="fas fa-file-pdf"></i></button>  
                                   <button LihatProposal="<?=base_url('Proposal/'.$key['DraftProposal'])?>" class="btn btn-sm btn-danger LihatProposal"><i class="fas fa-file-pdf"></i></button>  

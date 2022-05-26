@@ -49,7 +49,7 @@
 									<li><a href="<?=base_url('Mhs/UjianProposal')?>"><i class="fa fa-book"></i> <b>Ujian Proposal</b> </a></li>
                 </ul>
                 <ul class="nav side-menu">
-									<li><a href="#"><i class="fa fa-book"></i> <b>Ujian Skripsi</b> </a></li>
+									<li><a href="<?=base_url('Mhs/UjianSkripsi')?>"><i class="fa fa-book"></i> <b>Ujian Skripsi</b> </a></li>
                 </ul>
 								<ul class="nav side-menu">
 									<li><a href="<?=base_url('SMD/MhsSignOut')?>"><i class="fa fa-sign-out"></i> <b>Keluar</b> </a></li>

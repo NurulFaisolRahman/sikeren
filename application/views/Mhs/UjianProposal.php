@@ -29,7 +29,7 @@
 													<?php if ($Mhs['StatusUjianProposal'] != "") { ?>
 														<tr>
 															<td style="vertical-align: middle;text-align: center;"><?=$Mhs['TanggalUjianProposal']?></td>
-															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianProposal'].' : <br>1. '.$Mhs['StatusPengujiProposal1'].'<br>2. '.$Mhs['StatusPengujiProposal2']?></td>
+															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianProposal'].'<br>1. '.$Mhs['StatusPengujiProposal1'].'<br>2. '.$Mhs['StatusPengujiProposal2']?></td>
 															<td style="text-align: center;vertical-align: middle;">
 																<button LihatKartuBimbingan="<?=base_url('Proposal/'.$Mhs['KartuBimbinganProposal'])?>" class="btn btn-sm btn-danger border-light LihatKartuBimbingan"><i class="fa fa-file-pdf-o"></i></button>  
 																<button LihatPlagiasi="<?=base_url('Proposal/'.$Mhs['PlagiasiProposal'])?>" class="btn btn-sm btn-warning border-light LihatPlagiasi"><i class="fa fa-file-pdf-o"></i></button>  
@@ -55,7 +55,7 @@
 														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Ketua Penguji</th>
 														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Anggota Penguji</th>
 														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Sekretaris</th>
-														<th scope="col" style="width: 6%;text-align: center;vertical-align: middle;">Hasil</th>
+														<th scope="col" style="width: 6%;text-align: center;vertical-align: middle;">Nilai</th>
 													</tr>
 												</thead>
 												<tbody class="bg-danger">
@@ -108,7 +108,7 @@
 														</div>
 														<input class="form-control" type="file" id="Plagiasi">
 													</div>
-													<pre class="text-danger mb-0"><b>* Wajib Upload Lampiran Cek Plagiasi Dalam Format Pdf (Maksimal 10%)</b></pre>
+													<pre class="text-danger mb-0"><b>* Wajib Upload Lampiran Cek Plagiasi (Per Bab) Dalam Format Pdf</b></pre>
 												</div>  
 												<div class="col-lg-6">
 													<div class="input-group input-group-sm mb-0">
@@ -163,7 +163,7 @@
 														<input class="form-control" type="file" id="_Plagiasi">
 														<input class="form-control" type="hidden" id="_Plagiasi_">
 													</div>
-													<pre class="text-danger mb-0"><b>* Wajib Upload Lampiran Cek Plagiasi Dalam Format Pdf (Maksimal 10%)</b></pre>
+													<pre class="text-danger mb-0"><b>* Wajib Upload Lampiran Cek Plagiasi (Per Bab) Dalam Format Pdf</b></pre>
 												</div>  
 												<div class="col-lg-6">
 													<div class="input-group input-group-sm mb-0">

@@ -14,24 +14,26 @@
                               <th style="width: 4%;" class="text-center align-middle">No</th>
                               <th style="width: 12%;" class="align-middle">NIM</th>
                               <th style="width: 20%;" class="align-middle">Nama</th>
-                              <th class="align-middle">Judul Proposal</th>
+                              <th class="align-middle">Judul Skripsi</th>
                               <th style="width: 5%;" class="align-middle text-center">Aksi</th>
                               <th style="width: 7%;" class="text-center align-middle">Cek Data</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <?php $No = 1; foreach ($UjianProposal as $key) { ?>
+                            <?php $No = 1; foreach ($UjianSkripsi as $key) { ?>
                               <tr>	
                                 <td class="text-center align-middle"><?=$No++?></td>
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
                                 <td class="align-middle"><?=$key['JudulProposal']?></td>
                                 <td class="align-middle text-center">
-                                  <button CekData="<?=$key['NIM'].'|'.$key['Nama']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
+                                  <button CekData="<?=$key['NIM'].'|'.$key['Nama'].'|'.$key['PengujiProposal1'].'|'.$key['PengujiProposal2']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
                                 </td>
                                 <td class="text-center align-middle">
-                                  <button LihatKartuBimbingan="<?=base_url('Proposal/'.$key['KartuBimbinganProposal'])?>" class="btn btn-sm btn-danger LihatKartuBimbingan"><i class="fas fa-file-pdf"></i></button>  
-                                  <button LihatPlagiasi="<?=base_url('Proposal/'.$key['PlagiasiProposal'])?>" class="btn btn-sm btn-warning LihatPlagiasi"><i class="fas fa-file-pdf"></i></button>  
+                                  <button LihatAdministrasi="<?=base_url('Proposal/'.$key['Administrasi'])?>" class="btn btn-sm btn-primary LihatAdministrasi"><i class="fas fa-file-pdf"></i></button>  
+                                  <button LihatIjazahKHS="<?=base_url('Proposal/'.$key['IjazahKHS'])?>" class="btn btn-sm btn-warning text-white LihatIjazahKHS"><i class="fas fa-file-pdf"></i></button>  
+                                  <button LihatRevisiProposalBimbingan="<?=base_url('Proposal/'.$key['RevisiProposalBimbingan'])?>" class="btn btn-sm btn-success LihatRevisiProposalBimbingan"><i class="fas fa-file-pdf"></i></button>  
+                                  <button LihatToeflSertifikat="<?=base_url('Proposal/'.$key['ToeflSertifikat'])?>" class="btn btn-sm btn-danger LihatToeflSertifikat"><i class="fas fa-file-pdf"></i></button>  
                                 </td> 
                               </tr>
                             <?php } ?>
@@ -55,7 +57,7 @@
 							<div class="row">
                 <div class="col-12">
 									<div class="card-header bg-danger text-light mt-2">
-										<b>Form Pengajuan Ujian Proposal Skripsi</b>
+										<b>Form Pengajuan Ujian Skripsi</b>
 									</div>
 									<div class="card-body border border-primary bg-warning">
 										<div class="container-fluid">
@@ -73,7 +75,9 @@
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Nama</b></label>
 														</div>
-														<input class="form-control form-control-sm" type="text" id="Nama" disabled>
+                            <input class="form-control form-control-sm" type="text" id="Nama" disabled>
+                            <input class="form-control form-control-sm" type="hidden" id="PengujiSkripsi1">
+                            <input class="form-control form-control-sm" type="hidden" id="PengujiSkripsi2">
 													</div>
 												</div>
 												<div class="col-12 my-1">
@@ -93,24 +97,42 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="ModalKartuBimbingan">
+    <div class="modal fade" id="ModalAdministrasi">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-body">
-            <embed id="PathKartuBimbingan" src="" type="application/pdf" width="100%" height="520"/>
+            <embed id="PathAdministrasi" src="" type="application/pdf" width="100%" height="520"/>
           </div>
         </div>
       </div>
     </div>
-    <div class="modal fade" id="ModalPlagiasi">
+    <div class="modal fade" id="ModalIjazahKHS">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-body">
-            <embed id="PathPlagiasi" src="" type="application/pdf" width="100%" height="520"/>
+            <embed id="PathIjazahKHS" src="" type="application/pdf" width="100%" height="520"/>
+          </div>
+        </div>
+      </div>
+		</div>
+		<div class="modal fade" id="ModalRevisiProposalBimbingan">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-body">
+            <embed id="PathRevisiProposalBimbingan" src="" type="application/pdf" width="100%" height="520"/>
           </div>
         </div>
       </div>
     </div>
+    <div class="modal fade" id="ModalToeflSertifikat">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-body">
+            <embed id="PathToeflSertifikat" src="" type="application/pdf" width="100%" height="520"/>
+          </div>
+        </div>
+      </div>
+		</div>
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
     <script src="<?=base_url('bootstrap/js/popper.min.js')?>" ></script>
     <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
@@ -128,17 +150,21 @@
 					var Pisah = Data.split("|")
 					$("#NIM").val(Pisah[0])
           $("#Nama").val(Pisah[1])
+          $("#PengujiSkripsi1").val(Pisah[2])
+          $("#PengujiSkripsi2").val(Pisah[3])
 					$('#ModalValidasiProposal').modal("show")
         })
         
         $("#ValidasiProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
-                      StatusUjianProposal: 'Menunggu Persetujuan KPS' }
+                      PengujiSkripsi1: $("#PengujiSkripsi1").val(),
+                      PengujiSkripsi2: $("#PengujiSkripsi2").val(),
+                      StatusUjianSkripsi: 'Menunggu Persetujuan Penguji' }
           $("#ValidasiProposal").attr("disabled", true); 
           $("#LoadingValidasi").show();                             
           $.post(BaseURL+"Admin/ValidasiUjianProposal", Mhs).done(function(Respon) {
             if (Respon == '1') {
-              window.location = BaseURL + "Admin/UjianProposal"
+              window.location = BaseURL + "Admin/UjianSkripsi"
             } else {
               alert(Respon)
               $("#ValidasiProposal").attr("disabled", false); 
@@ -149,12 +175,12 @@
 
         $("#TolakProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
-                      StatusUjianProposal: 'Ditolak Oleh Admin Karena '+ $("#Penolakan").val()}
+                      StatusUjianSkripsi: 'Ditolak Oleh Admin Karena '+ $("#Penolakan").val()}
           $("#TolakProposal").attr("disabled", true); 
           $("#LoadingDitolak").show();                             
           $.post(BaseURL+"Admin/ValidasiUjianProposal", Mhs).done(function(Respon) {
             if (Respon == '1') {
-              window.location = BaseURL + "Admin/UjianProposal"
+              window.location = BaseURL + "Admin/UjianSkripsi"
             } else {
               alert(Respon)
               $("#TolakProposal").attr("disabled", false); 
@@ -163,16 +189,28 @@
           })
         })
         
-        $(document).on("click",".LihatKartuBimbingan",function(){
-					var Path = $(this).attr('LihatKartuBimbingan')
-          $('#PathKartuBimbingan').attr('src',Path)		
-          $('#ModalKartuBimbingan').modal("show")
-				})
+        $(document).on("click",".LihatAdministrasi",function(){
+					var Path = $(this).attr('LihatAdministrasi')
+          $('#PathAdministrasi').attr('src',Path)		
+          $('#ModalAdministrasi').modal("show")
+				}) 
 
-        $(document).on("click",".LihatPlagiasi",function(){
-					var Path = $(this).attr('LihatPlagiasi')
-          $('#PathPlagiasi').attr('src',Path)		
-          $('#ModalPlagiasi').modal("show")
+        $(document).on("click",".LihatIjazahKHS",function(){
+					var Path = $(this).attr('LihatIjazahKHS')
+          $('#PathIjazahKHS').attr('src',Path)		
+          $('#ModalIjazahKHS').modal("show")
+				}) 
+
+				$(document).on("click",".LihatRevisiProposalBimbingan",function(){
+					var Path = $(this).attr('LihatRevisiProposalBimbingan')
+          $('#PathRevisiProposalBimbingan').attr('src',Path)		
+          $('#ModalRevisiProposalBimbingan').modal("show")
+				}) 
+
+        $(document).on("click",".LihatToeflSertifikat",function(){
+					var Path = $(this).attr('LihatToeflSertifikat')
+          $('#PathToeflSertifikat').attr('src',Path)		
+          $('#ModalToeflSertifikat').modal("show")
 				}) 
 
         $('#TabelDosenPembimbing').DataTable( {
