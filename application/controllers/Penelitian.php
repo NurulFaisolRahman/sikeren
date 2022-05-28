@@ -5,8 +5,8 @@ class Penelitian extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		if($this->session->userdata('Akun') != 'Dosen'){
-			if ($this->session->userdata('Akun') == 'Admin') {
+		if($this->session->userdata('AkunDosen') != 'Dosen'){
+			if ($this->session->userdata('AkunAdmin') == 'Admin') {
 				redirect(base_url('Admin/AkunDosen'));
 			} 
 			else {

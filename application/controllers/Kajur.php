@@ -5,10 +5,10 @@ class Kajur extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		if (!$this->session->userdata('Kajur')) { 
-			if ($this->session->userdata('Akun') == 'Dosen') {
+			if ($this->session->userdata('AkunDosen') == 'Dosen') {
 				redirect(base_url('Dashboard/Profil'));
 			} 
-			else if ($this->session->userdata('Akun') == 'Admin') {
+			else if ($this->session->userdata('AkunAdmin') == 'Admin') {
 				redirect(base_url('Admin/AkunDosen'));
 			}
 			else {
