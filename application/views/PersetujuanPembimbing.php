@@ -94,20 +94,24 @@
 </table>
 <table>
   <tr>
-    <td style="width:55%;"></td>
-    <td style="width:45%;"><p><br><br><br>Bangkalan, '.$Tanggal.'</p></td> 
+    <td style="width:8%;"></td>
+    <td style="width:50%;"><p><br><br>Bangkalan, '.$Tanggal.'<br>Dosen Pembimbing</p></td>
+    <td style="width:42%;"><p><br><br><br>Koordinator Program Studi</p></td> 
   </tr>
   <tr>
     <td></td>
     <td><img src="img/'.$QRCode.'" alt="Signature" width="70px"></td>
+    <td><img src="img/22.png" alt="Signature" width="70px"></td>
   </tr>
   <tr>
     <td></td>
     <td><p>'.$Mhs['NamaPembimbing'].'</p></td>
+    <td><p>Titov Chuk'."'".'s Mayvani, SE., ME.</p></td>
   </tr>
   <tr>
     <td></td>
     <td><p>NIP : '.$Mhs['NIPPembimbing'].'</p></td>
+    <td><p>NIP : 198303282015041001</p></td>
   </tr>
 </table>
 ';

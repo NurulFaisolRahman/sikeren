@@ -212,14 +212,16 @@
 					$("#HP").val(Pisah[4])
 					$("#Konsentrasi").val(Pisah[5])
           $("#JudulProposal").val(Pisah[6])
-          $("#DosenPembimbing").val(Pisah[7])
+          if (Pisah[7] != '') {
+            $("#DosenPembimbing").val(Pisah[7])
+          }
 					$('#ModalValidasiProposal').modal("show")
         })
         
         $("#ValidasiProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
-                      NIPPembimbing: $("#DosenPembimbing").val()(),
-                      NIPPembimbing:  $("#DosenPembimbing option:selected").text(),
+                      NIPPembimbing: $("#DosenPembimbing").val(),
+                      NamaPembimbing:  $("#DosenPembimbing option:selected").text(),
                       StatusProposal: 'Menunggu Persetujuan Pembimbing' }
           $("#ValidasiProposal").attr("disabled", true); 
           $("#LoadingValidasi").show();                             

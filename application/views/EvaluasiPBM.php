@@ -141,7 +141,7 @@
         <div class="col-lg-8">
           <div class="card my-1 bg-danger">
             <div class="card-body p-2 text-light">
-              <p class="font-weight-bold" style="font-size: 25px;">Evaluasi Proses Belajar Mengajar (PBM) Oleh Mahasiswa FEB UTM Semester Genap 2020/2021</p>
+              <p class="font-weight-bold" style="font-size: 25px;">Evaluasi Proses Belajar Mengajar (PBM) Oleh Mahasiswa FEB UTM Tahun 2022</p>
               <p class="text-justify">Berilah penilaian secara jujur, objektif, dan penuh tanggung jawab terhadap dosen Saudara. Informasi yang Saudara berikan hanya akan dipergunakan dalam proses PBM dan tidak akan berpengaruh terhadap nilai akhir mata kuliah yang Anda tempuh.</p>
               <p class="text-justify font-weight-bold">SEMUA PERTANYAAN WAJIB DI ISI *</p>
               <div class="row">
@@ -623,7 +623,7 @@
                          Kendala: Kendala,
                          Saran: $("#Saran").val(),
                          SMT: "Genap",
-                         Tahun: "2020" }
+                         Tahun: "2022" }
             $("#Kirim").prop('disabled', true);
             $.post(BaseURL+"SMD/InputEvaluasiPBM", Data).done(function(Respon) {
               if (Respon == '1') {
