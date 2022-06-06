@@ -1588,7 +1588,7 @@ class Dashboard extends CI_Controller {
 		$Data['SubMenu'] = 'DosenPembimbing';
 		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' or StatusProposal LIKE 'Ditolak Oleh Pembimbing%'")->result_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
-		$Data['Bimbingan'] = $this->db->query("SELECT NamaPembimbing,COUNT(DISTINCT(NIPPembimbing)) AS Jumlah FROM `mahasiswa`")->result_array();
+		$Data['Bimbingan'] = $this->db->query("SELECT NamaPembimbing,COUNT(NIPPembimbing) AS Jumlah FROM `mahasiswa` WHERE NIPPembimbing != '' GROUP BY NIPPembimbing")->result_array();
     $this->load->view('Header',$Data);
     $this->load->view('_DosenPembimbing',$Data); 
 	}
@@ -1715,7 +1715,7 @@ class Dashboard extends CI_Controller {
 
 	public function RekapDosenPembimbing(){
 		$this->load->library('Pdf');
-		$Data['Mhs'] = $this->db->get("mahasiswa")->result_array();
+		$Data['Mhs'] = $this->db->query("SELECT * FROM `mahasiswa` WHERE NIPPembimbing != '' ORDER BY NIPPembimbing")->result_array();
 		$this->load->view('RekapDosenPembimbing',$Data);
 	}
 

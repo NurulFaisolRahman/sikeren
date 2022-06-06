@@ -44,84 +44,93 @@
         <div class="sidebar">      
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item has-treeview <?php if ($Halaman == "Dosen") { echo "menu-open"; } ?>">
-              <a href="#" class="nav-link <?php if ($Halaman == "Dosen") { echo "active"; } ?>">
-              <i class="nav-icon fas fa-graduation-cap"></i>
-              <p>
-                <b>Dosen</b>
-                <i class="right fas fa-angle-left"></i>
-              </p>
-              </a>
-              <?php
-                $Menu = array("Dosen PNS","Dosen Kontrak","Sitasi Dosen","Integrasi","Penelitian","Pengabdian","Rujukan Tesis");
-                $URL = array("AkunDosen","DosenKontrak","SitasiDTPS","Integrasi","PenelitianDosenMhs","PkMDosenMhs","RujukanTesis");
-                $Icon = array("graduation-cap","graduation-cap","quote-left","sync","file-contract","file-contract","file-contract");
-              ?>
-              <?php for ($i=0; $i < count($Menu); $i++) {?>
-              <ul class="nav nav-treeview <ml-1></ml-3>">
-                  <li class="nav-item">
-                  <a href="<?=base_url("Admin/").$URL[$i]?>" class="nav-link <?php if ($SubMenu == $Menu[$i]) { echo "active"; } ?>">
-                      <i class="fas fa-<?=$Icon[$i]?> nav-icon text-primary"></i>
-                      <p class="font-weight-bold text-primary"><?=$Menu[$i]?></p>
-                  </a>
-                  </li>
-              </ul>
-              <?php } ?>
-            </li>
-            <li class="nav-item has-treeview <?php if ($Halaman == "Mahasiswa") { echo "menu-open"; } ?>">
-              <a href="#" class="nav-link <?php if ($Halaman == "Mahasiswa") { echo "active"; } ?>">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                <b>Mahasiswa</b>
-                <i class="right fas fa-angle-left"></i>
-              </p>
-              </a>
-              <?php
-                $Menu = array("Dosen Pembimbing","Ujian Proposal","Ujian Skripsi","Mahasiswa Baru","Mahasiswa Asing","Prestasi Mahasiswa","IPK Lulusan");
-                $URL = array("DosenPembimbing","UjianProposal","UjianSkripsi","MahasiswaBaru","MahasiswaAsing","PrestasiMhs","IPKLulusan");
-                $Icon = array("users","users","users","users","users","trophy","chart-bar");
-              ?>
-              <?php for ($i=0; $i < count($Menu); $i++) {?>
-              <ul class="nav nav-treeview <ml-1></ml-3>">
-                  <li class="nav-item">
-                  <a href="<?=base_url("Admin/").$URL[$i]?>" class="nav-link <?php if ($SubMenu == $Menu[$i]) { echo "active"; } ?>">
-                      <i class="fas fa-<?=$Icon[$i]?> nav-icon text-primary"></i>
-                      <p class="font-weight-bold text-primary"><?=$Menu[$i]?></p>
-                  </a>
-                  </li>
-              </ul>
-              <?php } ?>
-            </li>
-            <li class="nav-item has-treeview <?php if ($Halaman == "Prodi") { echo "menu-open"; } ?>">
-              <a href="#" class="nav-link <?php if ($Halaman == "Prodi") { echo "active"; } ?>">
-              <i class="nav-icon fas fa-university"></i>
-              <p>
-                <b>Program Studi</b>
-                <i class="right fas fa-angle-left"></i>
-              </p>
-              </a>
-              <?php
-                $Menu = array("Info Akademik","Kerja Sama","Penggunaan Dana","Kurikulum","RPS");
-                $URL = array("InfoAkademik","KerjaSama","PenggunaanDana","Kurikulum","RPS");
-                $Icon = array("clipboard-list","handshake","wallet","book","newspaper");
-              ?>
-              <?php for ($i=0; $i < count($Menu); $i++) {?>
-              <ul class="nav nav-treeview <ml-1></ml-3>">
-                  <li class="nav-item">
-                  <a href="<?=base_url("Admin/").$URL[$i]?>" class="nav-link <?php if ($SubMenu == $Menu[$i]) { echo "active"; } ?>">
-                      <i class="fas fa-<?=$Icon[$i]?> nav-icon text-primary"></i>
-                      <p class="font-weight-bold text-primary"><?=$Menu[$i]?></p>
-                  </a>
-                  </li>
-              </ul>
-              <?php } ?>
-            </li>
-            <li class="nav-item">
-            <a href="" class="nav-link" data-toggle="modal" data-target="#ModalBorang">
-              <i class="nav-icon fas fa-file-excel"></i>
-              <p><b>Borang</b></p>
-              </a>
-            </li>
+            <?php if ($this->session->userdata('Role') == 1) { ?>
+              <li class="nav-item has-treeview <?php if ($Halaman == "Dosen") { echo "menu-open"; } ?>">
+                <a href="#" class="nav-link <?php if ($Halaman == "Dosen") { echo "active"; } ?>">
+                <i class="nav-icon fas fa-graduation-cap"></i>
+                <p>
+                  <b>Dosen</b>
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+                </a>
+                <?php
+                  $Menu = array("Dosen PNS","Dosen Kontrak","Sitasi Dosen","Integrasi","Penelitian","Pengabdian","Rujukan Tesis");
+                  $URL = array("AkunDosen","DosenKontrak","SitasiDTPS","Integrasi","PenelitianDosenMhs","PkMDosenMhs","RujukanTesis");
+                  $Icon = array("graduation-cap","graduation-cap","quote-left","sync","file-contract","file-contract","file-contract");
+                ?>
+                <?php for ($i=0; $i < count($Menu); $i++) {?>
+                <ul class="nav nav-treeview <ml-1></ml-3>">
+                    <li class="nav-item">
+                    <a href="<?=base_url("Admin/").$URL[$i]?>" class="nav-link <?php if ($SubMenu == $Menu[$i]) { echo "active"; } ?>">
+                        <i class="fas fa-<?=$Icon[$i]?> nav-icon text-primary"></i>
+                        <p class="font-weight-bold text-primary"><?=$Menu[$i]?></p>
+                    </a>
+                    </li>
+                </ul>
+                <?php } ?>
+              </li>
+              <li class="nav-item has-treeview <?php if ($Halaman == "Mahasiswa") { echo "menu-open"; } ?>">
+                <a href="#" class="nav-link <?php if ($Halaman == "Mahasiswa") { echo "active"; } ?>">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  <b>Mahasiswa</b>
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+                </a>
+                <?php
+                  $Menu = array("Dosen Pembimbing","Ujian Proposal","Ujian Skripsi","Mahasiswa Baru","Mahasiswa Asing","Prestasi Mahasiswa","IPK Lulusan");
+                  $URL = array("DosenPembimbing","UjianProposal","UjianSkripsi","MahasiswaBaru","MahasiswaAsing","PrestasiMhs","IPKLulusan");
+                  $Icon = array("users","users","users","users","users","trophy","chart-bar");
+                ?>
+                <?php for ($i=0; $i < count($Menu); $i++) {?>
+                <ul class="nav nav-treeview <ml-1></ml-3>">
+                    <li class="nav-item">
+                    <a href="<?=base_url("Admin/").$URL[$i]?>" class="nav-link <?php if ($SubMenu == $Menu[$i]) { echo "active"; } ?>">
+                        <i class="fas fa-<?=$Icon[$i]?> nav-icon text-primary"></i>
+                        <p class="font-weight-bold text-primary"><?=$Menu[$i]?></p>
+                    </a>
+                    </li>
+                </ul>
+                <?php } ?>
+              </li>
+              <li class="nav-item has-treeview <?php if ($Halaman == "Prodi") { echo "menu-open"; } ?>">
+                <a href="#" class="nav-link <?php if ($Halaman == "Prodi") { echo "active"; } ?>">
+                <i class="nav-icon fas fa-university"></i>
+                <p>
+                  <b>Program Studi</b>
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+                </a>
+                <?php
+                  $Menu = array("Info Akademik","Kerja Sama","Penggunaan Dana","Kurikulum","RPS");
+                  $URL = array("InfoAkademik","KerjaSama","PenggunaanDana","Kurikulum","RPS");
+                  $Icon = array("clipboard-list","handshake","wallet","book","newspaper");
+                ?>
+                <?php for ($i=0; $i < count($Menu); $i++) {?>
+                <ul class="nav nav-treeview <ml-1></ml-3>">
+                    <li class="nav-item">
+                    <a href="<?=base_url("Admin/").$URL[$i]?>" class="nav-link <?php if ($SubMenu == $Menu[$i]) { echo "active"; } ?>">
+                        <i class="fas fa-<?=$Icon[$i]?> nav-icon text-primary"></i>
+                        <p class="font-weight-bold text-primary"><?=$Menu[$i]?></p>
+                    </a>
+                    </li>
+                </ul>
+                <?php } ?>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link" data-toggle="modal" data-target="#ModalBorang">
+                  <i class="nav-icon fas fa-file-excel"></i>
+                  <p><b>Borang</b></p>
+                </a>
+              </li>
+            <?php } else if($this->session->userdata('Role') == 2) {?>
+              <li class="nav-item">
+                <a href="<?=base_url("Admin/RPS")?>" class="nav-link <?php if ($SubMenu == "RPS") { echo "active";} ?>">
+                  <i class="nav-icon fas fa-newspaper"></i>
+                  <p><b>RPS</b></p>
+                </a>
+              </li>
+            <?php } ?>
           </ul>
         </nav>
         </div>

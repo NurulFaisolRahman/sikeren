@@ -13,11 +13,11 @@ class SMD extends CI_Controller {
 			echo "NIM Tidak Terdaftar!";
 		}
 		else{
-			$Akun = $CekLogin->result_array();
-			if (password_verify($_POST['Password'], $Akun[0]['Password'])) {
+			$Akun = $CekLogin->row_array();
+			if (password_verify($_POST['Password'], $Akun['Password'])) {
 				$Session = array('AkunMhs' => 'Mhs',
 												 'NIM' => $_POST['NIM'],
-												 'Nama' => $Akun[0]['Nama']);
+												 'Nama' => $Akun['Nama']);
 				$this->session->set_userdata($Session);
 				echo '1';
 			} else {
@@ -258,12 +258,12 @@ public function Kuisioner($Jenis){
 			echo "NIP Salah";
 		}
 		else{
-			$Akun = $CekLogin->result_array();
-			if (password_verify($_POST['Password'], $Akun[0]['Password'])) {
-				$Jabatan = $this->db->get_where('Dosen', array('NIP' => $_POST['NIP']))->result_array();
+			$Akun = $CekLogin->row_array();
+			if (password_verify($_POST['Password'], $Akun['Password'])) {
+				$Jabatan = $this->db->get_where('Dosen', array('NIP' => $_POST['NIP']))->row_array();
 				$Session = array('AkunDosen' => 'Dosen',
 												 'NIP' => $_POST['NIP'], 
-												 'Jabatan' => $Jabatan[0]['Jabatan'], 
+												 'Jabatan' => $Jabatan['Jabatan'], 
 												 'IdKegiatanPendidikan' => 'PND1',
 												 'IdKegiatanPenelitian' => 'PNL1',
 												 'IdKegiatanPengabdian' => 'PNB1',
@@ -274,10 +274,10 @@ public function Kuisioner($Jenis){
 												 'SubPenunjang' => 'Rencana',
 												 'NIMBimbingan' => '',
 												 'NamaBimbingan' => '');
-				if ($Akun[0]['JenisAkun'] == 2) {
+				if ($Akun['JenisAkun'] == 2) {
 					$Session['Kajur'] = true;
-				} else if ($Akun[0]['JenisAkun'] == 3) {
-					$Session['Kaprodi'] = true;
+				} else if ($Akun['JenisAkun'] == 3) {
+					$Session['Kaprodi'] = true; 
 				}
 				$this->session->set_userdata($Session);
 				echo '1';
@@ -293,9 +293,9 @@ public function Kuisioner($Jenis){
 			echo "Username Admin Salah!";
 		}
 		else{
-			$Akun = $CekLogin->result_array();
-			if (password_verify($_POST['Password'], $Akun[0]['Password'])) {
-				$Session = array('AkunAdmin' => 'Admin');
+			$Akun = $CekLogin->row_array();
+			if (password_verify($_POST['Password'], $Akun['Password'])) {
+				$Session = array('AkunAdmin' => 'Admin','Role' => $Akun['Role']);
 				$this->session->set_userdata($Session);
 				echo '1';
 			} else {
