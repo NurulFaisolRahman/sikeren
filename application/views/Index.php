@@ -238,6 +238,8 @@
             $.post(BaseURL+"SMD/AdminMasuk", Akun).done(function(Respon) {
               if (Respon == '1') {
                 window.location = BaseURL + "Admin/AkunDosen" 
+              } else if (Respon == '2') {
+                window.location = BaseURL + "Admin/RPS" 
               }
               else {
                 alert(Respon)

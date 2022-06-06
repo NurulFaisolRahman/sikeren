@@ -297,7 +297,11 @@ public function Kuisioner($Jenis){
 			if (password_verify($_POST['Password'], $Akun['Password'])) {
 				$Session = array('AkunAdmin' => 'Admin','Role' => $Akun['Role']);
 				$this->session->set_userdata($Session);
-				echo '1';
+				if ($Akun['Role'] == 1) {
+					echo '1';
+				} else {
+					echo '2';
+				}
 			} else {
 				echo "Password Salah";
 			}
