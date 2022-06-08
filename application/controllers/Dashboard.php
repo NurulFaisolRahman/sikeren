@@ -1594,8 +1594,8 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function ValidasiPengujiProposal(){
-		$Data['Halaman'] = 'Validasi Proposal';
-		$Data['SubMenu'] = '';
+		$Data['Halaman'] = 'ValidasiDosen';
+		$Data['SubMenu'] = 'ValidasiPengujiProposal';
 		$Data['PengujiProposal'] = array();
 		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan Penguji' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal1 = ''")->result_array();
 		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan Penguji' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal2 = ''")->result_array();
@@ -1610,8 +1610,8 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function ValidasiPengujiSkripsi(){
-		$Data['Halaman'] = 'Validasi Skripsi';
-		$Data['SubMenu'] = '';
+		$Data['Halaman'] = 'ValidasiDosen';
+		$Data['SubMenu'] = 'ValidasiPengujiSkripsi';
 		$Data['PengujiSkripsi'] = array();
 		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan Penguji' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi1 = ''")->result_array();
 		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan Penguji' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi2 = ''")->result_array();
@@ -1626,8 +1626,8 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function PengujiProposal(){
-		$Data['Halaman'] = 'Ujian Proposal';
-		$Data['SubMenu'] = '';
+		$Data['Halaman'] = 'Menilai';
+		$Data['SubMenu'] = 'PengujiProposal';
 		$Data['PengujiProposal'] = array();
 		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal1 = 'Setuju' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal1 = ''")->result_array();
 		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal1 = 'Setuju' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal2 = ''")->result_array();
@@ -1646,8 +1646,8 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function PengujiSkripsi(){
-		$Data['Halaman'] = 'Ujian Skripsi';
-		$Data['SubMenu'] = '';
+		$Data['Halaman'] = 'Menilai';
+		$Data['SubMenu'] = 'PengujiSkripsi';
 		$Data['PengujiSkripsi'] = array();
 		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi1 = 'Setuju' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi1 = ''")->result_array();
 		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi1 = 'Setuju' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi2 = ''")->result_array();
@@ -1842,8 +1842,8 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function ValidasiBimbingan(){
-		$Data['Halaman'] = 'Validasi Bimbingan';
-		$Data['SubMenu'] = '';
+		$Data['Halaman'] = 'ValidasiDosen';
+		$Data['SubMenu'] = 'ValidasiBimbingan';
 		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array();
     $this->load->view('Header',$Data);
     $this->load->view('ValidasiBimbingan',$Data); 
