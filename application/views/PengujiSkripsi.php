@@ -97,10 +97,10 @@
 															<label class="input-group-text bg-primary text-light"><b>Latar Belakang</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="LatarBelakang">										
-                              <option value="1">Tidak terdapat/mampu menuliskan & menjelaskan urgensi serta riset gap penelitian</option>
-                              <option value="2">dapat menjelaskan/menuliskan Urgensi/gap riset penelitian namun masih sangat lemah/tidak fokus/implisit/tidak didukung dengan empiris maupun teoritis</option>
-                              <option value="3">dapat menjelaskan/menuliskan Urgensi/gap riset penelitian dengan baik/fokus/eksplisit namun masih belum didukung data/empiris</option>
-                              <option value="4">dapat menjelaskan/menuliskan Urgensi/gap riset penelitian dengan baik/fokus/eksplisit didukung data/empiris</option>
+                              <option value="0"></option><option value="1">1. Tidak terdapat/mampu menuliskan & menjelaskan urgensi serta riset gap penelitian</option>
+                              <option value="2">2. dapat menjelaskan/menuliskan Urgensi/gap riset penelitian namun masih sangat lemah/tidak fokus/implisit/tidak didukung dengan empiris maupun teoritis</option>
+                              <option value="3">3. dapat menjelaskan/menuliskan Urgensi/gap riset penelitian dengan baik/fokus/eksplisit namun masih belum didukung data/empiris</option>
+                              <option value="4">4. dapat menjelaskan/menuliskan Urgensi/gap riset penelitian dengan baik/fokus/eksplisit didukung data/empiris</option>
 														</select>
 													</div>
                         </div>
@@ -110,10 +110,10 @@
 															<label class="input-group-text bg-primary text-light"><b>Rumusan Permasalahan</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="RumusanPermasalahan">										
-                              <option value="1">Menyimpang dari latar belakang </option>
-                              <option value="2">Sesuai dengan latar belakang, namun belum fokus</option>
-                              <option value="3">Sudah fokus namun belum/dituliskan dinyatakan dengan benar</option>
-                              <option value="4">Sudah fokus & telah dinyatakan/dituliskan dengan benar</option>
+                              <option value="0"></option><option value="1">1. Menyimpang dari latar belakang </option>
+                              <option value="2">2. Sesuai dengan latar belakang, namun belum fokus</option>
+                              <option value="3">3. Sudah fokus namun belum/dituliskan dinyatakan dengan benar</option>
+                              <option value="4">4. Sudah fokus & telah dinyatakan/dituliskan dengan benar</option>
 														</select>
 													</div>
                         </div>
@@ -123,10 +123,10 @@
 															<label class="input-group-text bg-primary text-light"><b>Teori Penunjang</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="TeoriPenunjang">										
-                              <option value="1">Tidak menyebutkan teori apa pun</option>
-                              <option value="2">Menyebutkan teori namun tidak relevan dengan topik penelitian</option>
-                              <option value="3">Menyebutkan teori & relevan, namun masih kurang/belum terstruktur</option>
-                              <option value="4">Menyebutkan teori yang relevan & terstruktur</option>
+                              <option value="0"></option><option value="1">1. Tidak menyebutkan teori apa pun</option>
+                              <option value="2">2. Menyebutkan teori namun tidak relevan dengan topik penelitian</option>
+                              <option value="3">3. Menyebutkan teori & relevan, namun masih kurang/belum terstruktur</option>
+                              <option value="4">4. Menyebutkan teori yang relevan & terstruktur</option>
 														</select>
 													</div>
                         </div>
@@ -136,10 +136,10 @@
 															<label class="input-group-text bg-primary text-light"><b>Penelitian Terdahulu</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="PenelitianTerdahulu">										
-                              <option value="1">Tidak ada penelitian terdahulu</option>
-                              <option value="2">Ada tapi tidak relevan</option>
-                              <option value="3">Ada & Relevan namun sumber terbatas ( hanya berasal dari salah satu jenis misal Skripsi)</option>
-                              <option value="4">Ada & relevan serta sumber beragam (Skripsi, jurnal, dll)</option>
+                              <option value="0"></option><option value="1">1. Tidak ada penelitian terdahulu</option>
+                              <option value="2">2. Ada tapi tidak relevan</option>
+                              <option value="3">3. Ada & Relevan namun sumber terbatas ( hanya berasal dari salah satu jenis misal Skripsi)</option>
+                              <option value="4">4. Ada & relevan serta sumber beragam (Skripsi, jurnal, dll)</option>
 														</select>
 													</div>
                         </div>
@@ -149,10 +149,10 @@
 															<label class="input-group-text bg-primary text-light"><b>Kerangka Fikir</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="KerangkaFikir">										
-                              <option value="1">Tidak ada kerangka fikir</option>
-                              <option value="2">Ada tapi tidak relevan & tidak sistematis</option>
-                              <option value="3">Ada tapi kurang relevan & sistematis</option>
-                              <option value="4">Ada & relevan serta sistematis</option>
+                              <option value="0"></option><option value="1">1. Tidak ada kerangka fikir</option>
+                              <option value="2">2. Ada tapi tidak relevan & tidak sistematis</option>
+                              <option value="3">3. Ada tapi kurang relevan & sistematis</option>
+                              <option value="4">4. Ada & relevan serta sistematis</option>
 														</select>
 													</div>
                         </div>
@@ -162,10 +162,10 @@
 															<label class="input-group-text bg-primary text-light"><b>Fokus Penelitin</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="FokusPenelitin">										
-                              <option value="1">Tidak Dijelaskan/disebutkan</option>
-                              <option value="2">Ada, namun tidak jelas / tidak fokus</option>
-                              <option value="3">Ada & fokus, belum disertai instumen penelitian</option>
-                              <option value="4">Ada, fokus & disertai instumen penelitian</option>
+                              <option value="0"></option><option value="1">1. Tidak Dijelaskan/disebutkan</option>
+                              <option value="2">2. Ada, namun tidak jelas / tidak fokus</option>
+                              <option value="3">3. Ada & fokus, belum disertai instumen penelitian</option>
+                              <option value="4">4. Ada, fokus & disertai instumen penelitian</option>
 														</select>
 													</div>
                         </div>
@@ -175,10 +175,10 @@
 															<label class="input-group-text bg-primary text-light"><b>Alat Analisis</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="AlatAnalisis">										
-                              <option value="1">Tidak disebutkan</option>
-                              <option value="2">Disebutkan, namun tidak sesuai dengan tujuan penelitian</option>
-                              <option value="3">Disebutkan & sesuai dgn tujuan penelitian, namun belum lengkap</option>
-                              <option value="4">Disebutkan, sesuai dgn tujuan penelitian, & sudah lengkap</option>
+                              <option value="0"></option><option value="1">1. Tidak disebutkan</option>
+                              <option value="2">2. Disebutkan, namun tidak sesuai dengan tujuan penelitian</option>
+                              <option value="3">3. Disebutkan & sesuai dgn tujuan penelitian, namun belum lengkap</option>
+                              <option value="4">4. Disebutkan, sesuai dgn tujuan penelitian, & sudah lengkap</option>
 														</select>
 													</div>
                         </div>
@@ -188,10 +188,10 @@
 															<label class="input-group-text bg-primary text-light"><b>Gambaran Umum Penelitian</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="GambaranPenelitian">										
-                              <option value="1">Tidak disebutkan</option>
-                              <option value="2">Disebutkan namun tidak sesuai dengan tujuan penelitian</option>
-                              <option value="3">Disebutkan namun tidak lengkap dan sesuai</option>
-                              <option value="4">Disebutkan lengkap dan sesuai</option>
+                              <option value="0"></option><option value="1">1. Tidak disebutkan</option>
+                              <option value="2">2. Disebutkan namun tidak sesuai dengan tujuan penelitian</option>
+                              <option value="3">3. Disebutkan namun tidak lengkap dan sesuai</option>
+                              <option value="4">4. Disebutkan lengkap dan sesuai</option>
 														</select>
 													</div>
                         </div>
@@ -201,10 +201,10 @@
 															<label class="input-group-text bg-primary text-light"><b>Analisis Data</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="AnalisisData">										
-                              <option value="1">Analisis tidak sesuai dengan metodologi</option>
-                              <option value="2">Analisis sesuai dengan metodologi namun hasil kurang sesuai dengan tujuan penelitian</option>
-                              <option value="3">Analisis sesuai metodologi, hasil sesuai tujuan penelitian, namun deskripsi kurang memadai</option>
-                              <option value="4">Analisis sesuai metodologi, hasil sesuai tujuan penelitian dan deskripsi memadai</option>
+                              <option value="0"></option><option value="1">1. Analisis tidak sesuai dengan metodologi</option>
+                              <option value="2">2. Analisis sesuai dengan metodologi namun hasil kurang sesuai dengan tujuan penelitian</option>
+                              <option value="3">3. Analisis sesuai metodologi, hasil sesuai tujuan penelitian, namun deskripsi kurang memadai</option>
+                              <option value="4">4. Analisis sesuai metodologi, hasil sesuai tujuan penelitian dan deskripsi memadai</option>
 														</select>
 													</div>
                         </div>
@@ -214,10 +214,10 @@
 															<label class="input-group-text bg-primary text-light"><b>Kesimpulan</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="Kesimpulan">										
-                              <option value="1">Tidak sesuai dengan hasil analisis tujuan penelitian</option>
-                              <option value="2">Sesuai dengan tujuan penelitian namun tidak fokus dan tidak lengkap</option>
-                              <option value="3">Sesuai dengan tujuan penelitian fokus namun tidak lengkap</option>
-                              <option value="4">Susai dengan tujuan penelitian, fokus dan lengkap</option>
+                              <option value="0"></option><option value="1">1. Tidak sesuai dengan hasil analisis tujuan penelitian</option>
+                              <option value="2">2. Sesuai dengan tujuan penelitian namun tidak fokus dan tidak lengkap</option>
+                              <option value="3">3. Sesuai dengan tujuan penelitian fokus namun tidak lengkap</option>
+                              <option value="4">4. Susai dengan tujuan penelitian, fokus dan lengkap</option>
 														</select>
 													</div>
                         </div>
@@ -227,10 +227,10 @@
 															<label class="input-group-text bg-primary text-light"><b>Saran</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="Saran">										
-                              <option value="1">Tidak ada</option>
-                              <option value="2">Ada namun tidak sesuai</option>
-                              <option value="3">Ada sesuai namun tidak lengkap</option>
-                              <option value="4">Ada, sesuai dan lengkap</option>
+                              <option value="0"></option><option value="1">1. Tidak ada</option>
+                              <option value="2">2. Ada namun tidak sesuai</option>
+                              <option value="3">3. Ada sesuai namun tidak lengkap</option>
+                              <option value="4">4. Ada, sesuai dan lengkap</option>
 														</select>
 													</div>
                         </div>

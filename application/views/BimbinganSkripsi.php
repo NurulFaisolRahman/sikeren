@@ -13,7 +13,7 @@
                         </div>
                         <select class="custom-select custom-select-sm" id="Bimbingan">					
                           <?php foreach ($Bimbingan as $key) { ?>
-                            <option value="<?=$key['NIM']?>"><?=$key['Nama']?></option>
+                            <option value="<?=$key['NIM']?>" <?=$this->session->userdata('NIMBimbingan')==$key['NIM'] ? 'selected' : '';?>><?=$key['Nama']?></option>
                           <?php } ?>
                         </select>
                         <div class="input-group-prepend">
