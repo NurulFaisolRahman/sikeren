@@ -8,14 +8,14 @@
                   <div class="row align-items-center">
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
-                        <table id="TabelUjianSkripsi" class="table table-bordered table-striped">
+                        <table id="TabelUjianProposal" class="table table-bordered table-striped">
                           <thead class="bg-warning">
                             <tr>
                               <th style="width: 4%;" class="text-center align-middle">No</th>
                               <th style="width: 12%;" class="align-middle">NIM</th>
                               <th style="width: 20%;" class="align-middle">Nama</th>
-                              <th class="align-middle">Judul Skripsi</th>
-                              <!-- <th style="width: 7%;" class="text-center align-middle">Nilai</th> -->
+                              <th class="align-middle">Judul Proposal</th>
+                              <th style="width: 7%;" class="text-center align-middle">Data</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -25,9 +25,9 @@
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
                                 <td class="align-middle"><?=$key['JudulProposal']?></td>
-                                <!-- <td class="text-center align-middle">
-                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianSkripsi']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
-                                </td>  -->
+                                <td class="text-center align-middle">
+                                  <a href="<?=base_url('Dashboard/BeritaAcaraUjianProposal/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-edit"></i></a>
+                                </td> 
                               </tr>
                             <?php } ?>
                           </tbody>
@@ -52,19 +52,8 @@
 		<script>
 			jQuery(document).ready(function($) {
 				"use strict";
-        var BaseURL = '<?=base_url()?>';
 
-        $(document).on("click",".CekData",function(){
-					var Data = $(this).attr('CekData')
-					var Pisah = Data.split("|")
-					$("#NIM").val(Pisah[0])
-					$("#Nama").val(Pisah[1])
-					$("#TanggalUjianSkripsi").val(Pisah[2])
-          $("#Konsentrasi").val(Pisah[3])
-					$('#ModalValidasiSkripsi').modal("show")
-        })
-
-        $('#TabelUjianSkripsi').DataTable( {
+        $('#TabelUjianProposal').DataTable( {
 					// dom:'lfrtip',
 					"ordering": false,
           "lengthMenu": [[ 5, 10, 20, 30, -1 ],[ 5, 10, 20, 30, "All"]],

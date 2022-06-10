@@ -100,11 +100,11 @@
 												<div class="col-lg-12">
 													<div class="input-group input-group-sm mb-0">
 														<div class="input-group-prepend">
-															<span class="input-group-text bg-primary text-light"><b>Upload Berkas Administrasi</b></span>
+															<span class="input-group-text bg-primary text-light"><b>Upload Lampiran Cek Plagiasi</b></span>
 														</div>
 														<input class="form-control" type="file" id="Administrasi">
 													</div>
-													<pre class="text-danger mb-0"><b>* Wajib Upload FC Kwitansi Pembayaran Skripsi (Non UKT) & Bebas Administrasi Dalam Format Pdf</b></pre>
+													<pre class="text-danger mb-0"><b>* Wajib Upload Lampiran Cek Plagiasi (Per Bab) Dalam Format Pdf</b></pre>
 												</div>  
 												<div class="col-lg-12">
 													<div class="input-group input-group-sm mb-0">
@@ -171,12 +171,12 @@
 											<div class="col-lg-12">
 													<div class="input-group input-group-sm mb-0">
 														<div class="input-group-prepend">
-															<span class="input-group-text bg-primary text-light"><b>Update Berkas Administrasi</b></span>
+															<span class="input-group-text bg-primary text-light"><b>Update Lampiran Cek Plagiasi</b></span>
 														</div>
 														<input class="form-control" type="file" id="_Administrasi">
 														<input class="form-control" type="hidden" id="_Administrasi_">
 													</div>
-													<pre class="text-danger mb-0"><b>* Wajib Upload FC Kwitansi Pembayaran Skripsi (Non UKT) & Bebas Administrasi Dalam Format Pdf</b></pre>
+													<pre class="text-danger mb-0"><b>* Wajib Upload Lampiran Cek Plagiasi (Per Bab) Dalam Format Pdf</b></pre>
 												</div>  
 												<div class="col-lg-12">
 													<div class="input-group input-group-sm mb-0">

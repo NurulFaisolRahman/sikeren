@@ -159,7 +159,7 @@
                         <div class="col-12 my-1"> 
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Fokus Penelitin</b></label>
+															<label class="input-group-text bg-primary text-light"><b>Fokus Penelitian</b></label>
 														</div>
 														<select class="custom-select custom-select-sm" id="FokusPenelitin">										
                               <option value="0"></option><option value="1">1. Tidak Dijelaskan/disebutkan</option>

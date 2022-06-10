@@ -1629,9 +1629,9 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'Menilai';
 		$Data['SubMenu'] = 'PengujiProposal';
 		$Data['PengujiProposal'] = array();
-		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal1 = 'Setuju' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal1 = ''")->result_array();
-		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal1 = 'Setuju' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal2 = ''")->result_array();
-		$Penguji3 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal1 = 'Setuju' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal3 = ''")->result_array();
+		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal2 = 'Setuju' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal1 = ''")->result_array();
+		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal2 = 'Setuju' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal2 = ''")->result_array();
+		$Penguji3 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal2 = 'Setuju' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal3 = ''")->result_array();
 		for ($i=0; $i < count($Penguji1); $i++) { 
 			array_push($Data['PengujiProposal'],$Penguji1[$i]);
 		}
@@ -1649,9 +1649,9 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'Menilai';
 		$Data['SubMenu'] = 'PengujiSkripsi';
 		$Data['PengujiSkripsi'] = array();
-		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi1 = 'Setuju' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi1 = ''")->result_array();
-		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi1 = 'Setuju' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi2 = ''")->result_array();
-		$Penguji3 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi1 = 'Setuju' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi3 = ''")->result_array();
+		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi2 = 'Setuju' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi1 = ''")->result_array();
+		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi2 = 'Setuju' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi2 = ''")->result_array();
+		$Penguji3 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi2 = 'Setuju' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi3 = ''")->result_array();
 		for ($i=0; $i < count($Penguji1); $i++) { 
 			array_push($Data['PengujiSkripsi'],$Penguji1[$i]);
 		}
@@ -1868,8 +1868,33 @@ class Dashboard extends CI_Controller {
     $this->load->view('BimbinganSkripsi',$Data); 
 	}
 
-	public function FotoBimbingan(){
-		$Foto = $this->db->query("SELECT Foto FROM mahasiswa WHERE NIM = ".$_POST['NIM'])->row_array()['Foto']; 
-    echo $Foto;
+	public function NilaiProposal(){
+		$Data['Halaman'] = 'Nilai';
+		$Data['SubMenu'] = 'NilaiProposal';
+		$NIP = $this->session->userdata('NIP');
+		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != '' AND (NIPPembimbing = '".$NIP."' OR PengujiProposal1 = '".$NIP."' OR PengujiProposal2 = '".$NIP."')")->result_array();
+    $this->load->view('Header',$Data);
+    $this->load->view('NilaiProposal',$Data); 
+	}
+
+	public function NilaiSkripsi(){
+		$Data['Halaman'] = 'Nilai';
+		$Data['SubMenu'] = 'NilaiSkripsi';
+		$NIP = $this->session->userdata('NIP');
+		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != '' AND (NIPPembimbing = '".$NIP."' OR PengujiSkripsi1 = '".$NIP."' OR PengujiSkripsi2 = '".$NIP."')")->result_array();
+    $this->load->view('Header',$Data);
+    $this->load->view('NilaiSkripsi',$Data); 
+	}
+
+	public function BeritaAcaraUjianProposal($NIM){
+		$this->load->library('Pdf');
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$NIM)->row_array();
+		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianProposal']);$Data['Tanggal'] = $Tanggal[2].' - '.$Tanggal[1].' - '.$Tanggal[0];
+		$Data['Ketua'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['QRCode'];
+		$Data['Anggota'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['QRCode'];
+		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
+		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
+		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$this->load->view('BeritaAcaraUjianProposal',$Data);
 	}
 }
