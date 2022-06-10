@@ -1624,7 +1624,7 @@ class Dashboard extends CI_Controller {
     $this->load->view('Header',$Data);
     $this->load->view('ValidasiPengujiSkripsi',$Data); 
 	}
-
+	
 	public function PengujiProposal(){
 		$Data['Halaman'] = 'Menilai';
 		$Data['SubMenu'] = 'PengujiProposal';
@@ -1664,7 +1664,8 @@ class Dashboard extends CI_Controller {
     $this->load->view('Header',$Data);
     $this->load->view('PengujiSkripsi',$Data); 
 	}
-
+	// 5,3.75,2.5,2.5,2.5,5,3.75
+	// 2.5,2.5,2,2,2,2.5,2.5,2,2.5,2.5,2
 	public function MenilaiProposal(){
 		$Data['PengujiProposal'] = $this->db->query("SELECT PengujiProposal1,PengujiProposal2,NIPPembimbing FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
 		if ($Data['PengujiProposal']['PengujiProposal1'] == $this->session->userdata('NIP')) {
@@ -1861,6 +1862,7 @@ class Dashboard extends CI_Controller {
 		$Data['DataBimbingan'] = array();
 		if ($this->session->userdata('NIMBimbingan') != '') {
 			$Data['DataBimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->result_array(); 
+			$Data['Mhs'] = $this->db->query("SELECT Foto,NIM,Nama,HP FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->row_array(); 
 		}
     $this->load->view('Header',$Data);
     $this->load->view('BimbinganSkripsi',$Data); 
