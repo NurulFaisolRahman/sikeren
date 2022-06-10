@@ -98,9 +98,9 @@
 														</div>
 														<select class="custom-select custom-select-sm" id="LatarBelakang">										
                               <option value="0"></option><option value="1">1. Tidak terdapat/mampu menuliskan & menjelaskan urgensi serta riset gap penelitian</option>
-                              <option value="2">2. dapat menjelaskan/menuliskan Urgensi/gap riset penelitian namun masih sangat lemah/tidak fokus/implisit/tidak didukung dengan empiris maupun teoritis</option>
-                              <option value="3">3. dapat menjelaskan/menuliskan Urgensi/gap riset penelitian dengan baik/fokus/eksplisit namun masih belum didukung data/empiris</option>
-                              <option value="4">4. dapat menjelaskan/menuliskan Urgensi/gap riset penelitian dengan baik/fokus/eksplisit didukung data/empiris</option>
+                              <option value="2">2. Dapat menjelaskan/menuliskan Urgensi/gap riset penelitian namun masih sangat lemah/tidak fokus/implisit/tidak didukung dengan empiris maupun teoritis</option>
+                              <option value="3">3. Dapat menjelaskan/menuliskan Urgensi/gap riset penelitian dengan baik/fokus/eksplisit namun masih belum didukung data/empiris</option>
+                              <option value="4">4. Dapat menjelaskan/menuliskan Urgensi/gap riset penelitian dengan baik/fokus/eksplisit didukung data/empiris</option>
 														</select>
 													</div>
                         </div>

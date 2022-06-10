@@ -23,39 +23,41 @@
                       </div>
                     </div>
                     <div class="col-sm-12">
-                      <div class="col-2 d-flex justify-content-center pl-0 pr-0">
-                        <label for="InputFoto">
-                          <?php if ($Mhs['Foto'] == '') { ?>
-                            <img src="<?=base_url('img/Profil.jpg')?>" alt="..." class="img-circle profile_img mt-1" width="130px;">
-                          <?php	} else { ?>
-                            <img src="<?=base_url('FotoMhs/'.$Mhs['Foto'])?>" class="mt-1" width="130px" height="130px">
-                          <?php } ?>
-                        </label>
-                      </div>
-                      <div class="col-4">
-                        <div class="row">
-                          <div class="col-12 my-1 pl-0">
-                            <div class="input-group input-group-sm"> 
-                              <div class="input-group-prepend">
-                                <label class="input-group-text bg-danger text-white"><b>NIM</b></label>
+                      <div class="row">
+                        <div class="col-2 d-flex justify-content-center pl-0 pr-0">
+                          <label for="InputFoto">
+                            <?php if ($Mhs['Foto'] == '') { ?>
+                              <img src="<?=base_url('img/Profil.jpg')?>" alt="..." class="img-circle profile_img mt-1" width="130px;">
+                            <?php	} else { ?>
+                              <img src="<?=base_url('FotoMhs/'.$Mhs['Foto'])?>" class="mt-1" width="130px" height="130px">
+                            <?php } ?>
+                          </label>
+                        </div>
+                        <div class="col-4">
+                          <div class="row">
+                            <div class="col-12 mt-3 mb-1 pl-0">
+                              <div class="input-group input-group-sm"> 
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text bg-danger text-white"><b>NIM</b></label>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" value="<?=$Mhs['NIM']?>" disabled>
                               </div>
-                              <input type="text" class="form-control form-control-sm" value="<?=$Mhs['NIM']?>" disabled>
                             </div>
-                          </div>
-                          <div class="col-12 my-1 pl-0">
-                            <div class="input-group input-group-sm"> 
-                              <div class="input-group-prepend">
-                                <label class="input-group-text bg-danger text-white"><b>Nama</b></label>
+                            <div class="col-12 my-1 pl-0">
+                              <div class="input-group input-group-sm"> 
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text bg-danger text-white"><b>Nama</b></label>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" value="<?=$Mhs['Nama']?>" disabled>
                               </div>
-                              <input type="text" class="form-control form-control-sm" value="<?=$Mhs['Nama']?>" disabled>
                             </div>
-                          </div>
-                          <div class="col-12 my-1 pl-0">
-                            <div class="input-group input-group-sm"> 
-                              <div class="input-group-prepend">
-                                <label class="input-group-text bg-danger text-white"><b>Kontak</b></label>
+                            <div class="col-12 my-1 pl-0">
+                              <div class="input-group input-group-sm"> 
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text bg-danger text-white"><b>Kontak</b></label>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" value="<?=$Mhs['HP']?>" disabled>
                               </div>
-                              <input type="text" class="form-control form-control-sm" value="<?=$Mhs['HP']?>" disabled>
                             </div>
                           </div>
                         </div>
