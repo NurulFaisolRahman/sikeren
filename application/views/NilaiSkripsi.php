@@ -25,9 +25,9 @@
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
                                 <td class="align-middle"><?=$key['JudulProposal']?></td>
-                                <!-- <td class="text-center align-middle">
-                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianSkripsi']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
-                                </td>  -->
+                                <td class="text-center align-middle">
+                                  <a href="<?=base_url('Dashboard/BeritaAcaraUjianSkripsi/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-edit"></i></a>
+                                </td> 
                               </tr>
                             <?php } ?>
                           </tbody>
@@ -52,17 +52,6 @@
 		<script>
 			jQuery(document).ready(function($) {
 				"use strict";
-        var BaseURL = '<?=base_url()?>';
-
-        $(document).on("click",".CekData",function(){
-					var Data = $(this).attr('CekData')
-					var Pisah = Data.split("|")
-					$("#NIM").val(Pisah[0])
-					$("#Nama").val(Pisah[1])
-					$("#TanggalUjianSkripsi").val(Pisah[2])
-          $("#Konsentrasi").val(Pisah[3])
-					$('#ModalValidasiSkripsi').modal("show")
-        })
 
         $('#TabelUjianSkripsi').DataTable( {
 					// dom:'lfrtip',
