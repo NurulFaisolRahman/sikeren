@@ -15,7 +15,7 @@
                               <th style="width: 12%;" class="align-middle">NIM</th>
                               <th style="width: 20%;" class="align-middle">Nama</th>
                               <th class="align-middle">Judul Skripsi</th>
-                              <!-- <th style="width: 7%;" class="text-center align-middle">Nilai</th> -->
+                              <th style="width: 7%;" class="text-center align-middle">Data</th>
                             </tr>
                           </thead>
                           <tbody>
