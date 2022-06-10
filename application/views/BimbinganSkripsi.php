@@ -18,7 +18,6 @@
                         </select>
                         <div class="input-group-prepend">
                           <label class="input-group-text bg-danger text-light" id="Lihat"><b>Lihat</b></label>
-                          <label class="input-group-text bg-primary text-light" id="Foto"><b>Foto</b></label>
                         </div>
                       </div>
                     </div>
@@ -160,15 +159,6 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="ModalFoto">
-      <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content bg-transparent" width="170px">
-          <div class="modal-body text-center">
-            <img id="PathFoto" src="" width="150px" height="180px" alt="FotoMahasiswa">
-          </div>
-        </div>
-      </div>
-    </div>
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
     <script src="<?=base_url('bootstrap/js/popper.min.js')?>" ></script>
     <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
@@ -194,23 +184,6 @@
             var Data = {NIMBimbingan: $("#Bimbingan").val(),NamaBimbingan: $("#Bimbingan option:selected").text()}
             $.post(BaseURL+"Dashboard/SesiBimbingan", Data).done(function(Respon) {
               window.location = BaseURL + "Dashboard/BimbinganSkripsi"
-            })
-          }
-				})
-
-        $("#Foto").click(function() {
-          if ($("#Bimbingan").val() == null) {
-            alert('Belum Ada Bimbingan!')
-          } else {
-            var Foto = {NIM: $("#Bimbingan").val()}
-            $.post(BaseURL+"Dashboard/FotoBimbingan", Foto).done(function(Respon) {
-              if (Respon != '') {
-                $('#PathFoto').attr('src',BaseURL+'FotoMhs/'+Respon)		
-                $('#ModalFoto').modal("show")
-              } else {
-                $('#PathFoto').attr('src',BaseURL+'img/Profil.jpg')		
-                $('#ModalFoto').modal("show")
-              }
             })
           }
 				})
