@@ -1859,10 +1859,12 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'Bimbingan Skripsi';
 		$Data['SubMenu'] = '';
 		$Data['Bimbingan'] = $this->db->query("SELECT NIM,Nama FROM mahasiswa WHERE NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array(); 
-		$Data['DataBimbingan'] = array();
 		if ($this->session->userdata('NIMBimbingan') != '') {
 			$Data['DataBimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->result_array(); 
 			$Data['Mhs'] = $this->db->query("SELECT Foto,NIM,Nama,HP FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->row_array(); 
+		} else if (count($Data['Bimbingan']) > 0) {
+			$Data['DataBimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$Data['Bimbingan'][0]['NIM'])->result_array(); 
+			$Data['Mhs'] = $this->db->query("SELECT Foto,NIM,Nama,HP FROM mahasiswa WHERE NIM = ".$Data['Bimbingan'][0]['NIM'])->row_array(); 
 		}
     $this->load->view('Header',$Data);
     $this->load->view('BimbinganSkripsi',$Data); 

@@ -21,6 +21,7 @@
                         </div>
                       </div>
                     </div>
+                    <?php if (count($DataBimbingan) > 0) { ?>
                     <div class="col-sm-12">
                       <div class="row">
                         <div class="col-2 d-flex justify-content-center pl-0 pr-0">
@@ -62,6 +63,7 @@
                         </div>
                       </div>
                     </div>
+                    <?php } ?>
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
                         <table id="TabelBimbingan" class="table table-bordered table-striped">
