@@ -1664,8 +1664,7 @@ class Dashboard extends CI_Controller {
     $this->load->view('Header',$Data);
     $this->load->view('PengujiSkripsi',$Data); 
 	}
-	// 5,3.75,2.5,2.5,2.5,5,3.75
-	// 2.5,2.5,2,2,2,2.5,2.5,2,2.5,2.5,2
+	
 	public function MenilaiProposal(){
 		$Data['PengujiProposal'] = $this->db->query("SELECT PengujiProposal1,PengujiProposal2,NIPPembimbing FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
 		if ($Data['PengujiProposal']['PengujiProposal1'] == $this->session->userdata('NIP')) {
@@ -1887,7 +1886,7 @@ class Dashboard extends CI_Controller {
     $this->load->view('Header',$Data);
     $this->load->view('NilaiSkripsi',$Data); 
 	}
-
+	
 	public function BeritaAcaraUjianProposal($NIM){
 		$this->load->library('Pdf');
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$NIM)->row_array();
@@ -1897,6 +1896,40 @@ class Dashboard extends CI_Controller {
 		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
 		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
 		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$Bobot = array(5,3.75,2.5,2.5,2.5,5,3.75);
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji1']);
+		$NilaiKetuaPenguji = 0;
+		for ($i=0; $i < count($Bobot); $i++) { 
+			$NilaiKetuaPenguji += $Bobot[$i]*$RekapNilai;
+		}
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji2']);
+		$NilaiAnggotaPenguji = 0;
+		for ($i=0; $i < count($Bobot); $i++) { 
+			$NilaiAnggotaPenguji += $Bobot[$i]*$RekapNilai;
+		}
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji3']);
+		$NilaiSekretaris = 0;
+		for ($i=0; $i < count($Bobot); $i++) { 
+			$NilaiSekretaris += $Bobot[$i]*$RekapNilai;
+		}
+		$Data['Nilai'] = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
+		if ($Data['Nilai'] > 80) {
+			$Data['Nilai'] .= ' (A)';
+		} else if ($Data['Nilai'] > 75) {
+			$Data['Nilai'] .= ' (B+)';
+		} else if ($Data['Nilai'] > 70) {
+			$Data['Nilai'] .= ' (B)';
+		} else if ($Data['Nilai'] > 65) {
+			$Data['Nilai'] .= ' (C+)';
+		} else if ($Data['Nilai'] > 60) {
+			$Data['Nilai'] .= ' (C)';
+		} else if ($Data['Nilai'] > 55) {
+			$Data['Nilai'] .= ' (D+)';
+		} else if ($Data['Nilai'] > 50) {
+			$Data['Nilai'] .= ' (D)';
+		} else {
+			$Data['Huruf'] .= ' (E)';
+		}
 		$this->load->view('BeritaAcaraUjianProposal',$Data);
 	}
 
@@ -1909,6 +1942,40 @@ class Dashboard extends CI_Controller {
 		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
 		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
 		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$Bobot = array(2.5,2.5,2,2,2,2.5,2.5,2,2.5,2.5,2);
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji1']);
+		$NilaiKetuaPenguji = 0;
+		for ($i=0; $i < count($Bobot); $i++) { 
+			$NilaiKetuaPenguji += $Bobot[$i]*$RekapNilai;
+		}
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji2']);
+		$NilaiAnggotaPenguji = 0;
+		for ($i=0; $i < count($Bobot); $i++) { 
+			$NilaiAnggotaPenguji += $Bobot[$i]*$RekapNilai;
+		}
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji3']);
+		$NilaiSekretaris = 0;
+		for ($i=0; $i < count($Bobot); $i++) { 
+			$NilaiSekretaris += $Bobot[$i]*$RekapNilai;
+		}
+		$Data['Nilai'] = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
+		if ($Data['Nilai'] > 80) {
+			$Data['Nilai'] .= ' (A)';
+		} else if ($Data['Nilai'] > 75) {
+			$Data['Nilai'] .= ' (B+)';
+		} else if ($Data['Nilai'] > 70) {
+			$Data['Nilai'] .= ' (B)';
+		} else if ($Data['Nilai'] > 65) {
+			$Data['Nilai'] .= ' (C+)';
+		} else if ($Data['Nilai'] > 60) {
+			$Data['Nilai'] .= ' (C)';
+		} else if ($Data['Nilai'] > 55) {
+			$Data['Nilai'] .= ' (D+)';
+		} else if ($Data['Nilai'] > 50) {
+			$Data['Nilai'] .= ' (D)';
+		} else {
+			$Data['Nilai'] .= ' (E)';
+		}
 		$this->load->view('BeritaAcaraUjianSkripsi',$Data);
 	}
 }
