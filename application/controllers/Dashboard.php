@@ -1897,17 +1897,17 @@ class Dashboard extends CI_Controller {
 		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
 		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$Bobot = array(5,3.75,2.5,2.5,2.5,5,3.75);
-		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji1']);
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal1']);
 		$NilaiKetuaPenguji = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
 			$NilaiKetuaPenguji += $Bobot[$i]*$RekapNilai;
 		}
-		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji2']);
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal2']);
 		$NilaiAnggotaPenguji = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
 			$NilaiAnggotaPenguji += $Bobot[$i]*$RekapNilai;
 		}
-		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji3']);
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal3']);
 		$NilaiSekretaris = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
 			$NilaiSekretaris += $Bobot[$i]*$RekapNilai;
@@ -1943,17 +1943,17 @@ class Dashboard extends CI_Controller {
 		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
 		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$Bobot = array(2.5,2.5,2,2,2,2.5,2.5,2,2.5,2.5,2);
-		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji1']);
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal1']);
 		$NilaiKetuaPenguji = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
 			$NilaiKetuaPenguji += $Bobot[$i]*$RekapNilai;
 		}
-		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji2']);
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal2']);
 		$NilaiAnggotaPenguji = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
 			$NilaiAnggotaPenguji += $Bobot[$i]*$RekapNilai;
 		}
-		$RekapNilai = explode("$",$Data['Mhs']['NilaiPenguji3']);
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal3']);
 		$NilaiSekretaris = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
 			$NilaiSekretaris += $Bobot[$i]*$RekapNilai;
