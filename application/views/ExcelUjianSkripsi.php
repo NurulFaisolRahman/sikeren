@@ -913,7 +913,7 @@ td
    </tr>
    <?php 
 		$Poin = array('Latar Belakang','Rumusan Masalah','Teori Penunjang','Penelitian Terdahulu','Kerangka Fikir','Fokus Penelitian','Alat Analisis','Gambaran Umum Penelitian','Analisis Data','Kesimpulan','Saran'); 
-		$Nilai1 = explode("$",$Mhs['NilaiProposal1']);$Nilai2 = explode("$",$Mhs['NilaiProposal2']);$Nilai3 = explode("$",$Mhs['NilaiProposal3']);
+		$Nilai1 = explode("$",$Mhs['NilaiSkripsi1']);$Nilai2 = explode("$",$Mhs['NilaiSkripsi2']);$Nilai3 = explode("$",$Mhs['NilaiSkripsi3']);
 		$Bobot = array(2.5,2.5,2,2,2,2.5,2.5,2,2.5,2.5,2);$Total = array(0,0,0);
 	 ?>
 	 <?php for ($i=0; $i < count($Poin); $i++) { ?>
