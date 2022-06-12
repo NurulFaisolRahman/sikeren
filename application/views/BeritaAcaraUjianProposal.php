@@ -90,7 +90,7 @@
   </tr>
   <tr>
     <td></td>
-    <td colspan="2"><p><br>Dengan Hasil : '.isset($Nilai) ? $Nilai : '';?>.'</p></td>
+    <td colspan="2"><p><br>Dengan Hasil : '.isset($Nilai) ? $Nilai : ''.'</p></td>
     <td></td>
   </tr>
   <tr>
