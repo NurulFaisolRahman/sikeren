@@ -913,7 +913,7 @@ td
 			<td class=3D"xl68" x:num><?=$Nilai2[$i]?></td>
 			<td class=3D"xl68" x:num><?=$Nilai2[$i]*$Bobot[$i]?></td>
 		</tr>
-	 <?php $Total[0] += $Nilai3[$i]*$Bobot[$i];$Total[1] += $Nilai1[$i]*$Bobot[$i];$Total[2] += $Nilai2[$i]*$Bobot[$i]; } ?> 
+	 <?php $Total[0] += $Bobot[$i]*(int)$Nilai3[$i];$Total[1] += $Bobot[$i]*(int)$Nilai1[$i];$Total[2] += $Bobot[$i]*(int)$Nilai2[$i]; } ?> 
    <tr height=3D"20" style=3D'height:15.00pt;'>
     <td height=3D"20" style=3D'height:15.00pt;'></td>
     <td class=3D"xl68" colspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Total</td>

@@ -27,7 +27,7 @@
                                 <td class="align-middle"><?=$key['JudulProposal']?></td>
                                 <td class="text-center align-middle">
                                   <a href="<?=base_url('Dashboard/BeritaAcaraUjianProposal/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
-                                  <a href="<?=base_url('Dashboard/ExcelUjianProposal/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-excel"></i></a>
+                                  <a href="<?=base_url('Dashboard/ExcelUjianProposal/'.$key['NIM'])?>" class="btn btn-sm btn-success"><i class="fas fa-file-excel"></i></a>
                                 </td> 
                               </tr>
                             <?php } ?>
