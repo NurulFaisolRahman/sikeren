@@ -1912,7 +1912,7 @@ class Dashboard extends CI_Controller {
 		for ($i=0; $i < count($Bobot); $i++) { 
 			$NilaiSekretaris += $Bobot[$i]*(int)$RekapNilai[$i];
 		}
-		$Data['Nilai'] = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
+		$Data['Nilai'] = number_format(((0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris)),2,",",".");
 		if ($Data['Nilai'] > 80) {
 			$Data['Nilai'] .= ' (A)';
 		} else if ($Data['Nilai'] > 75) {
@@ -1931,6 +1931,48 @@ class Dashboard extends CI_Controller {
 			$Data['Huruf'] .= ' (E)';
 		}
 		$this->load->view('BeritaAcaraUjianProposal',$Data);
+	}
+
+	public function ExcelUjianProposal($NIM){
+		$this->load->library('Pdf');
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$NIM)->row_array();
+		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
+		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
+		$Bobot = array(5,3.75,2.5,2.5,2.5,5,3.75);
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal1']);
+		$NilaiKetuaPenguji = 0;
+		for ($i=0; $i < count($Bobot); $i++) { 
+			$NilaiKetuaPenguji += $Bobot[$i]*(int)$RekapNilai[$i];
+		}
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal2']);
+		$NilaiAnggotaPenguji = 0;
+		for ($i=0; $i < count($Bobot); $i++) { 
+			$NilaiAnggotaPenguji += $Bobot[$i]*(int)$RekapNilai[$i];
+		}
+		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal3']);
+		$NilaiSekretaris = 0;
+		for ($i=0; $i < count($Bobot); $i++) { 
+			$NilaiSekretaris += $Bobot[$i]*(int)$RekapNilai[$i];
+		}
+		$Data['Nilai'] = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
+		if ($Data['Nilai'] > 80) {
+			$Data['Nilai'] .= ' (A)';
+		} else if ($Data['Nilai'] > 75) {
+			$Data['Nilai'] .= ' (B+)';
+		} else if ($Data['Nilai'] > 70) {
+			$Data['Nilai'] .= ' (B)';
+		} else if ($Data['Nilai'] > 65) {
+			$Data['Nilai'] .= ' (C+)';
+		} else if ($Data['Nilai'] > 60) {
+			$Data['Nilai'] .= ' (C)';
+		} else if ($Data['Nilai'] > 55) {
+			$Data['Nilai'] .= ' (D+)';
+		} else if ($Data['Nilai'] > 50) {
+			$Data['Nilai'] .= ' (D)';
+		} else {
+			$Data['Huruf'] .= ' (E)';
+		}
+		$this->load->view('ExcelUjianProposal',$Data);
 	}
 
 	public function BeritaAcaraUjianSkripsi($NIM){
@@ -1976,7 +2018,7 @@ class Dashboard extends CI_Controller {
 			$NilaiSekretaris += $Bobot[$i]*(int)$RekapNilai[$i];
 		}
 		$NilaiSkripsi = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
-		$Data['Nilai'] = (0.3*$NilaiProposal)+(0.7*$NilaiSkripsi);
+		$Data['Nilai'] = number_format(((0.3*$NilaiProposal)+(0.7*$NilaiSkripsi)),2,",",".");
 		if ($Data['Nilai'] > 80) {
 			$Data['Nilai'] .= ' (A)';
 		} else if ($Data['Nilai'] > 75) {
