@@ -9,6 +9,10 @@
   $pdf->SetAuthor('nurulfaisolrahman@gmail.com');
   $pdf->SetDisplayMode('real', 'default');
   $pdf->AddPage('P', 'A4');
+  $NilaiAkhir = '';
+  if (isset($Nilai)) {
+    $NilaiAkhir = $Nilai;
+  }
   $html = '
   <style>
     table,tr,td{
@@ -90,7 +94,7 @@
   </tr>
   <tr>
     <td></td>
-    <td colspan="2"><p><br>Dengan Hasil : <?=isset($Nilai) ? $Nilai : "";?></p></td>
+    <td colspan="2"><p><br>Dengan Hasil : '.$NilaiAkhir.'</p></td>
     <td></td>
   </tr>
   <tr>
