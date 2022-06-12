@@ -2061,6 +2061,7 @@ class Dashboard extends CI_Controller {
 			$NilaiSekretaris += $Bobot[$i]*(int)$RekapNilai[$i];
 		}
 		$NilaiProposal = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
+		$Data['NilaiProposal'] = $NilaiProposal;
 		$Bobot = array(2.5,2.5,2,2,2,2.5,2.5,2,2.5,2.5,2);
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiSkripsi1']);
 		$NilaiKetuaPenguji = 0;
@@ -2078,6 +2079,7 @@ class Dashboard extends CI_Controller {
 			$NilaiSekretaris += $Bobot[$i]*(int)$RekapNilai[$i];
 		}
 		$NilaiSkripsi = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
+		$Data['NilaiSkripsi'] = $NilaiSkripsi;
 		$Data['Nilai'] = number_format(((0.3*$NilaiProposal)+(0.7*$NilaiSkripsi)),2,",",".");
 		if ($Data['Nilai'] > 80) {
 			$Data['Nilai'] .= ' (A)';

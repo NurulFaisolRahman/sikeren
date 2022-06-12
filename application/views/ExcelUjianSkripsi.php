@@ -946,7 +946,7 @@ td
    </tr>
    <tr height=3D"20" style=3D'height:15.00pt;'>
     <td height=3D"20" style=3D'height:15.00pt;'></td>
-    <td class=3D"xl70" colspan=3D"2" style=3D'border-right:none;border-bottom:none;' x:str>Nilai Akhir : <?=$Nilai?></td>
+    <td class=3D"xl72" colspan=3D"9" style=3D'border-right:none;border-bottom:none;' x:str>Nilai Akhir : Nilai Proposal <?=$NilaiProposal?> (30%) + Nilai Skripsi <?=$NilaiSkripsi?> (70%) =3D <?=$Nilai?></td>
    </tr>
    <![if supportMisalignedColumns]>
     <tr width=3D"0" style=3D'display:none;'>
