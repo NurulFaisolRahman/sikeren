@@ -1900,17 +1900,17 @@ class Dashboard extends CI_Controller {
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal1']);
 		$NilaiKetuaPenguji = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiKetuaPenguji += $Bobot[$i]*$RekapNilai;
+			$NilaiKetuaPenguji += $Bobot[$i]*$RekapNilai[$i];
 		}
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal2']);
 		$NilaiAnggotaPenguji = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiAnggotaPenguji += $Bobot[$i]*$RekapNilai;
+			$NilaiAnggotaPenguji += $Bobot[$i]*$RekapNilai[$i];
 		}
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal3']);
 		$NilaiSekretaris = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiSekretaris += $Bobot[$i]*$RekapNilai;
+			$NilaiSekretaris += $Bobot[$i]*$RekapNilai[$i];
 		}
 		$Data['Nilai'] = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
 		if ($Data['Nilai'] > 80) {
@@ -1946,17 +1946,17 @@ class Dashboard extends CI_Controller {
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal1']);
 		$NilaiKetuaPenguji = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiKetuaPenguji += $Bobot[$i]*$RekapNilai;
+			$NilaiKetuaPenguji += $Bobot[$i]*$RekapNilai[$i];
 		}
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal2']);
 		$NilaiAnggotaPenguji = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiAnggotaPenguji += $Bobot[$i]*$RekapNilai;
+			$NilaiAnggotaPenguji += $Bobot[$i]*$RekapNilai[$i];
 		}
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal3']);
 		$NilaiSekretaris = 0;
 		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiSekretaris += $Bobot[$i]*$RekapNilai;
+			$NilaiSekretaris += $Bobot[$i]*$RekapNilai[$i];
 		}
 		$Data['Nilai'] = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
 		if ($Data['Nilai'] > 80) {
