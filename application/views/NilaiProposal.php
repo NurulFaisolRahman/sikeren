@@ -14,6 +14,7 @@
                               <th style="width: 4%;" class="text-center align-middle">No</th>
                               <th style="width: 12%;" class="align-middle">NIM</th>
                               <th style="width: 20%;" class="align-middle">Nama</th>
+                              <th style="width: 20%;" class="align-middle">Dosen Pembimbing</th>
                               <th class="align-middle">Judul Proposal</th>
                               <th style="width: 7%;" class="text-center align-middle">Data</th>
                             </tr>
@@ -24,6 +25,7 @@
                                 <td class="text-center align-middle"><?=$No++?></td>
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
+                                <td class="align-middle"><?=$key['NamaPembimbing']?></td>
                                 <td class="align-middle"><?=$key['JudulProposal']?></td>
                                 <td class="text-center align-middle">
                                   <a href="<?=base_url('Dashboard/BeritaAcaraUjianProposal/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>

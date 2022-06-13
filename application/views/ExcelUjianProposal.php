@@ -883,7 +883,7 @@ td
     <td height=3D"20" style=3D'height:15.00pt;'></td>
     <td class=3D"xl68" colspan=3D"2" rowspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Poin Penilaian</td>
     <td class=3D"xl68" rowspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Bobot</td>
-    <td class=3D"xl68" colspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Skretaris (40%)</td>
+    <td class=3D"xl68" colspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Sekretaris (40%)</td>
     <td class=3D"xl68" colspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Penguji 1 (30%)</td>
     <td class=3D"xl71" colspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Penguji 2 (30%)</td>
    </tr>
