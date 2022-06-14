@@ -1897,8 +1897,20 @@ class Dashboard extends CI_Controller {
 			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != ''")->result_array();
 			$Data['Status'] = 'Sudah Ujian Proposal';	
 		} else if ($Status == '3') {
-			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where NilaiProposal1 = '' OR NilaiProposal2 = '' OR NilaiProposal3 = ''")->result_array();
-			$Data['Status'] = 'Belum Ujian Proposal';
+			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = 'Disetujui Pembimbing'")->result_array();
+			$Data['Status'] = 'Mendapat Dosen Pembimbing';
+		} else if ($Status == '4') {
+			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Pembimbing'")->result_array();
+			$Data['Status'] = 'Menunggu Validasi Pembimbing';
+		} else if ($Status == '5') {
+			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' OR StatusProposal LIKE '%Ditolak Oleh Pembimbing%'")->result_array();
+			$Data['Status'] = 'Menunggu Validasi KPS';
+		} else if ($Status == '6') {
+			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = 'Diajukan'")->result_array();
+			$Data['Status'] = 'Menunggu Validasi Admin';
+		} else if ($Status == '7') {
+			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = ''")->result_array();
+			$Data['Status'] = 'Belum Mengajukan Pembimbing';
 		}
     $this->load->view('Header',$Data);
     $this->load->view('RekapMahasiswa',$Data); 

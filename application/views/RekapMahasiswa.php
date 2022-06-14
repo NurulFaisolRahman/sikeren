@@ -14,7 +14,11 @@
                         <select class="custom-select custom-select-sm" id="Status">					
                             <option value="1" <?=$this->uri->segment('3')=='1' ? 'selected' : '';?>>Sudah Ujian Skripsi</option>
                             <option value="2" <?=$this->uri->segment('3')=='2' ? 'selected' : '';?>>Sudah Ujian Proposal</option>
-                            <option value="3" <?=$this->uri->segment('3')=='3' ? 'selected' : '';?>>Belum Ujian Proposal</option>
+                            <option value="3" <?=$this->uri->segment('3')=='3' ? 'selected' : '';?>>Mendapat Dosen Pembimbing</option>
+                            <option value="4" <?=$this->uri->segment('3')=='4' ? 'selected' : '';?>>Menunggu Validasi Pembimbing</option>
+                            <option value="5" <?=$this->uri->segment('3')=='5' ? 'selected' : '';?>>Menunggu Validasi KPS</option>
+                            <option value="6" <?=$this->uri->segment('3')=='6' ? 'selected' : '';?>>Menunggu Validasi Admin</option>
+                            <option value="7" <?=$this->uri->segment('3')=='7' ? 'selected' : '';?>>Belum Mengajukan Pembimbing</option>
                         </select>
                         <div class="input-group-prepend">
                           <label class="input-group-text bg-danger text-light" id="Lihat"><b>Lihat Data</b></label>
