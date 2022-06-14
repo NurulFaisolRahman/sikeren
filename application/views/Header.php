@@ -152,7 +152,7 @@
                       $NamaKegiatan = array("Dosen Pembimbing","Penguji Proposal");
                       $Icon = array("users","users");
                     ?>
-                    <?php for ($i=0; $i < count($JenisKegiatan); $i++) {?>
+                    <?php for ($i=0; $i < count($JenisKegiatan); $i++) { ?>
                     <ul class="nav nav-treeview <ml-1></ml-3>">
                         <li class="nav-item">
                         <a href="<?=base_url("Dashboard/").$JenisKegiatan[$i]?>" class="nav-link <?php if ($SubMenu == $JenisKegiatan[$i]) { echo "active"; } ?>">
@@ -162,6 +162,12 @@
                         </li>
                     </ul>
                     <?php } ?>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?=base_url("Dashboard/RekapMahasiswa/1")?>" class="nav-link <?php if ($Halaman == "Rekap Mahasiswa") { echo "active";} ?>">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p><b>Rekap Mahasiswa</b></p>
+                    </a>
                   </li>
                 <?php } ?>
                 <li class="nav-item has-treeview <?php if ($Halaman == "Kegiatan") { echo "menu-open"; } ?>">

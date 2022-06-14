@@ -1886,6 +1886,23 @@ class Dashboard extends CI_Controller {
     $this->load->view('Header',$Data);
     $this->load->view('NilaiSkripsi',$Data); 
 	}
+
+	public function RekapMahasiswa($Status){
+		$Data['Halaman'] = 'Rekap Mahasiswa';
+		$Data['SubMenu'] = '';
+		if ($Status == '1') {
+			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
+			$Data['Status'] = 'Sudah Ujian Skripsi';	
+		} else if ($Status == '2') {
+			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != ''")->result_array();
+			$Data['Status'] = 'Sudah Ujian Proposal';	
+		} else if ($Status == '3') {
+			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where NilaiProposal1 = '' OR NilaiProposal2 = '' OR NilaiProposal3 = ''")->result_array();
+			$Data['Status'] = 'Belum Ujian Proposal';
+		}
+    $this->load->view('Header',$Data);
+    $this->load->view('RekapMahasiswa',$Data); 
+	}
 	
 	public function BeritaAcaraUjianProposal($NIM){
 		$this->load->library('Pdf');
