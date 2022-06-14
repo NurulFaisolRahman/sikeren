@@ -27,9 +27,9 @@
                         <div class="col-2 d-flex justify-content-center pl-0 pr-0">
                           <label for="InputFoto">
                             <?php if ($Mhs['Foto'] == '') { ?>
-                              <img src="<?=base_url('img/Profil.jpg')?>" alt="..." class="img-circle profile_img mt-1" width="130px;">
+                              <img src="<?=base_url('img/Profil.jpg')?>" alt="..." class="img-circle profile_img mt-2" width="130px;">
                             <?php	} else { ?>
-                              <img src="<?=base_url('FotoMhs/'.$Mhs['Foto'])?>" class="mt-1" width="130px" height="130px">
+                              <img src="<?=base_url('FotoMhs/'.$Mhs['Foto'])?>" class="mt-2" width="130px" height="130px">
                             <?php } ?>
                           </label>
                         </div>
@@ -38,25 +38,43 @@
                             <div class="col-12 mt-3 mb-1 pl-0">
                               <div class="input-group input-group-sm"> 
                                 <div class="input-group-prepend">
-                                  <label class="input-group-text bg-danger text-white"><b>NIM</b></label>
+                                  <label class="input-group-text bg-primary text-white"><b>NIM</b></label>
                                 </div>
                                 <input type="text" class="form-control form-control-sm" value="<?=$Mhs['NIM']?>" disabled>
                               </div>
                             </div>
-                            <div class="col-12 my-1 pl-0">
+                            <div class="col-12 mb-1 pl-0">
                               <div class="input-group input-group-sm"> 
                                 <div class="input-group-prepend">
-                                  <label class="input-group-text bg-danger text-white"><b>Nama</b></label>
+                                  <label class="input-group-text bg-primary text-white"><b>Nama</b></label>
                                 </div>
                                 <input type="text" class="form-control form-control-sm" value="<?=$Mhs['Nama']?>" disabled>
                               </div>
                             </div>
-                            <div class="col-12 my-1 pl-0">
+                            <div class="col-12 mb-1 pl-0">
                               <div class="input-group input-group-sm"> 
                                 <div class="input-group-prepend">
-                                  <label class="input-group-text bg-danger text-white"><b>Kontak</b></label>
+                                  <label class="input-group-text bg-primary text-white"><b>Kontak</b></label>
                                 </div>
                                 <input type="text" class="form-control form-control-sm" value="<?=$Mhs['HP']?>" disabled>
+                              </div>
+                            </div>
+                            <div class="col-12 pl-0">
+                              <div class="input-group input-group-sm"> 
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text bg-primary text-white"><b>Status</b></label>
+                                </div>
+                                <?php 
+                                  $Status = '';
+                                  if ($Mhs['NilaiSkripsi1'] != '' && $Mhs['NilaiSkripsi2'] != '' && $Mhs['NilaiSkripsi3'] != '') {
+                                    $Status = 'Sudah Ujian Skripsi';
+                                  } else if ($Mhs['NilaiProposal1'] != '' && $Mhs['NilaiProposal3'] != '' && $Mhs['NilaiProposal3'] != '') {
+                                    $Status = 'Sudah Ujian Proposal';
+                                  } else {
+                                    $Status = 'Belum Ujian Proposal';
+                                  } 
+                                ?>
+                                <input type="text" class="form-control form-control-sm" value="<?=$Status?>" disabled>
                               </div>
                             </div>
                           </div>
