@@ -34,7 +34,7 @@
                               <th style="width: 12%;" class="align-middle">NIM</th>
                               <th style="width: 20%;" class="align-middle">Nama</th>
                               <th class="align-middle">Dosen Pembimbing</th>
-                              <th style="width: 20%;" class="align-middle">Status</th>
+                              <th class="align-middle">Status</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -78,7 +78,7 @@
         $('#TabelUjianSkripsi').DataTable( {
 					// dom:'lfrtip',
 					"ordering": false,
-          "lengthMenu": [[ 5, 10, 20, 30, -1 ],[ 5, 10, 20, 30, "All"]],
+          "lengthMenu": [[ 10, 20, 30, -1 ],[ 10, 20, 30, "All"]],
 					"language": {
 						"paginate": {
 							'previous': '<b class="text-primary"><</b>',
