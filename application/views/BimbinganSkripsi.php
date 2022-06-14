@@ -21,7 +21,7 @@
                         </div>
                       </div>
                     </div>
-                    <?php if (count($DataBimbingan) > 0) { ?>
+                    <?php if (count($Bimbingan) > 0) { ?>
                     <div class="col-sm-12">
                       <div class="row">
                         <div class="col-2 d-flex justify-content-center pl-0 pr-0">
@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-4">
                           <div class="row">
-                            <div class="col-12 mt-3 mb-1 pl-0">
+                            <div class="col-12 my-1 mb-1 pl-0">
                               <div class="input-group input-group-sm"> 
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-white"><b>NIM</b></label>
