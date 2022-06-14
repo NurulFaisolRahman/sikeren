@@ -65,6 +65,7 @@
 		<script>
 			jQuery(document).ready(function($) {
 				"use strict";
+        var BaseURL = '<?=base_url()?>';
 
         $("#Lihat").click(function() {
           window.location = BaseURL + "Dashboard/RekapMahasiswa/"+$("#Status").val()
