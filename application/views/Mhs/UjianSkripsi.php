@@ -104,7 +104,7 @@
 														</div>
 														<input class="form-control" type="file" id="Administrasi">
 													</div>
-													<pre class="text-danger mb-0"><b>* Wajib Upload Lampiran Cek Plagiasi (Per Bab) Dalam Format Pdf</b></pre>
+													<pre class="text-danger mb-0"><b>* Wajib Upload Lampiran Cek Plagiasi Per Bab 15% (Bab 4 & 5) Dalam Format Pdf</b></pre>
 												</div>  
 												<div class="col-lg-12">
 													<div class="input-group input-group-sm mb-0">

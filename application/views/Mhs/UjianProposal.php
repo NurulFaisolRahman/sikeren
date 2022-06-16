@@ -166,7 +166,7 @@
 														<input class="form-control" type="file" id="_Plagiasi">
 														<input class="form-control" type="hidden" id="_Plagiasi_">
 													</div>
-													<pre class="text-danger mb-0"><b>* Wajib Upload Lampiran Cek Plagiasi (Per Bab) Dalam Format Pdf</b></pre>
+													<pre class="text-danger mb-0"><b>* Wajib Upload Lampiran Cek Plagiasi (Bab 1 30%, Bab 2 & 3 15%) Dalam Format Pdf</b></pre>
 												</div>  
 												<div class="col-lg-6">
 													<div class="input-group input-group-sm mb-0">

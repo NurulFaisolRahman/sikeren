@@ -1858,6 +1858,7 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'Bimbingan Skripsi';
 		$Data['SubMenu'] = '';
 		$Data['Bimbingan'] = $this->db->query("SELECT NIM,Nama FROM mahasiswa WHERE NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array(); 
+		$Data['DataBimbingan'] = array();
 		if ($this->session->userdata('NIMBimbingan') != '') {
 			$Data['DataBimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->result_array(); 
 			$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->row_array(); 
