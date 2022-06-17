@@ -1593,6 +1593,43 @@ class Dashboard extends CI_Controller {
     $this->load->view('_DosenPembimbing',$Data); 
 	}
 
+	public function ValidasiUjianProposal(){
+		$Data['Halaman'] = 'Validasi';
+		$Data['SubMenu'] = 'ValidasiUjianProposal';
+		$Data['UjianProposal'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan KPS' or StatusPengujiProposal1 LIKE 'Ditolak%' or StatusPengujiProposal2 LIKE 'Ditolak%'")->result_array();
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
+		$Penguji1 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal1,COUNT(mahasiswa.PengujiProposal1) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal1 = Dosen.NIP AND PengujiProposal1 != '' GROUP BY PengujiProposal1")->result_array();
+		$Penguji2 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal2,COUNT(mahasiswa.PengujiProposal2) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal2 = Dosen.NIP AND PengujiProposal2 != '' GROUP BY PengujiProposal2")->result_array();
+		$Penguji3 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal3,COUNT(mahasiswa.PengujiProposal3) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal3 = Dosen.NIP AND PengujiProposal3 != '' GROUP BY PengujiProposal3")->result_array();
+		$Data['NamaDosen'] = array();$Data['JumlahMenguji'] = array();
+		foreach ($Penguji1 as $key) {
+			if (isset($Data['NamaDosen'][$key['PengujiProposal1']])) {
+				$Data['JumlahMenguji'][$key['PengujiProposal1']] += $key['Jumlah'];
+			} else {
+				$Data['NamaDosen'][$key['PengujiProposal1']] = $key['Nama'];
+				$Data['JumlahMenguji'][$key['PengujiProposal1']] = $key['Jumlah'];
+			}
+		}
+		foreach ($Penguji2 as $key) {
+			if (isset($Data['NamaDosen'][$key['PengujiProposal2']])) {
+				$Data['JumlahMenguji'][$key['PengujiProposal2']] += $key['Jumlah'];
+			} else {
+				$Data['NamaDosen'][$key['PengujiProposal2']] = $key['Nama'];
+				$Data['JumlahMenguji'][$key['PengujiProposal2']] = $key['Jumlah'];
+			}
+		}
+		foreach ($Penguji3 as $key) {
+			if (isset($Data['NamaDosen'][$key['PengujiProposal3']])) {
+				$Data['JumlahMenguji'][$key['PengujiProposal3']] += $key['Jumlah'];
+			} else {
+				$Data['NamaDosen'][$key['PengujiProposal3']] = $key['Nama'];
+				$Data['JumlahMenguji'][$key['PengujiProposal3']] = $key['Jumlah'];
+			}
+		}
+    $this->load->view('Header',$Data);
+    $this->load->view('ValidasiUjianProposal',$Data); 
+	}
+
 	public function ValidasiPengujiProposal(){
 		$Data['Halaman'] = 'ValidasiDosen';
 		$Data['SubMenu'] = 'ValidasiPengujiProposal';
@@ -1785,15 +1822,6 @@ class Dashboard extends CI_Controller {
 		}
 	} 
 
-	public function ValidasiUjianProposal(){
-		$Data['Halaman'] = 'Validasi';
-		$Data['SubMenu'] = 'ValidasiUjianProposal';
-		$Data['UjianProposal'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan KPS' or StatusPengujiProposal1 LIKE 'Ditolak%' or StatusPengujiProposal2 LIKE 'Ditolak%'")->result_array();
-		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
-    $this->load->view('Header',$Data);
-    $this->load->view('ValidasiUjianProposal',$Data); 
-	}
-
 	public function TerimaBimbingan(){
 		$_POST['TanggalDisetujuiPembimbing'] = date("Y-m-d");
     $this->db->where('NIM', $_POST['NIM']);
@@ -1943,23 +1971,6 @@ class Dashboard extends CI_Controller {
 			$NilaiSekretaris += $Bobot[$i]*(int)$RekapNilai[$i];
 		}
 		$Data['Nilai'] = number_format(((0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris)),2,",",".");
-		// if ($Data['Nilai'] > 80) {
-		// 	$Data['Nilai'] .= ' (A)';
-		// } else if ($Data['Nilai'] > 75) {
-		// 	$Data['Nilai'] .= ' (B+)';
-		// } else if ($Data['Nilai'] > 70) {
-		// 	$Data['Nilai'] .= ' (B)';
-		// } else if ($Data['Nilai'] > 65) {
-		// 	$Data['Nilai'] .= ' (C+)';
-		// } else if ($Data['Nilai'] > 60) {
-		// 	$Data['Nilai'] .= ' (C)';
-		// } else if ($Data['Nilai'] > 55) {
-		// 	$Data['Nilai'] .= ' (D+)';
-		// } else if ($Data['Nilai'] > 50) {
-		// 	$Data['Nilai'] .= ' (D)';
-		// } else {
-		// 	$Data['Huruf'] .= ' (E)';
-		// }
 		$this->load->view('BeritaAcaraUjianProposal',$Data);
 	}
 
@@ -1985,23 +1996,6 @@ class Dashboard extends CI_Controller {
 			$NilaiSekretaris += $Bobot[$i]*(int)$RekapNilai[$i];
 		}
 		$Data['Nilai'] = number_format(((0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris)),2,",",".");
-		// if ($Data['Nilai'] > 80) {
-		// 	$Data['Nilai'] .= ' (A)';
-		// } else if ($Data['Nilai'] > 75) {
-		// 	$Data['Nilai'] .= ' (B+)';
-		// } else if ($Data['Nilai'] > 70) {
-		// 	$Data['Nilai'] .= ' (B)';
-		// } else if ($Data['Nilai'] > 65) {
-		// 	$Data['Nilai'] .= ' (C+)';
-		// } else if ($Data['Nilai'] > 60) {
-		// 	$Data['Nilai'] .= ' (C)';
-		// } else if ($Data['Nilai'] > 55) {
-		// 	$Data['Nilai'] .= ' (D+)';
-		// } else if ($Data['Nilai'] > 50) {
-		// 	$Data['Nilai'] .= ' (D)';
-		// } else {
-		// 	$Data['Huruf'] .= ' (E)';
-		// }
 		$this->load->view('ExcelUjianProposal',$Data);
 	}
 

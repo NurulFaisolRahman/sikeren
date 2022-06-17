@@ -201,6 +201,8 @@
 			jQuery(document).ready(function($) {
 				"use strict";
         var BaseURL = '<?=base_url()?>';
+        console.log('<?=$NamaDosen?>')
+        console.log('<?=$JumlahMenguji?>')
 
         $(document).on("click",".CekData",function(){
 					var Data = $(this).attr('CekData')
