@@ -7,8 +7,8 @@
                 <div class="container-fluid border border-warning rounded bg-light">
                   <div class="row align-items-center">
                     <div class="col-12 mt-2">
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#ModalListDosenPembimbing"><b>List Dosen Pembimbing</b></button>  
-                      <a class="btn btn-success" href="<?=base_url('Dashboard/RekapDosenPembimbing')?>"><b>Rekap Dosen Pembimbing</b></a>  
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#ModalListDosenPembimbing"><b>Rekap Dosen Pembimbing</b></button>  
+                      <a class="btn btn-success" href="<?=base_url('Dashboard/RekapDosenPembimbing')?>"><b>Rekap Dosen Pembimbing</b></a>   
                     </div>
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
@@ -201,8 +201,6 @@
 			jQuery(document).ready(function($) {
 				"use strict";
         var BaseURL = '<?=base_url()?>';
-        console.log('<?=$NamaDosen?>')
-        console.log('<?=$JumlahMenguji?>')
 
         $(document).on("click",".CekData",function(){
 					var Data = $(this).attr('CekData')

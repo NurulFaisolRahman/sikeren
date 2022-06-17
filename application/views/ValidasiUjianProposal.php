@@ -6,6 +6,9 @@
               <div class="col-sm-12 mt-2">
                 <div class="container-fluid border border-warning rounded bg-light">
                   <div class="row align-items-center">
+                    <div class="col-12 mt-2">
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#ModalRekapDosenPenguji"><b>Rekap Dosen Penguji</b></button>  
+                    </div>
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
                         <table id="TabelUjianProposal" class="table table-bordered table-striped">
@@ -42,6 +45,33 @@
             </div>
           </div>
         </section>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalRekapDosenPenguji">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-primary">
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 10%;" class="text-center">No</th>
+                    <th scope="col">Nama Dosen</th>
+                    <th scope="col" style="width: 10%;" class="text-center">Jumlah</th>
+                  </tr>
+                  <tbody>
+                    <?php $No = 1; foreach ($NamaDosen as $key => $value) { ?>
+                      <tr>
+                        <th class="text-center"><?=$No++?></th>
+                        <td><?=$value?></td>
+                        <td class="text-center"><?=$JumlahMenguji[$key]?></td>
+                      </tr>
+                    <?php } ?>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal fade" id="ModalValidasiProposal">
