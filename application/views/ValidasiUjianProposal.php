@@ -31,7 +31,7 @@
                                 <td class="align-middle"><?=$key['NamaPembimbing']?></td>
                                 <td class="align-middle"><?=$key['StatusUjianProposal'].' : <br>1. '.$key['StatusPengujiProposal1'].'<br>2. '.$key['StatusPengujiProposal2']?></td>
                                 <td class="text-center align-middle">
-                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']."|".$key['PengujiProposal1']."|".$key['PengujiProposal2']."|".$key['StatusPengujiProposal1']."|".$key['StatusPengujiProposal2']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
+                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']."|".$key['PengujiProposal1']."|".$key['PengujiProposal2']."|".$key['StatusPengujiProposal1']."|".$key['StatusPengujiProposal2']."|".$key['JudulProposal']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
                                 </td> 
                               </tr>
                             <?php } ?>
@@ -101,6 +101,14 @@
 															<label class="input-group-text bg-primary text-light"><b>Nama</b></label>
 														</div>
 														<input class="form-control form-control-sm" type="text" id="Nama" disabled>
+													</div>
+                        </div>
+                        <div class="col-8 my-12">
+													<div class="input-group input-group-sm"> 
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Judul Proposal</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="JudulProposal">
 													</div>
                         </div>
                         <div class="col-lg-5 my-1">
@@ -193,6 +201,7 @@
           if (Pisah[7] == 'Setuju') {
             $("#AnggotaPenguji").attr("disabled", true);   
           }
+          $("#JudulProposal").val(Pisah[8])
 					$('#ModalValidasiProposal').modal("show")
         })
         

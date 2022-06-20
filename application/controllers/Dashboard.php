@@ -1600,7 +1600,7 @@ class Dashboard extends CI_Controller {
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
 		$Penguji1 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal1,COUNT(mahasiswa.PengujiProposal1) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal1 = Dosen.NIP AND PengujiProposal1 != '' GROUP BY PengujiProposal1")->result_array();
 		$Penguji2 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal2,COUNT(mahasiswa.PengujiProposal2) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal2 = Dosen.NIP AND PengujiProposal2 != '' GROUP BY PengujiProposal2")->result_array();
-		$Penguji3 = $this->db->query("SELECT Dosen.Nama,mahasiswa.NIPPembimbing,COUNT(mahasiswa.NIPPembimbing) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.NIPPembimbing = Dosen.NIP AND NilaiProposal3 != '' GROUP BY NIPPembimbing")->result_array();
+		$Penguji3 = $this->db->query("SELECT Dosen.Nama,mahasiswa.NIPPembimbing,COUNT(mahasiswa.NIPPembimbing) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.NIPPembimbing = Dosen.NIP AND (PengujiProposal1 != '' OR PengujiProposal2 != '') GROUP BY NIPPembimbing")->result_array();
 		$Data['NamaDosen'] = array();$Data['JumlahMenguji'] = array();
 		foreach ($Penguji1 as $key) {
 			if (isset($Data['NamaDosen'][$key['PengujiProposal1']])) {
