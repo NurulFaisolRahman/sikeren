@@ -103,7 +103,7 @@
 														<input class="form-control form-control-sm" type="text" id="Nama" disabled>
 													</div>
                         </div>
-                        <div class="col-8 my-12">
+                        <div class="col-12 my-1">
 													<div class="input-group input-group-sm"> 
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Judul Proposal</b></label>
