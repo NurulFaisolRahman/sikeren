@@ -44,11 +44,6 @@ class Mhs extends CI_Controller {
 		$NamaAdministrasi = str_replace(".","F",$NamaAdministrasi);
 		move_uploaded_file($_FILES['Administrasi']['tmp_name'], "Proposal/".$NamaAdministrasi.".pdf");
 		$_POST['Administrasi'] = $NamaAdministrasi.".pdf";
-		$NamaIjazahKHS = date('Ymd',time()).substr(password_hash('IjazahKHS', PASSWORD_DEFAULT),7,7);
-		$NamaIjazahKHS = str_replace("/","E",$NamaIjazahKHS);
-		$NamaIjazahKHS = str_replace(".","F",$NamaIjazahKHS);
-		move_uploaded_file($_FILES['IjazahKHS']['tmp_name'], "Proposal/".$NamaIjazahKHS.".pdf");
-    $_POST['IjazahKHS'] = $NamaIjazahKHS.".pdf";
     $NamaRevisiProposalBimbingan = date('Ymd',time()).substr(password_hash('RevisiProposalBimbingan', PASSWORD_DEFAULT),7,7);
 		$NamaRevisiProposalBimbingan = str_replace("/","E",$NamaRevisiProposalBimbingan);
 		$NamaRevisiProposalBimbingan = str_replace(".","F",$NamaRevisiProposalBimbingan);
@@ -84,15 +79,6 @@ class Mhs extends CI_Controller {
         move_uploaded_file($_FILES['Administrasi']['tmp_name'], "Proposal/".$NamaAdministrasi.".pdf");
         $_POST['Administrasi'] = $NamaAdministrasi.".pdf";
 			}
-			if (!empty($_POST['_IjazahKHS_'])) {
-				unlink('Proposal/'.$_POST['_IjazahKHS_']);
-				unset($_POST['_IjazahKHS_']);
-        $NamaIjazahKHS = date('Ymd',time()).substr(password_hash('IjazahKHS', PASSWORD_DEFAULT),7,7);
-        $NamaIjazahKHS = str_replace("/","E",$NamaIjazahKHS);
-        $NamaIjazahKHS = str_replace(".","F",$NamaIjazahKHS);
-        move_uploaded_file($_FILES['IjazahKHS']['tmp_name'], "Proposal/".$NamaIjazahKHS.".pdf");
-        $_POST['IjazahKHS'] = $NamaIjazahKHS.".pdf";
-      }
       if (!empty($_POST['_RevisiProposalBimbingan_'])) {
 				unlink('Proposal/'.$_POST['_RevisiProposalBimbingan_']);
 				unset($_POST['_RevisiProposalBimbingan_']);
@@ -133,15 +119,6 @@ class Mhs extends CI_Controller {
         move_uploaded_file($_FILES['Administrasi']['tmp_name'], "Proposal/".$NamaAdministrasi.".pdf");
         $_POST['Administrasi'] = $NamaAdministrasi.".pdf";
 			}
-			if (!empty($_POST['_IjazahKHS_'])) {
-				unlink('Proposal/'.$_POST['_IjazahKHS_']);
-				unset($_POST['_IjazahKHS_']);
-        $NamaIjazahKHS = date('Ymd',time()).substr(password_hash('IjazahKHS', PASSWORD_DEFAULT),7,7);
-        $NamaIjazahKHS = str_replace("/","E",$NamaIjazahKHS);
-        $NamaIjazahKHS = str_replace(".","F",$NamaIjazahKHS);
-        move_uploaded_file($_FILES['IjazahKHS']['tmp_name'], "Proposal/".$NamaIjazahKHS.".pdf");
-        $_POST['IjazahKHS'] = $NamaIjazahKHS.".pdf";
-      }
       if (!empty($_POST['_RevisiProposalBimbingan_'])) {
 				unlink('Proposal/'.$_POST['_RevisiProposalBimbingan_']);
 				unset($_POST['_RevisiProposalBimbingan_']);

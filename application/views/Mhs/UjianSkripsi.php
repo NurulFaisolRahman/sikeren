@@ -32,7 +32,6 @@
 															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianSkripsi'].'<br>1. '.$Mhs['StatusPengujiSkripsi1'].'<br>2. '.$Mhs['StatusPengujiSkripsi2']?></td>
 															<td style="text-align: center;vertical-align: middle;">
 																<button LihatAdministrasi="<?=base_url('Proposal/'.$Mhs['Administrasi'])?>" class="btn btn-sm btn-primary border-light LihatAdministrasi"><i class="fa fa-file-pdf-o"></i></button>  
-																<button LihatIjazahKHS="<?=base_url('Proposal/'.$Mhs['IjazahKHS'])?>" class="btn btn-sm btn-warning border-light LihatIjazahKHS"><i class="fa fa-file-pdf-o"></i></button>  
 																<button LihatRevisiProposalBimbingan="<?=base_url('Proposal/'.$Mhs['RevisiProposalBimbingan'])?>" class="btn btn-sm btn-success border-light LihatRevisiProposalBimbingan"><i class="fa fa-file-pdf-o"></i></button>  
 																<button LihatToeflSertifikat="<?=base_url('Proposal/'.$Mhs['ToeflSertifikat'])?>" class="btn btn-sm btn-danger border-light LihatToeflSertifikat"><i class="fa fa-file-pdf-o"></i></button>  
 															</td>
@@ -109,15 +108,6 @@
 												<div class="col-lg-12">
 													<div class="input-group input-group-sm mb-0">
 														<div class="input-group-prepend">
-															<span class="input-group-text bg-primary text-light"><b>Upload Ijazah Terakhir & Seluruh KHS</b></span>
-														</div>
-														<input class="form-control" type="file" id="IjazahKHS">
-													</div>
-													<pre class="text-danger mb-0"><b>* Wajib Upload FC Ijazah Terakhir (SMA/Sederajat) & Seluruh KHS Dalam Format Pdf</b></pre>
-												</div>  
-												<div class="col-lg-12">
-													<div class="input-group input-group-sm mb-0">
-														<div class="input-group-prepend">
 															<span class="input-group-text bg-primary text-light"><b>Upload Lembar Revisi Proposal & Kartu Bimbingan</b></span>
 														</div>
 														<input class="form-control" type="file" id="RevisiProposalBimbingan">
@@ -181,16 +171,6 @@
 												<div class="col-lg-12">
 													<div class="input-group input-group-sm mb-0">
 														<div class="input-group-prepend">
-															<span class="input-group-text bg-primary text-light"><b>Update Ijazah Terakhir & Seluruh KHS</b></span>
-														</div>
-														<input class="form-control" type="file" id="_IjazahKHS">
-														<input class="form-control" type="hidden" id="_IjazahKHS_">
-													</div>
-													<pre class="text-danger mb-0"><b>* Wajib Upload FC Ijazah Terakhir (SMA/Sederajat) & Seluruh KHS Dalam Format Pdf</b></pre>
-												</div>  
-												<div class="col-lg-12">
-													<div class="input-group input-group-sm mb-0">
-														<div class="input-group-prepend">
 															<span class="input-group-text bg-primary text-light"><b>Update Lembar Revisi Proposal & Kartu Bimbingan</b></span>
 														</div>
 														<input class="form-control" type="file" id="_RevisiProposalBimbingan">
@@ -242,15 +222,6 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="ModalIjazahKHS">
-      <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-          <div class="modal-body">
-            <embed id="PathIjazahKHS" src="" type="application/pdf" width="100%" height="520"/>
-          </div>
-        </div>
-      </div>
-		</div>
 		<div class="modal fade" id="ModalRevisiProposalBimbingan">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -282,12 +253,6 @@
           $('#ModalAdministrasi').modal("show")
 				}) 
 
-        $(document).on("click",".LihatIjazahKHS",function(){
-					var Path = $(this).attr('LihatIjazahKHS')
-          $('#PathIjazahKHS').attr('src',Path)		
-          $('#ModalIjazahKHS').modal("show")
-				}) 
-
 				$(document).on("click",".LihatRevisiProposalBimbingan",function(){
 					var Path = $(this).attr('LihatRevisiProposalBimbingan')
           $('#PathRevisiProposalBimbingan').attr('src',Path)		
@@ -305,10 +270,6 @@
 						alert('Wajib Input Administrasi!')
 					} else if ($('#Administrasi')[0].files[0].type != "application/pdf") {
 						alert('Input Administrasi Wajib Pdf!')
-					} else if (!$('#IjazahKHS')[0].files[0]) {
-						alert('Wajib Input Ijazah Terakhir & Seluruh KHS!')
-					} else if ($('#IjazahKHS')[0].files[0].type != "application/pdf") {
-						alert('Input Ijazah Terakhir & Seluruh KHS Wajib Pdf!')
 					} else if (!$('#RevisiProposalBimbingan')[0].files[0]) {
 						alert('Wajib Input Lembar Revisi Proposal & Kartu Bimbingan!')
 					} else if ($('#RevisiProposalBimbingan')[0].files[0].type != "application/pdf") {
@@ -323,7 +284,6 @@
 						var fd = new FormData()
 						fd.append('TanggalUjianSkripsi',$("#TanggalUjianSkripsi").val())
 						fd.append("Administrasi",$('#Administrasi')[0].files[0])
-						fd.append("IjazahKHS",$('#IjazahKHS')[0].files[0])
 						fd.append("RevisiProposalBimbingan",$('#RevisiProposalBimbingan')[0].files[0])
 						fd.append("ToeflSertifikat",$('#ToeflSertifikat')[0].files[0])
 						$.ajax({
@@ -353,7 +313,6 @@
 					var Data = $(this).attr('Edit')
 					var Pisah = Data.split("|")
 					$("#_Administrasi_").val(Pisah[0])
-					$("#_IjazahKHS_").val(Pisah[1])
 					$("#_RevisiProposalBimbingan_").val(Pisah[2])
 					$("#_ToeflSertifikat_").val(Pisah[3])
 					$("#_TanggalUjianSkripsi").val(Pisah[4])
@@ -363,8 +322,6 @@
 				$("#EditUjianSkripsi").click(function() {
 					if (!$('#_Administrasi')[0].files[0] == false && $('#_Administrasi')[0].files[0].type != "application/pdf") {
 						alert('Update Berkas Administrasi Wajib Pdf!')
-					} else if (!$('#_IjazahKHS')[0].files[0] == false && $('#_IjazahKHS')[0].files[0].type != "application/pdf") {
-						alert('Update Ijazah Terakhir & Seluruh KHS Wajib Pdf!')
 					} else if (!$('#_RevisiProposalBimbingan')[0].files[0] == false && $('#_RevisiProposalBimbingan')[0].files[0].type != "application/pdf") {
 						alert('Update Lembar Revisi Proposal & Kartu Bimbingan Wajib Pdf!')
 					} else if (!$('#_ToeflSertifikat')[0].files[0] == false && $('#_ToeflSertifikat')[0].files[0].type != "application/pdf") {
@@ -377,10 +334,6 @@
 						if (!$('#_Administrasi')[0].files[0] == false) {
 							fd.append("Administrasi",$('#_Administrasi')[0].files[0])
 							fd.append('_Administrasi_',$("#_Administrasi_").val())
-						}
-						if (!$('#_IjazahKHS')[0].files[0] == false) {
-							fd.append("IjazahKHS",$('#_IjazahKHS')[0].files[0])
-							fd.append('_IjazahKHS_',$("#_IjazahKHS_").val())
 						}
 						if (!$('#_RevisiProposalBimbingan')[0].files[0] == false) {
 							fd.append("RevisiProposalBimbingan",$('#_RevisiProposalBimbingan')[0].files[0])
@@ -417,8 +370,6 @@
 				$("#AjukanUjianSkripsi").click(function() {
 					if (!$('#_Administrasi')[0].files[0] == false && $('#_Administrasi')[0].files[0].type != "application/pdf") {
 						alert('Update Berkas Administrasi Wajib Pdf!')
-					} else if (!$('#_IjazahKHS')[0].files[0] == false && $('#_IjazahKHS')[0].files[0].type != "application/pdf") {
-						alert('Update Ijazah Terakhir & Seluruh KHS Wajib Pdf!')
 					} else if (!$('#_RevisiProposalBimbingan')[0].files[0] == false && $('#_RevisiProposalBimbingan')[0].files[0].type != "application/pdf") {
 						alert('Update Lembar Revisi Proposal & Kartu Bimbingan Wajib Pdf!')
 					} else if (!$('#_ToeflSertifikat')[0].files[0] == false && $('#_ToeflSertifikat')[0].files[0].type != "application/pdf") {
@@ -431,10 +382,6 @@
 						if (!$('#_Administrasi')[0].files[0] == false) {
 							fd.append("Administrasi",$('#_Administrasi')[0].files[0])
 							fd.append('_Administrasi_',$("#_Administrasi_").val())
-						}
-						if (!$('#_IjazahKHS')[0].files[0] == false) {
-							fd.append("IjazahKHS",$('#_IjazahKHS')[0].files[0])
-							fd.append('_IjazahKHS_',$("#_IjazahKHS_").val())
 						}
 						if (!$('#_RevisiProposalBimbingan')[0].files[0] == false) {
 							fd.append("RevisiProposalBimbingan",$('#_RevisiProposalBimbingan')[0].files[0])

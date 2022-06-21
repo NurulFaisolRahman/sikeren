@@ -31,7 +31,6 @@
                                 </td>
                                 <td class="text-center align-middle">
                                   <button LihatAdministrasi="<?=base_url('Proposal/'.$key['Administrasi'])?>" class="btn btn-sm btn-primary LihatAdministrasi"><i class="fas fa-file-pdf"></i></button>  
-                                  <button LihatIjazahKHS="<?=base_url('Proposal/'.$key['IjazahKHS'])?>" class="btn btn-sm btn-warning text-white LihatIjazahKHS"><i class="fas fa-file-pdf"></i></button>  
                                   <button LihatRevisiProposalBimbingan="<?=base_url('Proposal/'.$key['RevisiProposalBimbingan'])?>" class="btn btn-sm btn-success LihatRevisiProposalBimbingan"><i class="fas fa-file-pdf"></i></button>  
                                   <button LihatToeflSertifikat="<?=base_url('Proposal/'.$key['ToeflSertifikat'])?>" class="btn btn-sm btn-danger LihatToeflSertifikat"><i class="fas fa-file-pdf"></i></button>  
                                 </td> 
@@ -106,15 +105,6 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="ModalIjazahKHS">
-      <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-          <div class="modal-body">
-            <embed id="PathIjazahKHS" src="" type="application/pdf" width="100%" height="520"/>
-          </div>
-        </div>
-      </div>
-		</div>
 		<div class="modal fade" id="ModalRevisiProposalBimbingan">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -193,12 +183,6 @@
 					var Path = $(this).attr('LihatAdministrasi')
           $('#PathAdministrasi').attr('src',Path)		
           $('#ModalAdministrasi').modal("show")
-				}) 
-
-        $(document).on("click",".LihatIjazahKHS",function(){
-					var Path = $(this).attr('LihatIjazahKHS')
-          $('#PathIjazahKHS').attr('src',Path)		
-          $('#ModalIjazahKHS').modal("show")
 				}) 
 
 				$(document).on("click",".LihatRevisiProposalBimbingan",function(){
