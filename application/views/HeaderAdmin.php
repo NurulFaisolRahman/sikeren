@@ -126,20 +126,20 @@
             <?php } else if($this->session->userdata('Role') == 3) {?>
               <li class="nav-item">
                 <a href="<?=base_url("Admin/DosenPembimbing")?>" class="nav-link <?php if ($SubMenu == 'Dosen Pembimbing') { echo "active"; } ?>">
-                  <i class="fas fa-users nav-icon text-primary"></i>
-                  <p class="font-weight-bold text-primary">Dosen Pembimbing</p>
+                  <i class="nav-icon fas fa-users"></i>
+                  <p><b>Dosen Pembimbing</b></p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?=base_url("Admin/UjianProposal")?>" class="nav-link <?php if ($SubMenu == 'Ujian Proposal') { echo "active"; } ?>">
-                  <i class="fas fa-users nav-icon text-primary"></i>
-                  <p class="font-weight-bold text-primary">Ujian Proposal</p>
+                  <i class="nav-icon fas fa-users"></i>
+                  <p><b>Ujian Proposal</b></p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?=base_url("Admin/UjianSkripsi")?>" class="nav-link <?php if ($SubMenu == 'Ujian Skripsi') { echo "active"; } ?>">
-                  <i class="fas fa-users nav-icon text-primary"></i>
-                  <p class="font-weight-bold text-primary">Ujian Skripsi</p>
+                  <i class="nav-icon fas fa-users"></i>
+                  <p><b>Ujian Skripsi</b></p>
                 </a>
               </li>
             <?php } else if($this->session->userdata('Role') == 2) {?>
