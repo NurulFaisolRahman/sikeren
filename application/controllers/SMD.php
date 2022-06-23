@@ -299,8 +299,10 @@ public function Kuisioner($Jenis){
 				$this->session->set_userdata($Session);
 				if ($Akun['Role'] == 1) {
 					echo '1';
-				} else {
+				} else if ($Akun['Role'] == 2) {
 					echo '2';
+				} else if ($Akun['Role'] == 3) {
+					echo '3';
 				}
 			} else {
 				echo "Password Salah";

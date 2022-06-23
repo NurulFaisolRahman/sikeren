@@ -240,6 +240,8 @@
                 window.location = BaseURL + "Admin/AkunDosen" 
               } else if (Respon == '2') {
                 window.location = BaseURL + "Admin/RPS" 
+              } else if (Respon == '3') {
+                window.location = BaseURL + "Admin/DosenPembimbing" 
               }
               else {
                 alert(Respon)
