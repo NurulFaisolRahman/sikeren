@@ -118,7 +118,7 @@
           </tr>
           <tr>
             <td style="width:7%;border:solid black 1px;text-align:center;">3</td> 
-            <td style="width:68%;border:solid black 1px;">&nbsp;Sekretaris : <br>&nbsp;'.$Mhs['NamaPembimbing'].'</td> 
+            <td style="width:68%;border:solid black 1px;">&nbsp;Pembimbing : <br>&nbsp;'.$Mhs['NamaPembimbing'].'</td> 
             <td style="width:24%;text-align:center;border:solid black 1px;padding:5px;"><img src="img/'.$Sekretaris.'" alt="ttd1" width="40px"></td> 
           </tr>
         </table>

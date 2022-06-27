@@ -75,7 +75,7 @@
 															<label class="input-group-text bg-primary text-light"><b>Nama</b></label>
 														</div>
                             <input class="form-control form-control-sm" type="text" id="Nama" disabled>
-                            <input class="form-control form-control-sm" type="hidden" id="PengujiSkripsi1">
+                            <input class="form-control form-control-sm" type="hidden" id="PengujiSkripsi1"> 
                             <input class="form-control form-control-sm" type="hidden" id="PengujiSkripsi2">
 													</div>
 												</div>

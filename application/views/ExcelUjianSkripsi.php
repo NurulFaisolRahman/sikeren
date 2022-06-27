@@ -877,7 +877,7 @@ td
    </tr>
    <tr height=3D"20" style=3D'height:15.00pt;'>
     <td height=3D"20" style=3D'height:15.00pt;'></td>
-    <td class=3D"xl67" x:str>Sekretaris</td>
+    <td class=3D"xl67" x:str>Pembimbing</td>
     <td class=3D"xl67" colspan=3D"8" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>: <?=$Mhs['NamaPembimbing']?></td>
    </tr>
    <tr height=3D"20" style=3D'height:15.00pt;'>
@@ -898,7 +898,7 @@ td
     <td height=3D"20" style=3D'height:15.00pt;'></td>
     <td class=3D"xl68" colspan=3D"2" rowspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Poin Penilaian</td>
     <td class=3D"xl68" rowspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Bobot</td>
-    <td class=3D"xl68" colspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Sekretaris (40%)</td>
+    <td class=3D"xl68" colspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Pembimbing (40%)</td>
     <td class=3D"xl68" colspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Penguji 1 (30%)</td>
     <td class=3D"xl73" colspan=3D"2" style=3D'border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>Penguji 2 (30%)</td>
    </tr>

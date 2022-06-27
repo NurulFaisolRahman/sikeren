@@ -118,7 +118,7 @@
   </tr>
   <tr>
     <td></td>
-    <td><p><br><br>Sekretaris : '.$Mhs['NamaPembimbing'].'</p></td>
+    <td><p><br><br>Pembimbing : '.$Mhs['NamaPembimbing'].'</p></td>
     <td><p><img src="img/'.$Sekretaris.'" alt="ttd3" width="70px"></p></td>
     <td></td>
   </tr>

@@ -1923,10 +1923,10 @@ class Dashboard extends CI_Controller {
 			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
 			$Data['Status'] = 'Sudah Ujian Skripsi';	
 		} else if ($Status == '2') {
-			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != ''")->result_array();
+			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != '' AND StatusUjianSkripsi = ''")->result_array();
 			$Data['Status'] = 'Sudah Ujian Proposal';	
 		} else if ($Status == '3') {
-			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = 'Disetujui Pembimbing'")->result_array();
+			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = 'Disetujui Pembimbing' AND StatusUjianProposal = '' AND StatusUjianSkripsi = ''")->result_array();
 			$Data['Status'] = 'Mendapat Dosen Pembimbing';
 		} else if ($Status == '4') {
 			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Pembimbing'")->result_array();

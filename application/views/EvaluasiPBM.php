@@ -120,7 +120,7 @@
                           '13. Kemampuan menerima kritik, saran, dan pendapat orang lain? <span id="Opsi">(1) Sangat tidak bisa menerima (2) Tidak bisa menerima (3) Bisa menerima (4) Sangat bisa menerima (Terbuka)',
                           '14. Kesabaran, kemampuan menahan emosi saat mengajar / mendidik? <span id="Opsi">(1) Sangat tidak sabar (2) Tidak sabar (3) Sabar (4) Sangat sabar',
                           '15. Kemampuan dosen meningkatkan motivasi / minat belajar mahasiswa? <span id="Opsi">(1) Sangat tidak bisa memotivasi (2) Tidak bisa memotivasi (3) Mudah memotivasi (4) Sangat memotivasi',
-                          '16. Bagaimana Kejelasan Penyampaian materi melalui daring? <span id="Opsi">(1) Sangat Kurang Jelas (2) Kurang Jelas (3) Cukup Jelas (4) Sangat Jelas',
+                          '16. Media pembelajaran (PPT, video conference, youtube, games, rekaman suara, alat peraga, dll) yang digunakan oleh dosen dalam menyampaikan materi pada mata kuliah ini? <span id="Opsi">(1) Sangat Kurang Menarik dan Sangat Tidak Mudah Dipahami (2) Kurang Menarik dan Kurang Mudah Dipahami (3) Menarik dan Mudah Dipahami (4) Sangat Menarik dan Sangat Mudah Dipahami',
                           '17. Rencana Pembelajaran terlaksana dengan Baik? <span id="Opsi">(1) Sangat Kurang Terlaksana (2) Terlaksana < 50% (3) Terlaksana > 50% (4) Terlaksana > 80%',
                           '18. Intensitas Pemberian tugas Selama LFH (Learn From Home)? <span id="Opsi">(1) Sangat Kurang (2) Kurang (3) Cukup (4) Sangat Cukup',
                           '20. Perlengkapan kuliah (Bangku, papan tulis, spidol, penghapus, kipas angin, LCD)? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',

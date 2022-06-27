@@ -15,7 +15,7 @@
                               <th style="width: 12%;" class="align-middle">NIM</th>
                               <th style="width: 20%;" class="align-middle">Nama</th>
                               <th class="align-middle">Dosen Pembimbing</th>
-                              <th style="width: 15%;" class="align-middle">Status</th>
+                              <th style="width: 15%;" class="align-middle">Tanggal Ujian</th>
                               <th style="width: 7%;" class="text-center align-middle">Validasi</th>
                             </tr>
                           </thead>
@@ -26,9 +26,9 @@
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
                                 <td class="align-middle"><?=$key['NamaPembimbing']?></td>
-                                <td class="align-middle"><?=$key['StatusUjianProposal']?></td>
+                                <td class="align-middle"><?=$key['TanggalUjianProposal']?></td>
                                 <td class="text-center align-middle">
-                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
+                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['JudulProposal']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
                                 </td> 
                               </tr>
                             <?php } ?>
@@ -73,24 +73,12 @@
 														<input class="form-control form-control-sm" type="text" id="Nama" disabled>
 													</div>
                         </div>
-                        <div class="col-lg-5 my-1">
+                        <div class="col-lg-12 my-1">
 													<div class="input-group input-group-sm mb-0">
 														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Tanggal Ujian Proposal</b></label>
+															<label class="input-group-text bg-primary text-light"><b>Judul</b></label>
 														</div>
-														<input class="form-control form-control-sm" type="date" id="TanggalUjianProposal" value="<?=date('Y-m-d')?>" disabled>
-													</div>
-												</div>
-												<div class="col-7 my-1"> 
-													<div class="input-group input-group-sm">
-														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Konsentrasi</b></label>
-														</div>
-														<select class="custom-select custom-select-sm" id="Konsentrasi" disabled>										
-															<option value="Perencanaan Pembangunan">Perencanaan Pembangunan</option>
-															<option value="Ekonomi Publik">Ekonomi Publik</option>
-															<option value="Ekonomi Moneter & Perbankan">Ekonomi Moneter & Perbankan</option>
-														</select>
+                            <input class="form-control form-control-sm" type="text" id="Judul">
 													</div>
 												</div>
 												<div class="col-12 my-1">
@@ -127,8 +115,7 @@
 					var Pisah = Data.split("|")
 					$("#NIM").val(Pisah[0])
 					$("#Nama").val(Pisah[1])
-					$("#TanggalUjianProposal").val(Pisah[2])
-          $("#Konsentrasi").val(Pisah[3])
+					$("#Judul").val(Pisah[2])
 					$('#ModalValidasiProposal').modal("show")
         })
         
