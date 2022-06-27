@@ -130,7 +130,7 @@
 <table>
   <tr>
     <td style="width:55%;"></td>
-    <td style="width:45%;"><p>Bangkalan,<br>Koordinator Program Studi</p></td> 
+    <td style="width:45%;"><p>Bangkalan, '.$Tanggal.'<br>Koordinator Program Studi</p></td> 
   </tr>
   <tr>
     <td></td>
