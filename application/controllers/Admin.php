@@ -153,7 +153,7 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function NilaiSkripsi(){
+	public function RekapSkripsi(){
 		$Data['Halaman'] = 'Nilai';
 		$Data['SubMenu'] = 'Rekap Skripsi';
 		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
