@@ -157,7 +157,7 @@ class Admin extends CI_Controller {
 		$Data['Halaman'] = 'Nilai';
 		$Data['SubMenu'] = 'Rekap Skripsi';
 		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
-    $this->load->view('Header',$Data);
+    $this->load->view('HeaderAdmin',$Data);
     $this->load->view('NilaiSkripsiAdmin',$Data); 
 	}
 
