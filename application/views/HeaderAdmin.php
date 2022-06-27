@@ -142,6 +142,12 @@
                   <p><b>Ujian Skripsi</b></p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?=base_url("Admin/RekapSkripsi")?>" class="nav-link <?php if ($SubMenu == 'Rekap Skripsi') { echo "active"; } ?>">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p><b>Rekap Skripsi</b></p>
+                </a>
+              </li>
             <?php } else if($this->session->userdata('Role') == 2) {?>
               <li class="nav-item">
                 <a href="<?=base_url("Admin/RPS")?>" class="nav-link <?php if ($SubMenu == "RPS") { echo "active";} ?>">
