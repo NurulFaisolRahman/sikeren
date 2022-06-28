@@ -166,7 +166,7 @@ class Admin extends CI_Controller {
 		$Data['Mhs'] = array();
 		foreach ($Mhs as $key) {
 			$TempMhs = array();$TempMhs[0] = $key['NIM'];$TempMhs[1] = $key['Nama'];$TempMhs[2] = $key['JudulProposal'];
-			$TempMhs[3] = $key['TanggalUjianSkripsi'];$TempMhs[3] = $key['NamaPembimbing'];
+			$TempMhs[4] = $key['TanggalUjianSkripsi'];$TempMhs[3] = $key['NamaPembimbing'];
 			$TempMhs[5] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$key['PengujiProposal1'])->row_array()['Nama'];
 			$TempMhs[6] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$key['PengujiProposal2'])->row_array()['Nama'];
 			$Bobot = array(5,3.75,2.5,2.5,2.5,5,3.75);

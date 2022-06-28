@@ -907,10 +907,10 @@ td
     <td class=3D"xl67" x:str>Penguji 2</td>
     <td class=3D"xl67" x:str>Nilai</td>
    </tr>
-	 <?php $No; for ($i=0; $i < count($Mhs); $i++) { ?>
+	 <?php $No = 1; for ($i=0; $i < count($Mhs); $i++) { ?>
 		 <tr height=3D"20" style=3D'height:15.00pt;'>
 			<td height=3D"20" style=3D'height:15.00pt;'></td>
-			<td class=3D"xl68" x:num><?=$No?></td>
+			<td class=3D"xl68" x:num><?=$No++?></td>
 			<td class=3D"xl69" x:str=3D"'150411100041"><?=$Mhs[$i][0]?></td>
 			<td class=3D"xl69" x:str><?=$Mhs[$i][1]?></td>
 			<td class=3D"xl69" x:str><?=$Mhs[$i][2]?></td>
