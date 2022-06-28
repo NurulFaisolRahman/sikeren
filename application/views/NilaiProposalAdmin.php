@@ -31,7 +31,7 @@
                                 <td class="align-middle"><?=$key['NamaPembimbing']?></td>
                                 <td class="align-middle"><?=$key['JudulProposal']?></td>
                                 <td class="text-center align-middle">
-                                  <a href="<?=base_url('Admin/BeritaAcaraUjianSkripsi/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
+                                  <a href="<?=base_url('Admin/BeritaAcaraUjianProposal/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
                                 </td> 
                               </tr>
                             <?php } ?>
