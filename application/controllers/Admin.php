@@ -161,6 +161,14 @@ class Admin extends CI_Controller {
     $this->load->view('NilaiSkripsiAdmin',$Data); 
 	}
 
+	public function RekapProposal(){
+		$Data['Halaman'] = 'Nilai';
+		$Data['SubMenu'] = 'Rekap Proposal';
+		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != ''")->result_array();
+    $this->load->view('HeaderAdmin',$Data);
+    $this->load->view('NilaiProposalAdmin',$Data); 
+	}
+
 	public function ExcelRekapSkripsi(){
 		$Mhs = $this->db->query("SELECT * FROM mahasiswa where NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
 		$Data['Mhs'] = array();
@@ -225,6 +233,54 @@ class Admin extends CI_Controller {
 			array_push($Data['Mhs'],$TempMhs);
 		}
 		$this->load->view('ExcelRekapSkripsi',$Data);
+	}
+
+	public function ExcelRekapProposal(){
+		$Mhs = $this->db->query("SELECT * FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != ''")->result_array();
+		$Data['Mhs'] = array();
+		foreach ($Mhs as $key) {
+			$TempMhs = array();$TempMhs[0] = $key['NIM'];$TempMhs[1] = $key['Nama'];$TempMhs[2] = $key['JudulProposal'];
+			$TempMhs[3] = $key['TanggalUjianProposal'];$TempMhs[4] = $key['NamaPembimbing'];
+			$TempMhs[5] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$key['PengujiProposal1'])->row_array()['Nama'];
+			$TempMhs[6] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$key['PengujiProposal2'])->row_array()['Nama'];
+			$Bobot = array(5,3.75,2.5,2.5,2.5,5,3.75);
+			$RekapNilai = explode("$",$key['NilaiProposal1']);
+			$NilaiKetuaPenguji = 0;
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiKetuaPenguji += $Bobot[$i]*(int)$RekapNilai[$i];
+			}
+			$RekapNilai = explode("$",$key['NilaiProposal2']);
+			$NilaiAnggotaPenguji = 0;
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiAnggotaPenguji += $Bobot[$i]*(int)$RekapNilai[$i];
+			}
+			$RekapNilai = explode("$",$key['NilaiProposal3']);
+			$NilaiSekretaris = 0;
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiSekretaris += $Bobot[$i]*(int)$RekapNilai[$i];
+			}
+			$Nilai = number_format((0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris),2,",",".");
+			if ($Nilai > 80) {
+				$Nilai .= ' (A)';
+			} else if ($Nilai > 75) {
+				$Nilai .= ' (B+)';
+			} else if ($Nilai > 70) {
+				$Nilai .= ' (B)';
+			} else if ($Nilai > 65) {
+				$Nilai .= ' (C+)';
+			} else if ($Nilai > 60) {
+				$Nilai .= ' (C)';
+			} else if ($Nilai > 55) {
+				$Nilai .= ' (D+)';
+			} else if ($Nilai > 50) {
+				$Nilai .= ' (D)';
+			} else {
+				$Nilai .= ' (E)';
+			}	
+			$TempMhs[7] = $Nilai;
+			array_push($Data['Mhs'],$TempMhs);
+		}
+		$this->load->view('ExcelRekapProposal',$Data);
 	}
 
 	public function BeritaAcaraUjianSkripsi($NIM){
