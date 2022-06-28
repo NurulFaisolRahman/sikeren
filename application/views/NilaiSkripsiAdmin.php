@@ -6,6 +6,9 @@
               <div class="col-sm-12 mt-2">
                 <div class="container-fluid border border-warning rounded bg-light">
                   <div class="row align-items-center">
+                    <div class="col-12 mt-2">
+                      <a class="btn btn-success" href="<?=base_url('Admin/ExcelRekapSkripsi')?>"><b>Rekap Skripsi</b></a>   
+                    </div>
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
                         <table id="TabelUjianSkripsi" class="table table-bordered table-striped">
