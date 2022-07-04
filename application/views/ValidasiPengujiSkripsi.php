@@ -121,33 +121,39 @@
         
         $("#ValidasiSkripsi").click(function() {
           var Mhs = { NIM: $("#NIM").val() }
-          $("#ValidasiSkripsi").attr("disabled", true); 
-          $("#LoadingValidasi").show();                             
-          $.post(BaseURL+"Dashboard/TerimaMengujiSkripsi", Mhs).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Dashboard/ValidasiPengujiSkripsi"
-            } else {
-              alert(Respon)
-              $("#ValidasiSkripsi").attr("disabled", false); 
-              $("#LoadingValidasi").hide();                             
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Validasi?"); 
+      		if (Konfirmasi == true) {
+            $("#ValidasiSkripsi").attr("disabled", true); 
+            $("#LoadingValidasi").show();                             
+            $.post(BaseURL+"Dashboard/TerimaMengujiSkripsi", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/ValidasiPengujiSkripsi"
+              } else {
+                alert(Respon)
+                $("#ValidasiSkripsi").attr("disabled", false); 
+                $("#LoadingValidasi").hide();                             
+              }
+            })
+          }
         })
 
         $("#TolakSkripsi").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
                       Alasan: $("#Penolakan").val() }
-          $("#TolakSkripsi").attr("disabled", true); 
-          $("#LoadingDitolak").show();                             
-          $.post(BaseURL+"Dashboard/TolakMengujiSkripsi", Mhs).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Dashboard/ValidasiPengujiSkripsi"
-            } else {
-              alert(Respon)
-              $("#TolakSkripsi").attr("disabled", false); 
-              $("#LoadingDitolak").hide();                             
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Menolak?"); 
+      		if (Konfirmasi == true) {
+            $("#TolakSkripsi").attr("disabled", true); 
+            $("#LoadingDitolak").show();                             
+            $.post(BaseURL+"Dashboard/TolakMengujiSkripsi", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/ValidasiPengujiSkripsi"
+              } else {
+                alert(Respon)
+                $("#TolakSkripsi").attr("disabled", false); 
+                $("#LoadingDitolak").hide();                             
+              }
+            })
+          }
         })
 
         $('#TabelUjianSkripsi').DataTable( {

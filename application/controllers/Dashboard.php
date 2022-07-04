@@ -1593,7 +1593,7 @@ class Dashboard extends CI_Controller {
     $this->load->view('_DosenPembimbing',$Data); 
 	}
 
-	public function ValidasiUjianProposal(){
+	public function ValidasiUjianProposal(){ 
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'ValidasiUjianProposal';
 		$Data['UjianProposal'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan KPS' or StatusPengujiProposal1 LIKE 'Ditolak%' or StatusPengujiProposal2 LIKE 'Ditolak%'")->result_array();
@@ -2123,5 +2123,29 @@ class Dashboard extends CI_Controller {
 			$Data['Nilai'] .= ' (E)';
 		}
 		$this->load->view('ExcelUjianSkripsi',$Data);
+	}
+
+	public function PersetujuanUjianProposal($NIM){
+		$this->load->library('Pdf');
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$NIM)->row_array();
+		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianProposal']);$Data['Tanggal'] = $Tanggal[2].' - '.$Tanggal[1].' - '.$Tanggal[0];
+		$Data['Ketua'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['QRCode'];
+		$Data['Anggota'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['QRCode'];
+		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
+		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
+		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$this->load->view('PersetujuanUjianProposal',$Data);
+	}
+
+	public function PersetujuanUjianSkripsi($NIM){
+		$this->load->library('Pdf');
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$NIM)->row_array();
+		$Tanggal = explode("-",$Data['Mhs']['TanggalUjianSkripsi']);$Data['Tanggal'] = $Tanggal[2].' - '.$Tanggal[1].' - '.$Tanggal[0];
+		$Data['Ketua'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['QRCode'];
+		$Data['Anggota'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['QRCode'];
+		$Data['NamaKetua'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal1'])->row_array()['Nama'];
+		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
+		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
+		$this->load->view('PersetujuanUjianSkripsi',$Data);
 	}
 }

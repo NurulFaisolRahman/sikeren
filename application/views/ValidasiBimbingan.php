@@ -175,33 +175,39 @@
         $("#ValidasiProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
                       StatusProposal: 'Disetujui Pembimbing' }
-          $("#ValidasiProposal").attr("disabled", true); 
-          $("#LoadingValidasi").show();                             
-          $.post(BaseURL+"Dashboard/TerimaBimbingan", Mhs).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Dashboard/ValidasiBimbingan"
-            } else {
-              alert(Respon)
-              $("#ValidasiProposal").attr("disabled", false); 
-              $("#LoadingValidasi").hide();                             
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Validasi?"); 
+      		if (Konfirmasi == true) {
+            $("#ValidasiProposal").attr("disabled", true); 
+            $("#LoadingValidasi").show();                             
+            $.post(BaseURL+"Dashboard/TerimaBimbingan", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/ValidasiBimbingan"
+              } else {
+                alert(Respon)
+                $("#ValidasiProposal").attr("disabled", false); 
+                $("#LoadingValidasi").hide();                             
+              }
+            })
+          }
         })
 
         $("#TolakProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
                       StatusProposal: 'Ditolak Oleh Pembimbing Karena '+ $("#Penolakan").val()}
-          $("#TolakProposal").attr("disabled", true); 
-          $("#LoadingDitolak").show();                             
-          $.post(BaseURL+"Dashboard/ValidasiProposal", Mhs).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Dashboard/ValidasiBimbingan"
-            } else {
-              alert(Respon)
-              $("#TolakProposal").attr("disabled", false); 
-              $("#LoadingDitolak").hide();                             
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Menolak?"); 
+      		if (Konfirmasi == true) {
+            $("#TolakProposal").attr("disabled", true); 
+            $("#LoadingDitolak").show();                             
+            $.post(BaseURL+"Dashboard/ValidasiProposal", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/ValidasiBimbingan"
+              } else {
+                alert(Respon)
+                $("#TolakProposal").attr("disabled", false); 
+                $("#LoadingDitolak").hide();                             
+              }
+            })
+          }
         })
         
         $(document).on("click",".LihatProposal",function(){

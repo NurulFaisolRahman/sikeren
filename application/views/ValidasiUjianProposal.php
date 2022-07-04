@@ -18,6 +18,7 @@
                               <th style="width: 12%;" class="align-middle">NIM</th>
                               <th style="width: 20%;" class="align-middle">Nama</th>
                               <th class="align-middle">Dosen Pembimbing</th>
+                              <th style="width: 10%;" class="align-middle">Tanggal Ujian</th>
                               <th style="width: 15%;" class="align-middle">Status</th>
                               <th style="width: 7%;" class="text-center align-middle">Validasi</th>
                             </tr>
@@ -29,6 +30,7 @@
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
                                 <td class="align-middle"><?=$key['NamaPembimbing']?></td>
+                                <td class="align-middle"><?=$key['TanggalUjianProposal']?></td>
                                 <td class="align-middle"><?=$key['StatusUjianProposal'].' : <br>1. '.$key['StatusPengujiProposal1'].'<br>2. '.$key['StatusPengujiProposal2']?></td>
                                 <td class="text-center align-middle">
                                   <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']."|".$key['PengujiProposal1']."|".$key['PengujiProposal2']."|".$key['StatusPengujiProposal1']."|".$key['StatusPengujiProposal2']."|".$key['JudulProposal']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
@@ -210,17 +212,20 @@
                       PengujiProposal1: $("#KetuaPenguji").prop("disabled") == true ? '' : $("#KetuaPenguji").val(),
                       PengujiProposal2: $("#AnggotaPenguji").prop("disabled") == true ? '' : $("#AnggotaPenguji").val(),
                       StatusUjianProposal: 'Menunggu Persetujuan Penguji' }
-          $("#ValidasiProposal").attr("disabled", true); 
-          $("#LoadingValidasi").show();                             
-          $.post(BaseURL+"Dashboard/KPSMemilihPengujiProposal", Mhs).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Dashboard/ValidasiUjianProposal"
-            } else {
-              alert(Respon)
-              $("#ValidasiProposal").attr("disabled", false); 
-              $("#LoadingValidasi").hide();                             
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Validasi?"); 
+      		if (Konfirmasi == true) {
+            $("#ValidasiProposal").attr("disabled", true); 
+            $("#LoadingValidasi").show();                             
+            $.post(BaseURL+"Dashboard/KPSMemilihPengujiProposal", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/ValidasiUjianProposal"
+              } else {
+                alert(Respon)
+                $("#ValidasiProposal").attr("disabled", false); 
+                $("#LoadingValidasi").hide();                             
+              }
+            })
+          }
         })
 
         $('#TabelUjianProposal').DataTable( {

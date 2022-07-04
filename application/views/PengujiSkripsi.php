@@ -13,9 +13,9 @@
                             <tr>
                               <th style="width: 4%;" class="text-center align-middle">No</th>
                               <th style="width: 12%;" class="align-middle">NIM</th>
-                              <th style="width: 20%;" class="align-middle">Nama</th>
-                              <th style="width: 20%;" class="align-middle">Dosen Pembimbing</th>
-                              <th class="align-middle">Judul Skripsi</th>
+                              <th style="width: 22%;" class="align-middle">Nama</th>
+                              <th style="width: 25%;" class="align-middle">Dosen Pembimbing</th>
+                              <th style="width: 10%;" class="align-middle">Tanggal Ujian</th>
                               <th style="width: 7%;" class="text-center align-middle">Nilai</th>
                             </tr>
                           </thead>
@@ -29,6 +29,7 @@
                                 <td class="align-middle"><?=$key['JudulProposal']?></td>
                                 <td class="text-center align-middle">
                                   <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianSkripsi']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
+                                  <a href="<?=base_url('Dashboard/PersetujuanUjianSkripsi/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
                                 </td> 
                               </tr>
                             <?php } ?>
@@ -306,7 +307,7 @@
         $('#TabelUjianSkripsi').DataTable( {
 					// dom:'lfrtip',
 					"ordering": false,
-          "lengthMenu": [[ 5, 10, 20, 30, -1 ],[ 5, 10, 20, 30, "All"]],
+          "lengthMenu": [[ 10, 20, 30, -1 ],[ 10, 20, 30, "All"]],
 					"language": {
 						"paginate": {
 							'previous': '<b class="text-primary"><</b>',

@@ -14,7 +14,8 @@
                               <th style="width: 4%;" class="text-center align-middle">No</th>
                               <th style="width: 12%;" class="align-middle">NIM</th>
                               <th style="width: 20%;" class="align-middle">Nama</th>
-                              <th class="align-middle">Judul Skripsi</th>
+                              <th class="align-middle">Dosen Pembimbing</th>
+                              <th style="width: 12%;" class="align-middle">Tanggal Ujian</th>
                               <th style="width: 5%;" class="align-middle text-center">Aksi</th>
                               <th style="width: 7%;" class="text-center align-middle">Cek Data</th>
                             </tr>
@@ -25,7 +26,8 @@
                                 <td class="text-center align-middle"><?=$No++?></td>
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
-                                <td class="align-middle"><?=$key['JudulProposal']?></td>
+                                <td class="align-middle"><?=$key['NamaPembimbing']?></td>
+                                <td class="align-middle"><?=$key['TanggalUjianSkripsi']?></td>
                                 <td class="align-middle text-center">
                                   <button CekData="<?=$key['NIM'].'|'.$key['Nama'].'|'.$key['PengujiProposal1'].'|'.$key['PengujiProposal2']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
                                 </td>
@@ -150,33 +152,39 @@
                       PengujiSkripsi1: $("#PengujiSkripsi1").val(),
                       PengujiSkripsi2: $("#PengujiSkripsi2").val(),
                       StatusUjianSkripsi: 'Menunggu Persetujuan Penguji' }
-          $("#ValidasiProposal").attr("disabled", true); 
-          $("#LoadingValidasi").show();                             
-          $.post(BaseURL+"Admin/ValidasiUjianProposal", Mhs).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Admin/UjianSkripsi"
-            } else {
-              alert(Respon)
-              $("#ValidasiProposal").attr("disabled", false); 
-              $("#LoadingValidasi").hide();                             
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Validasi Data?"); 
+      		if (Konfirmasi == true) {
+            $("#ValidasiProposal").attr("disabled", true); 
+            $("#LoadingValidasi").show();                             
+            $.post(BaseURL+"Admin/ValidasiUjianProposal", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Admin/UjianSkripsi"
+              } else {
+                alert(Respon)
+                $("#ValidasiProposal").attr("disabled", false); 
+                $("#LoadingValidasi").hide();                             
+              }
+            })
+          }
         })
 
         $("#TolakProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
                       StatusUjianSkripsi: 'Ditolak Oleh Admin Karena '+ $("#Penolakan").val()}
-          $("#TolakProposal").attr("disabled", true); 
-          $("#LoadingDitolak").show();                             
-          $.post(BaseURL+"Admin/ValidasiUjianProposal", Mhs).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Admin/UjianSkripsi"
-            } else {
-              alert(Respon)
-              $("#TolakProposal").attr("disabled", false); 
-              $("#LoadingDitolak").hide();                             
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Menolak?"); 
+      		if (Konfirmasi == true) {
+            $("#TolakProposal").attr("disabled", true); 
+            $("#LoadingDitolak").show();                             
+            $.post(BaseURL+"Admin/ValidasiUjianProposal", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Admin/UjianSkripsi"
+              } else {
+                alert(Respon)
+                $("#TolakProposal").attr("disabled", false); 
+                $("#LoadingDitolak").hide();                             
+              }
+            })
+          }
         })
         
         $(document).on("click",".LihatAdministrasi",function(){

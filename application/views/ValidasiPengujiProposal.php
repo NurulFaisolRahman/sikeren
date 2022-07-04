@@ -121,33 +121,39 @@
         
         $("#ValidasiProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val() }
-          $("#ValidasiProposal").attr("disabled", true); 
-          $("#LoadingValidasi").show();                             
-          $.post(BaseURL+"Dashboard/TerimaMengujiProposal", Mhs).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Dashboard/ValidasiPengujiProposal"
-            } else {
-              alert(Respon)
-              $("#ValidasiProposal").attr("disabled", false); 
-              $("#LoadingValidasi").hide();                             
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Validasi?"); 
+      		if (Konfirmasi == true) {
+            $("#ValidasiProposal").attr("disabled", true); 
+            $("#LoadingValidasi").show();                             
+            $.post(BaseURL+"Dashboard/TerimaMengujiProposal", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/ValidasiPengujiProposal"
+              } else {
+                alert(Respon)
+                $("#ValidasiProposal").attr("disabled", false); 
+                $("#LoadingValidasi").hide();                             
+              }
+            })
+          }
         })
 
         $("#TolakProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
                       Alasan: $("#Penolakan").val() }
-          $("#TolakProposal").attr("disabled", true); 
-          $("#LoadingDitolak").show();                             
-          $.post(BaseURL+"Dashboard/TolakMengujiProposal", Mhs).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Dashboard/ValidasiPengujiProposal"
-            } else {
-              alert(Respon)
-              $("#TolakProposal").attr("disabled", false); 
-              $("#LoadingDitolak").hide();                             
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Menolak?"); 
+      		if (Konfirmasi == true) {
+            $("#TolakProposal").attr("disabled", true); 
+            $("#LoadingDitolak").show();                             
+            $.post(BaseURL+"Dashboard/TolakMengujiProposal", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/ValidasiPengujiProposal"
+              } else {
+                alert(Respon)
+                $("#TolakProposal").attr("disabled", false); 
+                $("#LoadingDitolak").hide();                             
+              }
+            })
+          }
         })
 
         $('#TabelUjianProposal').DataTable( {

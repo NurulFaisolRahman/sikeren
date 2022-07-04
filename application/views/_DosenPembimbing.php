@@ -8,7 +8,7 @@
                   <div class="row align-items-center">
                     <div class="col-12 mt-2">
                       <button class="btn btn-primary" data-toggle="modal" data-target="#ModalListDosenPembimbing"><b>Rekap Dosen Pembimbing</b></button>  
-                      <a class="btn btn-success" href="<?=base_url('Dashboard/RekapDosenPembimbing')?>"><b>Rekap Dosen Pembimbing</b></a>   
+                      <a class="btn btn-success" href="<?=base_url('Dashboard/RekapDosenPembimbing')?>"><b>Excel Dosen Pembimbing</b></a>   
                     </div>
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
@@ -223,33 +223,39 @@
                       NIPPembimbing: $("#DosenPembimbing").val(),
                       NamaPembimbing:  $("#DosenPembimbing option:selected").text(),
                       StatusProposal: 'Menunggu Persetujuan Pembimbing' }
-          $("#ValidasiProposal").attr("disabled", true); 
-          $("#LoadingValidasi").show();                             
-          $.post(BaseURL+"Dashboard/ValidasiProposal", Mhs).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Dashboard/DosenPembimbing"
-            } else {
-              alert(Respon)
-              $("#ValidasiProposal").attr("disabled", false); 
-              $("#LoadingValidasi").hide();                             
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Validasi?"); 
+      		if (Konfirmasi == true) {
+            $("#ValidasiProposal").attr("disabled", true); 
+            $("#LoadingValidasi").show();                             
+            $.post(BaseURL+"Dashboard/ValidasiProposal", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/DosenPembimbing"
+              } else {
+                alert(Respon)
+                $("#ValidasiProposal").attr("disabled", false); 
+                $("#LoadingValidasi").hide();                             
+              }
+            })
+          }
         })
 
         $("#TolakProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
                       StatusProposal: 'Ditolak Oleh KPS Karena '+ $("#Penolakan").val()}
-          $("#TolakProposal").attr("disabled", true); 
-          $("#LoadingDitolak").show();                             
-          $.post(BaseURL+"Dashboard/ValidasiProposal", Mhs).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Dashboard/DosenPembimbing"
-            } else {
-              alert(Respon)
-              $("#TolakProposal").attr("disabled", false); 
-              $("#LoadingDitolak").hide();                             
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Menolak?"); 
+      		if (Konfirmasi == true) {
+            $("#TolakProposal").attr("disabled", true); 
+            $("#LoadingDitolak").show();                             
+            $.post(BaseURL+"Dashboard/ValidasiProposal", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/DosenPembimbing"
+              } else {
+                alert(Respon)
+                $("#TolakProposal").attr("disabled", false); 
+                $("#LoadingDitolak").hide();                             
+              }
+            })
+          }
         })
         
         $(document).on("click",".LihatProposal",function(){
