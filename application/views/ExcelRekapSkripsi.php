@@ -911,7 +911,7 @@ td
 		 <tr height=3D"20" style=3D'height:15.00pt;'>
 			<td height=3D"20" style=3D'height:15.00pt;'></td>
 			<td class=3D"xl68" x:num><?=$No++?></td>
-			<td class=3D"xl69" x:str=3D"'150411100041"><?=$Mhs[$i][0]?></td>
+			<td class=3D"xl69" x:str><?=$Mhs[$i][0]?></td>
 			<td class=3D"xl69" x:str><?=$Mhs[$i][1]?></td>
 			<td class=3D"xl69" x:str><?=$Mhs[$i][2]?></td>
 			<td class=3D"xl70" x:str><?=$Mhs[$i][3]?></td>

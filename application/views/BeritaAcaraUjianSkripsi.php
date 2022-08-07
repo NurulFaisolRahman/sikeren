@@ -69,7 +69,7 @@
   </tr>
   <tr>
     <td></td>
-    <td colspan="2"><p><br>Pada Tanggal '.$Tanggal.' Telah Dilaksanakan Ujian Proposal Skripsi Untuk Mahasiswa :</p></td>
+    <td colspan="2"><p><br>Pada Tanggal '.$Tanggal.' Telah Dilaksanakan Ujian Skripsi Untuk Mahasiswa :</p></td>
     <td></td>
   </tr>
   <tr>

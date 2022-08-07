@@ -49,6 +49,28 @@ class SMD extends CI_Controller {
 		redirect(base_url('SMD/TA'));
 	}
 
+	public function EvaluasiBimbinganSkripsi(){
+		$this->load->view('EvaluasiBimbinganSkripsi');
+	}
+
+	public function InputEvaluasiBimbinganSkripsi(){
+		if ($this->db->get_where('evaluasipembimbing', array('NIM' => $_POST['NIM']))->num_rows() == 0) {
+			if ($this->db->get_where('mahasiswa', array('NIM' => $_POST['NIM']))->row_array()['NIPPembimbing'] != '') {
+				$_POST['Dosen'] = $this->db->get_where('mahasiswa', array('NIM' => $_POST['NIM']))->row_array()['NIPPembimbing']; 
+				$this->db->insert('EvaluasiPembimbing',$_POST);
+				if ($this->db->affected_rows()){
+					echo '1';
+				} else {
+					echo 'Gagal Mengirim Kuisioner!'; 
+				}
+			} else {
+				echo 'NIM '.$_POST['NIM'].' Belum Memiliki Dosen Pembimbing!';
+			}
+		} else {
+			echo 'NIM '.$_POST['NIM'].' Sudah Mengisi Kuisioner!';
+		}
+	}
+
 	public function EvaluasiPBM(){
 		$this->load->view('EvaluasiPBM');
 	}

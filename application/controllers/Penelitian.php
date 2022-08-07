@@ -44,7 +44,7 @@ class Penelitian extends CI_Controller {
 		$Cek = True;
 		if ($_POST['IdKegiatan'] == 'PNL1') {
 			if ($_POST['Kode'] == '1') {
-				if ($this->db->query("SELECT * FROM `realisasipenelitian` WHERE NIP=".$NIP." AND IdKegiatan='PNL1' AND Tahun=".$_POST['Tahun']." AND Kode LIKE '1%'")->row_array() == 0) {
+				if ($this->db->query("SELECT * FROM `RealisasiPenelitian` WHERE NIP=".$NIP." AND IdKegiatan='PNL1' AND Tahun=".$_POST['Tahun']." AND Kode LIKE '1%'")->row_array() == 0) {
 					$JumlahKredit = $this->KreditPenulis($_POST['Ke'],$_POST['Dari'],40);
 					$Kredit = 40;
 				} else {
@@ -53,7 +53,7 @@ class Penelitian extends CI_Controller {
 				}
 			}
 			else if ($_POST['Kode'] == '2') {
-				if ($this->db->query("SELECT * FROM `realisasipenelitian` WHERE NIP=".$NIP." AND IdKegiatan='PNL1' AND Tahun=".$_POST['Tahun']." AND Kode LIKE '2%'")->row_array() == 0) {
+				if ($this->db->query("SELECT * FROM `RealisasiPenelitian` WHERE NIP=".$NIP." AND IdKegiatan='PNL1' AND Tahun=".$_POST['Tahun']." AND Kode LIKE '2%'")->row_array() == 0) {
 					$JumlahKredit = $this->KreditPenulis($_POST['Ke'],$_POST['Dari'],20);
 					$Kredit = 20;
 				} else {
@@ -62,7 +62,7 @@ class Penelitian extends CI_Controller {
 				}
 			}
 			else if ($_POST['Kode'] == '3') {
-				if ($this->db->query("SELECT * FROM `realisasipenelitian` WHERE NIP=".$NIP." AND IdKegiatan='PNL1' AND Tahun=".$_POST['Tahun']." AND Kode LIKE '3%'")->row_array() == 0) {
+				if ($this->db->query("SELECT * FROM `RealisasiPenelitian` WHERE NIP=".$NIP." AND IdKegiatan='PNL1' AND Tahun=".$_POST['Tahun']." AND Kode LIKE '3%'")->row_array() == 0) {
 					$JumlahKredit = $this->KreditPenulis($_POST['Ke'],$_POST['Dari'],15);
 					$Kredit = 15;
 				} else {
@@ -71,7 +71,7 @@ class Penelitian extends CI_Controller {
 				}
 			}
 			else if ($_POST['Kode'] == '4') {
-				if ($this->db->query("SELECT * FROM `realisasipenelitian` WHERE NIP=".$NIP." AND IdKegiatan='PNL1' AND Tahun=".$_POST['Tahun']." AND Kode LIKE '4%'")->row_array() == 0) {
+				if ($this->db->query("SELECT * FROM `RealisasiPenelitian` WHERE NIP=".$NIP." AND IdKegiatan='PNL1' AND Tahun=".$_POST['Tahun']." AND Kode LIKE '4%'")->row_array() == 0) {
 					$JumlahKredit = $this->KreditPenulis($_POST['Ke'],$_POST['Dari'],10);
 					$Kredit = 10;
 				} else {
@@ -206,7 +206,7 @@ class Penelitian extends CI_Controller {
 				$Kredit = 20;
 			}
 			else if ($_POST['Kode'] == '6') {
-				if (count($this->db->query("SELECT * FROM `realisasipenelitian` WHERE NIP=".$NIP." AND IdKegiatan='PNL6' AND Semester="."'".$_POST['Semester']."'"." AND Tahun=".$_POST['Tahun']." AND Kode LIKE '6%'")->result_array()) < 2) {
+				if (count($this->db->query("SELECT * FROM `RealisasiPenelitian` WHERE NIP=".$NIP." AND IdKegiatan='PNL6' AND Semester="."'".$_POST['Semester']."'"." AND Tahun=".$_POST['Tahun']." AND Kode LIKE '6%'")->result_array()) < 2) {
 					$JumlahKredit = $this->KreditPenulis($_POST['Ke'],$_POST['Dari'],15);
 					$Kredit = 15;
 				} else {

@@ -50,7 +50,7 @@ class Pendidikan extends CI_Controller {
 			$Volume = $_POST['Volume'];
 			if ($_POST['JenisPembimbing'] == '1') {
 				if ($_POST['JenisBimbingan'] == '1') {
-					if ($this->db->query("SELECT * FROM `realisasipendidikan` WHERE NIP=".$NIP." AND IdKegiatan='PND6' AND Semester="."'".$_POST['Semester']."'"." AND Tahun=".$_POST['Tahun']." AND Kode LIKE '1/1/%'")->row_array()['Volume'] > 4 || $_POST['Volume'] > 4) {
+					if ($this->db->query("SELECT * FROM `RealisasiPendidikan` WHERE NIP=".$NIP." AND IdKegiatan='PND6' AND Semester="."'".$_POST['Semester']."'"." AND Tahun=".$_POST['Tahun']." AND Kode LIKE '1/1/%'")->row_array()['Volume'] > 4 || $_POST['Volume'] > 4) {
 						$Satuan = '4 lulusan / semester';
 						$JumlahKredit = $_POST['Volume']*2;
 						$Kredit = '8';
