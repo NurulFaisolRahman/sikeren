@@ -57,7 +57,7 @@ class SMD extends CI_Controller {
 		if ($this->db->get_where('evaluasipembimbing', array('NIM' => $_POST['NIM']))->num_rows() == 0) {
 			if ($this->db->get_where('mahasiswa', array('NIM' => $_POST['NIM']))->row_array()['NIPPembimbing'] != '') {
 				$_POST['Dosen'] = $this->db->get_where('mahasiswa', array('NIM' => $_POST['NIM']))->row_array()['NIPPembimbing']; 
-				$this->db->insert('EvaluasiPembimbing',$_POST);
+				$this->db->insert('evaluasipembimbing',$_POST);
 				if ($this->db->affected_rows()){
 					echo '1';
 				} else {
