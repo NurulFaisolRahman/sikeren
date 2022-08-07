@@ -54,10 +54,10 @@ class SMD extends CI_Controller {
 	}
 
 	public function InputEvaluasiBimbinganSkripsi(){
-		if ($this->db->get_where('evaluasipembimbing', array('NIM' => $_POST['NIM']))->num_rows() == 0) {
+		if ($this->db->get_where('EvaluasiPembimbing', array('NIM' => $_POST['NIM']))->num_rows() == 0) {
 			if ($this->db->get_where('mahasiswa', array('NIM' => $_POST['NIM']))->row_array()['NIPPembimbing'] != '') {
 				$_POST['Dosen'] = $this->db->get_where('mahasiswa', array('NIM' => $_POST['NIM']))->row_array()['NIPPembimbing']; 
-				$this->db->insert('evaluasipembimbing',$_POST);
+				$this->db->insert('EvaluasiPembimbing',$_POST);
 				if ($this->db->affected_rows()){
 					echo '1';
 				} else {
