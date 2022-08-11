@@ -49,6 +49,27 @@ class SMD extends CI_Controller {
 		redirect(base_url('SMD/TA'));
 	}
 
+	public function SkorPembimbing(){
+		$ListDosen = $this->db->query('SELECT Dosen.Nama,Dosen,COUNT(Dosen) AS Jumlah FROM `EvaluasiPembimbing`,`Dosen` WHERE EvaluasiPembimbing.Dosen=Dosen.NIP GROUP BY Dosen')->result_array();
+		$Data['ListDosen'] = array();
+		foreach ($ListDosen as $key) {
+			$Temp = array();
+			array_push($Temp,$key['Dosen']);
+			array_push($Temp,$key['Nama']);
+			$Mhs = $this->db->get_where('EvaluasiPembimbing', array('Dosen' => $key['Dosen']))->result_array();
+			$Nilai = 0;
+			for ($i=0; $i < count($Mhs); $i++) { 
+				$Split = explode("|",$Mhs[$i]['Nilai']);
+				$Nilai += array_sum($Split);
+			}
+			array_push($Temp,($Nilai/count($Mhs)/10));
+			array_push($Temp,$key['Jumlah']);
+			array_push($Data['ListDosen'],$Temp);
+		}
+		print_r($Data);
+		// $this->load->view('SkorPembimbing');
+	}
+
 	public function EvaluasiBimbinganSkripsi(){
 		$this->load->view('EvaluasiBimbinganSkripsi');
 	}
@@ -56,12 +77,12 @@ class SMD extends CI_Controller {
 	public function InputEvaluasiBimbinganSkripsi(){
 		if ($this->db->get_where('EvaluasiPembimbing', array('NIM' => $_POST['NIM']))->num_rows() == 0) {
 			if ($this->db->get_where('mahasiswa', array('NIM' => $_POST['NIM']))->row_array()['NIPPembimbing'] != '') {
-				$_POST['Dosen'] = $this->db->get_where('mahasiswa', array('NIM' => $_POST['NIM']))->row_array()['NIPPembimbing']; 
+				$_POST['Dosen'] = $this->db->get_where('mahasiswa', array('NIM' => $_POST['NIM']))->row_array()['NIPPembimbing'];
 				$this->db->insert('EvaluasiPembimbing',$_POST);
 				if ($this->db->affected_rows()){
 					echo '1';
 				} else {
-					echo 'Gagal Mengirim Kuisioner!'; 
+					echo 'Gagal Mengirim Kuisioner!';
 				}
 			} else {
 				echo 'NIM '.$_POST['NIM'].' Belum Memiliki Dosen Pembimbing!';

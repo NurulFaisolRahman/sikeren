@@ -24,7 +24,7 @@
                           '7. Pembimbing mengarahkan dalam penulisan skripsi?',
                           '8. Pembimbing memberikan semangat kepada mahasiswa untuk menyelesaikan skripsi?',
                           '9. Pembimbingan memonitor perkembangan skripsi?',
-                          '10. Fasilitas pembimbingan menggunakan WA, SIKEREN membantu dalam penyelesaian skripsi?'); 
+                          '10. Fasilitas pembimbingan menggunakan SIKEREN membantu dalam penyelesaian skripsi?'); 
   ?>
     <div class="container">
       <div class="row d-flex justify-content-center">
