@@ -62,12 +62,23 @@ class SMD extends CI_Controller {
 				$Split = explode("|",$Mhs[$i]['Nilai']);
 				$Nilai += array_sum($Split);
 			}
-			array_push($Temp,($Nilai/count($Mhs)/10));
+			$Skor = $Nilai/count($Mhs)/10;
+			array_push($Temp,$Skor);
+			if ($Skor > 4.2) {
+				array_push($Temp,'SB');
+			} else if ($Skor > 3.4) {
+				array_push($Temp,'B');
+			} else if ($Skor > 2.6) {
+				array_push($Temp,'C');
+			} else if ($Skor > 1.8) {
+				array_push($Temp,'K');
+			} else {
+				array_push($Temp,'Br');
+			} 
 			array_push($Temp,$key['Jumlah']);
 			array_push($Data['ListDosen'],$Temp);
 		}
-		print_r($Data);
-		// $this->load->view('SkorPembimbing');
+		$this->load->view('SkorPembimbing',$Data);
 	}
 
 	public function EvaluasiBimbinganSkripsi(){
