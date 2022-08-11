@@ -33,7 +33,7 @@
                     </tr>
                   </thead>
                   <tbody style="font-size: 12px;" class="bg-primary">
-                  <?php $No = 1; for ($i=0; $i < count($ListDosen); $i++) { ?>
+                  <?php $No = 1; $Total = 0; for ($i=0; $i < count($ListDosen); $i++) { $Total += $ListDosen[$i][4]; ?>
                     <tr class="text-light align-middle">
                       <td class="align-middle"><b><?=$No++?></b></td>
                       <td class="align-middle"><b><?=$ListDosen[$i][0]?></b></td>
@@ -43,6 +43,11 @@
                       <td class="align-middle"><b><?=$ListDosen[$i][4]?></b></td>
                     </tr>
                   <?php } ?>
+                    <tr style="font-size: 10pt;" class="text-light text-center bg-danger">
+                      <th colspan="4" class="align-middle"></th>
+                      <th class="align-middle">Total</th>
+                      <th class="align-middle"><?=$Total?> Responden</th>
+                    </tr>
                   </tbody>
                 </table>
               </div>
