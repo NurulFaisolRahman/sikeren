@@ -116,17 +116,17 @@
       <div class="row bg-success py-2">
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
-            <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalSignIn" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN ADMIN</button></div>
+            <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalSignIn" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN AKUN</button></div>
             <div class="card-body bg-primary text-light border border-light py-3">
-              <a href="#" data-toggle="modal" data-target="#ModalSignIn"><img class="my-2" src="<?=base_url('img/Admin.png')?>" alt="Admin" width="81%"></a>
+              <a href="#" data-toggle="modal" data-target="#ModalSignIn"><img class="my-2" src="<?=base_url('img/Dosen.png')?>" alt="Admin" width="81%"></a>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
-            <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalSignIn" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN DOSEN</button></div>
+            <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalJenisSOP" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">DOKUMEN   SOP </button></div>
             <div class="card-body bg-primary text-light border border-light py-3">
-              <a href="#" data-toggle="modal" data-target="#ModalSignIn"><img class="my-2" src="<?=base_url('img/Dosen.png')?>" alt="Dosen" width="81%"></a>
+              <a href="#" data-toggle="modal" data-target="#ModalJenisSOP"><img class="my-2" src="<?=base_url('img/SOP.png')?>" alt="Dosen" width="81%"></a>
             </div>
           </div>
         </div>
@@ -140,9 +140,9 @@
         </div>
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
-            <div class="card-header bg-warning border border-light"><a href="<?=base_url('SMD/EvaluasiPBM')?>" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">KUISIONER EVALUASI PBM</a></div>
+            <div class="card-header bg-warning border border-light"><a href="#" data-toggle="modal" data-target="#ModalEvaluasi" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">KUISIONER EVALUASI</a></div>
             <div class="card-body bg-primary text-light border border-light py-3">
-              <a href="<?=base_url('SMD/EvaluasiPBM')?>"><img class="my-2" src="<?=base_url('img/PBM.png')?>" alt="PBM" width="81%"></a>
+              <a href="#" data-toggle="modal" data-target="#ModalEvaluasi"><img class="my-2" src="<?=base_url('img/PBM.png')?>" alt="PBM" width="81%"></a>
             </div>
           </div>
         </div>
@@ -192,16 +192,52 @@
 							<div class="row d-flex justify-content-center">
 								<div class="col-sm-12 my-1">
                   <ul class="list-group">
-                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/KepuasanMahasiswa')?>">1. Kepuasan Terhadap Proses Pendidikan</a></li>
-                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PrestasiMahasiswa')?>">2. Prestasi Akademik & Non Akademik</a></li>
-                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PublikasiMahasiswa')?>">3. Publikasi Ilmiah</a></li>
-                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/SitasiMahasiswa')?>">4. Karya Ilmiah Yang Disitasi</a></li>
-                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PatenMahasiswa')?>">5. HKI (Paten, Paten Sederhana)</a></li>
-                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/HKIMahasiswa')?>">6. HKI (Hak Cipta, Desain Produk Industri, dll.)</a></li>
-                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/KaryaMahasiswa')?>">7. Teknologi Tepat Guna, Produk, Karya Seni, Rekayasa Sosial</a></li>
-                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/BukuMahasiswa')?>">8. Buku ber-ISBN, Book Chapter</a></li>
-                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/Alumni')?>">9. Alumni Yang Telah Bekerja</a></li>
-                    <li class="list-group-item bg-primary py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PenggunaLulusan')?>">10. Pengguna Lulusan</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/KepuasanMahasiswa')?>">1. Kepuasan Terhadap Proses Pendidikan</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PrestasiMahasiswa')?>">2. Prestasi Akademik & Non Akademik</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PublikasiMahasiswa')?>">3. Publikasi Ilmiah</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/SitasiMahasiswa')?>">4. Karya Ilmiah Yang Disitasi</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PatenMahasiswa')?>">5. HKI (Paten, Paten Sederhana)</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/HKIMahasiswa')?>">6. HKI (Hak Cipta, Desain Produk Industri, dll.)</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/KaryaMahasiswa')?>">7. Teknologi Tepat Guna, Produk, Karya Seni, Rekayasa Sosial</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/BukuMahasiswa')?>">8. Buku ber-ISBN, Book Chapter</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/Alumni')?>">9. Alumni Yang Telah Bekerja</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PenggunaLulusan')?>">10. Pengguna Lulusan</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalEvaluasi">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-transparent">
+          <div class="modal-body">
+            <div class="container-fluid">
+							<div class="row d-flex justify-content-center">
+								<div class="col-sm-12 my-1">
+                  <ul class="list-group">
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/EvaluasiPBM')?>">1. Evaluasi Proses Belajar Mengajar</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/EvaluasiBimbinganSkripsi')?>">2. Evaluasi Dosen Pembimbing Skripsi</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalJenisSOP">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-transparent">
+          <div class="modal-body">
+            <div class="container-fluid">
+							<div class="row d-flex justify-content-center">
+								<div class="col-sm-12 my-1">
+                  <ul class="list-group">
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('Panduan/PembimbinganSkripsi.pdf')?>" download>1. Pembimbingan Skripsi</a></li>
+                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('Panduan/InstrumenPembimbingan.pdf')?>" download>2. Instrumen Pembimbingan Skripsi</a></li>
                   </ul>
                 </div>
               </div>

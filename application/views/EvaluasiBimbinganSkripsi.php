@@ -120,16 +120,19 @@
             var Data = { NIM: $("#NIM").val(),
                          Nilai: Nilai,
                          Saran: $("#Saran").val()}
-            $("#Kirim").prop('disabled', true);
-            $.post(BaseURL+"SMD/InputEvaluasiBimbinganSkripsi", Data).done(function(Respon) {
-              if (Respon == '1') {
-                alert('Terima Kasih Telah Mengisi Kuisioner :)')
-                window.location = BaseURL + "SMD/EvaluasiBimbinganSkripsi"
-              } else {
-                alert(Respon)
-                $("#Kirim").prop('disabled', false);
-              }
-            })
+            var Konfirmasi = confirm("Yakin Ingin Menyimpan Penilaian?"); 
+            if (Konfirmasi == true) {                         
+              $("#Kirim").prop('disabled', true);
+              $.post(BaseURL+"SMD/InputEvaluasiBimbinganSkripsi", Data).done(function(Respon) {
+                if (Respon == '1') {
+                  alert('Terima Kasih Telah Mengisi Kuisioner :)')
+                  window.location = BaseURL + "SMD/EvaluasiBimbinganSkripsi"
+                } else {
+                  alert(Respon)
+                  $("#Kirim").prop('disabled', false);
+                }
+              })
+            }
           }
         })
       })
