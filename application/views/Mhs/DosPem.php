@@ -36,9 +36,7 @@
 																<button LihatTranskrip="<?=base_url('Proposal/'.$Mhs['Transkrip'])?>" class="btn btn-sm btn-success border-light LihatTranskrip"><i class="fa fa-file-pdf-o"></i></button>  
 																<button LihatProposal="<?=base_url('Proposal/'.$Mhs['DraftProposal'])?>" class="btn btn-sm btn-danger border-light LihatProposal"><i class="fa fa-file-pdf-o"></i></button>  
 															</td>
-															<td style="vertical-align: middle;">
-																<?php if ($Mhs['StatusProposal'] == 'Disetujui Pembimbing') { echo $Mhs['NamaPembimbing']; }?>
-															</td>
+															<td style="vertical-align: middle;"><?=$Mhs['NamaPembimbing']?></td>
 														</tr>
 													<?php } ?>
 												</tbody>

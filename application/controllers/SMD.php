@@ -7,6 +7,11 @@ class SMD extends CI_Controller {
 		$this->load->view('Index.php');
 	}
 
+	public function PBM(){
+		$Data['PBM'] = $this->db->get('evaluasipbm')->result_array();
+		$this->load->view('ExcelPBM.php',$Data);
+	}
+
 	public function MhsMasuk(){
 		$CekLogin = $this->db->get_where('mahasiswa', array('NIM' => htmlentities($_POST['NIM'])));
 		if($CekLogin->num_rows() == 0){
