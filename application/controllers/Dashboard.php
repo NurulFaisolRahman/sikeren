@@ -1598,24 +1598,21 @@ class Dashboard extends CI_Controller {
 			for ($j=0; $j < count($Belum); $j++) { 
 				if ($NIP[$i]['NIP'] == $Belum[$j]['NIPPembimbing']) {
 					array_push($Temp,$Belum[$i]['Jumlah']);
-				} else {
-					array_push($Temp,0);
 				}
 			}
+			if (count($Temp) == 1) { array_push($Temp,0); }
 			for ($k=0; $k < count($Aktif); $k++) { 
 				if ($NIP[$i]['NIP'] == $Aktif[$k]['NIPPembimbing']) {
 					array_push($Temp,$Aktif[$i]['Jumlah']);
-				} else {
-					array_push($Temp,0);
 				}
 			}
+			if (count($Temp) == 2) { array_push($Temp,0); }
 			for ($l=0; $l < count($Lulus); $l++) { 
 				if ($NIP[$i]['NIP'] == $Lulus[$l]['NIPPembimbing']) {
 					array_push($Temp,$Lulus[$i]['Jumlah']);
-				} else {
-					array_push($Temp,0);
 				}
 			}
+			if (count($Temp) == 3) { array_push($Temp,0); }
 			array_push($Data['Bimbingan'],$Temp);
 		}
     $this->load->view('Header',$Data);
