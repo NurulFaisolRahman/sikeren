@@ -1610,7 +1610,7 @@ class Dashboard extends CI_Controller {
 				}
 			}
 			for ($l=0; $l < count($Lulus); $l++) { 
-				if ($NIP[$i]['NIP'] == $Lulus[l]['NIPPembimbing']) {
+				if ($NIP[$i]['NIP'] == $Lulus[$l]['NIPPembimbing']) {
 					array_push($Temp,$Lulus[$i]['Jumlah']);
 				} else {
 					array_push($Temp,0);
