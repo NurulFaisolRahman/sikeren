@@ -164,7 +164,7 @@
       </div>
     </div>
     <div class="modal fade" id="ModalListDosenPembimbing">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content bg-primary">
           <div class="modal-body">
             <div class="table-responsive">
@@ -182,9 +182,9 @@
                       <tr>
                         <th class="text-center"><?=$No++?></th>
                         <td><?=$Bimbingan[$i][0]?></td>
-                        <td><?=$Bimbingan[$i][1]?></td>
-                        <td><?=$Bimbingan[$i][2]?></td>
-                        <td><?=$Bimbingan[$i][3]?></td>
+                        <td class="text-center"><?=$Bimbingan[$i][1]?></td>
+                        <td class="text-center"><?=$Bimbingan[$i][2]?></td>
+                        <td class="text-center"><?=$Bimbingan[$i][3]?></td>
                       </tr>
                     <?php } ?>
                 </thead>
