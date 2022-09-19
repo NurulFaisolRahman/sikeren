@@ -173,14 +173,18 @@
                   <tr>
                     <th scope="col" style="width: 10%;" class="text-center">No</th>
                     <th scope="col">Nama Dosen</th>
-                    <th scope="col" style="width: 10%;" class="text-center">Jumlah</th>
+                    <th scope="col" style="width: 10%;" class="text-center">Belum</th>
+                    <th scope="col" style="width: 10%;" class="text-center">Aktif</th>
+                    <th scope="col" style="width: 10%;" class="text-center">Lulus</th>
                   </tr>
                   <tbody>
-                    <?php $No = 1; foreach ($Bimbingan as $key) { ?>
+                    <?php $No = 1; for ($i=0; $i < count($Bimbingan); $i++) { ?>
                       <tr>
                         <th class="text-center"><?=$No++?></th>
-                        <td><?=$key['NamaPembimbing']?></td>
-                        <td class="text-center"><?=$key['Jumlah']?></td>
+                        <td><?=$Bimbingan[$i][0]?></td>
+                        <td><?=$Bimbingan[$i][1]?></td>
+                        <td><?=$Bimbingan[$i][2]?></td>
+                        <td><?=$Bimbingan[$i][3]?></td>
                       </tr>
                     <?php } ?>
                 </thead>

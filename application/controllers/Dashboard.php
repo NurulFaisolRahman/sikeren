@@ -1588,7 +1588,36 @@ class Dashboard extends CI_Controller {
 		$Data['SubMenu'] = 'DosenPembimbing';
 		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' or StatusProposal LIKE 'Ditolak Oleh Pembimbing%'")->result_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
-		$Data['Bimbingan'] = $this->db->query("SELECT NamaPembimbing,COUNT(NIPPembimbing) AS Jumlah FROM `mahasiswa` WHERE NIPPembimbing != '' GROUP BY NIPPembimbing")->result_array();
+		$Belum = $this->db->query("SELECT NIPPembimbing,NamaPembimbing,COUNT(NIPPembimbing) AS Jumlah FROM `mahasiswa` WHERE NIPPembimbing != '' AND StatusProposal = 'Menunggu Persetujuan Pembimbing' GROUP BY NIPPembimbing")->result_array();
+		$Aktif = $this->db->query("SELECT NIPPembimbing,NamaPembimbing,COUNT(NIPPembimbing) AS Jumlah FROM `mahasiswa` WHERE StatusProposal = 'Disetujui Pembimbing' AND NilaiSkripsi1 = '' AND NilaiSkripsi2 = '' AND NilaiSkripsi3 = '' GROUP BY NIPPembimbing")->result_array();
+		$Lulus = $this->db->query("SELECT NIPPembimbing,NamaPembimbing,COUNT(NIPPembimbing) AS Jumlah FROM `mahasiswa` WHERE StatusProposal = 'Disetujui Pembimbing' AND NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != '' GROUP BY NIPPembimbing")->result_array();
+		$NIP = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
+		$Data['Bimbingan'] = array();
+		for ($i=0; $i < count($NIP); $i++) { 
+			$Temp = array();array_push($Temp,$NIP[$i]['Nama']);
+			for ($j=0; $j < count($Belum); $j++) { 
+				if ($NIP[$i]['NIP'] == $Belum[$j]['NIPPembimbing']) {
+					array_push($Temp,$Belum[$i]['Jumlah']);
+				} else {
+					array_push($Temp,0);
+				}
+			}
+			for ($j=0; $j < count($Aktif); $j++) { 
+				if ($NIP[$i]['NIP'] == $Aktif[$j]['NIPPembimbing']) {
+					array_push($Temp,$Aktif[$i]['Jumlah']);
+				} else {
+					array_push($Temp,0);
+				}
+			}
+			for ($j=0; $j < count($Lulus); $j++) { 
+				if ($NIP[$i]['NIP'] == $Lulus[$j]['NIPPembimbing']) {
+					array_push($Temp,$Lulus[$i]['Jumlah']);
+				} else {
+					array_push($Temp,0);
+				}
+			}
+			array_push($Data['Bimbingan'],$Temp);
+		}
     $this->load->view('Header',$Data);
     $this->load->view('_DosenPembimbing',$Data); 
 	}
@@ -1885,7 +1914,7 @@ class Dashboard extends CI_Controller {
 	public function BimbinganSkripsi(){
 		$Data['Halaman'] = 'Bimbingan Skripsi';
 		$Data['SubMenu'] = '';
-		$Data['Bimbingan'] = $this->db->query("SELECT NIM,Nama FROM mahasiswa WHERE NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array(); 
+		$Data['Bimbingan'] = $this->db->query("SELECT NIM,Nama FROM mahasiswa WHERE StatusProposal = 'Disetujui Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array(); 
 		$Data['DataBimbingan'] = array();
 		if ($this->session->userdata('NIMBimbingan') != '') {
 			$Data['DataBimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->result_array(); 
