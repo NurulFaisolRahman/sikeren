@@ -148,9 +148,9 @@
                     </p>
                     </a>
                     <?php
-                      $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal");
-                      $NamaKegiatan = array("Dosen Pembimbing","Penguji Proposal");
-                      $Icon = array("users","users");
+                      $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal","PlotMBKM");
+                      $NamaKegiatan = array("Dosen Pembimbing","Penguji Proposal","Plot DPL MBKM");
+                      $Icon = array("users","users","users");
                     ?>
                     <?php for ($i=0; $i < count($JenisKegiatan); $i++) { ?>
                     <ul class="nav nav-treeview <ml-1></ml-3>">

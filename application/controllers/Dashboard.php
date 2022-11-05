@@ -1583,6 +1583,25 @@ class Dashboard extends CI_Controller {
 		echo json_encode($Data);
 	}
 
+	public function PlotMBKM(){
+		$Data['Halaman'] = 'Validasi';
+		$Data['SubMenu'] = 'PlotMBKM';
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
+		$Data['MBKM'] = $this->db->query("SELECT mbkm.*,mahasiswa.Nama FROM mbkm,mahasiswa WHERE mbkm.NIM=mahasiswa.NIM")->result_array();
+		$this->load->view('Header',$Data);
+    $this->load->view('PlotMBKM',$Data); 
+	}
+
+	public function ValidasiPlotMBKM(){
+		$this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mbkm',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
 	public function DosenPembimbing(){
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'DosenPembimbing';

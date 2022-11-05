@@ -15,6 +15,31 @@ class Mhs extends CI_Controller {
 		$this->load->view('Mhs/Profil',$Data); 
 	}
 
+	public function MBKM(){ 
+		$Data['Mhs'] = $this->db->query("SELECT Foto FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
+		$Data['MBKM'] = $this->db->query("SELECT * FROM mbkm WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$this->load->view('Mhs/Header',$Data); 
+		$this->load->view('Mhs/MBKM',$Data); 
+	}
+
+	public function DaftarMBKM(){
+		$CekMBKM = $this->db->get_where('mbkm', array('NIM' => $this->session->userdata('NIM')));
+		if ($CekMBKM->num_rows() == 0){
+			$_POST['NIM'] = $this->session->userdata('NIM');
+			$this->db->insert('mbkm',$_POST);
+			if ($this->db->affected_rows()){
+				echo '1';
+			} else {
+				echo 'Gagal Menyimpan Data!';
+			}
+		} else {
+			$this->db->where('NIM', $this->session->userdata('NIM'));
+			$this->db->update('mbkm',$_POST);
+			echo '1';
+		}
+	}
+
 	public function DosPem(){ 
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
 		$Data['Bimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIM'))->result_array();
@@ -247,6 +272,22 @@ class Mhs extends CI_Controller {
 		$this->db->where('NIM', $this->session->userdata('NIM'));
 		$this->db->update('mahasiswa',array('Foto' => $NamaFoto.'.'.$Tipe));
 		echo '1';
+	}
+
+	public function LogBook(){
+		$Tipe = pathinfo($_FILES['LogBook']['name'],PATHINFO_EXTENSION);
+		$NamaLogBook = date('Ymd',time()).substr(password_hash('LogBook', PASSWORD_DEFAULT),7,3);
+		$NamaLogBook = str_replace("/","E",$NamaLogBook);
+		$NamaLogBook = str_replace(".","F",$NamaLogBook);
+		move_uploaded_file($_FILES['LogBook']['tmp_name'], "LogBookMBKM/".$NamaLogBook.'.'.$Tipe);
+		if ($_POST['_LogBook'] != '') { unlink('LogBookMBKM/'.$_POST['_LogBook']); }
+		$this->db->where('NIM', $this->session->userdata('NIM'));
+		$this->db->update('mbkm',array('LogBook' => $NamaLogBook.'.'.$Tipe));
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Update Log Book!';
+		}
 	}
 
 	public function PersetujuanPembimbing(){
