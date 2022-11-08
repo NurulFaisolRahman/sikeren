@@ -1587,7 +1587,7 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'PlotMBKM';
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
-		$Data['MBKM'] = $this->db->query("SELECT mbkm.*,mahasiswa.Nama FROM mbkm,mahasiswa WHERE mbkm.NIM=mahasiswa.NIM")->result_array();
+		$Data['MBKM'] = $this->db->query("SELECT mbkm.*,mahasiswa.Nama,kodewilayah.Nama AS Kabupaten FROM mbkm,mahasiswa,kodewilayah WHERE mbkm.NIM=mahasiswa.NIM AND mbkm.Kabupaten=kodewilayah.Kode AND Status NOT LIKE '%Ditolak%'")->result_array();
 		$this->load->view('Header',$Data);
     $this->load->view('PlotMBKM',$Data); 
 	}

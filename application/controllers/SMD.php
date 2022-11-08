@@ -164,8 +164,8 @@ public function Kuisioner($Jenis){
 
 	public function InputKuisioner($Jenis){
 		if ($Jenis == 'KepuasanMahasiswa') {
-			if ($this->db->get_where('kepuasanmahasiswa', array('NIM' => $_POST['NIM']))->num_rows() === 0) {
-				$this->InsertKuisioner('kepuasanmahasiswa',$_POST);
+			if ($this->db->get_where('KepuasanMahasiswa', array('NIM' => $_POST['NIM']))->num_rows() === 0) {
+				$this->InsertKuisioner('KepuasanMahasiswa',$_POST);
 			} else {
 				echo 'Data Kuisioner Kepuasan Mahasiswa Dengan NIM '.$_POST['NIM'].' Sudah Ada!';
 			}
@@ -187,7 +187,7 @@ public function Kuisioner($Jenis){
 					$NamaPdf = str_replace(".","F",$NamaPdf);
 					move_uploaded_file($_FILES['Bukti']['tmp_name'], "PrestasiMahasiswa/".$NamaPdf.".pdf");
 					$_POST['Bukti'] = $NamaPdf.".pdf";
-					$this->db->insert('prestasimahasiswa',$_POST);
+					$this->db->insert('PrestasiMahasiswa',$_POST);
 					echo '1';
 				} else {
 					echo 'Upload Sertifikat Prestasi Hanya Boleh PDF!';

@@ -19,9 +19,25 @@ class Mhs extends CI_Controller {
 		$Data['Mhs'] = $this->db->query("SELECT Foto FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
 		$Data['MBKM'] = $this->db->query("SELECT * FROM mbkm WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$Data['Provinsi'] = $this->db->query("SELECT * FROM `kodewilayah` WHERE length(Kode) = 2")->result_array();
+		if ($Data['MBKM']['Kabupaten'] != "") {
+			$Data['Kabupaten'] = $this->db->query("SELECT * FROM `kodewilayah` WHERE Kode LIKE '".$Data['MBKM']['Provinsi'].".%' AND length(Kode) = 5")->result_array();
+		} else {
+			$Data['Kabupaten'] = $this->db->query("SELECT * FROM `kodewilayah` WHERE Kode LIKE '35.%' AND length(Kode) = 5")->result_array();
+		}
+    
 		$this->load->view('Mhs/Header',$Data); 
 		$this->load->view('Mhs/MBKM',$Data); 
 	}
+
+	function ListKabupaten(){
+    $Kabupaten = $this->db->query("SELECT * FROM `kodewilayah` WHERE Kode LIKE "."'".$_POST['Kode'].".%"."' AND length(Kode) = 5")->result_array();
+    $OpsiKabupaten = "";
+    foreach ($Kabupaten as $key) {
+      $OpsiKabupaten .= "<option value='".$key['Kode']."'>".$key['Nama']."</option>";
+    }
+    echo $OpsiKabupaten;
+  }
 
 	public function DaftarMBKM(){
 		$CekMBKM = $this->db->get_where('mbkm', array('NIM' => $this->session->userdata('NIM')));
@@ -38,6 +54,11 @@ class Mhs extends CI_Controller {
 			$this->db->update('mbkm',$_POST);
 			echo '1';
 		}
+	}
+
+	public function AjukanMBKM(){
+		$this->db->where('NIM', $this->session->userdata('NIM'));
+		$this->db->update('mbkm',array('Status' => 'Diajukan'));
 	}
 
 	public function DosPem(){ 

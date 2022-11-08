@@ -15,6 +15,7 @@
                               <th style="width: 5%;" class="align-middle">NIM</th>
                               <th style="width: 25%;" class="align-middle">Nama</th>
                               <th style="width: 20%;" class="align-middle">Dosen Pembimbing Lapangan</th>
+                              <th style="width: 5%;" class="text-center align-middle">Status</th>
                               <th style="width: 5%;" class="text-center align-middle">Plot</th>
                             </tr>
                           </thead>
@@ -35,8 +36,9 @@
                                 <?php } else { ?>
                                   <td class="align-middle"></td>
                                 <?php } ?>
+                                <td class="align-middle"><?=$key['Status']?></td>
                                 <td class="text-center align-middle">
-                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['Konsentrasi']."|".$key['Lokasi']."|".$key['Instansi']."|".$key['Dosen']?>" class="btn btn-sm btn-primary CekData"><i class="fas fa-edit"></i></button>
+                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['Jenis']."|".$key['Konsentrasi']."|".$key['Instansi']."|".$key['NamaInstansi']."|".$key['Kabupaten']."|".$key['IPK'].$key['Dosen']?>" class="btn btn-sm btn-primary CekData"><i class="fas fa-edit"></i></button>
                                 </td> 
                               </tr>
                             <?php } ?>
@@ -53,7 +55,7 @@
       </div>
     </div>
     <div class="modal fade" id="ModalPlotMBKM">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-success">
           <div class="modal-body">
             <div class="container">
@@ -65,7 +67,7 @@
 									<div class="card-body border border-primary bg-warning">
 										<div class="container-fluid">
 											<div class="row">
-												<div class="col-4 my-1">
+												<div class="col-12 my-1">
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>NIM</b></label>
@@ -73,7 +75,7 @@
 														<input class="form-control form-control-sm" type="text" id="NIM" disabled>
 													</div>
 												</div>
-												<div class="col-8 my-1">
+												<div class="col-12 my-1">
 													<div class="input-group input-group-sm"> 
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Nama</b></label>
@@ -81,34 +83,54 @@
 														<input class="form-control form-control-sm" type="text" id="Nama" disabled>
 													</div>
 												</div>
-												<div class="col-6 my-1"> 
+												<div class="col-lg-12 my-1"> 
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Jenis MBKM</b></label>
+                            </div>
+                            <input class="form-control form-control-sm" type="text" id="Jenis" disabled>
+													</div>
+												</div>
+												<div class="col-lg-12 my-1"> 
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Konsentrasi</b></label>
-														</div>
-														<select class="custom-select custom-select-sm" id="Konsentrasi" disabled>										
-															<option value="Perencanaan Pembangunan">Perencanaan Pembangunan</option>
-															<option value="Ekonomi Publik">Ekonomi Publik</option>
-															<option value="Ekonomi Moneter & Perbankan">Ekonomi Moneter & Perbankan</option>
-														</select>
+                            </div>
+                            <input class="form-control form-control-sm" type="text" id="Konsentrasi" disabled>
 													</div>
 												</div>
-												<div class="col-6 my-1">
-													<div class="input-group input-group-sm">
-														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Lokasi</b></label>
-														</div>
-														<input class="form-control form-control-sm" type="text" id="Lokasi" disabled>
-													</div>
-                        </div>
-                        <div class="col-12 my-1">
+												<div class="col-lg-12 my-1"> 
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Instansi</b></label>
-														</div>
-														<input class="form-control form-control-sm" type="text" id="Instansi" disabled>
+                            </div>
+                            <input class="form-control form-control-sm" type="text" id="Instansi" disabled>
 													</div>
-                        </div>
+												</div>
+												<div class="col-lg-12 my-1">
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Nama Instansi</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="NamaInstansi" disabled>
+													</div>
+												</div>
+												<div class="col-sm-12 my-1">
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-white"><b>Lokasi MBKM</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="Kabupaten" disabled>
+													</div>
+												</div>
+												<div class="col-lg-12 my-1">
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>IPK Mahasiswa</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="IPK" disabled>
+													</div>
+												</div>
                         <div class="col-12 my-1"> 
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
@@ -123,7 +145,9 @@
 												</div>
 												<div class="col-12 my-1">
                           <div class="input-group input-group-sm">
-                            <button type="button" class="btn btn-sm btn-danger" id="ValidasiPlotMBKM"><b>VALIDASI&nbsp;<div id="LoadingValidasi" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+                            <button type="button" class="btn btn-sm btn-primary" id="ValidasiPlotMBKM"><b>VALIDASI&nbsp;<div id="LoadingValidasi" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+                            <button type="button" class="btn btn-sm btn-danger" id="TolakProposal"><b>DITOLAK&nbsp;<div id="LoadingDitolak" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+                            <input class="form-control form-control-sm" type="text" id="Penolakan" placeholder="Alasan Ditolak">
                           </div>
                         </div>
 											</div>
@@ -153,18 +177,42 @@
 					var Pisah = Data.split("|")
 					$("#NIM").val(Pisah[0])
 					$("#Nama").val(Pisah[1])
-					$("#Konsentrasi").val(Pisah[2])
-					$("#Lokasi").val(Pisah[3])
+					$("#Jenis").val(Pisah[2])
+					$("#Konsentrasi").val(Pisah[3])
 					$("#Instansi").val(Pisah[4])
-          if (Pisah[5] != '') {
-            $("#DosenPembimbing").val(Pisah[5])
+          $("#NamaInstansi").val(Pisah[5])
+					$("#Kabupaten").val(Pisah[6])
+					$("#IPK").val(Pisah[7])
+          if (Pisah[10] != '') {
+            $("#DosenPembimbing").val(Pisah[8])
           }
 					$('#ModalPlotMBKM').modal("show")
         })
         
         $("#ValidasiPlotMBKM").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
-                      Dosen: $("#DosenPembimbing").val() }
+                      Dosen: $("#DosenPembimbing").val(),
+                      Status: 'Divalidasi' }
+          var Konfirmasi = confirm("Yakin Ingin Validasi?"); 
+      		if (Konfirmasi == true) {
+            $("#ValidasiPlotMBKM").attr("disabled", true); 
+            $("#LoadingValidasi").show();                             
+            $.post(BaseURL+"Dashboard/ValidasiPlotMBKM", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/PlotMBKM"
+              } else {
+                alert(Respon)
+                $("#ValidasiPlotMBKM").attr("disabled", false); 
+                $("#LoadingValidasi").hide();                             
+              }
+            })
+          }
+        })
+
+        $("#TolakProposal").click(function() {
+          var Mhs = { NIM: $("#NIM").val(),
+                      Dosen: $("#DosenPembimbing").val(),
+                      Status: 'Ditolak Karena '+ $("#Penolakan").val()}
           var Konfirmasi = confirm("Yakin Ingin Validasi?"); 
       		if (Konfirmasi == true) {
             $("#ValidasiPlotMBKM").attr("disabled", true); 

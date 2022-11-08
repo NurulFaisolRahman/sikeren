@@ -245,7 +245,7 @@
 
         $("#TolakProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
-                      StatusProposal: 'Ditolak Oleh KPS Karena '+ $("#Penolakan").val()}
+                      StatusProposal: 'Ditolak Oleh KPS Karena '+ $("#Penolakan").val() }
           var Konfirmasi = confirm("Yakin Ingin Menolak?"); 
       		if (Konfirmasi == true) {
             $("#TolakProposal").attr("disabled", true); 

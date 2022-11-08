@@ -1,6 +1,6 @@
 							<div class="row">
 								<div class="col-sm-12">
-									<button id="FormMBKM" type="button" class="btn btn-sm btn-primary border-white" MBKM="<?=$MBKM['Konsentrasi']."|".$MBKM['Lokasi']."|".$MBKM['Instansi']?>"><b>Form MBKM</b></button>
+									<button id="FormMBKM" type="button" class="btn btn-sm btn-primary border-white" MBKM="<?=$MBKM['Jenis']."|".$MBKM['Konsentrasi']."|".$MBKM['Instansi']."|".$MBKM['NamaInstansi']."|".$MBKM['Provinsi']."|".$MBKM['Kabupaten']."|".$MBKM['IPK']?>"><b>Form MBKM</b></button>
 									<?php if (!empty($MBKM['Dosen'])) { ?>
 										<button type="button" class="btn btn-sm btn-danger border-white"><b>Update Log Book</b></button>
 										<input id="LogBook" type="file" onchange="LogBook()"/>
@@ -14,11 +14,12 @@
 											<table class="table table-bordered bg-danger text-white mb-0">
 												<thead>
 													<tr>
+														<th scope="col" style="width: 17%;">Jenis MBKM</th>
 														<th scope="col" style="width: 17%;">Konsentrasi</th>
-														<th scope="col" style="width: 27%;">Dosen Pembimbing Lapangan</th>
-														<th scope="col" style="width: 17%;">Lokasi MBKM</th>
-														<th scope="col">Nama Instansi</th>
-														<th scope="col" style="width: 8%;">Log Book</th>
+														<th scope="col" style="width: 17%;">Instansi</th>
+														<!-- <th scope="col" style="width: 27%;">Dosen Pembimbing Lapangan</th> -->
+														<th scope="col" style="width: 10%;">Status</th>
+														<th scope="col" style="width: 3%;">Log Book</th>
 													</tr>
 												</thead>
 												<tbody class="bg-primary">
@@ -29,10 +30,11 @@
 														} 
 													?>
 													<tr>
+														<td style="vertical-align: middle;"><?=$MBKM['Jenis']?></td>
 														<td style="vertical-align: middle;"><?=$MBKM['Konsentrasi']?></td>
-														<td style="vertical-align: middle;"><?=$NamaDosen[$MBKM['Dosen']]?></td>
-														<td style="vertical-align: middle;"><?=$MBKM['Lokasi']?></td>
 														<td style="vertical-align: middle;"><?=$MBKM['Instansi']?></td>
+														<!-- <td style="vertical-align: middle;"><?=$NamaDosen[$MBKM['Dosen']]?></td> -->
+														<td style="vertical-align: middle;"><?=$MBKM['Status']?></td>
 														<td style="text-align: center;">
 														<?php if (!empty($MBKM['LogBook'])) { ?>
 															<button LihatLogBook="<?=base_url('LogBookMBKM/'.$MBKM['LogBook'])?>" class="btn btn-sm btn-danger border-light LihatLogBook"><i class="fa fa-file-pdf-o"></i></button>  
@@ -68,35 +70,90 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col-lg-12 mb-1"> 
+													<pre class="text-danger mb-0"><b>Kuota Mahasiswa Magang 150, Riset 40, Lainnya 10</b></pre>
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-danger text-light"><b>Jenis MBKM</b></label>
+														</div>
+														<select class="custom-select custom-select-sm" id="Jenis">										
+															<option value="Magang / PKL">Magang / PKL</option>
+															<option value="Penelitian / Riset">Penelitian / Riset</option>
+															<option value="Proyek Kemanusiaan">Proyek Kemanusiaan</option>
+															<option value="Studi Proyek Independen">Studi Proyek Independen</option>
+															<option value="Membangun Desa / KKNT">Membangun Desa / KKNT</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-lg-12 mb-1"> 
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-danger text-light"><b>Konsentrasi</b></label>
 														</div>
-														<select class="custom-select custom-select-sm" id="Konsentrasi">										
+														<select class="custom-select custom-select-sm" id="Konsentrasi" onchange="Konsentrasi()">										
 															<option value="Perencanaan Pembangunan">Perencanaan Pembangunan</option>
 															<option value="Ekonomi Publik">Ekonomi Publik</option>
 															<option value="Ekonomi Moneter & Perbankan">Ekonomi Moneter & Perbankan</option>
 														</select>
 													</div>
 												</div>
-												<div class="col-lg-12 my-1">
+												<div class="col-lg-12 mb-1"> 
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
-															<label class="input-group-text bg-danger text-light"><b>Lokasi MBKM</b></label>
+															<label class="input-group-text bg-danger text-light"><b>Instansi</b></label>
 														</div>
-														<input class="form-control form-control-sm" type="text" id="Lokasi" placeholder="Isi Nama Kabupaten">
+														<select class="custom-select custom-select-sm" id="Instansi">
+														<option value="Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota">Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota</option>
+														<option value="Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi">Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi</option>
+														<option value="Lembaga Riset Konsultan Bidang Ekonomi">Lembaga Riset Konsultan Bidang Ekonomi</option>
+														<option value="Bank Indonesia">Bank Indonesia</option>
+														</select>
 													</div>
 												</div>
-												<div class="col-lg-12 my-1">
+												<div class="col-lg-12 mb-1">
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-danger text-light"><b>Nama Instansi</b></label>
 														</div>
-														<input class="form-control form-control-sm" type="text" id="Instansi" placeholder="Isi Nama Instansi">
+														<input class="form-control form-control-sm" type="text" id="NamaInstansi" placeholder="Isi Nama Instansi">
+													</div>
+												</div>
+												<div class="col-sm-12 mb-1"> 
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-danger text-white"><b>Provinsi</b></label>
+														</div>
+														<select class="custom-select" id="Provinsi">  
+															<?php foreach ($Provinsi as $key) { ?>
+																<option value="<?=$key['Kode']?>" <?=$key['Kode']==35?'selected':'';?>><?=$key['Nama']?></option> 
+															<?php } ?>                  
+														</select>
+													</div>
+                        </div>
+												<div class="col-sm-12 mb-1">
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-danger text-white"><b>Kabupaten</b></label>
+														</div>
+														<select class="custom-select" id="Kabupaten">  
+															<?php foreach ($Kabupaten as $key) { ?>
+																<option value="<?=$key['Kode']?>" <?=$key['Kode']=='35.26'?'selected':'';?>><?=$key['Nama']?></option> 
+															<?php } ?>                  
+														</select>
+													</div>
+												</div>
+												<div class="col-lg-12 mb-1">
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-danger text-light"><b>IPK Mahasiswa</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="IPK" placeholder="Isi Nilai IPK">
 													</div>
 												</div>
 												<div class="col-lg-12">
 													<button type="button" class="btn btn-sm btn-primary" id="DaftarMBKM"><b>SIMPAN&nbsp;<div id="LoadingInput" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+													<?php $Pisah = explode(" ",$MBKM['Status']); if ($Pisah[0] == 'Ditolak') { ?>
+														<button type="button" class="btn btn-sm btn-danger" id="AjukanProposal"><b>AJUKAN LAGI&nbsp;<div id="LoadingAjukan" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+													<?php } ?>
 												</div>
 											</div>
 										</div>
@@ -121,8 +178,29 @@
    	<script src="<?=base_url("vendors/bootstrap/dist/js/bootstrap.bundle.min.js")?>"></script>
 		<script src="<?=base_url("build/js/custom.min.js")?>"></script>
 		<script>
+			function Konsentrasi() {
+				if ($("#Konsentrasi").val() == 'Ekonomi Moneter & Perbankan') {
+					$("#Instansi").html('<option value="Bank Indonesia">Bank Indonesia</option><option value="Lembaga Keuangan Perbankan">Lembaga Keuangan Perbankan</option><option value="Lembaga Keuangan Bukan Bank">Lembaga Keuangan Bukan Bank</option><option value="Lembaga Riset Perbankan">Lembaga Riset Perbankan</option>')
+				} else {
+					$("#Instansi").html('<option value="Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota">Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota</option><option value="Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi">Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi</option><option value="Lembaga Riset Konsultan Bidang Ekonomi">Lembaga Riset Konsultan Bidang Ekonomi</option><option value="Bank Indonesia">Bank Indonesia</option>')
+				}
+			}
+
 			$(document).ready(function(){
-				var BaseURL = '<?=base_url()?>'  
+				var BaseURL = '<?=base_url()?>' 
+
+				$("#AjukanProposal").click(function() {
+          $.post(BaseURL+"Mhs/AjukanMBKM").done(function(Respon) {
+            window.location = BaseURL + "Mhs/MBKM"
+          }) 
+				})
+
+				$("#Provinsi").change(function (){
+          var Kabupaten = { Kode: $("#Provinsi").val() }
+          $.post(BaseURL+"Mhs/ListKabupaten", Kabupaten).done(function(Respon) {
+            $('#Kabupaten').html(Respon)
+          }) 
+        }) 
 
 				$(document).on("click",".LihatLogBook",function(){
 					var Path = $(this).attr('LihatLogBook')
@@ -134,23 +212,49 @@
 					var Data = $(this).attr('MBKM')
 					var Pisah = Data.split("|")
 					if (Pisah[0] != "") {
-						$("#Konsentrasi").val(Pisah[0])	
+						$("#Jenis").val(Pisah[0])
 					}
-					$("#Lokasi").val(Pisah[1])
-					$("#Instansi").val(Pisah[2])
+					if (Pisah[1] != "") {
+						$("#Konsentrasi").val(Pisah[1])
+					}
+					if (Pisah[2] != "") {
+						if (Pisah[1] == 'Ekonomi Moneter & Perbankan') {
+							$("#Instansi").html('<option value="Bank Indonesia">Bank Indonesia</option><option value="Lembaga Keuangan Perbankan">Lembaga Keuangan Perbankan</option><option value="Lembaga Keuangan Bukan Bank">Lembaga Keuangan Bukan Bank</option><option value="Lembaga Riset Perbankan">Lembaga Riset Perbankan</option>')
+						} else {
+							$("#Instansi").html('<option value="Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota">Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota</option><option value="Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi">Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi</option><option value="Lembaga Riset Konsultan Bidang Ekonomi">Lembaga Riset Konsultan Bidang Ekonomi</option><option value="Bank Indonesia">Bank Indonesia</option>')
+						}
+						$("#Instansi").val(Pisah[2])
+					}
+					if (Pisah[3] != "") {
+						$("#NamaInstansi").val(Pisah[3])
+					}
+					if (Pisah[4] != "") {
+						$("#Provinsi").val(Pisah[4])
+					}
+					if (Pisah[5] != "") {
+						$("#Kabupaten").val(Pisah[5])
+					}
+					if (Pisah[6] != "") {
+						$("#IPK").val(Pisah[6])
+					}
 					$('#ModalFormMBKM').modal("show")
 				})
 
 				$("#DaftarMBKM").click(function() {
-					if ($("#Lokasi").val() === "") {
-						alert('Input Lokasi MBKM Tidak Boleh Kosong!')
-					} else if ($("#Instansi").val() === "") {
-						alert('Input Instansi Tidak Boleh Kosong')
+					if ($("#NamaInstansi").val() === "") {
+						alert('Nama Instansi Tidak Boleh Kosong')
+					} else if ($("#IPK").val() === "") {
+						alert('IPK Tidak Boleh Kosong')
 					} else {
 						var fd = new FormData()
+						fd.append('Jenis',$("#Jenis").val())
 						fd.append('Konsentrasi',$("#Konsentrasi").val())
-						fd.append('Lokasi',$("#Lokasi").val())
 						fd.append('Instansi',$("#Instansi").val())
+						fd.append('NamaInstansi',$("#NamaInstansi").val())
+						fd.append('Provinsi',$("#Provinsi").val())
+						fd.append('Kabupaten',$("#Kabupaten").val())
+						fd.append('IPK',$("#IPK").val())
+						fd.append('Status','Diajukan')
 						$.ajax({
 							url: BaseURL+'Mhs/DaftarMBKM',
 							type: 'post',
@@ -163,7 +267,7 @@
 							},
 							success: function(Respon){
 								if (Respon == '1') {
-									alert('Update Log Book Berhasil')
+									alert('Form MBKM Berhasil Di Simpan!')
 									window.location = BaseURL + "Mhs/MBKM"
 								}
 								else {
@@ -194,6 +298,7 @@
 						processData: false,
 						success: function(Respon){
 							if (Respon == '1') {
+								alert('Update Log Book Berhasil')
 								window.location = BaseURL + "Mhs/MBKM"
 							}
 							else {
