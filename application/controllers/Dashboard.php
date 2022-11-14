@@ -1583,6 +1583,12 @@ class Dashboard extends CI_Controller {
 		echo json_encode($Data);
 	}
 
+	public function RekapMBKM(){
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
+		$Data['MBKM'] = $this->db->query("SELECT mbkm.*,mahasiswa.Nama,kodewilayah.Nama AS Kabupaten FROM mbkm,mahasiswa,kodewilayah WHERE mbkm.NIM=mahasiswa.NIM AND mbkm.Kabupaten=kodewilayah.Kode AND Status NOT LIKE '%Ditolak%'")->result_array();
+    $this->load->view('ExcelRekapMBKM',$Data); 
+	}
+
 	public function PlotMBKM(){
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'PlotMBKM';

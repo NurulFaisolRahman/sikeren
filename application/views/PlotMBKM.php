@@ -6,7 +6,8 @@
               <div class="col-sm-12 mt-2">
                 <div class="container-fluid border border-warning rounded bg-light">
                   <div class="row align-items-center">
-                    <div class="col-sm-12 my-2 ">    
+                    <div class="col-sm-12 my-2 ">  
+                      <a class="btn btn-success mb-1" href="<?=base_url('Dashboard/RekapMBKM')?>"><b>Excel Rekap MBKM</b></a>  
                       <div class="table-responsive mb-2">
                         <table id="TabelDosenPembimbing" class="table table-bordered table-striped">
                           <thead class="bg-warning">
