@@ -70,7 +70,6 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col-lg-12 mb-1"> 
-													<pre class="text-danger mb-0"><b>Kuota Mahasiswa Magang 150, Riset 40, Lainnya 10</b></pre>
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-danger text-light"><b>Jenis MBKM</b></label>
@@ -83,6 +82,7 @@
 															<option value="Membangun Desa / KKNT">Membangun Desa / KKNT</option>
 														</select>
 													</div>
+													<pre class="text-danger mb-0"><b>Kuota Mahasiswa Magang 150, Riset 40, Lainnya 10</b></pre>
 												</div>
 												<div class="col-lg-12 mb-1"> 
 													<div class="input-group input-group-sm">
@@ -106,6 +106,7 @@
 														<option value="Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi">Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi</option>
 														<option value="Lembaga Riset Konsultan Bidang Ekonomi">Lembaga Riset Konsultan Bidang Ekonomi</option>
 														<option value="Bank Indonesia">Bank Indonesia</option>
+														<option value="Lainnya">Lainnya</option>
 														</select>
 													</div>
 												</div>
@@ -116,6 +117,7 @@
 														</div>
 														<input class="form-control form-control-sm" type="text" id="NamaInstansi" placeholder="Isi Nama Instansi">
 													</div>
+													<pre class="text-danger mb-0"><b>Selain Magang/PKL, Nama Instansi Isi LPPM UTM</b></pre>
 												</div>
 												<div class="col-sm-12 mb-1"> 
 													<div class="input-group input-group-sm">
@@ -180,9 +182,9 @@
 		<script>
 			function Konsentrasi() {
 				if ($("#Konsentrasi").val() == 'Ekonomi Moneter & Perbankan') {
-					$("#Instansi").html('<option value="Bank Indonesia">Bank Indonesia</option><option value="Lembaga Keuangan Perbankan">Lembaga Keuangan Perbankan</option><option value="Lembaga Keuangan Bukan Bank">Lembaga Keuangan Bukan Bank</option><option value="Lembaga Riset Perbankan">Lembaga Riset Perbankan</option>')
+					$("#Instansi").html('<option value="Bank Indonesia">Bank Indonesia</option><option value="Lembaga Keuangan Perbankan">Lembaga Keuangan Perbankan</option><option value="Lembaga Keuangan Bukan Bank">Lembaga Keuangan Bukan Bank</option><option value="Lembaga Riset Perbankan">Lembaga Riset Perbankan</option><option value="Lainnya">Lainnya</option>')
 				} else {
-					$("#Instansi").html('<option value="Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota">Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota</option><option value="Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi">Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi</option><option value="Lembaga Riset Konsultan Bidang Ekonomi">Lembaga Riset Konsultan Bidang Ekonomi</option><option value="Bank Indonesia">Bank Indonesia</option>')
+					$("#Instansi").html('<option value="Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota">Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota</option><option value="Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi">Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi</option><option value="Lembaga Riset Konsultan Bidang Ekonomi">Lembaga Riset Konsultan Bidang Ekonomi</option><option value="Bank Indonesia">Bank Indonesia</option><option value="Lainnya">Lainnya</option>')
 				}
 			}
 
@@ -219,9 +221,9 @@
 					}
 					if (Pisah[2] != "") {
 						if (Pisah[1] == 'Ekonomi Moneter & Perbankan') {
-							$("#Instansi").html('<option value="Bank Indonesia">Bank Indonesia</option><option value="Lembaga Keuangan Perbankan">Lembaga Keuangan Perbankan</option><option value="Lembaga Keuangan Bukan Bank">Lembaga Keuangan Bukan Bank</option><option value="Lembaga Riset Perbankan">Lembaga Riset Perbankan</option>')
+							$("#Instansi").html('<option value="Bank Indonesia">Bank Indonesia</option><option value="Lembaga Keuangan Perbankan">Lembaga Keuangan Perbankan</option><option value="Lembaga Keuangan Bukan Bank">Lembaga Keuangan Bukan Bank</option><option value="Lembaga Riset Perbankan">Lembaga Riset Perbankan</option><option value="Lainnya">Lainnya</option>')
 						} else {
-							$("#Instansi").html('<option value="Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota">Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota</option><option value="Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi">Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi</option><option value="Lembaga Riset Konsultan Bidang Ekonomi">Lembaga Riset Konsultan Bidang Ekonomi</option><option value="Bank Indonesia">Bank Indonesia</option>')
+							$("#Instansi").html('<option value="Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota">Badan Perencanaan Nasional/Provinsi/Kabupaten/Kota</option><option value="Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi">Dinas Provinsi/Kabupaten/Kota Bidang Ekonomi</option><option value="Lembaga Riset Konsultan Bidang Ekonomi">Lembaga Riset Konsultan Bidang Ekonomi</option><option value="Bank Indonesia">Bank Indonesia</option><option value="Lainnya">Lainnya</option>')
 						}
 						$("#Instansi").val(Pisah[2])
 					}
