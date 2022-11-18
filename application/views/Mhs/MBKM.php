@@ -154,7 +154,7 @@
 												<div class="col-lg-12">
 													<button type="button" class="btn btn-sm btn-primary" id="DaftarMBKM"><b>SIMPAN&nbsp;<div id="LoadingInput" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
 													<?php $Pisah = explode(" ",$MBKM['Status']); if ($Pisah[0] == 'Ditolak') { ?>
-														<button type="button" class="btn btn-sm btn-danger" id="AjukanProposal"><b>AJUKAN LAGI&nbsp;<div id="LoadingAjukan" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+														<button type="button" class="btn btn-sm btn-danger" id="AjukanMBKM"><b>AJUKAN LAGI&nbsp;<div id="LoadingAjukan" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
 													<?php } ?>
 												</div>
 											</div>
@@ -191,10 +191,44 @@
 			$(document).ready(function(){
 				var BaseURL = '<?=base_url()?>' 
 
-				$("#AjukanProposal").click(function() {
-          $.post(BaseURL+"Mhs/AjukanMBKM").done(function(Respon) {
-            window.location = BaseURL + "Mhs/MBKM"
-          }) 
+				$("#AjukanMBKM").click(function() {
+					if ($("#NamaInstansi").val() === "") {
+						alert('Nama Instansi Tidak Boleh Kosong')
+					} else if ($("#IPK").val() === "") {
+						alert('IPK Tidak Boleh Kosong')
+					} else {
+						var fd = new FormData()
+						fd.append('Jenis',$("#Jenis").val())
+						fd.append('Konsentrasi',$("#Konsentrasi").val())
+						fd.append('Instansi',$("#Instansi").val())
+						fd.append('NamaInstansi',$("#NamaInstansi").val())
+						fd.append('Provinsi',$("#Provinsi").val())
+						fd.append('Kabupaten',$("#Kabupaten").val())
+						fd.append('IPK',$("#IPK").val())
+						fd.append('Status','Diajukan')
+						$.ajax({
+							url: BaseURL+'Mhs/AjukanMBKM',
+							type: 'post',
+							data: fd,
+							contentType: false,
+							processData: false,
+							beforeSend: function(){
+								$("#AjukanMBKM").attr("disabled", true);                              
+								$("#LoadingAjukan").show();
+							},
+							success: function(Respon){
+								if (Respon == '1') {
+									alert('Form MBKM Berhasil Di Ajukan!')
+									window.location = BaseURL + "Mhs/MBKM"
+								}
+								else {
+									alert(Respon)
+									$("#LoadingAjukan").hide();
+									$("#AjukanMBKM").attr("disabled", false);                              
+								}
+							}
+						})
+					} 
 				})
 
 				$("#Provinsi").change(function (){

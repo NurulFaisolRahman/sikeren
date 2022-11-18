@@ -50,6 +50,7 @@ class Mhs extends CI_Controller {
 				echo 'Gagal Menyimpan Data!';
 			}
 		} else {
+			unset($_POST['Status']);
 			$this->db->where('NIM', $this->session->userdata('NIM'));
 			$this->db->update('mbkm',$_POST);
 			echo '1';
@@ -57,8 +58,13 @@ class Mhs extends CI_Controller {
 	}
 
 	public function AjukanMBKM(){
-		$this->db->where('NIM', $this->session->userdata('NIM'));
-		$this->db->update('mbkm',array('Status' => 'Diajukan'));
+		$_POST['NIM'] = $this->session->userdata('NIM');
+		$this->db->insert('mbkm',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpan Data!';
+		}
 	}
 
 	public function DosPem(){ 
