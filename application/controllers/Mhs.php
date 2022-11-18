@@ -59,7 +59,8 @@ class Mhs extends CI_Controller {
 
 	public function AjukanMBKM(){
 		$_POST['NIM'] = $this->session->userdata('NIM');
-		$this->db->insert('mbkm',$_POST);
+		$this->db->where('NIM', $this->session->userdata('NIM'));
+		$this->db->update('mbkm',$_POST);
 		if ($this->db->affected_rows()){
 			echo '1';
 		} else {

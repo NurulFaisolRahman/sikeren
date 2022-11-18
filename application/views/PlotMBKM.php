@@ -216,14 +216,14 @@
                       Status: 'Ditolak Karena '+ $("#Penolakan").val()}
           var Konfirmasi = confirm("Yakin Ingin Validasi?"); 
       		if (Konfirmasi == true) {
-            $("#ValidasiPlotMBKM").attr("disabled", true); 
+            $("#TolakProposal").attr("disabled", true); 
             $("#LoadingDitolak").show();                             
             $.post(BaseURL+"Dashboard/ValidasiPlotMBKM", Mhs).done(function(Respon) {
               if (Respon == '1') {
                 window.location = BaseURL + "Dashboard/PlotMBKM"
               } else {
                 alert(Respon)
-                $("#ValidasiPlotMBKM").attr("disabled", false); 
+                $("#TolakProposal").attr("disabled", false); 
                 $("#LoadingDitolak").hide();                             
               }
             })
