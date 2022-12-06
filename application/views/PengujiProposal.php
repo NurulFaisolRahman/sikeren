@@ -29,6 +29,7 @@
                                 <td class="align-middle"><?=$key['TanggalUjianProposal']?></td>
                                 <td class="text-center align-middle">
                                   <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
+                                  <button Revisi="<?=$key['NIM']."|".$key['Nama']?>" class="btn btn-sm btn-primary Revisi"><i class="fas fa-edit"></i></button>
                                   <a href="<?=base_url('Dashboard/PersetujuanUjianProposal/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
                                 </td> 
                               </tr>
@@ -43,6 +44,58 @@
             </div>
           </div>
         </section>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalRevisi">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-success">
+          <div class="modal-body">
+            <div class="container">
+							<div class="row">
+                <div class="col-12">
+									<div class="card-header bg-danger text-light mt-2">
+										<b>Form Catatan Revisi Ujian Proposal Skripsi</b>
+									</div>
+									<div class="card-body border border-primary bg-warning">
+										<div class="container-fluid">
+											<div class="row">
+                        <div class="col-4 my-1">
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>NIM</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="_NIM" disabled>
+													</div>
+												</div>
+												<div class="col-8 my-1">
+													<div class="input-group input-group-sm"> 
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Nama</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="_Nama" disabled>
+													</div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="input-group input-group-sm"> 
+                            <div class="input-group-prepend">
+                              <label class="input-group-text bg-primary text-light"><b>Catatan Penguji</b></label>
+                            </div>
+                            <textarea class="form-control" id="CatatanPenguji" rows="3"></textarea>
+                          </div>
+                        </div>
+                        <div class="col-12 my-1">
+                          <div class="input-group input-group-sm">
+                            <button type="button" class="btn btn-primary" id="ValidasiRevisi"><b>SIMPAN CATATAN&nbsp;<div id="LoadingRevisi" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+                          </div>
+                        </div>
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal fade" id="ModalValidasiProposal">
@@ -102,7 +155,7 @@
                                   <label class="input-group-text bg-primary text-light"><b>Latar Belakang</b></label>
                                 </div>
                                 <select class="custom-select custom-select-sm" id="LatarBelakang">										
-                                  <option value="0"></option><option value="1">1. Tidak terdapat/mampu menuliskan & menjelaskan urgensi serta riset gap penelitian</option>
+                                  <option value="0">Klik Disini</option><option value="1">1. Tidak terdapat/mampu menuliskan & menjelaskan urgensi serta riset gap penelitian</option>
                                   <option value="2">2. Dapat menjelaskan/menuliskan Urgensi/gap riset penelitian namun masih sangat lemah/tidak fokus/implisit/tidak didukung dengan empiris maupun teoritis</option>
                                   <option value="3">3. Dapat menjelaskan/menuliskan Urgensi/gap riset penelitian dengan baik/fokus/eksplisit namun masih belum didukung data/empiris</option>
                                   <option value="4">4. Dapat menjelaskan/menuliskan Urgensi/gap riset penelitian dengan baik/fokus/eksplisit didukung data/empiris</option>
@@ -110,7 +163,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_LatarBelakang" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_LatarBelakang" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -122,7 +175,7 @@
                                   <label class="input-group-text bg-primary text-light"><b>Rumusan Permasalahan</b></label>
                                 </div>
                                 <select class="custom-select custom-select-sm" id="RumusanPermasalahan">										
-                                  <option value="0"></option><option value="1">1. Menyimpang dari latar belakang </option>
+                                  <option value="0">Klik Disini</option><option value="1">1. Menyimpang dari latar belakang </option>
                                   <option value="2">2. Sesuai dengan latar belakang, namun belum fokus</option>
                                   <option value="3">3. Sudah fokus namun belum/dituliskan dinyatakan dengan benar</option>
                                   <option value="4">4. Sudah fokus & telah dinyatakan/dituliskan dengan benar</option>
@@ -130,7 +183,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_RumusanPermasalahan" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_RumusanPermasalahan" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -142,7 +195,7 @@
                                   <label class="input-group-text bg-primary text-light"><b>Teori Penunjang</b></label>
                                 </div>
                                 <select class="custom-select custom-select-sm" id="TeoriPenunjang">										
-                                  <option value="0"></option><option value="1">1. Tidak menyebutkan teori apa pun</option>
+                                  <option value="0">Klik Disini</option><option value="1">1. Tidak menyebutkan teori apa pun</option>
                                   <option value="2">2. Menyebutkan teori namun tidak relevan dengan topik penelitian</option>
                                   <option value="3">3. Menyebutkan teori & relevan, namun masih kurang/belum terstruktur</option>
                                   <option value="4">4. Menyebutkan teori yang relevan & terstruktur</option>
@@ -150,7 +203,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_TeoriPenunjang" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_TeoriPenunjang" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -162,7 +215,7 @@
                                   <label class="input-group-text bg-primary text-light"><b>Penelitian Terdahulu</b></label>
                                 </div>
                                 <select class="custom-select custom-select-sm" id="PenelitianTerdahulu">										
-                                  <option value="0"></option><option value="1">1. Tidak ada penelitian terdahulu</option>
+                                  <option value="0">Klik Disini</option><option value="1">1. Tidak ada penelitian terdahulu</option>
                                   <option value="2">2. Ada tapi tidak relevan</option>
                                   <option value="3">3. Ada & Relevan namun sumber terbatas ( hanya berasal dari salah satu jenis misal Skripsi)</option>
                                   <option value="4">4. Ada & relevan serta sumber beragam (Skripsi, jurnal, dll)</option>
@@ -170,7 +223,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_PenelitianTerdahulu" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_PenelitianTerdahulu" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -182,7 +235,7 @@
                                   <label class="input-group-text bg-primary text-light"><b>Kerangka Fikir</b></label>
                                 </div>
                                 <select class="custom-select custom-select-sm" id="KerangkaFikir">										
-                                  <option value="0"></option><option value="1">1. Tidak ada kerangka fikir</option>
+                                  <option value="0">Klik Disini</option><option value="1">1. Tidak ada kerangka fikir</option>
                                   <option value="2">2. Ada tapi tidak relevan & tidak sistematis</option>
                                   <option value="3">3. Ada tapi kurang relevan & sistematis</option>
                                   <option value="4">4. Ada & relevan serta sistematis</option>
@@ -190,7 +243,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_KerangkaFikir" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_KerangkaFikir" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -202,7 +255,7 @@
                                   <label class="input-group-text bg-primary text-light"><b>Fokus Penelitian</b></label>
                                 </div>
                                 <select class="custom-select custom-select-sm" id="FokusPenelitin">										
-                                  <option value="0"></option><option value="1">1. Tidak Dijelaskan/disebutkan</option>
+                                  <option value="0">Klik Disini</option><option value="1">1. Tidak Dijelaskan/disebutkan</option>
                                   <option value="2">2. Ada, namun tidak jelas / tidak fokus</option>
                                   <option value="3">3. Ada & fokus, belum disertai instumen penelitian</option>
                                   <option value="4">4. Ada, fokus & disertai instumen penelitian</option>
@@ -210,7 +263,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_FokusPenelitin" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_FokusPenelitin" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -222,7 +275,7 @@
                                   <label class="input-group-text bg-primary text-light"><b>Alat Analisis</b></label>
                                 </div>
                                 <select class="custom-select custom-select-sm" id="AlatAnalisis">										
-                                  <option value="0"></option><option value="1">1. Tidak disebutkan</option>
+                                  <option value="0">Klik Disini</option><option value="1">1. Tidak disebutkan</option>
                                   <option value="2">2. Disebutkan, namun tidak sesuai dengan tujuan penelitian</option>
                                   <option value="3">3. Disebutkan & sesuai dgn tujuan penelitian, namun belum lengkap</option>
                                   <option value="4">4. Disebutkan, sesuai dgn tujuan penelitian, & sudah lengkap</option>
@@ -230,18 +283,10 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_AlatAnalisis" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_AlatAnalisis" value="0.0">
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-12">
-													<div class="input-group input-group-sm"> 
-														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Catatan Penguji</b></label>
-														</div>
-														<textarea class="form-control" id="CatatanPenguji" rows="3"></textarea>
-													</div>
-												</div>
 												<div class="col-12 my-1">
                           <div class="input-group input-group-sm">
                             <button type="button" class="btn btn-primary" id="ValidasiProposal"><b>SIMPAN PENILAIAN&nbsp;<div id="LoadingValidasi" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
@@ -269,6 +314,37 @@
 				"use strict";
         var BaseURL = '<?=base_url()?>';
 
+        $(document).on("click",".Revisi",function(){
+					var Data = $(this).attr('Revisi')
+					var Pisah = Data.split("|")
+					$("#_NIM").val(Pisah[0])
+					$("#_Nama").val(Pisah[1])
+          var NIM = { NIM: Pisah[0] }
+          $.post(BaseURL+"Dashboard/GetRevisiProposal", NIM).done(function(Respon) {
+            $("#CatatanPenguji").val(Respon)
+            $('#ModalRevisi').modal("show")
+          })    
+        })
+
+        $("#ValidasiRevisi").click(function() {
+          var Revisi = { NIM: $("#_NIM").val(),
+                         Catatan: $("#CatatanPenguji").val() }
+          var Konfirmasi = confirm("Yakin Ingin Menyimpan Catatan?"); 
+      		if (Konfirmasi == true) {
+            $("#ValidasiRevisi").attr("disabled", true); 
+            $("#LoadingRevisi").show();                             
+            $.post(BaseURL+"Dashboard/UpdateRevisiProposal", Revisi).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/PengujiProposal"
+              } else {
+                alert(Respon)
+                $("#ValidasiRevisi").attr("disabled", false); 
+                $("#LoadingRevisi").hide();                             
+              }
+            })
+          }
+        })
+
         $(document).on("click",".CekData",function(){
 					var Data = $(this).attr('CekData')
 					var Pisah = Data.split("|")
@@ -280,23 +356,38 @@
         })
         
         $("#ValidasiProposal").click(function() {
-          var Mhs = { NIM: $("#NIM").val(),
-                      Nilai: $("#LatarBelakang").val()+"$"+$("#RumusanPermasalahan").val()+"$"+ $("#TeoriPenunjang").val()+"$"+ $("#PenelitianTerdahulu").val()
-                                +"$"+ $("#KerangkaFikir").val()+"$"+ $("#FokusPenelitin").val()+"$"+ $("#AlatAnalisis").val(), 
-                      Catatan: $("#CatatanPenguji").val() }
-          var Konfirmasi = confirm("Yakin Ingin Menyimpan Penilaian?"); 
-      		if (Konfirmasi == true) {
-            $("#ValidasiProposal").attr("disabled", true); 
-            $("#LoadingValidasi").show();                             
-            $.post(BaseURL+"Dashboard/MenilaiProposal", Mhs).done(function(Respon) {
-              if (Respon == '1') {
-                window.location = BaseURL + "Dashboard/PengujiProposal"
-              } else {
-                alert(Respon)
-                $("#ValidasiProposal").attr("disabled", false); 
-                $("#LoadingValidasi").hide();                             
-              }
-            })
+          if (isNaN($("#_LatarBelakang").val()) || $("#_LatarBelakang").val() > 4 || $("#_LatarBelakang").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Latar Belakang Belum Benar')
+          } else if (isNaN($("#_RumusanPermasalahan").val()) || $("#_RumusanPermasalahan").val() > 4 || $("#_RumusanPermasalahan").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Rumusan Permasalahan Belum Benar')
+          } else if (isNaN($("#_TeoriPenunjang").val()) || $("#_TeoriPenunjang").val() > 4 || $("#_TeoriPenunjang").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Teori Penunjang Belum Benar')
+          } else if (isNaN($("#_PenelitianTerdahulu").val()) || $("#_PenelitianTerdahulu").val() > 4 || $("#_PenelitianTerdahulu").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Penelitian Terdahulu Belum Benar')
+          } else if (isNaN($("#_KerangkaFikir").val()) || $("#_KerangkaFikir").val() > 4 || $("#_KerangkaFikir").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Kerangka Fikir Belum Benar')
+          } else if (isNaN($("#_FokusPenelitin").val()) || $("#_FokusPenelitin").val() > 4 || $("#_FokusPenelitin").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Fokus Penelitin Belum Benar')
+          } else if (isNaN($("#_AlatAnalisis").val()) || $("#_AlatAnalisis").val() > 4 || $("#_AlatAnalisis").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Alat Analisis Belum Benar')
+          } else {
+            var Mhs = { NIM: $("#NIM").val(),
+                      Nilai: $("#_LatarBelakang").val().replace(/\s/g, "")+"$"+$("#_RumusanPermasalahan").val().replace(/\s/g, "")+"$"+ $("#_TeoriPenunjang").val().replace(/\s/g, "")+"$"+ $("#_PenelitianTerdahulu").val().replace(/\s/g, "")
+                                +"$"+ $("#_KerangkaFikir").val().replace(/\s/g, "")+"$"+ $("#_FokusPenelitin").val().replace(/\s/g, "")+"$"+ $("#_AlatAnalisis").val().replace(/\s/g, "") }
+            var Konfirmasi = confirm("Yakin Ingin Menyimpan Penilaian?"); 
+            if (Konfirmasi == true) {
+              $("#ValidasiProposal").attr("disabled", true); 
+              $("#LoadingValidasi").show();                             
+              $.post(BaseURL+"Dashboard/MenilaiProposal", Mhs).done(function(Respon) {
+                if (Respon == '1') {
+                  window.location = BaseURL + "Dashboard/PengujiProposal"
+                } else {
+                  alert(Respon)
+                  $("#ValidasiProposal").attr("disabled", false); 
+                  $("#LoadingValidasi").hide();                             
+                }
+              })
+            } 
           }
         })
 

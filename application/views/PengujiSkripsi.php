@@ -29,6 +29,7 @@
                                 <td class="align-middle"><?=$key['JudulProposal']?></td>
                                 <td class="text-center align-middle">
                                   <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianSkripsi']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
+                                  <button Revisi="<?=$key['NIM']."|".$key['Nama']?>" class="btn btn-sm btn-primary Revisi"><i class="fas fa-edit"></i></button>
                                   <a href="<?=base_url('Dashboard/PersetujuanUjianSkripsi/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
                                 </td> 
                               </tr>
@@ -43,6 +44,58 @@
             </div>
           </div>
         </section>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalRevisi">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-success">
+          <div class="modal-body">
+            <div class="container">
+							<div class="row">
+                <div class="col-12">
+									<div class="card-header bg-danger text-light mt-2">
+										<b>Form Catatan Revisi Ujian Skripsi</b>
+									</div>
+									<div class="card-body border border-primary bg-warning">
+										<div class="container-fluid">
+											<div class="row">
+                        <div class="col-4 my-1">
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>NIM</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="_NIM" disabled>
+													</div>
+												</div>
+												<div class="col-8 my-1">
+													<div class="input-group input-group-sm"> 
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Nama</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="_Nama" disabled>
+													</div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="input-group input-group-sm"> 
+                            <div class="input-group-prepend">
+                              <label class="input-group-text bg-primary text-light"><b>Catatan Penguji</b></label>
+                            </div>
+                            <textarea class="form-control" id="CatatanPenguji" rows="3"></textarea>
+                          </div>
+                        </div>
+                        <div class="col-12 my-1">
+                          <div class="input-group input-group-sm">
+                            <button type="button" class="btn btn-primary" id="ValidasiRevisi"><b>SIMPAN CATATAN&nbsp;<div id="LoadingRevisi" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+                          </div>
+                        </div>
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal fade" id="ModalValidasiSkripsi">
@@ -110,7 +163,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_LatarBelakang" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_LatarBelakang" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -130,7 +183,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_RumusanPermasalahan" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_RumusanPermasalahan" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -150,7 +203,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_TeoriPenunjang" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_TeoriPenunjang" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -170,7 +223,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_PenelitianTerdahulu" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_PenelitianTerdahulu" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -190,7 +243,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_KerangkaFikir" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_KerangkaFikir" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -210,7 +263,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_FokusPenelitin" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_FokusPenelitin" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -230,7 +283,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_AlatAnalisis" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_AlatAnalisis" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -250,7 +303,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_GambaranPenelitian" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_GambaranPenelitian" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -270,7 +323,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_AnalisisData" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_AnalisisData" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -290,7 +343,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_Kesimpulan" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_Kesimpulan" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -310,7 +363,7 @@
                               </div>
                             </div>
                             <div class="col-1">
-                              <input class="form-control form-control-sm" type="text" id="_Saran" placeholder="0">
+                              <input class="form-control form-control-sm" type="text" id="_Saran" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -349,6 +402,37 @@
 				"use strict";
         var BaseURL = '<?=base_url()?>';
 
+        $(document).on("click",".Revisi",function(){
+					var Data = $(this).attr('Revisi')
+					var Pisah = Data.split("|")
+					$("#_NIM").val(Pisah[0])
+					$("#_Nama").val(Pisah[1])
+          var NIM = { NIM: Pisah[0] }
+          $.post(BaseURL+"Dashboard/GetRevisiSkripsi", NIM).done(function(Respon) {
+            $("#CatatanPenguji").val(Respon)
+            $('#ModalRevisi').modal("show")
+          })    
+        })
+
+        $("#ValidasiRevisi").click(function() {
+          var Revisi = { NIM: $("#_NIM").val(),
+                         Catatan: $("#CatatanPenguji").val() }
+          var Konfirmasi = confirm("Yakin Ingin Menyimpan Catatan?"); 
+      		if (Konfirmasi == true) {
+            $("#ValidasiRevisi").attr("disabled", true); 
+            $("#LoadingRevisi").show();                             
+            $.post(BaseURL+"Dashboard/UpdateRevisiSkripsi", Revisi).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/PengujiSkripsi"
+              } else {
+                alert(Respon)
+                $("#ValidasiRevisi").attr("disabled", false); 
+                $("#LoadingRevisi").hide();                             
+              }
+            })
+          }
+        })
+
         $(document).on("click",".CekData",function(){
 					var Data = $(this).attr('CekData')
 					var Pisah = Data.split("|")
@@ -360,24 +444,47 @@
         })
         
         $("#ValidasiSkripsi").click(function() {
-          var Mhs = { NIM: $("#NIM").val(),
-                      Nilai: $("#LatarBelakang").val()+"$"+$("#RumusanPermasalahan").val()+"$"+$("#TeoriPenunjang").val()+"$"+$("#PenelitianTerdahulu").val()
-                                +"$"+$("#KerangkaFikir").val()+"$"+$("#FokusPenelitin").val()+"$"+$("#AlatAnalisis").val()+"$"+$("#GambaranPenelitian").val()
-                                +"$"+$("#AnalisisData").val()+"$"+$("#Kesimpulan").val()+"$"+$("#Saran").val(), 
-                      Catatan: $("#CatatanPenguji").val() }
-                      var Konfirmasi = confirm("Yakin Ingin Menyimpan Penilaian?"); 
-      		if (Konfirmasi == true) {
-            $("#ValidasiSkripsi").attr("disabled", true); 
-            $("#LoadingValidasi").show();                             
-            $.post(BaseURL+"Dashboard/MenilaiSkripsi", Mhs).done(function(Respon) {
-              if (Respon == '1') {
-                window.location = BaseURL + "Dashboard/PengujiSkripsi"
-              } else {
-                alert(Respon)
-                $("#ValidasiSkripsi").attr("disabled", false); 
-                $("#LoadingValidasi").hide();                             
-              }
-            })
+          if (isNaN($("#_LatarBelakang").val()) || $("#_LatarBelakang").val() > 4 || $("#_LatarBelakang").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Latar Belakang Belum Benar')
+          } else if (isNaN($("#_RumusanPermasalahan").val()) || $("#_RumusanPermasalahan").val() > 4 || $("#_RumusanPermasalahan").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Rumusan Permasalahan Belum Benar')
+          } else if (isNaN($("#_TeoriPenunjang").val()) || $("#_TeoriPenunjang").val() > 4 || $("#_TeoriPenunjang").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Teori Penunjang Belum Benar')
+          } else if (isNaN($("#_PenelitianTerdahulu").val()) || $("#_PenelitianTerdahulu").val() > 4 || $("#_PenelitianTerdahulu").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Penelitian Terdahulu Belum Benar')
+          } else if (isNaN($("#_KerangkaFikir").val()) || $("#_KerangkaFikir").val() > 4 || $("#_KerangkaFikir").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Kerangka Fikir Belum Benar')
+          } else if (isNaN($("#_FokusPenelitin").val()) || $("#_FokusPenelitin").val() > 4 || $("#_FokusPenelitin").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Fokus Penelitin Belum Benar')
+          } else if (isNaN($("#_AlatAnalisis").val()) || $("#_AlatAnalisis").val() > 4 || $("#_AlatAnalisis").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Alat Analisis Belum Benar')
+          } else if (isNaN($("#_GambaranPenelitian").val()) || $("#_GambaranPenelitian").val() > 4 || $("#_GambaranPenelitian").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Gambaran Penelitian Belum Benar')
+          } else if (isNaN($("#_AnalisisData").val()) || $("#_AnalisisData").val() > 4 || $("#_AnalisisData").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Analisis Data Belum Benar')
+          } else if (isNaN($("#_Kesimpulan").val()) || $("#_Kesimpulan").val() > 4 || $("#_Kesimpulan").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Kesimpulan Belum Benar')
+          } else if (isNaN($("#_Saran").val()) || $("#_Saran").val() > 4 || $("#_Saran").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Saran Belum Benar')
+          } else {
+            var Mhs = { NIM: $("#NIM").val(),
+                      Nilai: $("#_LatarBelakang").val().replace(/\s/g, "")+"$"+$("#_RumusanPermasalahan").val().replace(/\s/g, "")+"$"+ $("#_TeoriPenunjang").val().replace(/\s/g, "")+"$"+ $("#_PenelitianTerdahulu").val().replace(/\s/g, "")
+                                +"$"+ $("#_KerangkaFikir").val().replace(/\s/g, "")+"$"+ $("#_FokusPenelitin").val().replace(/\s/g, "")+"$"+ $("#_AlatAnalisis").val().replace(/\s/g, "")+$("#_GambaranPenelitian").val().replace(/\s/g, "")+"$"
+                                +$("#_AnalisisData").val().replace(/\s/g, "")+"$"+ $("#_Kesimpulan").val().replace(/\s/g, "")+"$"+ $("#_Saran").val().replace(/\s/g, "") }
+            var Konfirmasi = confirm("Yakin Ingin Menyimpan Penilaian?"); 
+            if (Konfirmasi == true) {
+              $("#ValidasiSkripsi").attr("disabled", true); 
+              $("#LoadingValidasi").show();                             
+              $.post(BaseURL+"Dashboard/MenilaiSkripsi", Mhs).done(function(Respon) {
+                if (Respon == '1') {
+                  window.location = BaseURL + "Dashboard/PengujiSkripsi"
+                } else {
+                  alert(Respon)
+                  $("#ValidasiSkripsi").attr("disabled", false); 
+                  $("#LoadingValidasi").hide();                             
+                }
+              })
+            } 
           }
         })
 

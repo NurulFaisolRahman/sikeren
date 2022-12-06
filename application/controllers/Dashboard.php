@@ -1752,21 +1752,73 @@ class Dashboard extends CI_Controller {
     $this->load->view('Header',$Data);
     $this->load->view('PengujiSkripsi',$Data); 
 	}
+
+	public function GetRevisiProposal(){
+		$DosenPenguji = $this->db->query("SELECT PengujiProposal1,PengujiProposal2,NIPPembimbing,CatatanProposal1,CatatanProposal2,CatatanProposal3 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		if ($DosenPenguji['PengujiProposal1'] == $this->session->userdata('NIP')) {
+			echo $DosenPenguji['CatatanProposal1'];
+		} else if ($DosenPenguji['PengujiProposal2'] == $this->session->userdata('NIP')) {
+			echo $DosenPenguji['CatatanProposal2'];
+		} else if ($DosenPenguji['NIPPembimbing'] == $this->session->userdata('NIP')) {
+			echo $DosenPenguji['CatatanProposal3'];
+		} 
+	}
+
+	public function UpdateRevisiProposal(){
+		$DosenPenguji = $this->db->query("SELECT PengujiProposal1,PengujiProposal2,NIPPembimbing FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		if ($DosenPenguji['PengujiProposal1'] == $this->session->userdata('NIP')) {
+			$_POST['CatatanProposal1'] = $_POST['Catatan'];unset($_POST['Catatan']);
+		} else if ($DosenPenguji['PengujiProposal2'] == $this->session->userdata('NIP')) {
+			$_POST['CatatanProposal2'] = $_POST['Catatan'];unset($_POST['Catatan']);
+		} else if ($DosenPenguji['NIPPembimbing'] == $this->session->userdata('NIP')) {
+			$_POST['CatatanProposal3'] = $_POST['Catatan'];unset($_POST['Catatan']);
+		} 
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
 	
 	public function MenilaiProposal(){
 		$Data['PengujiProposal'] = $this->db->query("SELECT PengujiProposal1,PengujiProposal2,NIPPembimbing FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
 		if ($Data['PengujiProposal']['PengujiProposal1'] == $this->session->userdata('NIP')) {
-			$_POST['NilaiProposal1'] = $_POST['Nilai'];
-			$_POST['CatatanProposal1'] = $_POST['Catatan'];
-			unset($_POST['Nilai']);unset($_POST['Catatan']);
+			$_POST['NilaiProposal1'] = $_POST['Nilai'];unset($_POST['Nilai']);
 		} else if ($Data['PengujiProposal']['PengujiProposal2'] == $this->session->userdata('NIP')) {
-			$_POST['NilaiProposal2'] = $_POST['Nilai'];
-			$_POST['CatatanProposal2'] = $_POST['Catatan'];
-			unset($_POST['Nilai']);unset($_POST['Catatan']);
+			$_POST['NilaiProposal2'] = $_POST['Nilai'];unset($_POST['Nilai']);
 		} else if ($Data['PengujiProposal']['NIPPembimbing'] == $this->session->userdata('NIP')) {
-			$_POST['NilaiProposal3'] = $_POST['Nilai'];
-			$_POST['CatatanProposal3'] = $_POST['Catatan'];
-			unset($_POST['Nilai']);unset($_POST['Catatan']);
+			$_POST['NilaiProposal3'] = $_POST['Nilai'];unset($_POST['Nilai']);
+		} 
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
+	public function GetRevisiSkripsi(){
+		$DosenPenguji = $this->db->query("SELECT PengujiSkripsi1,PengujiSkripsi2,NIPPembimbing,CatatanSkripsi1,CatatanSkripsi2,CatatanSkripsi3 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		if ($DosenPenguji['PengujiSkripsi1'] == $this->session->userdata('NIP')) {
+			echo $DosenPenguji['CatatanSkripsi1'];
+		} else if ($DosenPenguji['PengujiSkripsi2'] == $this->session->userdata('NIP')) {
+			echo $DosenPenguji['CatatanSkripsi2'];
+		} else if ($DosenPenguji['NIPPembimbing'] == $this->session->userdata('NIP')) {
+			echo $DosenPenguji['CatatanSkripsi3'];
+		} 
+	}
+
+	public function UpdateRevisiSkripsi(){
+		$DosenPenguji = $this->db->query("SELECT PengujiSkripsi1,PengujiSkripsi2,NIPPembimbing FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		if ($DosenPenguji['PengujiSkripsi1'] == $this->session->userdata('NIP')) {
+			$_POST['CatatanSkripsi1'] = $_POST['Catatan'];unset($_POST['Catatan']);
+		} else if ($DosenPenguji['PengujiSkripsi2'] == $this->session->userdata('NIP')) {
+			$_POST['CatatanSkripsi2'] = $_POST['Catatan'];unset($_POST['Catatan']);
+		} else if ($DosenPenguji['NIPPembimbing'] == $this->session->userdata('NIP')) {
+			$_POST['CatatanSkripsi3'] = $_POST['Catatan'];unset($_POST['Catatan']);
 		} 
     $this->db->where('NIM', $_POST['NIM']);
 		$this->db->update('mahasiswa',$_POST);
@@ -1780,17 +1832,11 @@ class Dashboard extends CI_Controller {
 	public function MenilaiSkripsi(){
 		$Data['PengujiSkripsi'] = $this->db->query("SELECT PengujiSkripsi1,PengujiSkripsi2,NIPPembimbing FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
 		if ($Data['PengujiSkripsi']['PengujiSkripsi1'] == $this->session->userdata('NIP')) {
-			$_POST['NilaiSkripsi1'] = $_POST['Nilai'];
-			$_POST['CatatanSkripsi1'] = $_POST['Catatan'];
-			unset($_POST['Nilai']);unset($_POST['Catatan']);
+			$_POST['NilaiSkripsi1'] = $_POST['Nilai'];unset($_POST['Nilai']);
 		} else if ($Data['PengujiSkripsi']['PengujiSkripsi2'] == $this->session->userdata('NIP')) {
-			$_POST['NilaiSkripsi2'] = $_POST['Nilai'];
-			$_POST['CatatanSkripsi2'] = $_POST['Catatan'];
-			unset($_POST['Nilai']);unset($_POST['Catatan']);
+			$_POST['NilaiSkripsi2'] = $_POST['Nilai'];unset($_POST['Nilai']);
 		} else if ($Data['PengujiSkripsi']['NIPPembimbing'] == $this->session->userdata('NIP')) {
-			$_POST['NilaiSkripsi3'] = $_POST['Nilai'];
-			$_POST['CatatanSkripsi3'] = $_POST['Catatan'];
-			unset($_POST['Nilai']);unset($_POST['Catatan']);
+			$_POST['NilaiSkripsi3'] = $_POST['Nilai'];unset($_POST['Nilai']);
 		} 
     $this->db->where('NIM', $_POST['NIM']);
 		$this->db->update('mahasiswa',$_POST);
