@@ -71,7 +71,7 @@
                      'SMT 3 - METODE RISET EKONOMI SYARIAH'); 
         $Dosen = array('ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MSA., Ak., CA','ADI DARMAWAN ERVANTO,S.E.,M.A.,Ak.,CA',
                         'AHMAD KAMIL, S.E., M.Ec. Dev','AHMAD MUZAWWIR S, M.Pd.I','ALEXANDER ANGGONO, SE., M.Si., Ph.D',
-                        'ALVIN S. PRASETYO, S.E., M.SE.','ATIK EMILIA SULA, S.E., M.Ak.','ALIFAH ROKHMAH IDIALIS, SE., M.Sc',
+                        'ALVIN S. PRASETYO, S.E., M.SE.','AMBARIYANTO, S.E., M.Si.','ATIK EMILIA SULA, S.E., M.Ak.','ALIFAH ROKHMAH IDIALIS, SE., M.Sc',
                         'ANDRI WIJANARKO, SE, ME','ALVIN SUGENG PRASETYO, S.E., M.SE.','ANIS WULANDARI, SE., MSA., AK.,CA',
                         'ANITA CAROLINA, SE., MBusAdv., AK., QIA.,CA','ANITA KRISTINA, S.E., M.Si ,Dr.','ANUGRAHINI IRAWATI, Dra., MM',
                         'APRILINA SUSANDINI, SE., MSM','ARDI HAMZAH, SE., MSI., AK','ARIE SETYO DWI PURNOMO S.PD., M.SC.',
@@ -419,7 +419,7 @@
         })
         var Dosen = ['ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MSA., Ak., CA','ADI DARMAWAN ERVANTO,S.E.,M.A.,Ak.,CA',
                         'AHMAD KAMIL, S.E., M.Ec. Dev','AHMAD MUZAWWIR S, M.Pd.I','ALEXANDER ANGGONO, SE., M.Si., Ph.D',
-                        'ALVIN S. PRASETYO, S.E., M.SE.','ATIK EMILIA SULA, S.E., M.Ak.','ALIFAH ROKHMAH IDIALIS, SE., M.Sc',
+                        'ALVIN S. PRASETYO, S.E., M.SE.','AMBARIYANTO, S.E., M.Si.','ATIK EMILIA SULA, S.E., M.Ak.','ALIFAH ROKHMAH IDIALIS, SE., M.Sc',
                         'ANDRI WIJANARKO, SE, ME','ALVIN SUGENG PRASETYO, S.E., M.SE.','ANIS WULANDARI, SE., MSA., AK.,CA',
                         'ANITA CAROLINA, SE., MBusAdv., AK., QIA.,CA','ANITA KRISTINA, S.E., M.Si ,Dr.','ANUGRAHINI IRAWATI, Dra., MM',
                         'APRILINA SUSANDINI, SE., MSM','ARDI HAMZAH, SE., MSI., AK','ARIE SETYO DWI PURNOMO S.PD., M.SC.',
