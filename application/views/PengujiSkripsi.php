@@ -444,27 +444,27 @@
         })
         
         $("#ValidasiSkripsi").click(function() {
-          if (isNaN($("#_LatarBelakang").val()) || $("#_LatarBelakang").val() > 4 || $("#_LatarBelakang").val().match(/^ *$/) !== null) {
+          if ($("#_LatarBelakang").val() == 0 || isNaN($("#_LatarBelakang").val()) || $("#_LatarBelakang").val() > 4 || $("#_LatarBelakang").val().match(/^ *$/) !== null) {
             alert('Input Nilai Latar Belakang Belum Benar')
-          } else if (isNaN($("#_RumusanPermasalahan").val()) || $("#_RumusanPermasalahan").val() > 4 || $("#_RumusanPermasalahan").val().match(/^ *$/) !== null) {
+          } else if ($("#_RumusanPermasalahan").val() == 0 || isNaN($("#_RumusanPermasalahan").val()) || $("#_RumusanPermasalahan").val() > 4 || $("#_RumusanPermasalahan").val().match(/^ *$/) !== null) {
             alert('Input Nilai Rumusan Permasalahan Belum Benar')
-          } else if (isNaN($("#_TeoriPenunjang").val()) || $("#_TeoriPenunjang").val() > 4 || $("#_TeoriPenunjang").val().match(/^ *$/) !== null) {
+          } else if ($("#_TeoriPenunjang").val() == 0 || isNaN($("#_TeoriPenunjang").val()) || $("#_TeoriPenunjang").val() > 4 || $("#_TeoriPenunjang").val().match(/^ *$/) !== null) {
             alert('Input Nilai Teori Penunjang Belum Benar')
-          } else if (isNaN($("#_PenelitianTerdahulu").val()) || $("#_PenelitianTerdahulu").val() > 4 || $("#_PenelitianTerdahulu").val().match(/^ *$/) !== null) {
+          } else if ($("#_PenelitianTerdahulu").val() == 0 || isNaN($("#_PenelitianTerdahulu").val()) || $("#_PenelitianTerdahulu").val() > 4 || $("#_PenelitianTerdahulu").val().match(/^ *$/) !== null) {
             alert('Input Nilai Penelitian Terdahulu Belum Benar')
-          } else if (isNaN($("#_KerangkaFikir").val()) || $("#_KerangkaFikir").val() > 4 || $("#_KerangkaFikir").val().match(/^ *$/) !== null) {
+          } else if ($("#_KerangkaFikir").val() == 0 || isNaN($("#_KerangkaFikir").val()) || $("#_KerangkaFikir").val() > 4 || $("#_KerangkaFikir").val().match(/^ *$/) !== null) {
             alert('Input Nilai Kerangka Fikir Belum Benar')
-          } else if (isNaN($("#_FokusPenelitin").val()) || $("#_FokusPenelitin").val() > 4 || $("#_FokusPenelitin").val().match(/^ *$/) !== null) {
+          } else if ($("#_FokusPenelitin").val() == 0 || isNaN($("#_FokusPenelitin").val()) || $("#_FokusPenelitin").val() > 4 || $("#_FokusPenelitin").val().match(/^ *$/) !== null) {
             alert('Input Nilai Fokus Penelitin Belum Benar')
-          } else if (isNaN($("#_AlatAnalisis").val()) || $("#_AlatAnalisis").val() > 4 || $("#_AlatAnalisis").val().match(/^ *$/) !== null) {
+          } else if ($("#_AlatAnalisis").val() == 0 || isNaN($("#_AlatAnalisis").val()) || $("#_AlatAnalisis").val() > 4 || $("#_AlatAnalisis").val().match(/^ *$/) !== null) {
             alert('Input Nilai Alat Analisis Belum Benar')
-          } else if (isNaN($("#_GambaranPenelitian").val()) || $("#_GambaranPenelitian").val() > 4 || $("#_GambaranPenelitian").val().match(/^ *$/) !== null) {
+          } else if ($("#_GambaranPenelitian").val() == 0 || isNaN($("#_GambaranPenelitian").val()) || $("#_GambaranPenelitian").val() > 4 || $("#_GambaranPenelitian").val().match(/^ *$/) !== null) {
             alert('Input Nilai Gambaran Penelitian Belum Benar')
-          } else if (isNaN($("#_AnalisisData").val()) || $("#_AnalisisData").val() > 4 || $("#_AnalisisData").val().match(/^ *$/) !== null) {
+          } else if ($("#_AnalisisData").val() == 0 || isNaN($("#_AnalisisData").val()) || $("#_AnalisisData").val() > 4 || $("#_AnalisisData").val().match(/^ *$/) !== null) {
             alert('Input Nilai Analisis Data Belum Benar')
-          } else if (isNaN($("#_Kesimpulan").val()) || $("#_Kesimpulan").val() > 4 || $("#_Kesimpulan").val().match(/^ *$/) !== null) {
+          } else if ($("#_Kesimpulan").val() == 0 || isNaN($("#_Kesimpulan").val()) || $("#_Kesimpulan").val() > 4 || $("#_Kesimpulan").val().match(/^ *$/) !== null) {
             alert('Input Nilai Kesimpulan Belum Benar')
-          } else if (isNaN($("#_Saran").val()) || $("#_Saran").val() > 4 || $("#_Saran").val().match(/^ *$/) !== null) {
+          } else if ($("#_Saran").val() == 0 || isNaN($("#_Saran").val()) || $("#_Saran").val() > 4 || $("#_Saran").val().match(/^ *$/) !== null) {
             alert('Input Nilai Saran Belum Benar')
           } else {
             var Mhs = { NIM: $("#NIM").val(),

@@ -44,7 +44,7 @@
 									</div>
 								</div>
 								<div class="col-12">
-									<?php if ($Mhs['StatusPengujiProposal1'] == 'Setuju' && $Mhs['StatusPengujiProposal2'] == 'Setuju') { ?>
+									<?php if ($Mhs['NilaiPengujiProposal1'] != '' && $Mhs['NilaiPengujiProposal2'] != '' && $Mhs['NilaiPengujiProposal3'] != '') { ?>
 										<a href="<?=base_url('Mhs/BeritaAcaraUjianProposal')?>" class="btn btn-sm border-light btn-sm btn-danger mt-4"><i class="fa fa-file-pdf-o"> <b>Berita Acara Ujian Proposal</b></i></a>  
 									<?php } ?>
 									<div class="card-header bg-danger text-light mt-2">
@@ -58,7 +58,6 @@
 														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Ketua Penguji</th>
 														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Anggota Penguji</th>
 														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Sekretaris</th>
-														<th scope="col" style="width: 6%;text-align: center;vertical-align: middle;">Nilai</th>
 													</tr>
 												</thead>
 												<tbody class="bg-danger">
@@ -66,9 +65,6 @@
 														<td style="vertical-align: middle;"><?=$Mhs['CatatanProposal1']?></td>
 														<td style="vertical-align: middle;"><?=$Mhs['CatatanProposal2']?></td>
 														<td style="vertical-align: middle;"><?=$Mhs['CatatanProposal3']?></td>
-														<td style="text-align: center;vertical-align: middle;">
-													
-														</td>
 													</tr>
 												</tbody>
 											</table>
