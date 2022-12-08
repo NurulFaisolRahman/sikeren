@@ -890,6 +890,7 @@ td
     <td width=3D"180" style=3D'width:135.00pt;'></td>
     <td width=3D"355" style=3D'width:266.25pt;'></td>
     <td width=3D"75" style=3D'width:56.25pt;'></td>
+		<td width=3D"159" style=3D'width:119.25pt;'></td>
     <td width=3D"159" style=3D'width:119.25pt;'></td>
     <td width=3D"159" style=3D'width:119.25pt;'></td>
     <td width=3D"159" style=3D'width:119.25pt;'></td>
@@ -902,19 +903,36 @@ td
     <td class=3D"xl67" x:str>Nama</td>
     <td class=3D"xl67" x:str>Judul</td>
     <td class=3D"xl67" x:str>Tanggal</td>
+		<td class=3D"xl67" x:str>Semester Tahun Ajaran</td>
     <td class=3D"xl67" x:str>Pembimbing</td>
     <td class=3D"xl67" x:str>Penguji 1</td>
     <td class=3D"xl67" x:str>Penguji 2</td>
     <td class=3D"xl67" x:str>Nilai</td>
    </tr>
-	 <?php $No = 1; for ($i=0; $i < count($Mhs); $i++) { ?>
+	 <?php $No = 1; for ($i=0; $i < count($Mhs); $i++) { $Bulan = explode("-",$Mhs[$i][3]);?>
 		 <tr height=3D"20" style=3D'height:15.00pt;'>
 			<td height=3D"20" style=3D'height:15.00pt;'></td>
 			<td class=3D"xl68" x:num><?=$No++?></td>
 			<td class=3D"xl69" x:str><?=$Mhs[$i][0]?></td>
-			<td class=3D"xl69" x:str><?=$Mhs[$i][1]?></td>
+			<td class=3D"xl69" x:str><?=$Mhs[$i][1]?></td> 
 			<td class=3D"xl69" x:str><?=$Mhs[$i][2]?></td>
 			<td class=3D"xl70" x:str><?=$Mhs[$i][3]?></td>
+			<td class=3D"xl70" x:str>
+			<?php
+				if (intval($Bulan[1]) <= 8) {
+					if (intval($Bulan[1]) < 2) {
+						echo 'GANJIL '.(intval($Bulan[0])-1).'/'.intval($Bulan[0]);
+					} else {
+						echo 'GENAP '.(intval($Bulan[0])-1).'/'.intval($Bulan[0]);
+					}
+				} else {
+					if (intval($Bulan[1]) < 2) {
+						echo 'GENAP '.intval($Bulan[0]).'/'.(intval($Bulan[0])+1);
+					} else {
+						echo 'GANJIL '.intval($Bulan[0]).'/'.(intval($Bulan[0])+1);
+					}
+				} 
+			?>
 			<td class=3D"xl71"><?=$Mhs[$i][4]?></td>
 			<td class=3D"xl71"><?=$Mhs[$i][5]?></td>
 			<td class=3D"xl71"><?=$Mhs[$i][6]?></td>

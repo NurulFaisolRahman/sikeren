@@ -181,34 +181,34 @@ class Admin extends CI_Controller {
 			$RekapNilai = explode("$",$key['NilaiProposal1']);
 			$NilaiKetuaPenguji = 0;
 			for ($i=0; $i < count($Bobot); $i++) { 
-				$NilaiKetuaPenguji += $Bobot[$i]*(int)$RekapNilai[$i];
+				$NilaiKetuaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
 			}
 			$RekapNilai = explode("$",$key['NilaiProposal2']);
 			$NilaiAnggotaPenguji = 0;
 			for ($i=0; $i < count($Bobot); $i++) { 
-				$NilaiAnggotaPenguji += $Bobot[$i]*(int)$RekapNilai[$i];
+				$NilaiAnggotaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
 			}
 			$RekapNilai = explode("$",$key['NilaiProposal3']);
 			$NilaiSekretaris = 0;
 			for ($i=0; $i < count($Bobot); $i++) { 
-				$NilaiSekretaris += $Bobot[$i]*(int)$RekapNilai[$i];
+				$NilaiSekretaris += $Bobot[$i]*(float)$RekapNilai[$i];
 			}
 			$NilaiProposal = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
 			$Bobot = array(2.5,2.5,2,2,2,2.5,2.5,2,2.5,2.5,2);
 			$RekapNilai = explode("$",$key['NilaiSkripsi1']);
 			$NilaiKetuaPenguji = 0;
 			for ($i=0; $i < count($Bobot); $i++) { 
-				$NilaiKetuaPenguji += $Bobot[$i]*(int)$RekapNilai[$i];
+				$NilaiKetuaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
 			}
 			$RekapNilai = explode("$",$key['NilaiSkripsi2']);
 			$NilaiAnggotaPenguji = 0;
 			for ($i=0; $i < count($Bobot); $i++) { 
-				$NilaiAnggotaPenguji += $Bobot[$i]*(int)$RekapNilai[$i];
+				$NilaiAnggotaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
 			}
 			$RekapNilai = explode("$",$key['NilaiSkripsi3']);
 			$NilaiSekretaris = 0;
 			for ($i=0; $i < count($Bobot); $i++) { 
-				$NilaiSekretaris += $Bobot[$i]*(int)$RekapNilai[$i];
+				$NilaiSekretaris += $Bobot[$i]*(float)$RekapNilai[$i];
 			}
 			$NilaiSkripsi = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
 			$Nilai = number_format(((0.3*$NilaiProposal)+(0.7*$NilaiSkripsi)),2,",",".");
@@ -247,17 +247,17 @@ class Admin extends CI_Controller {
 			$RekapNilai = explode("$",$key['NilaiProposal1']);
 			$NilaiKetuaPenguji = 0;
 			for ($i=0; $i < count($Bobot); $i++) { 
-				$NilaiKetuaPenguji += $Bobot[$i]*(int)$RekapNilai[$i];
+				$NilaiKetuaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
 			}
 			$RekapNilai = explode("$",$key['NilaiProposal2']);
 			$NilaiAnggotaPenguji = 0;
 			for ($i=0; $i < count($Bobot); $i++) { 
-				$NilaiAnggotaPenguji += $Bobot[$i]*(int)$RekapNilai[$i];
+				$NilaiAnggotaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
 			}
 			$RekapNilai = explode("$",$key['NilaiProposal3']);
 			$NilaiSekretaris = 0;
 			for ($i=0; $i < count($Bobot); $i++) { 
-				$NilaiSekretaris += $Bobot[$i]*(int)$RekapNilai[$i];
+				$NilaiSekretaris += $Bobot[$i]*(float)$RekapNilai[$i];
 			}
 			$Nilai = number_format((0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris),2,",",".");
 			if ($Nilai > 80) {
