@@ -16,6 +16,7 @@
                               <th style="width: 5%;" class="align-middle">NIM</th>
                               <th style="width: 25%;" class="align-middle">Nama</th>
                               <th style="width: 20%;" class="align-middle">Dosen Pembimbing Lapangan</th>
+                              <th style="width: 5%;" class="text-center align-middle">Tanggal</th>
                               <th style="width: 5%;" class="text-center align-middle">Status</th>
                               <th style="width: 5%;" class="text-center align-middle">Plot</th>
                             </tr>
@@ -37,6 +38,7 @@
                                 <?php } else { ?>
                                   <td class="align-middle"></td>
                                 <?php } ?>
+                                <td class="align-middle"><?=$key['Tanggal']?></td>
                                 <td class="align-middle"><?=$key['Status']?></td>
                                 <td class="text-center align-middle">
                                   <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['Jenis']."|".$key['Konsentrasi']."|".$key['Instansi']."|".$key['NamaInstansi']."|".$key['Kabupaten']."|".$key['IPK'].$key['Dosen']?>" class="btn btn-sm btn-primary CekData"><i class="fas fa-edit"></i></button>
