@@ -919,7 +919,7 @@ td
 			<td class=3D"xl70" x:str><?=$Mhs[$i][3]?></td>
 			<td class=3D"xl70" x:str>
 			<?php
-				if (intval($Bulan[1]) <= 8) {
+				if (intval($Bulan[1]) < 8) {
 					if (intval($Bulan[1]) < 2) {
 						echo 'GANJIL '.(intval($Bulan[0])-1).'/'.intval($Bulan[0]);
 					} else {

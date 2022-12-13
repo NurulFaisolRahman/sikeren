@@ -33,7 +33,7 @@
                                 <td class="align-middle"><?=$key['TanggalUjianProposal']?></td>
                                 <td class="align-middle">
                                   <?php $Bulan = explode("-",$key['TanggalUjianProposal']) ;
-                                  if (intval($Bulan[1]) <= 8) {
+                                  if (intval($Bulan[1]) < 8) {
                                     if (intval($Bulan[1]) < 2) {
                                       echo 'GANJIL '.(intval($Bulan[0])-1).'/'.intval($Bulan[0]);
                                     } else {
