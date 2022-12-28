@@ -8,7 +8,7 @@ class SMD extends CI_Controller {
 	}
 
 	public function PBM(){
-		$Data['PBM'] = $this->db->get('EvaluasiPB')->result_array();
+		$Data['PBM'] = $this->db->get('EvaluasiPBM')->result_array();
 		$this->load->view('ExcelPBM.php',$Data);
 	}
 
