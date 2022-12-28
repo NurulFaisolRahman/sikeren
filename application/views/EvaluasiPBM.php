@@ -622,7 +622,7 @@
                          PBM: PBM,
                          Kendala: Kendala,
                          Saran: $("#Saran").val(),
-                         SMT: "Genap",
+                         SMT: "Gasal",
                          Tahun: "2022" }
             $("#Kirim").prop('disabled', true);
             $.post(BaseURL+"SMD/InputEvaluasiPBM", Data).done(function(Respon) {
