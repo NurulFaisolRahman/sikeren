@@ -468,9 +468,9 @@
             alert('Input Nilai Saran Belum Benar')
           } else {
             var Mhs = { NIM: $("#NIM").val(),
-                      Nilai: $("#_LatarBelakang").val().replace(/\s/g, "")+"$"+$("#_RumusanPermasalahan").val().replace(/\s/g, "")+"$"+ $("#_TeoriPenunjang").val().replace(/\s/g, "")+"$"+ $("#_PenelitianTerdahulu").val().replace(/\s/g, "")
-                                +"$"+ $("#_KerangkaFikir").val().replace(/\s/g, "")+"$"+ $("#_FokusPenelitin").val().replace(/\s/g, "")+"$"+ $("#_AlatAnalisis").val().replace(/\s/g, "")+$("#_GambaranPenelitian").val().replace(/\s/g, "")+"$"
-                                +$("#_AnalisisData").val().replace(/\s/g, "")+"$"+ $("#_Kesimpulan").val().replace(/\s/g, "")+"$"+ $("#_Saran").val().replace(/\s/g, "") }
+                      Nilai: $("#_LatarBelakang").val().replace(/\s/g, "")+"$"+$("#_RumusanPermasalahan").val().replace(/\s/g, "")+"$"+$("#_TeoriPenunjang").val().replace(/\s/g, "")+"$"+$("#_PenelitianTerdahulu").val().replace(/\s/g, "")
+                                +"$"+$("#_KerangkaFikir").val().replace(/\s/g, "")+"$"+$("#_FokusPenelitin").val().replace(/\s/g, "")+"$"+$("#_AlatAnalisis").val().replace(/\s/g, "")+"$"+$("#_GambaranPenelitian").val().replace(/\s/g, "")+"$"
+                                +$("#_AnalisisData").val().replace(/\s/g, "")+"$"+ $("#_Kesimpulan").val().replace(/\s/g, "")+"$"+$("#_Saran").val().replace(/\s/g, "") }
             var Konfirmasi = confirm("Yakin Ingin Menyimpan Penilaian?"); 
             if (Konfirmasi == true) {
               $("#ValidasiSkripsi").attr("disabled", true); 
