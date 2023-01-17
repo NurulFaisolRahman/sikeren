@@ -122,6 +122,7 @@
           $("#LoadingCari").show();   
           $.post(BaseURL+"SMD/CariMahasiswa/"+$("#NIM").val()).done(function(Respon) {
             if (Respon == '1') {
+              $("#LoadingCari").hide();                   
               alert('Data Tidak Ditemukan!')
             } else {
               $("#Nama").val(Respon.split("|")[0])
