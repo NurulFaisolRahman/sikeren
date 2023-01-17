@@ -31,8 +31,8 @@ class SMD extends CI_Controller {
 		}
 	}
 
-	public function CariMahasiswa($NIM){
-		$Mhs = $this->db->get_where('mahasiswa', array('NIM' => $NIM))->row_array();
+	public function CariMahasiswa(){
+		$Mhs = $this->db->get_where('mahasiswa', array('NIM' => $_POST['NIM']))->row_array();
 		if (isset($Mhs) == 1) {
 			if ($Mhs['NilaiSkripsi1'] != '' && $Mhs['NilaiSkripsi2'] != '' && $Mhs['NilaiSkripsi3'] != '') {
 				echo $Mhs['Nama'].'|Sudah Ujian Skripsi';	
