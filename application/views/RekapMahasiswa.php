@@ -93,7 +93,7 @@
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Status</b></label>
 														</div>
-														<input class="form-control form-control-sm" type="text" id="Status" disabled>
+														<input class="form-control form-control-sm" type="text" id="StatusMhs" disabled>
 													</div>
 												</div>
 											</div>
@@ -124,7 +124,7 @@
               alert('Data Tidak Ditemukan!')
             } else {
               $("#Nama").val(Respon.split("|")[0])
-              $("#Status").val(Respon.split("|")[1])
+              $("#StatusMhs").val(Respon.split("|")[1])
               $('#ModalCariMahasiswa').modal("show")
             }
           })    
