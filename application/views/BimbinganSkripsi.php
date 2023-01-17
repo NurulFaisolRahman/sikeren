@@ -12,9 +12,9 @@
                           <label class="input-group-text bg-primary text-light"><b>Bimbingan</b></label>
                         </div>
                         <select class="custom-select custom-select-sm" id="Bimbingan">					
-                          <?php foreach ($Bimbingan as $key) { ?>
+                          <?php foreach ($Bimbingan as $key) { if ($key['NilaiSkripsi1']=='' || $key['NilaiSkripsi2']=='' || $key['NilaiSkripsi3']=='') { ?>
                             <option value="<?=$key['NIM']?>" <?=$this->session->userdata('NIMBimbingan')==$key['NIM'] ? 'selected' : '';?>><?=$key['Nama']?></option>
-                          <?php } ?>
+                          <?php } } ?>
                         </select>
                         <div class="input-group-prepend">
                           <label class="input-group-text bg-danger text-light" id="Lihat"><b>Lihat</b></label>

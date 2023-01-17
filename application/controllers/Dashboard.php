@@ -2013,6 +2013,29 @@ class Dashboard extends CI_Controller {
     $this->load->view('NilaiSkripsi',$Data); 
 	}
 
+	public function CariMahasiswa($NIM){
+		$Mhs = $this->db->get_where('mahasiswa', array('NIM' => $NIM))->row_array();
+		if (count($Mhs) == 1) {
+			if ($Mhs['NilaiSkirpsi1'] != '' && $Mhs['NilaiSkirpsi2'] != '' && $Mhs['NilaiSkirpsi3'] != '') {
+				echo $Mhs['Nama'].'|Sudah Ujian Skripsi';	
+			} else if ($Mhs['NilaiProposal1'] != '' && $Mhs['NilaiProposal2'] != '' && $Mhs['NilaiProposal3'] != '') {
+				echo $Mhs['Nama'].'|Sudah Ujian Proposal';	
+			} else if ($Mhs['StatusProposal'] == 'Disetujui Pembimbing' && $Mhs['StatusUjianProposal'] == '' && $Mhs['StatusUjianSkripsi'] == '') {
+				echo $Mhs['Nama'].'|Mendapat Dosen Pembimbing';
+			} else if ($Mhs['StatusProposal'] == 'Menunggu Persetujuan Pembimbing') {
+				echo $Mhs['Nama'].'|Menunggu Validasi Pembimbing';
+			} else if ($Mhs['StatusProposal'] == 'Menunggu Persetujuan KPS') {
+				echo $Mhs['Nama'].'|Menunggu Validasi KPS';
+			} else if ($Mhs['StatusProposal'] == 'Diajukan') {
+				echo $Mhs['Nama'].'|Menunggu Validasi Admin';
+			} else if ($Mhs['StatusProposal'] == '') {
+				echo $Mhs['Nama'].'|Belum Mengajukan Pembimbing';
+			}
+		} else {
+			echo '1';
+		}
+	}
+	
 	public function RekapMahasiswa($Status){
 		$Data['Halaman'] = 'Rekap Mahasiswa';
 		$Data['SubMenu'] = '';

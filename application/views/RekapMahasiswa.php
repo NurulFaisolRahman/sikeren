@@ -25,6 +25,17 @@
                         </div>
                       </div>
                     </div>
+                    <div class="col-4 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text bg-primary text-light"><b>Cari Mahasiswa</b></label>
+                        </div>
+                        <input class="form-control form-control-sm" type="text" id="NIM" placeholder="Input NIM">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text bg-danger text-light" id="Cari"><b>Cari Data</b></label>
+                        </div>
+                      </div>
+                    </div>
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
                         <table id="TabelUjianSkripsi" class="table table-bordered table-striped">
@@ -59,6 +70,42 @@
         </section>
       </div>
     </div>
+    <div class="modal fade" id="ModalCariMahasiswa">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-success">
+          <div class="modal-body">
+            <div class="container">
+							<div class="row">
+                <div class="col-12">
+									<div class="card-body border border-primary bg-warning">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-6 my-1">
+													<div class="input-group input-group-sm"> 
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Nama</b></label>
+														</div>
+                            <input class="form-control form-control-sm" type="text" id="Nama" disabled>
+													</div>
+                        </div>
+                        <div class="col-6 my-1">
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Status</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="Status" disabled>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
     <script src="<?=base_url('bootstrap/js/popper.min.js')?>" ></script>
     <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
@@ -70,6 +117,18 @@
 			jQuery(document).ready(function($) {
 				"use strict";
         var BaseURL = '<?=base_url()?>';
+
+        $("#Cari").click(function() {
+          $.post(BaseURL+"Dashboard/CariMahasiswa/"+$("#NIM").val(), Desa).done(function(Respon) {
+            if (Respon == '1') {
+              alert('Data Tidak Ditemukan!')
+            } else {
+              $("#Nama").val(Respon.split("|")[0])
+              $("#Status").val(Respon.split("|")[1])
+              $('#ModalCariMahasiswa').modal("show")
+            }
+          })    
+        })
 
         $("#Lihat").click(function() {
           window.location = BaseURL + "Dashboard/RekapMahasiswa/"+$("#Status").val()
