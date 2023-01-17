@@ -120,7 +120,8 @@
 
         $("#Cari").click(function() {
           $("#LoadingCari").show();   
-          $.post(BaseURL+"SMD/CariMahasiswa/"+$("#NIM").val()).done(function(Respon) {
+          var Mhs = { NIM: $("#NIM").val() }
+          $.post(BaseURL+"SMD/CariMahasiswa", Mhs).done(function(Respon) {
             if (Respon == '1') {
               $("#LoadingCari").hide();                   
               alert('Data Tidak Ditemukan!')
