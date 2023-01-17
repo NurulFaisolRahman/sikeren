@@ -1982,7 +1982,7 @@ class Dashboard extends CI_Controller {
 	public function BimbinganSkripsi(){
 		$Data['Halaman'] = 'Bimbingan Skripsi';
 		$Data['SubMenu'] = '';
-		$Data['Bimbingan'] = $this->db->query("SELECT NIM,Nama FROM mahasiswa WHERE StatusProposal = 'Disetujui Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array(); 
+		$Data['Bimbingan'] = $this->db->query("SELECT * FROM mahasiswa WHERE StatusProposal = 'Disetujui Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array(); 
 		$Data['DataBimbingan'] = array();
 		if ($this->session->userdata('NIMBimbingan') != '') {
 			$Data['DataBimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->result_array(); 

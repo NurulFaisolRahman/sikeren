@@ -119,7 +119,7 @@
         var BaseURL = '<?=base_url()?>';
 
         $("#Cari").click(function() {
-          $.post(BaseURL+"Dashboard/CariMahasiswa/"+$("#NIM").val(), Desa).done(function(Respon) {
+          $.post(BaseURL+"Dashboard/CariMahasiswa/"+$("#NIM").val()).done(function(Respon) {
             if (Respon == '1') {
               alert('Data Tidak Ditemukan!')
             } else {
