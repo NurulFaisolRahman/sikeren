@@ -32,7 +32,7 @@
                         </div>
                         <input class="form-control form-control-sm" type="text" id="NIM" placeholder="Input NIM">
                         <div class="input-group-prepend">
-                          <label class="input-group-text bg-danger text-light" id="Cari"><b>Cari Data</b></label>
+                          <label class="input-group-text bg-danger text-light" id="Cari"><b>Cari Data&nbsp;<div id="LoadingCari" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></label>
                         </div>
                       </div>
                     </div>
@@ -119,6 +119,7 @@
         var BaseURL = '<?=base_url()?>';
 
         $("#Cari").click(function() {
+          $("#LoadingCari").show();   
           $.post(BaseURL+"SMD/CariMahasiswa/"+$("#NIM").val()).done(function(Respon) {
             if (Respon == '1') {
               alert('Data Tidak Ditemukan!')
@@ -126,6 +127,7 @@
               $("#Nama").val(Respon.split("|")[0])
               $("#StatusMhs").val(Respon.split("|")[1])
               $('#ModalCariMahasiswa').modal("show")
+              $("#LoadingCari").hide();                   
             }
           })    
         })
