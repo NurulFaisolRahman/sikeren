@@ -2015,7 +2015,7 @@ class Dashboard extends CI_Controller {
 
 	public function CariMahasiswa($NIM){
 		$Mhs = $this->db->get_where('mahasiswa', array('NIM' => $NIM))->row_array();
-		if (count($Mhs) == 1) {
+		if (isset($Mhs) == 1) {
 			if ($Mhs['NilaiSkirpsi1'] != '' && $Mhs['NilaiSkirpsi2'] != '' && $Mhs['NilaiSkirpsi3'] != '') {
 				echo $Mhs['Nama'].'|Sudah Ujian Skripsi';	
 			} else if ($Mhs['NilaiProposal1'] != '' && $Mhs['NilaiProposal2'] != '' && $Mhs['NilaiProposal3'] != '') {
