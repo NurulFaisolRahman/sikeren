@@ -2140,7 +2140,7 @@ class Dashboard extends CI_Controller {
 		}
 		$NilaiSkripsi = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
 		$Data['Nilai'] = number_format(((0.3*$NilaiProposal)+(0.7*$NilaiSkripsi)),2,",",".");
-		if ($Data['Nilai'] > 80) {
+		if ($Data['Nilai'] >= 80) {
 			$Data['Nilai'] .= ' (A)';
 		} else if ($Data['Nilai'] > 75) {
 			$Data['Nilai'] .= ' (B+)';
@@ -2202,7 +2202,7 @@ class Dashboard extends CI_Controller {
 		$NilaiSkripsi = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
 		$Data['NilaiSkripsi'] = $NilaiSkripsi;
 		$Data['Nilai'] = number_format(((0.3*$NilaiProposal)+(0.7*$NilaiSkripsi)),2,",",".");
-		if ($Data['Nilai'] > 80) {
+		if ($Data['Nilai'] >= 80) {
 			$Data['Nilai'] .= ' (A)';
 		} else if ($Data['Nilai'] > 75) {
 			$Data['Nilai'] .= ' (B+)';
