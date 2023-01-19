@@ -613,6 +613,7 @@
             }
             var Data = { NIM: $("#NIM").val(),
                          Nama: $("#Nama").val(),
+                         Homebase: $("#Homebase").val(),
                          Semester: $("#Semester").val(),
                          MataKuliah: $("#Homebase").val() == "S1" ? $("#MKS1").val() : $("#MKS2").val(),
                          JumlahDosen: $("#JumlahDosen").val(),
