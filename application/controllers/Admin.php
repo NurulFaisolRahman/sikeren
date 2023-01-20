@@ -177,6 +177,7 @@ class Admin extends CI_Controller {
 			$TempMhs[3] = $key['TanggalUjianSkripsi'];$TempMhs[4] = $key['NamaPembimbing'];
 			$TempMhs[5] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$key['PengujiProposal1'])->row_array()['Nama'];
 			$TempMhs[6] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$key['PengujiProposal2'])->row_array()['Nama'];
+			array_push($Data['Mhs'],$TempMhs);
 		}
 		$this->load->view('ExcelRekapUjianSkripsi',$Data);
 	}
