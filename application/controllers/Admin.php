@@ -169,6 +169,18 @@ class Admin extends CI_Controller {
     $this->load->view('NilaiProposalAdmin',$Data); 
 	}
 
+	public function ExcelUjianSkripsi(){
+		$Mhs = $this->db->query("SELECT * FROM `mahasiswa` WHERE TanggalUjianSkripsi <= NOW() ORDER BY TanggalUjianSkripsi ASC")->result_array();
+		$Data['Mhs'] = array();
+		foreach ($Mhs as $key) {
+			$TempMhs = array();$TempMhs[0] = $key['NIM'];$TempMhs[1] = $key['Nama'];$TempMhs[2] = $key['JudulProposal'];
+			$TempMhs[3] = $key['TanggalUjianSkripsi'];$TempMhs[4] = $key['NamaPembimbing'];
+			$TempMhs[5] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$key['PengujiProposal1'])->row_array()['Nama'];
+			$TempMhs[6] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$key['PengujiProposal2'])->row_array()['Nama'];
+		}
+		$this->load->view('ExcelRekapUjianSkripsi',$Data);
+	}
+
 	public function ExcelRekapSkripsi(){
 		$Mhs = $this->db->query("SELECT * FROM mahasiswa where NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
 		$Data['Mhs'] = array();
