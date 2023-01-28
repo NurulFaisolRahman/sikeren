@@ -7,6 +7,49 @@ class SMD extends CI_Controller {
 		$this->load->view('Index.php');
 	}
 
+	public function BelumMenilai(){
+		$Data = $this->db->query("SELECT * FROM `mahasiswa` WHERE `TanggalUjianSkripsi` > '2022-07-31' AND (NilaiProposal1='' OR NilaiProposal2='' OR NilaiProposal3='' OR NilaiSkripsi1='' OR NilaiSkripsi2='' OR NilaiSkripsi3='')")->result_array();
+		$Dosen = $this->db->query("SELECT NIP,Nama FROM `Dosen`")->result_array();
+		$NamaDosen = array();
+		foreach ($Dosen as $key) {
+			$NamaDosen[$key['NIP']] = $key['Nama'];
+		}
+		foreach ($Data as $key) {
+			echo $key['NIM'].'|'.$key['Nama'].'|';
+			if ($key['NilaiProposal1']=='') {
+				echo $NamaDosen[$key['PengujiProposal1']].'|';
+			} else {
+				echo '-|';
+			}
+			if ($key['NilaiProposal2']=='') {
+				echo $NamaDosen[$key['PengujiProposal2']].'|';
+			} else {
+				echo '-|';
+			} 
+			if ($key['NilaiProposal3']=='') {
+				echo $NamaDosen[$key['NIPPembimbing']].'|';
+			} else {
+				echo '-|';
+			} 
+			if ($key['NilaiSkripsi1']=='') {
+				echo $NamaDosen[$key['PengujiSkripsi1']].'|';
+			} else {
+				echo '-|';
+			} 
+			if ($key['NilaiSkripsi2']=='') {
+				echo $NamaDosen[$key['PengujiSkripsi2']].'|';
+			} else {
+				echo '-|';
+			}
+			if ($key['NilaiSkripsi3']=='') {
+				echo $NamaDosen[$key['NIPPembimbing']].'|';
+			} else {
+				echo '-|';
+			}
+			echo '<br>';
+		}
+	}
+
 	public function PBM(){
 		$Data['PBM'] = $this->db->get('EvaluasiPBM')->result_array();
 		$this->load->view('ExcelPBM.php',$Data);

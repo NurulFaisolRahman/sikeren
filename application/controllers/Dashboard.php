@@ -2012,6 +2012,14 @@ class Dashboard extends CI_Controller {
     $this->load->view('Header',$Data);
     $this->load->view('NilaiSkripsi',$Data); 
 	}
+
+	public function RekapSkripsi(){
+		$Data['Halaman'] = 'Rekap Skripsi';
+		$Data['SubMenu'] = '';
+		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
+    $this->load->view('Header',$Data);
+    $this->load->view('RekapSkripsiKPS',$Data); 
+	}
 	
 	public function RekapMahasiswa($Status){
 		$Data['Halaman'] = 'Rekap Mahasiswa';

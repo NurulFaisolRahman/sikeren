@@ -169,6 +169,12 @@
                     <p><b>Rekap Mahasiswa</b></p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="<?=base_url("Dashboard/RekapSkripsi")?>" class="nav-link <?php if ($Halaman == "Rekap Skripsi") { echo "active";} ?>">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p><b>Rekap Skripsi</b></p>
+                    </a>
+                  </li>
                 <?php } ?>
                 <li class="nav-item has-treeview <?php if ($Halaman == "Kegiatan") { echo "menu-open"; } ?>">
                     <a href="#" class="nav-link <?php if ($Halaman == "Kegiatan") { echo "active"; } ?>">
