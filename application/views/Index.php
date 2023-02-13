@@ -324,14 +324,14 @@
           var keycode = (event.keyCode ? event.keyCode : event.which);
           if(keycode == '13'){
             event.preventDefault();
-            document.getElementById("Masuk").click();  
+            document.getElementById("Login").click();  
           }
         });
         $('#sandi').keypress(function(event){
           var keycode = (event.keyCode ? event.keyCode : event.which);
           if(keycode == '13'){
             event.preventDefault();
-            document.getElementById("Masuk").click();  
+            document.getElementById("Login").click();  
           }
         });
         $("#Masuk").click(function() {
