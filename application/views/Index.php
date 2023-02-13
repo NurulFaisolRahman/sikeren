@@ -116,14 +116,6 @@
       <div class="row bg-success py-2">
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
-            <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalSignIn" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">SIGN IN AKUN</button></div>
-            <div class="card-body bg-primary text-light border border-light py-3">
-              <a href="#" data-toggle="modal" data-target="#ModalSignIn"><img class="my-2" src="<?=base_url('img/Dosen.png')?>" alt="Admin" width="81%"></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-12 text-center">
-          <div class="card m-3">
             <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalJenisSOP" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">DOKUMEN   SOP </button></div>
             <div class="card-body bg-primary text-light border border-light py-3">
               <a href="#" data-toggle="modal" data-target="#ModalJenisSOP"><img class="my-2" src="<?=base_url('img/SOP.png')?>" alt="Dosen" width="81%"></a>
@@ -132,7 +124,18 @@
         </div>
         <div class="col-lg-3 col-sm-12 text-center">
           <div class="card m-3">
-            <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalMhs" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">KUISIONER MAHASISWA</button></div>
+            <div class="card-header bg-warning border border-light"><button data-toggle="modal" data-target="#ModalSignIn" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">AKUN DOSEN</button></div>
+            <div class="card-body bg-primary text-light border border-light py-3">
+              <a href="#" data-toggle="modal" data-target="#ModalSignIn"><img class="my-2" src="<?=base_url('img/Dosen.png')?>" alt="Admin" width="81%"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-12 text-center">
+          <div class="card m-3">
+            <div class="card-header bg-warning border border-light">
+              <button data-toggle="modal" data-target="#ModalMhsMasuk" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">MASUK</button>
+              <button data-toggle="modal" data-target="#ModalMhsDaftar" class="btn btn-sm btn-primary font-weight-bold text-white border border-light">DAFTAR</button>
+            </div>
             <div class="card-body bg-primary text-light border border-light py-3">
               <a href="#" data-toggle="modal" data-target="#ModalMhs"><img class="my-2" src="<?=base_url('img/Mhs.png')?>" alt="Mahasiswa" width="81%"></a>
             </div>
@@ -166,7 +169,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text bg-primary text-light"><b>Username</b></span>
                         </div>
-                        <input type="text" class="form-control" id="nip">
+                        <input type="text" class="form-control" id="nip" placeholder="NIP">
                       </div>
                       <div class="input-group input-group-sm mb-2">
                         <div class="input-group-prepend">
@@ -174,7 +177,7 @@
                         </div>
                         <input type="password" class="form-control" id="sandi">
                       </div>
-                      <div class="btn btn-primary text-light d-flex justify-content-center mt-3" id="Masuk"><b>SIGN IN</b></div>
+                      <div class="btn btn-primary text-light d-flex justify-content-center mt-3" id="Login"><b>SIGN IN</b></div>
                     </div>
                   </div>
                 </div>
@@ -184,14 +187,41 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="ModalMhs">
+    <div class="modal fade" id="ModalMhsMasuk">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-transparent">
           <div class="modal-body">
+            <div class="container">
+							<div class="row d-flex justify-content-center">
+								<div class="col-lg-9 col-sm-12 my-1">
+                  <div class="card border border-light">
+                    <div class="card-body bg-success">
+                      <div class="input-group input-group-sm mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-danger text-light"><b>Username</b></span>
+                        </div>
+                        <input type="text" class="form-control" id="NIM" placeholder="NIM">
+                      </div>
+                      <div class="input-group input-group-sm mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-danger text-light"><b>Password</b></span>
+                        </div>
+                        <input type="password" class="form-control" id="Password">
+                      </div>
+                      <div class="btn btn-danger text-light d-flex justify-content-center mt-3" id="Masuk"><b>SIGN IN</b></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="modal-content bg-transparent">
+          <div class="modal-body">
             <div class="container-fluid">
 							<div class="row d-flex justify-content-center">
-								<div class="col-sm-12 my-1">
-                  <ul class="list-group">
+								<div class="col-sm-12 my-1"> -->
+                  <!-- <ul class="list-group">
                     <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/KepuasanMahasiswa')?>">1. Kepuasan Terhadap Proses Pendidikan</a></li>
                     <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PrestasiMahasiswa')?>">2. Prestasi Akademik & Non Akademik</a></li>
                     <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PublikasiMahasiswa')?>">3. Publikasi Ilmiah</a></li>
@@ -202,7 +232,44 @@
                     <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/BukuMahasiswa')?>">8. Buku ber-ISBN, Book Chapter</a></li>
                     <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/Alumni')?>">9. Alumni Yang Telah Bekerja</a></li>
                     <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PenggunaLulusan')?>">10. Pengguna Lulusan</a></li>
-                  </ul>
+                  </ul> -->
+                <!-- </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="modal fade" id="ModalMhsDaftar">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-transparent">
+          <div class="modal-body">
+            <div class="container">
+							<div class="row d-flex justify-content-center">
+								<div class="col-lg-9 col-sm-12 my-1">
+                  <div class="card border border-light">
+                    <div class="card-body bg-warning">
+                      <div class="input-group input-group-sm mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-danger text-light"><b>NIM</b></span>
+                        </div>
+                        <input type="text" class="form-control" id="_NIM">
+                      </div>
+                      <div class="input-group input-group-sm mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-danger text-light"><b>Nama</b></span>
+                        </div>
+                        <input type="text" class="form-control" id="_Nama">
+                      </div>
+                      <div class="input-group input-group-sm mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-danger text-light"><b>Password</b></span>
+                        </div>
+                        <input type="password" class="form-control" id="_Password">
+                      </div>
+                      <div class="btn btn-danger text-light d-flex justify-content-center mt-3" id="Daftar"><b>DAFTAR </b></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -268,6 +335,40 @@
           }
         });
         $("#Masuk").click(function() {
+          var Akun = { NIM: $("#NIM").val(),
+                      Password: $("#Password").val() } 
+          $.post(BaseURL+"SMD/MhsMasuk", Akun).done(function(Respon) {
+            if (Respon == '1') {
+              window.location = BaseURL + "Mhs/Profil"
+            }
+            else {
+              alert(Respon)
+            }
+          })                     
+        })
+        $("#Daftar").click(function() {
+          if ($("#_NIM").val() === "" || isNaN($("#_NIM").val()) || $("#_NIM").val().length != 12) {
+            alert('Mohon Input NIM 12 Digit Angka!')
+          } else if ($("#_Nama").val() === "") {
+            alert('Mohon Input Nama!')
+          } else if ($("#_Password").val() === "") {
+            alert('Mohon Input Password!')
+          } else {
+            var Mhs = { NIM: $("#_NIM").val(),
+                        Nama: $("#_Nama").val(),
+                        Password: $("#_Password").val() }
+            $("#Daftar").attr("disabled", true);                              
+            $.post(BaseURL+"SMD/MhsDaftar", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Mhs/Profil"
+              } else {
+                alert(Respon)
+                $("#Daftar").attr("disabled", false);   
+              }
+            })
+          }
+        })
+        $("#Login").click(function() {
           var Akun = { NIP: $("#nip").val(),
                        Password: $("#sandi").val() }
           if (isNaN($("#nip").val())) {

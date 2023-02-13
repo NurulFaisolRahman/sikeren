@@ -117,7 +117,7 @@ class SMD extends CI_Controller {
 
 	public function MhsSignOut(){
 		$this->session->sess_destroy();
-		redirect(base_url('SMD/TA'));
+		redirect(base_url());
 	}
 
 	public function SkorPembimbing(){
@@ -182,7 +182,7 @@ class SMD extends CI_Controller {
 		if ($this->session->userdata('Akun') == 'Mhs') {
 			redirect(base_url('Mhs/Profil'));
 		} else {
-			$this->load->view('SIDP');
+			redirect(base_url());
 		}
 	}
 

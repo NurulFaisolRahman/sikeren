@@ -13,8 +13,8 @@
                             <tr>
                               <th style="width: 4%;" class="text-center align-middle">No</th>
                               <th style="width: 12%;" class="align-middle">NIM</th>
-                              <th style="width: 20%;" class="align-middle">Nama</th>
-                              <th style="width: 20%;" class="align-middle">Dosen Pembimbing</th>
+                              <th class="align-middle">Nama</th>
+                              <th class="align-middle">Dosen Pembimbing</th>
                               <th class="align-middle">Tanggal Ujian</th>
                               <th class="align-middle">Semester Tahun Ajaran</th>
                             </tr>
