@@ -166,7 +166,35 @@
                         <?php for ($i=1; $i < 17; $i++) { ?>
                           <tr>
                             <td class="text-center"><b><?=$i?></b></td>
-                            <td><textarea class="form-control form-control-sm" id="SubCPMK<?=$i?>" rows="10"></textarea></td>
+                            <td>
+                              <textarea class="form-control form-control-sm" id="SubCPMK<?=$i?>" rows="10"></textarea>
+                              <div class="row">
+                                <div class="col-4">
+                                  <?php for ($j=1; $j <= 5; $j++) { ?>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="<?='A'.$j?>" name="A<?=$i?>" id="A<?=$i.$j?>">
+                                      <label class="form-check-label" for="A<?=$i.$j?>"><?='A'.$j?></label>
+                                    </div>
+                                  <?php } ?>
+                                </div>
+                                <div class="col-4">
+                                  <?php for ($j=1; $j <= 6; $j++) { ?>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="<?='C'.$j?>" name="C<?=$i?>" id="C<?=$i.$j?>">
+                                      <label class="form-check-label" for="C<?=$i.$j?>"><?='C'.$j?></label>
+                                    </div>
+                                  <?php } ?>
+                                </div>
+                                <div class="col-4">
+                                  <?php for ($j=1; $j <= 5; $j++) { ?>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="<?='P'.$j?>" name="P<?=$i?>" id="P<?=$i.$j?>">
+                                      <label class="form-check-label" for="P<?=$i.$j?>"><?='P'.$j?></label>
+                                    </div>
+                                  <?php } ?>
+                                </div>
+                              </div>
+                            </td>
                             <td><textarea class="form-control form-control-sm" id="MateriPembelajaran<?=$i?>" rows="10"></textarea></td>
                             <td><textarea class="form-control form-control-sm" id="MetodePembelajaran<?=$i?>" rows="10"></textarea></td>
                             <td><input type="text" class="form-control form-control-sm" id="EstimasiWaktu<?=$i?>"></td>
@@ -353,12 +381,27 @@
         })
         $("#InputRPS").click(function() {
           if ($("#KodeMK").val() === "") {
-            alert('Input Kode Mata Kuliah Tidak Boleh Kosong!')
+            alert('Kode Mata Kuliah Tidak Boleh Kosong!')
+          } else if (/\s/g.test($("#KodeMK").val())) {
+            alert('Kode Mata Kuliah Tidak Boleh Ada Spasi!')
           } else {
             var Minggu = []
             for (let i = 1; i < 17; i++) {
-              Minggu[i] = $("#SubCPMK"+i).val()+'$'+$("#MateriPembelajaran"+i).val()+'$'+$("#MetodePembelajaran"+i).val()+'$'+$("#EstimasiWaktu"+i).val()+'$'+$("#Penugasan"+i).val()+'$'+$("#Kriteria"+i).val()+'$'+$("#Indikator"+i).val()+'$'+$("#Bobot"+i).val()
+              var A = []
+              $.each($("input[name='A"+i+"']:checked"), function(){
+                A.push($(this).val())
+              })
+              var C = []
+              $.each($("input[name='C"+i+"']:checked"), function(){
+                C.push($(this).val())
+              })
+              var P = []
+              $.each($("input[name='P"+i+"']:checked"), function(){
+                P.push($(this).val())
+              })
+              Minggu[i] = $("#SubCPMK"+i).val()+'|'+A.join("#")+'|'+C.join("#")+'|'+P.join("#")+'$'+$("#MateriPembelajaran"+i).val()+'$'+$("#MetodePembelajaran"+i).val()+'$'+$("#EstimasiWaktu"+i).val()+'$'+$("#Penugasan"+i).val()+'$'+$("#Kriteria"+i).val()+'$'+$("#Indikator"+i).val()+'$'+$("#Bobot"+i).val()
             }
+            console.log(Minggu[1])
             var RPS = { Homebase: $("#HomebaseRPS").val(),
                         NamaMK: $("#NamaMK").val(),
                         KodeMK: $("#KodeMK").val(),
@@ -399,6 +442,7 @@
             })
           }
         })
+
         $(document).on("click",".Edit",function(){
           $.post(BaseURL+"Admin/GetRPS/"+$(this).attr('Edit')).done(function(Respon) {
             var Data = JSON.parse(Respon)
@@ -451,9 +495,12 @@
             $('#ModalEditRPS').modal("show")
           })
 				})
+        
         $("#EditRPS").click(function() {
 					if ($("#EditKodeMK").val() === "") {
             alert('Input Kode Mata Kuliah Tidak Boleh Kosong!')
+          } else if (/\s/g.test($("#EditKodeMK").val())) {
+            alert('Kode Mata Kuliah Tidak Boleh Ada Spasi!')
           } else {
             var Minggu = []
             for (let i = 1; i < 17; i++) {
