@@ -30,7 +30,7 @@
                                 <td class="align-middle"><?=$key['Semester']?></td>
                                 <td class="align-middle">
                                   <button Edit="<?=$key['KodeMK']?>" class="btn btn-sm btn-warning Edit"><i class="fas fa-edit"></i></button>
-                                  <button Hapus="<?=$key['KodeMK']?>" class="btn btn-sm btn-danger Hapus"><i class="fas fa-trash"></i></button>  
+                                  <!-- <button Hapus="<?=$key['KodeMK']?>" class="btn btn-sm btn-danger Hapus"><i class="fas fa-trash"></i></button>   -->
                                 </td> 
                               </tr>
                             <?php } ?>
@@ -68,7 +68,7 @@
                           <td>
                             <select class="custom-select custom-select-sm" id="HomebaseRPS">
                               <option value="S1">S1</option>
-                              <option value="S2">S2</option>
+                              <!-- <option value="S2">S2</option> -->
                             </select>
                           </td>
                           <td><input class="form-control form-control-sm" type="text" id="NamaMK"></td>
@@ -172,7 +172,7 @@
                                 <div class="col-4">
                                   <?php for ($j=1; $j <= 5; $j++) { ?>
                                     <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" value="<?='A'.$j?>" name="A<?=$i?>" id="A<?=$i.$j?>">
+                                      <input class="form-check-input" type="checkbox" value="<?='A'.$i.$j?>" name="A<?=$i?>" id="A<?=$i.$j?>">
                                       <label class="form-check-label" for="A<?=$i.$j?>"><?='A'.$j?></label>
                                     </div>
                                   <?php } ?>
@@ -180,7 +180,7 @@
                                 <div class="col-4">
                                   <?php for ($j=1; $j <= 6; $j++) { ?>
                                     <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" value="<?='C'.$j?>" name="C<?=$i?>" id="C<?=$i.$j?>">
+                                      <input class="form-check-input" type="checkbox" value="<?='C'.$i.$j?>" name="C<?=$i?>" id="C<?=$i.$j?>">
                                       <label class="form-check-label" for="C<?=$i.$j?>"><?='C'.$j?></label>
                                     </div>
                                   <?php } ?>
@@ -188,7 +188,7 @@
                                 <div class="col-4">
                                   <?php for ($j=1; $j <= 5; $j++) { ?>
                                     <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" value="<?='P'.$j?>" name="P<?=$i?>" id="P<?=$i.$j?>">
+                                      <input class="form-check-input" type="checkbox" value="<?='P'.$i.$j?>" name="P<?=$i?>" id="P<?=$i.$j?>">
                                       <label class="form-check-label" for="P<?=$i.$j?>"><?='P'.$j?></label>
                                     </div>
                                   <?php } ?>
@@ -336,7 +336,35 @@
                         <?php for ($i=1; $i < 17; $i++) { ?>
                           <tr>
                             <td class="text-center"><b><?=$i?></b></td>
-                            <td><textarea class="form-control form-control-sm" id="EditSubCPMK<?=$i?>" rows="10"></textarea></td>
+                            <td>
+                              <textarea class="form-control form-control-sm" id="EditSubCPMK<?=$i?>" rows="10"></textarea>
+                              <div class="row">
+                                <div class="col-4">
+                                  <?php for ($j=1; $j <= 5; $j++) { ?>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="<?='A'.$i.$j?>" name="EditA<?=$i?>" id="EditA<?=$i.$j?>">
+                                      <label class="form-check-label" for="EditA<?=$i.$j?>"><?='A'.$j?></label>
+                                    </div>
+                                  <?php } ?>
+                                </div>
+                                <div class="col-4">
+                                  <?php for ($j=1; $j <= 6; $j++) { ?>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="<?='C'.$i.$j?>" name="EditC<?=$i?>" id="EditC<?=$i.$j?>">
+                                      <label class="form-check-label" for="EditC<?=$i.$j?>"><?='C'.$j?></label>
+                                    </div>
+                                  <?php } ?>
+                                </div>
+                                <div class="col-4">
+                                  <?php for ($j=1; $j <= 5; $j++) { ?>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="<?='P'.$i.$j?>" name="EditP<?=$i?>" id="EditP<?=$i.$j?>">
+                                      <label class="form-check-label" for="EditP<?=$i.$j?>"><?='P'.$j?></label>
+                                    </div>
+                                  <?php } ?>
+                                </div>
+                              </div>
+                            </td>
                             <td><textarea class="form-control form-control-sm" id="EditMateriPembelajaran<?=$i?>" rows="10"></textarea></td>
                             <td><textarea class="form-control form-control-sm" id="EditMetodePembelajaran<?=$i?>" rows="10"></textarea></td>
                             <td><input type="text" class="form-control form-control-sm" id="EditEstimasiWaktu<?=$i?>"></td>
@@ -399,7 +427,7 @@
               $.each($("input[name='P"+i+"']:checked"), function(){
                 P.push($(this).val())
               })
-              Minggu[i] = $("#SubCPMK"+i).val()+'|'+A.join("#")+'|'+C.join("#")+'|'+P.join("#")+'$'+$("#MateriPembelajaran"+i).val()+'$'+$("#MetodePembelajaran"+i).val()+'$'+$("#EstimasiWaktu"+i).val()+'$'+$("#Penugasan"+i).val()+'$'+$("#Kriteria"+i).val()+'$'+$("#Indikator"+i).val()+'$'+$("#Bobot"+i).val()
+              Minggu[i] = $("#SubCPMK"+i).val()+'|'+A.join("|")+'|'+C.join("|")+'|'+P.join("|")+'$'+$("#MateriPembelajaran"+i).val()+'$'+$("#MetodePembelajaran"+i).val()+'$'+$("#EstimasiWaktu"+i).val()+'$'+$("#Penugasan"+i).val()+'$'+$("#Kriteria"+i).val()+'$'+$("#Indikator"+i).val()+'$'+$("#Bobot"+i).val()
             }
             console.log(Minggu[1])
             var RPS = { Homebase: $("#HomebaseRPS").val(),
@@ -483,7 +511,14 @@
             Minggu[14] = Data.Minggu15.split('$')
             Minggu[15] = Data.Minggu16.split('$')
             for (let i = 1; i < 17; i++) {
-              $("#EditSubCPMK"+i).val(Minggu[i-1][0])
+              $("#EditSubCPMK"+i).val(Minggu[i-1][0].split('|')[0])
+              T = Minggu[i-1][0].split('|')
+              for (let j = 1; j < T.length; j++) {
+                if (T[j] != "") {
+                  console.log(T[j])
+                  $("#Edit"+T[j]).attr('checked', true);
+                }
+              }
               $("#EditMateriPembelajaran"+i).val(Minggu[i-1][1])
               $("#EditMetodePembelajaran"+i).val(Minggu[i-1][2])
               $("#EditEstimasiWaktu"+i).val(Minggu[i-1][3])
@@ -495,7 +530,7 @@
             $('#ModalEditRPS').modal("show")
           })
 				})
-        
+
         $("#EditRPS").click(function() {
 					if ($("#EditKodeMK").val() === "") {
             alert('Input Kode Mata Kuliah Tidak Boleh Kosong!')
@@ -504,7 +539,19 @@
           } else {
             var Minggu = []
             for (let i = 1; i < 17; i++) {
-              Minggu[i] = $("#EditSubCPMK"+i).val()+'$'+$("#EditMateriPembelajaran"+i).val()+'$'+$("#EditMetodePembelajaran"+i).val()+'$'+$("#EditEstimasiWaktu"+i).val()+'$'+$("#EditPenugasan"+i).val()+'$'+$("#EditKriteria"+i).val()+'$'+$("#EditIndikator"+i).val()+'$'+$("#EditBobot"+i).val()
+              var A = []
+              $.each($("input[name='EditA"+i+"']:checked"), function(){
+                A.push($(this).val())
+              })
+              var C = []
+              $.each($("input[name='EditC"+i+"']:checked"), function(){
+                C.push($(this).val())
+              })
+              var P = []
+              $.each($("input[name='EditP"+i+"']:checked"), function(){
+                P.push($(this).val())
+              })
+              Minggu[i] = $("#EditSubCPMK"+i).val()+'|'+A.join("|")+'|'+C.join("|")+'|'+P.join("|")+'$'+$("#EditMateriPembelajaran"+i).val()+'$'+$("#EditMetodePembelajaran"+i).val()+'$'+$("#EditEstimasiWaktu"+i).val()+'$'+$("#EditPenugasan"+i).val()+'$'+$("#EditKriteria"+i).val()+'$'+$("#EditIndikator"+i).val()+'$'+$("#EditBobot"+i).val()
             }
             var RPS = { Homebase: $("#EditHomebaseRPS").val(),
                         NamaMK: $("#EditNamaMK").val(),
