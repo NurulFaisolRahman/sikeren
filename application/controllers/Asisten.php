@@ -29,7 +29,7 @@ class Asisten extends CI_Controller {
 		$NIP = $this->session->userdata('NIP');
     $Data['Halaman'] = 'Profil';
 		$Data['SubMenu'] = '';
-		$Data['ListDosen'] = $this->db->query('SELECT NIP,Nama FROM dosen')->result_array();
+		$Data['ListDosen'] = $this->db->query('SELECT NIP,Nama FROM Dosen')->result_array();
 		$Data['Profil'] = $this->db->get_where('Dosen', array('NIP' => $NIP))->row_array(); 
 		$Bidang = array('Penelitian','Pengabdian','Penunjang');
 		$TahunKreditLama = $this->db->query("SELECT Tahun FROM Dosen WHERE NIP=".$NIP)->row_array()['Tahun']+1; 

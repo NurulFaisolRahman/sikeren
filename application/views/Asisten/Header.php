@@ -55,7 +55,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="<?=base_url("Dashboard/Profil")?>" class="nav-link <?php if ($Halaman == "Profil") { echo "active";} ?>">
+                    <a href="<?=base_url("Asisten/Profil")?>" class="nav-link <?php if ($Halaman == "Profil") { echo "active";} ?>">
                     <i class="nav-icon fas fa-user"></i>
                     <p><b>Profil</b></p>
                     </a>
