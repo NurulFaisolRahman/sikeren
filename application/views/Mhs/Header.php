@@ -42,6 +42,9 @@
                 <ul class="nav side-menu">
 									<li><a href="<?=base_url('Mhs/Profil')?>"><i class="fa fa-user"></i> <b>Profil</b> </a></li>
                 </ul>
+                <!-- <ul class="nav side-menu">
+									<li><a href="<?=base_url('Mhs/RPS')?>"><i class="fa fa-book"></i> <b>RPS</b> </a></li>
+                </ul> -->
                 <ul class="nav side-menu">
 									<li><a href="<?=base_url('Mhs/DosPem')?>"><i class="fa fa-users"></i> <b>Dosen Pembimbing</b> </a></li>
                 </ul>

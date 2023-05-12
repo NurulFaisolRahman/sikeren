@@ -379,6 +379,8 @@
                 window.location = BaseURL + "Admin/RPS" 
               } else if (Respon == '3') {
                 window.location = BaseURL + "Admin/DosenPembimbing" 
+              } else if (Respon == '4') {
+                window.location = BaseURL + "Asisten/Profil" 
               }
               else {
                 alert(Respon)

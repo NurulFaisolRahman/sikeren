@@ -1979,6 +1979,95 @@ class Dashboard extends CI_Controller {
 		$this->session->set_userdata('NamaBimbingan', $_POST['NamaBimbingan']);
 	}
 
+	public function InputMengajar(){
+		if($this->db->get_where('mengajar', array('KodeMK' => $_POST['KodeMK']))->num_rows() === 0){
+			$_POST['NIP'] = $this->session->userdata('NIP');
+			$_POST['Status'] = 0;
+			$this->db->insert('mengajar',$_POST);
+			if ($this->db->affected_rows()){
+				echo '1';
+			} else {
+				echo 'Gagal Input Data!'; 
+			}
+		} else {
+			echo 'Mata Kuliah Sudah Ada!'; 
+		}
+	}
+
+	public function RPS(){
+		$Data['Halaman'] = 'Mengajar';
+		$Data['SubMenu'] = '';
+		$Data['Mengajar'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Id,mengajar.Status FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK')->result_array();
+		$Bulan = date("m");
+		if (intval($Bulan[1]) < 8) {
+			$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` WHERE (Semester % 2) = 0 ORDER BY Semester ASC')->result_array();
+		} else {
+			$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` WHERE (Semester % 2) > 0 ORDER BY Semester ASC')->result_array();
+		}
+    $this->load->view('Header',$Data);
+    $this->load->view('MengajarRPS',$Data); 
+	}
+
+	public function PlotRPS(){
+		$Data['Halaman'] = 'Validasi';
+		$Data['SubMenu'] = 'PlotRPS';
+		$Data['RPS'] = $this->db->query("SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Id,mengajar.Status,dosen.Nama FROM rps,mengajar,dosen WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.NIP=dosen.NIP")->result_array();
+		$this->load->view('Header',$Data);
+    $this->load->view('PlotRPS',$Data); 
+	}
+
+	public function HapusRPS(){
+		$this->db->delete('mengajar', array('Id' => $_POST['Id']));
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menghapus!';
+		}
+	}
+
+	public function UpdateRPS(){
+		if($this->db->get_where('rps', array('KodeMK' => $_POST['KodeMK']))->num_rows() === 0 || ($_POST['KodeMK'] == $_POST['KodeMKLama'])){
+			$this->db->where('KodeMK',$_POST['KodeMKLama']);
+			unset($_POST['KodeMKLama']);
+			$this->db->update('rps', $_POST);
+			echo '1';
+		} else {
+			echo "Data RPS Dengan Kode MK ".$_POST['KodeMK']." Sudah Ada!";
+		}
+	}
+
+	public function ValidasiRPS(){
+		$_POST['Status'] = 1;
+		$this->db->where('Id',$_POST['Id']);
+		$this->db->update('mengajar', $_POST);
+		echo '1';
+	}
+
+	public function KPSValidasiRPS(){
+		$_POST['Status'] = 3;
+		$this->db->where('Id',$_POST['Id']);
+		$this->db->update('mengajar', $_POST);
+		echo '1';
+	}
+
+	public function GetRPS($KodeMK){
+    echo json_encode($this->db->get_where('rps', array('KodeMK' => $KodeMK))->row_array());
+	}
+
+	public function UnduhRPS($KodeMK){
+		$Data['RPS'] = $this->db->get_where("rps", array('KodeMK' => $KodeMK))->row_array();
+		$Dosen = $this->db->query("SELECT dosen.Nama,dosen.QRCode FROM mengajar,dosen WHERE mengajar.NIP=dosen.NIP AND mengajar.KodeMK='".$KodeMK."' AND mengajar.Status=3")->result_array();
+		$Data['Dosen1'] = $Dosen[0]['Nama'];
+		$Data['QRCode1'] = $Dosen[0]['QRCode'];
+		if (count($Dosen) > 1) { 
+			$Data['Dosen2'] = $Dosen[1]['Nama']; 
+			$Data['QRCode2'] = $Dosen[1]['QRCode'];
+		}
+		$this->load->library('Pdf');
+		$this->load->view('PDFRPS',$Data);
+		// $this->load->view('ExcelRPS',$Data);
+	}
+
 	public function BimbinganSkripsi(){
 		$Data['Halaman'] = 'Bimbingan Skripsi';
 		$Data['SubMenu'] = '';

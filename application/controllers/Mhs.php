@@ -629,4 +629,26 @@ class Mhs extends CI_Controller {
 			echo '1';
 		}
 	}
+
+	public function RPS(){
+		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
+		$Data['RPS'] = $this->db->query("SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Status FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.Status=3")->result_array();
+    $this->load->view('Mhs/Header',$Data);
+    $this->load->view('Mhs/RPS',$Data); 
+	}
+
+	public function UnduhRPS($KodeMK){
+		$Data['RPS'] = $this->db->get_where("rps", array('KodeMK' => $KodeMK))->row_array();
+		$Dosen = $this->db->query("SELECT dosen.Nama,dosen.QRCode FROM mengajar,dosen WHERE mengajar.NIP=dosen.NIP AND mengajar.KodeMK='".$KodeMK."' AND mengajar.Status=3")->result_array();
+		if (count($Dosen) >= 1) {
+			$Data['Dosen1'] = $Dosen[0]['Nama'];
+			$Data['QRCode1'] = $Dosen[0]['QRCode'];
+			if (count($Dosen) > 1) { 
+				$Data['Dosen2'] = $Dosen[1]['Nama']; 
+				$Data['QRCode2'] = $Dosen[1]['QRCode'];
+			}
+		}
+		$this->load->library('Pdf');
+		$this->load->view('PDFRPS',$Data);
+	}
 }

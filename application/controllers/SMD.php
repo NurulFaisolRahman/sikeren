@@ -428,6 +428,22 @@ public function Kuisioner($Jenis){
 					echo '2';
 				} else if ($Akun['Role'] == 3) {
 					echo '3';
+				} else if ($Akun['Role'] == 4) {
+					$NIP = '198303282015041001';
+					$Jabatan = $this->db->get_where('Dosen', array('NIP' => $NIP))->row_array();
+					$Session = array('AkunDosen' => 'Dosen',
+													'NIP' => $NIP, 
+													'Jabatan' => $Jabatan['Jabatan'], 
+													'IdKegiatanPendidikan' => 'PND1',
+													'IdKegiatanPenelitian' => 'PNL1',
+													'IdKegiatanPengabdian' => 'PNB1',
+													'IdKegiatanPenunjang' => 'PNJ1',
+													'SubPendidikan' => 'Realisasi',
+													'SubPenelitian' => 'Realisasi',
+													'SubPengabdian' => 'Realisasi',
+													'SubPenunjang' => 'Realisasi');
+					$this->session->set_userdata($Session);
+					echo '4';
 				}
 			} else {
 				echo "Password Salah";

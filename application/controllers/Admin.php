@@ -169,6 +169,22 @@ class Admin extends CI_Controller {
     $this->load->view('NilaiProposalAdmin',$Data); 
 	}
 
+	public function UnduhRPS($KodeMK){
+		$Data['RPS'] = $this->db->get_where("rps", array('KodeMK' => $KodeMK))->row_array();
+		$Dosen = $this->db->query("SELECT dosen.Nama,dosen.QRCode FROM mengajar,dosen WHERE mengajar.NIP=dosen.NIP AND mengajar.KodeMK='".$KodeMK."' AND mengajar.Status=3")->result_array();
+		if (count($Dosen) >= 1) {
+			$Data['Dosen1'] = $Dosen[0]['Nama'];
+			$Data['QRCode1'] = $Dosen[0]['QRCode'];
+			if (count($Dosen) > 1) { 
+				$Data['Dosen2'] = $Dosen[1]['Nama']; 
+				$Data['QRCode2'] = $Dosen[1]['QRCode'];
+			}
+		}
+		$this->load->library('Pdf');
+		$this->load->view('PDFRPS',$Data);
+		// $this->load->view('ExcelRPS',$Data);
+	}
+
 	public function ExcelUjianSkripsi(){
 		$Mhs = $this->db->query("SELECT * FROM `mahasiswa` WHERE TanggalUjianSkripsi <= NOW() ORDER BY TanggalUjianSkripsi ASC")->result_array();
 		$Data['Mhs'] = array();
@@ -900,7 +916,7 @@ class Admin extends CI_Controller {
 	public function RPS(){
 		$Data['Halaman'] = 'Prodi';
 		$Data['SubMenu'] = 'RPS';
-		$Data['RPS'] = $this->db->query('SELECT Homebase,KodeMK,NamaMK,Semester FROM `rps`')->result_array();
+		$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` ORDER BY Semester ASC')->result_array();
     $this->load->view('HeaderAdmin',$Data);
 		$this->load->view('RPS',$Data);
 	}

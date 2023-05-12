@@ -90,6 +90,12 @@
                     <p><b>Bimbingan Skripsi</b></p>
                     </a>
                 </li>
+                <!-- <li class="nav-item">
+                    <a href="<?=base_url("Dashboard/RPS")?>" class="nav-link <?php if ($Halaman == "Mengajar") { echo "active";} ?>">
+                    <i class="nav-icon fas fa-book"></i>
+                    <p><b>RPS Mengajar</b></p>
+                    </a>
+                </li> -->
                 <li class="nav-item has-treeview <?php if ($Halaman == "Menilai") { echo "menu-open"; } ?>">
                   <a href="#" class="nav-link <?php if ($Halaman == "Menilai") { echo "active"; } ?>">
                   <i class="nav-icon fas fa-tasks"></i>
@@ -149,8 +155,11 @@
                     </a>
                     <?php
                       $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal","PlotMBKM");
-                      $NamaKegiatan = array("Dosen Pembimbing","Penguji Proposal","Plot DPL MBKM");
+                      $NamaKegiatan = array("Dosen Pembimbing","Penguji Proposal","DPL MBKM");
+                      // $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal","PlotRPS","PlotMBKM");
+                      // $NamaKegiatan = array("Dosen Pembimbing","Penguji Proposal","Validasi RPS","DPL MBKM");
                       $Icon = array("users","users","users");
+                      // $Icon = array("users","users","book","users");
                     ?>
                     <?php for ($i=0; $i < count($JenisKegiatan); $i++) { ?>
                     <ul class="nav nav-treeview <ml-1></ml-3>">
@@ -171,7 +180,7 @@
                   </li>
                   <li class="nav-item">
                     <a href="<?=base_url("Dashboard/RekapSkripsi")?>" class="nav-link <?php if ($Halaman == "Rekap Skripsi") { echo "active";} ?>">
-                    <i class="nav-icon fas fa-users"></i>
+                    <i class="nav-icon fas fa-book"></i>
                     <p><b>Rekap Skripsi</b></p>
                     </a>
                   </li>
