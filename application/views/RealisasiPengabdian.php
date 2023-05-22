@@ -20,20 +20,20 @@
         ?>
         <select class="custom-select" id="IdKegiatanPengabdian">
           <?php $Id = 1; foreach ($Kegiatan as $key) { $ID = 'PNB'.$Id;?>
-            <option value="<?='PNB'.$Id++?>" <?php if ($this->session->userdata('IdKegiatanPengabdian') == $ID) {
+            <option style="color: red;" value="<?='PNB'.$Id++?>" <?php if ($this->session->userdata('IdKegiatanPengabdian') == $ID) {
               echo 'selected';
             } ?>><?=$key?></option>
           <?php } ?>
-          <option value="PNB8" <?php if ($this->session->userdata('IdKegiatanPengabdian') == "PNB8") {
+          <option style="color: blue;" value="PNB8" <?php if ($this->session->userdata('IdKegiatanPengabdian') == "PNB8") {
               echo 'selected';
             } ?>>Suatu kegiatan yang setara dengan 50 jam kerja per semester(disetujui pimpinan & tercatat)</option>
-          <option value="PNB9" <?php if ($this->session->userdata('IdKegiatanPengabdian') == "PNB9") {
+          <option style="color: blue;" value="PNB9" <?php if ($this->session->userdata('IdKegiatanPengabdian') == "PNB9") {
               echo 'selected';
             } ?>>Reviewer insidental kegiatan(Bedah buku,tim penilai pustakawan/dosen/mahasiswa/karyawan/laboran berprestasi,reviewer artikel ilmiah,hibah pengajaran) </option>
-          <option value="PNB10" <?php if ($this->session->userdata('IdKegiatanPengabdian') == "PNB10") {
+          <option style="color: blue;" value="PNB10" <?php if ($this->session->userdata('IdKegiatanPengabdian') == "PNB10") {
               echo 'selected';
             } ?>>Reviewer terstruktur (minimal 2 semester) </option>  
-      </select>
+        </select>
       </div>
     </div> 
   </div>
@@ -118,11 +118,11 @@
                 </div>
                 <select class="custom-select" id="InputIdKegiatanPengabdian" onchange="InputIdKegiatanPengabdian()">
                 <?php $Id = 1; foreach ($Kegiatan as $key) { ?>
-                    <option value="<?='PNB'.$Id++?>"><?=$key?></option>
+                    <option style="color: red;" value="<?='PNB'.$Id++?>"><?=$key?></option>
                   <?php } ?>
-                  <option value="PNB8">Suatu kegiatan yang setara dengan 50 jam kerja per semester(disetujui pimpinan & tercatat)</option>
-                <option value="PNB9">Reviewer insidental kegiatan(Bedah buku,tim penilai pustakawan/dosen/mahasiswa/karyawan/laboran berprestasi,reviewer artikel ilmiah,hibah pengajaran)</option>
-                <option value="PNB10">Reviewer terstruktur (minimal 2 semester) </option>  
+                  <option style="color: blue;" value="PNB8">Suatu kegiatan yang setara dengan 50 jam kerja per semester(disetujui pimpinan & tercatat)</option>
+                  <option style="color: blue;" value="PNB9">Reviewer insidental kegiatan(Bedah buku,tim penilai pustakawan/dosen/mahasiswa/karyawan/laboran berprestasi,reviewer artikel ilmiah,hibah pengajaran)</option>
+                  <option style="color: blue;" value="PNB10">Reviewer terstruktur (minimal 2 semester) </option>  
                 </select>
               </div>
             </div>

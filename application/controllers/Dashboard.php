@@ -1994,16 +1994,28 @@ class Dashboard extends CI_Controller {
 		}
 	}
 
+	public function InputSoal(){
+		$this->db->where('Id', $_POST['Id']);
+		$this->db->update('mengajar',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpan Data!'; 
+		}
+	}
+
 	public function RPS(){
 		$Data['Halaman'] = 'Mengajar';
 		$Data['SubMenu'] = '';
-		$Data['Mengajar'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Id,mengajar.Status FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK')->result_array();
-		$Bulan = date("m");
-		if (intval($Bulan[1]) < 8) {
-			$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` WHERE (Semester % 2) = 0 ORDER BY Semester ASC')->result_array();
-		} else {
-			$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` WHERE (Semester % 2) > 0 ORDER BY Semester ASC')->result_array();
-		}
+		$NIP = $this->session->userdata('NIP');
+		$Data['Mengajar'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Id,mengajar.Status FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.NIP='.$NIP)->result_array();
+		$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` ORDER BY Semester ASC')->result_array();
+		// $Bulan = date("m");
+		// if (intval($Bulan[1]) < 8) {
+		// 	$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` WHERE (Semester % 2) = 0 ORDER BY Semester ASC')->result_array();
+		// } else {
+		// 	$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` WHERE (Semester % 2) > 0 ORDER BY Semester ASC')->result_array();
+		// }
     $this->load->view('Header',$Data);
     $this->load->view('MengajarRPS',$Data); 
 	}
@@ -2050,8 +2062,19 @@ class Dashboard extends CI_Controller {
 		echo '1';
 	}
 
+	public function KPSTolakRPS(){
+		$_POST['Status'] = 2;
+		$this->db->where('Id',$_POST['Id']);
+		$this->db->update('mengajar', $_POST);
+		echo '1';
+	}
+
 	public function GetRPS($KodeMK){
     echo json_encode($this->db->get_where('rps', array('KodeMK' => $KodeMK))->row_array());
+	}
+
+	public function GetSoal($Id){
+		echo json_encode($this->db->query("SELECT * FROM mengajar WHERE Id=".$Id)->row_array());	
 	}
 
 	public function UnduhRPS($KodeMK){

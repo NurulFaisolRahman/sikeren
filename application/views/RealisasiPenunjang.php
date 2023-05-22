@@ -22,14 +22,14 @@
           'Keanggotaan dalam tim penilai jabatan akademik dosen (tiap semester)');
         ?>
         <select class="custom-select" id="IdKegiatanPenunjang">
-            <option value="PNJ11" <?php if ($this->session->userdata('IdKegiatanPenunjang') == "PNJ11") {
+            <option style="color: blue;" value="PNJ11" <?php if ($this->session->userdata('IdKegiatanPenunjang') == "PNJ11") {
               echo 'selected';
             } ?>>Bimbingan akademik(perwalian) / Konseling</option>
-            <option value="PNJ12" <?php if ($this->session->userdata('IdKegiatanPenunjang') == "PNJ12") {
+            <option style="color: blue;" value="PNJ12" <?php if ($this->session->userdata('IdKegiatanPenunjang') == "PNJ12") {
               echo 'selected';
             } ?>>Menjabat Posisi Tertentu</option>
           <?php $Id = 1; foreach ($Kegiatan as $key) { $ID = 'PNJ'.$Id;?>
-            <option value="<?='PNJ'.$Id++?>" <?php if ($this->session->userdata('IdKegiatanPenunjang') == $ID) {
+            <option style="color: red;" value="<?='PNJ'.$Id++?>" <?php if ($this->session->userdata('IdKegiatanPenunjang') == $ID) {
               echo 'selected';
             } ?>><?=$key?></option>
           <?php } ?>
@@ -117,10 +117,10 @@
                   <span class="input-group-text bg-primary"><b>Kegiatan</b></span>
                 </div>
                 <select class="custom-select" id="InputIdKegiatanPenunjang" onchange="InputIdKegiatanPenunjang()">
-                  <option value="PNJ11">Bimbingan akademik(perwalian) / Konseling</option>
-                  <option value="PNJ12">Menjabat Posisi Tertentu</option>
+                  <option style="color: blue;" value="PNJ11">Bimbingan akademik(perwalian) / Konseling</option>
+                  <option style="color: blue;" value="PNJ12">Menjabat Posisi Tertentu</option>
                   <?php $Id = 1; foreach ($Kegiatan as $key) { ?>
-                    <option value="<?='PNJ'.$Id++?>"><?=$key?></option>
+                    <option style="color: red;" value="<?='PNJ'.$Id++?>"><?=$key?></option>
                   <?php } ?>
                 </select>
               </div>

@@ -1099,6 +1099,13 @@ class Admin extends CI_Controller {
 		$this->db->update('Akun',array('JenisAkun' => 2));
 	}
 
+	public function Jamu(){
+		$this->db->where('JenisAkun', 4);
+		$this->db->update('Akun',array('JenisAkun' => 1));
+		$this->db->where('NIP', $_POST['NIP']);
+		$this->db->update('Akun',array('JenisAkun' => 4));
+	}
+
 	public function DTPS(){
 		$DTPS = $this->db->query("SELECT BuktiPendidik,BuktiKompetensi FROM Dosen")->result_array();
 		echo json_encode($DTPS);

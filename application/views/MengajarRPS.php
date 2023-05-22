@@ -1,10 +1,11 @@
+    <link href="<?=base_url('summernote/summernote-bs4.min.css')?>" rel="stylesheet">
     <div class="content-wrapper">
       <!-- Main content -->
         <section class="content">
           <div class="container-fluid">
             <div class="row"> 
               <div class="col-sm-12 mt-2">
-                <button type="button" class="btn btn-primary text-light mb-1" data-toggle="modal" data-target="#ModalInputMengajar"><i class="fa fa-plus"></i> <b>INPUT</b></button>
+                <button type="button" class="btn btn-primary text-light mb-1" data-toggle="modal" data-target="#ModalInputMengajar"><i class="fa fa-plus"></i> <b>INPUT RPS</b></button>
                 <div class="container-fluid border border-warning rounded bg-light">
                   <div class="row align-items-center">
                     <div class="col-sm-12 my-2 ">    
@@ -17,8 +18,10 @@
                               <th class="align-middle">Nama Mata Kuliah</th>
                               <th class="align-middle">Bobot</th>
                               <th class="align-middle">Semester</th>
-                              <th class="align-middle">Edit</th>
-                              <th class="align-middle">Validasi</th>
+                              <th style="width: 7%;" class="text-center align-middle">Edit</th>
+                              <th style="width: 4%;" class="text-center align-middle">Aksi</th>
+                              <th class="text-center align-middle">UTS</th>
+                              <th class="text-center align-middle">UAS</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -29,17 +32,27 @@
                                 <td class="align-middle"><?=$key['NamaMK']?></td>
                                 <td class="align-middle"><?=$key['BobotMK'].' sks'?></td>
                                 <td class="align-middle"><?=$key['Semester']?></td>
-                                <td class="align-middle">
+                                <td class="text-center align-middle">
                                   <button Edit="<?=$key['KodeMK']?>" class="btn btn-sm btn-warning Edit"><i class="fas fa-edit"></i></button>
                                   <button Hapus="<?=$key['Id']?>" class="btn btn-sm btn-danger Hapus"><i class="fas fa-trash"></i></button>  
                                 </td> 
-                                <td class="align-middle">
+                                <td class="text-center align-middle">
                                   <?php if ($key['Status'] == 0 || $key['Status'] == 2) { ?>
                                     <button Valid="<?=$key['Id']?>" class="btn btn-sm btn-primary Valid"><i class="fas fa-check"></i></button> 
                                   <?php } else if ($key['Status'] == 1) { ?>
-                                    <b>DIAJUKAN</b>
+                                    <button class="btn btn-sm btn-warning"><i class="fas fa-spinner"></i></button> 
                                   <?php } else if ($key['Status'] == 3) { ?>
                                     <button Unduh="<?=$key['KodeMK']?>" class="btn btn-sm btn-success Unduh"><i class="fas fa-download"></i></button> 
+                                  <?php } ?>
+                                </td>
+                                <td class="text-center align-middle">
+                                  <?php if ($key['Status'] == 3) { ?>
+                                    <button UTS="<?=$key['Id']?>" class="btn btn-sm btn-primary UTS"><i class="fas fa-edit"></i></button>
+                                  <?php } ?>
+                                </td> 
+                                <td class="text-center align-middle">
+                                  <?php if ($key['Status'] == 3) { ?>
+                                    <button UAS="<?=$key['Id']?>" class="btn btn-sm btn-danger UAS"><i class="fas fa-edit"></i></button>
                                   <?php } ?>
                                 </td> 
                               </tr>
@@ -67,7 +80,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-primary"><b>Mata Kuliah</b></span>
                     </div>
-                    <select class="custom-select" id="MK">
+                    <select class="custom-select" id="MengajarMK">
                       <?php foreach ($RPS as $key) { ?>
                         <option value="<?=$key['KodeMK']?>"><?=$key['NamaMK']?></option>
                       <?php } ?>
@@ -111,7 +124,7 @@
                           </td>
                           <input class="form-control form-control-sm" type="hidden" id="KodeMKLama">
                           <td><input class="form-control form-control-sm" type="text" id="EditNamaMK"></td>
-                          <td><input class="form-control form-control-sm" type="text" id="EditKodeMK"></td>
+                          <td><input class="form-control form-control-sm" type="text" id="EditKodeMK" disabled></td>
                           <td><input class="form-control form-control-sm" type="text" id="EditBobotMK"></td>
                           <td><input class="form-control form-control-sm" type="text" id="EditSemester"></td>
                           <td><input class="form-control form-control-sm" type="text" id="EditTanggalPenyusunan"></td>
@@ -254,6 +267,73 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="ModalSoal">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-warning">
+          <div class="modal-body">
+            <div class="container">
+							<div class="row">
+                <input class="form-control form-control-sm" type="hidden" id="IdSoal">
+								<div class="col-sm-4">
+                  <div class="input-group input-group-sm mb-1">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-primary text-white"><b>Jenis Soal</b></span>
+                    </div>
+                    <select class="custom-select" id="Jenis" disabled>
+                      <option value="UTS">UTS</option>
+											<option value="UAS">UAS</option>
+                    </select>
+                  </div>
+								</div>
+								<div class="col-sm-4">
+                  <div class="input-group input-group-sm mb-1">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-primary text-white"><b>Sifat Ujian</b></span>
+                    </div>
+                    <input type="text" class="form-control" id="Sifat"> 
+                  </div>
+								</div>
+                <div class="col-sm-4">
+                  <div class="input-group input-group-sm mb-1">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-primary text-white"><b>Waktu Ujian</b></span>
+                    </div>
+                    <input type="text" class="form-control" id="Waktu"> 
+                  </div>
+								</div>
+                <div class="col-sm-6">
+                  <div class="input-group input-group-sm mb-1">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-primary text-white"><b>Mata Kuliah</b></span>
+                    </div>
+                    <select class="custom-select" id="SoalMK" disabled>
+                      <?php foreach ($Mengajar as $key) { if ($key['Status'] == 3) { ?>
+                        <option value="<?=$key['KodeMK']?>"><?=$key['NamaMK']?></option>
+                      <?php }} ?>
+                    </select>
+                  </div>
+								</div>
+								<div class="col-sm-6">
+                  <div class="input-group input-group-sm mb-1">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-primary text-white"><b>Catatan</b></span>
+                    </div>
+                    <input type="text" class="form-control" id="Catatan"> 
+                  </div>
+								</div>
+								<div class="col-sm-12">
+                  <textarea id="Soal"></textarea>
+								</div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Tutup</b></button>
+            <button type="submit" class="btn btn-primary" id="InputSoal"><b>Simpan <div id="LoadingInputSoal" class="spinner-border spinner-border-sm text-white" style="display: none;" role="status"></div></b></button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
     <script src="<?=base_url('bootstrap/js/popper.min.js')?>" ></script>
     <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
@@ -261,6 +341,7 @@
     <script src="<?=base_url('bootstrap/datatables/jquery.dataTables.js')?>"></script>
 		<script src="<?=base_url('bootstrap/datatables-bs4/js/dataTables.bootstrap4.js')?>"></script>
     <script src="<?=base_url('bootstrap/inputmask/min/jquery.inputmask.bundle.min.js')?>"></script>
+    <script src="<?=base_url("summernote/summernote-bs4.min.js")?>"></script>
     <script src="<?=base_url('bootstrap/js/Borang.js')?>"></script>
 		<script>
       $(document).ready(function(){
@@ -278,8 +359,12 @@
 					}
         })
 
+        $('#Soal').summernote({
+					height: 250
+				})
+
         $("#InputMengajar").click(function() {
-          var RPS = { KodeMK: $("#MK").val() }
+          var RPS = { KodeMK: $("#MengajarMK").val() }
           $("#InputMengajar").attr("disabled", true);                              
           $("#LoadingInputMengajar").show();
           $.post(BaseURL+"Dashboard/InputMengajar", RPS).done(function(Respon) {
@@ -290,6 +375,63 @@
               alert(Respon)
               $("#LoadingInputMengajar").hide();
               $("#InputMengajar").attr("disabled", false);   
+            }
+          })
+        })
+
+        $(document).on("click",".UTS",function(){
+					$.post(BaseURL+"Dashboard/GetSoal/"+$(this).attr('UTS')).done(function(Respon) {
+            var Data = JSON.parse(Respon)
+            $("#IdSoal").val(Data.Id)
+            $("#Jenis").val('UTS')
+            $("#Sifat").val(Data.SifatUTS)
+            $("#Waktu").val(Data.WaktuUTS)
+            $("#SoalMK").val(Data.KodeMK)
+            $("#Catatan").val(Data.CatatanUTS)
+            $('#Soal').summernote('code',Data.SoalUTS);
+            $("#ModalSoal").modal('show')
+					})
+				})
+
+        $(document).on("click",".UAS",function(){
+					$.post(BaseURL+"Dashboard/GetSoal/"+$(this).attr('UAS')).done(function(Respon) {
+            var Data = JSON.parse(Respon)
+            $("#IdSoal").val(Data.Id)
+            $("#Jenis").val('UAS')
+            $("#Sifat").val(Data.SifatUAS)
+            $("#Waktu").val(Data.WaktuUAS)
+            $("#SoalMK").val(Data.KodeMK)
+            $("#Catatan").val(Data.CatatanUAS)
+            $('#Soal').summernote('code',Data.SoalUAS);
+            $("#ModalSoal").modal('show')
+					})
+				})
+
+        $("#InputSoal").click(function() {
+          Jenis = $("#Jenis").val()
+          if (Jenis == 'UTS') {
+            var Soal = { Id: $("#IdSoal").val(),
+                      SifatUTS: $("#Sifat").val(),
+                      WaktuUTS: $("#Waktu").val(),
+                      CatatanUTS: $("#Catatan").val(),
+                      SoalUTS: $("#Soal").val() }
+          } else {
+            var Soal = { Id: $("#IdSoal").val(),
+                      SifatUAS: $("#Sifat").val(),
+                      WaktuUAS: $("#Waktu").val(),
+                      CatatanUAS: $("#Catatan").val(),
+                      SoalUAS: $("#Soal").val() }
+          }
+          $("#InputSoal").attr("disabled", true);                              
+          $("#LoadingInputSoal").show();
+          $.post(BaseURL+"Dashboard/InputSoal", Soal).done(function(Respon) {
+            if (Respon == '1') {
+              alert('Data Berhasil Di Simpan!')
+              window.location = BaseURL + "Dashboard/RPS"
+            } else {
+              alert(Respon)
+              $("#LoadingInputSoal").hide();
+              $("#InputSoal").attr("disabled", false);   
             }
           })
         })
@@ -419,13 +561,16 @@
 
         $(document).on("click",".Valid",function(){
 					var Valid = {Id: $(this).attr('Valid')}
-					$.post(BaseURL+"Dashboard/ValidasiRPS", Valid).done(function(Respon) {
-            if (Respon == '1') {
-              window.location = BaseURL + "Dashboard/RPS"
-            } else {
-              alert(Respon)
-            }
-          })
+          var Konfirmasi = confirm("Yakin Ingin Validasi RPS?");
+      		if (Konfirmasi == true) {
+            $.post(BaseURL+"Dashboard/ValidasiRPS", Valid).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Dashboard/RPS"
+              } else {
+                alert(Respon)
+              }
+            })
+          }
 				})
 
         $(document).on("click",".Hapus",function(){

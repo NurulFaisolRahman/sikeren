@@ -9,6 +9,7 @@
                     <div class="col-sm-12 my-2 ">    
                     <button type="button" class="btn btn-primary text-light mb-2" data-toggle="modal" data-target="#ModalAkunDosen"><i class="fa fa-plus"></i> <b>Akun Dosen</b></button>
                     <button type="button" class="btn btn-danger text-light mb-2" data-toggle="modal" data-target="#ModalKajur"><i class="fa fa-user"></i> <b>Kepala Jurusan</b></button> 
+                    <button type="button" class="btn btn-success text-light mb-2" data-toggle="modal" data-target="#ModalJamu"><i class="fa fa-user"></i> <b>Penjaminan Mutu</b></button> 
                       <div class="table-responsive mb-2">
                         <table id="TabelAkunDosen" class="table table-bordered table-striped">
                           <thead class="bg-warning">
@@ -98,7 +99,7 @@
           <div class="modal-body">
             <div class="input-group mb-1">
               <div class="input-group-prepend">
-                <label class="input-group-text bg-primary"><b>Kajur</b></label>
+                <label class="input-group-text bg-primary"><b>KAJUR</b></label>
               </div>
               <select class="custom-select" id="Kajur">										
                 <?php foreach ($Kajur as $key) { ?>
@@ -110,6 +111,28 @@
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Tutup</b></button>
             <button type="submit" class="btn btn-success" id="Simpan"><b>Simpan</b></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalJamu">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-warning">
+          <div class="modal-body">
+            <div class="input-group mb-1">
+              <div class="input-group-prepend">
+                <label class="input-group-text bg-primary"><b>JAMU</b></label>
+              </div>
+              <select class="custom-select" id="Jamu">										
+                <?php foreach ($Kajur as $key) { ?>
+                  <option value="<?=$key['NIP']?>" <?php if ($key['JenisAkun'] == 4) { echo 'selected'; } ?> ><?=$key['Nama']?></option>
+                <?php } ?>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Tutup</b></button>
+            <button type="submit" class="btn btn-success" id="InputJamu"><b>Simpan</b></button>
           </div>
         </div>
       </div>
@@ -145,6 +168,13 @@
         $("#Simpan").click(function() {
           var Kajur = { NIP: $("#Kajur").val() }
           $.post("Kajur", Kajur).done(function(Respon) {
+            window.location = "AkunDosen"
+          })
+        })
+
+        $("#InputJamu").click(function() {
+          var Jamu = { NIP: $("#Jamu").val() }
+          $.post("Jamu", Jamu).done(function(Respon) {
             window.location = "AkunDosen"
           })
         })

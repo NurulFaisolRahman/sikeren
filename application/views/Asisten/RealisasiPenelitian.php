@@ -34,11 +34,15 @@
           'Mendiskusikan (menyebarluaskan) temuan karya teknologi/seni Khusus Jabatan Profesor');
         ?>
         <select class="custom-select" id="IdKegiatanPenelitian">
-          <?php $Id = 1; foreach ($Kegiatan as $key) { $ID = 'PNL'.$Id;?>
-            <option value="<?='PNL'.$Id++?>" <?php if ($this->session->userdata('IdKegiatanPenelitian') == $ID) {
+          <?php $Id = 1; foreach ($Kegiatan as $key) { $ID = 'PNL'.$Id; if ($Id < 9) {?>
+            <option style="color: red;" value="<?='PNL'.$Id++?>" <?php if ($this->session->userdata('IdKegiatanPenelitian') == $ID) {
               echo 'selected';
             } ?>><?=$key?></option>
-          <?php } ?>
+          <?php } else { ?>
+            <option style="color: blue;" value="<?='PNL'.$Id++?>" <?php if ($this->session->userdata('IdKegiatanPenelitian') == $ID) {
+              echo 'selected';
+            } ?>><?=$key?></option>
+          <?php }} ?>
         </select>
       </div>
     </div> 
@@ -123,9 +127,11 @@
                   <span class="input-group-text bg-primary"><b>Kegiatan</b></span>
                 </div>
                 <select class="custom-select" id="InputIdKegiatanPenelitian" onchange="InputIdKegiatanPenelitian()">
-                <?php $Id = 1; foreach ($Kegiatan as $key) { ?>
-                    <option value="<?='PNL'.$Id++?>"><?=$key?></option>
-                  <?php } ?>
+                <?php $Id = 1; foreach ($Kegiatan as $key) { if ($Id < 9) {?>?>
+                  <option style="color: red;" value="<?='PNL'.$Id++?>"><?=$key?></option>
+                <?php } else { ?>
+                  <option style="color: blue;" value="<?='PNL'.$Id++?>"><?=$key?></option>
+                <?php }} ?>
                 </select>
               </div>
             </div>

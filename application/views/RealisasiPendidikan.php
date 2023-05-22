@@ -29,22 +29,22 @@
         <select class="custom-select" id="IdKegiatanPendidikan">
           <?php $Id = 1; foreach ($Kegiatan as $key) { $ID = 'PND'.$Id;?>
             <?php if ($Id == 4) { ?>
-              <option value="<?='PND16'?>" <?php if ($this->session->userdata('IdKegiatanPendidikan') == 'PND16') {
+              <option style="color:blue" value="<?='PND16'?>" <?php if ($this->session->userdata('IdKegiatanPendidikan') == 'PND16') {
               echo 'selected';
             } ?>>Mengajar Praktikum</option>
             <?php } else if ($Id == 9) { ?>
-              <option value="<?='PND17'?>" <?php if ($this->session->userdata('IdKegiatanPendidikan') == 'PND17') {
+              <option style="color:blue" value="<?='PND17'?>" <?php if ($this->session->userdata('IdKegiatanPendidikan') == 'PND17') {
               echo 'selected';
             } ?>>Koordinator kegiatan akademik dalam 1 semester</option>
             <?php } ?>
-            <option value="<?='PND'.$Id++?>" <?php if ($this->session->userdata('IdKegiatanPendidikan') == $ID) {
+            <option style="color:red" value="<?='PND'.$Id++?>" <?php if ($this->session->userdata('IdKegiatanPendidikan') == $ID) {
               echo 'selected';
             } ?>><?=$key?></option>
           <?php } ?>
-            <option value="<?='PND18'?>" <?php if ($this->session->userdata('IdKegiatanPendidikan') == 'PND18') {
+            <option style="color:blue" value="<?='PND18'?>" <?php if ($this->session->userdata('IdKegiatanPendidikan') == 'PND18') {
               echo 'selected';
             } ?>>Bimbingan penulisan laporan deskripsi diri sertifikasi dosen</option>
-            <option value="<?='PND19'?>" <?php if ($this->session->userdata('IdKegiatanPendidikan') == 'PND19') {
+            <option style="color:blue" value="<?='PND19'?>" <?php if ($this->session->userdata('IdKegiatanPendidikan') == 'PND19') {
               echo 'selected';
             } ?>>Menilai portofolio sertifikasi dosen</option>
         </select>
@@ -159,14 +159,14 @@
                 <select class="custom-select" id="InputIdKegiatanPendidikan" onchange="InputIdKegiatanPendidikan()">
                 <?php $Id = 1; foreach ($Kegiatan as $key) { ?>
                   <?php if ($Id == 4) { ?>
-                    <option value="PND16">Mengajar Praktikum</option>
+                    <option style="color:blue" value="PND16">Mengajar Praktikum</option>
                   <?php } else if ($Id == 9) { ?>
-                    <option value="PND17">Koordinator kegiatan akademik dalam 1 semester</option>
+                    <option style="color:blue" value="PND17">Koordinator kegiatan akademik dalam 1 semester</option>
                   <?php } ?>
-                    <option value="<?='PND'.$Id++?>"><?=$key?></option>
+                    <option style="color:red" value="<?='PND'.$Id++?>"><?=$key?></option>
                   <?php } ?>
-                  <option value="PND18">Bimbingan penulisan laporan deskripsi diri sertifikasi dosen</option>
-                  <option value="PND19">Menilai portofolio sertifikasi dosen</option>
+                  <option style="color:blue" value="PND18">Bimbingan penulisan laporan deskripsi diri sertifikasi dosen</option>
+                  <option style="color:blue" value="PND19">Menilai portofolio sertifikasi dosen</option>
                 </select>
               </div>
             </div>
