@@ -267,10 +267,10 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="ModalSoal">
+    <div class="modal fade" id="ModalSoal" data-backdrop="static">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content bg-warning">
-          <div class="modal-body">
+          <div class="modal-body" style="overflow-y: scroll;height: 400px;">
             <div class="container">
 							<div class="row">
                 <input class="form-control form-control-sm" type="hidden" id="IdSoal">
@@ -342,11 +342,30 @@
 		<script src="<?=base_url('bootstrap/datatables-bs4/js/dataTables.bootstrap4.js')?>"></script>
     <script src="<?=base_url('bootstrap/inputmask/min/jquery.inputmask.bundle.min.js')?>"></script>
     <script src="<?=base_url("summernote/summernote-bs4.min.js")?>"></script>
+    <script src="<?=base_url("sumernote/summernote-image-attributes.js")?>"></script>
+    <script src="<?=base_url("sumernote/lang/es-ES.js")?>"></script>
     <script src="<?=base_url('bootstrap/js/Borang.js')?>"></script>
 		<script>
       $(document).ready(function(){
         var BaseURL = '<?=base_url()?>'
         
+        $('#Soal').summernote({
+            imageAttributes: {
+              icon: '<i class="note-icon-pencil"/>',
+              figureClass: 'figureClass',
+              figcaptionClass: 'captionClass',
+              captionText: 'Caption Goes Here.',
+              manageAspectRatio: true // true = Lock the Image Width/Height, Default to true
+            },
+            lang: 'en-US',
+            popover: {
+                image: [
+                    ['remove', ['removeMedia']],
+                    ['custom', ['imageAttributes']],
+                ],
+            },
+        }); 
+
         $('#TabelRPS').DataTable( {
 					// dom:'lfrtip',
 					"ordering": false,
@@ -358,10 +377,6 @@
 						}
 					}
         })
-
-        $('#Soal').summernote({
-					height: 250
-				})
 
         $("#InputMengajar").click(function() {
           var RPS = { KodeMK: $("#MengajarMK").val() }

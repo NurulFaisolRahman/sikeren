@@ -2077,6 +2077,12 @@ class Dashboard extends CI_Controller {
 		echo json_encode($this->db->query("SELECT * FROM mengajar WHERE Id=".$Id)->row_array());	
 	}
 
+	public function Soal(){
+		$Data['Soal'] = $this->db->query("SELECT * FROM mengajar WHERE Id=8")->row_array();
+		$this->load->library('Pdf');
+		$this->load->view('Soal',$Data);
+	}
+
 	public function UnduhRPS($KodeMK){
 		$Data['RPS'] = $this->db->get_where("rps", array('KodeMK' => $KodeMK))->row_array();
 		$Dosen = $this->db->query("SELECT dosen.Nama,dosen.QRCode FROM mengajar,dosen WHERE mengajar.NIP=dosen.NIP AND mengajar.KodeMK='".$KodeMK."' AND mengajar.Status=3")->result_array();

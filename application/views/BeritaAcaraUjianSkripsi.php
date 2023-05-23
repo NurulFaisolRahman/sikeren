@@ -32,7 +32,7 @@
     <td rowspan="8" style="width:8%;"></td>
   </tr> 
   <tr>
-    <td style="width:64%;"><p style="text-align:center;margin:20px;"><b>KEMENTERIAN PENDIDIKAN, KEBUDAYAAN</b></p></td>
+    <td style="width:64%;"><p style="text-align:center;margin:20px;"><b>KEMENTERIAN PENDIDIKAN KEBUDAYAAN</b></p></td>
   </tr>
   <tr>
     <td style="width:64%;"><p style="text-align:center;margin:20px;"><b>RISET DAN TEKNOLOGI </b></p></td>
