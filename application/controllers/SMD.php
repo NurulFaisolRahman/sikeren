@@ -403,6 +403,8 @@ public function Kuisioner($Jenis){
 					$Session['Kajur'] = true;
 				} else if ($Akun['JenisAkun'] == 3) {
 					$Session['Kaprodi'] = true; 
+				} else if ($Akun['JenisAkun'] == 4) {
+					$Session['Jamu'] = true; 
 				}
 				$this->session->set_userdata($Session);
 				echo '1';

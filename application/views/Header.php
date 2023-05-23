@@ -144,6 +144,32 @@
                   </ul>
                   <?php } ?>
                 </li>
+                <?php if ($this->session->userdata('Jamu')) { ?> 
+                  <li class="nav-item has-treeview <?php if ($Halaman == "Jamu") { echo "menu-open"; } ?>">
+                    <a href="#" class="nav-link <?php if ($Halaman == "Jamu") { echo "active"; } ?>">
+                    <i class="nav-icon fas fa-tasks"></i>
+                    <p>
+                      <b>Jaminan Mutu</b>
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                    </a>
+                    <?php
+                      $JenisKegiatan = array("ValidasiSoal","DokumenEvaluasi");
+                      $NamaKegiatan = array("Validasi Soal","Dokumen Evaluasi");
+                      $Icon = array("sticky-note","book");
+                    ?>
+                    <?php for ($i=0; $i < count($JenisKegiatan); $i++) {?>
+                    <ul class="nav nav-treeview <ml-1></ml-3>">
+                        <li class="nav-item">
+                        <a href="<?=base_url("Dashboard/").$JenisKegiatan[$i]?>" class="nav-link <?php if ($SubMenu == $JenisKegiatan[$i]) { echo "active"; } ?>">
+                            <i class="fas fa-<?=$Icon[$i]?> nav-icon text-primary"></i>
+                            <p class="font-weight-bold text-primary"><?=$NamaKegiatan[$i]?></p>
+                        </a>
+                        </li>
+                    </ul>
+                    <?php } ?>
+                  </li>
+                <?php } ?>
                 <?php if ($this->session->userdata('Kaprodi')) { ?> 
                   <li class="nav-item has-treeview <?php if ($Halaman == "Validasi") { echo "menu-open"; } ?>">
                     <a href="#" class="nav-link <?php if ($Halaman == "Validasi") { echo "active"; } ?>">

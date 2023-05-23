@@ -18,8 +18,9 @@
                               <th class="align-middle">Nama Mata Kuliah</th>
                               <th class="align-middle">Bobot</th>
                               <th class="align-middle">Semester</th>
+                              <th class="align-middle text-center">Tahun</th>
                               <th style="width: 7%;" class="text-center align-middle">Edit</th>
-                              <th style="width: 4%;" class="text-center align-middle">Aksi</th>
+                              <th style="width: 4%;" class="text-center align-middle">RPS</th>
                               <th class="text-center align-middle">UTS</th>
                               <th class="text-center align-middle">UAS</th>
                             </tr>
@@ -32,6 +33,7 @@
                                 <td class="align-middle"><?=$key['NamaMK']?></td>
                                 <td class="align-middle"><?=$key['BobotMK'].' sks'?></td>
                                 <td class="align-middle"><?=$key['Semester']?></td>
+                                <td class="align-middle text-center"><?=$key['Tahun']?></td>
                                 <td class="text-center align-middle">
                                   <button Edit="<?=$key['KodeMK']?>" class="btn btn-sm btn-warning Edit"><i class="fas fa-edit"></i></button>
                                   <button Hapus="<?=$key['Id']?>" class="btn btn-sm btn-danger Hapus"><i class="fas fa-trash"></i></button>  
@@ -48,11 +50,13 @@
                                 <td class="text-center align-middle">
                                   <?php if ($key['Status'] == 3) { ?>
                                     <button UTS="<?=$key['Id']?>" class="btn btn-sm btn-primary UTS"><i class="fas fa-edit"></i></button>
+                                    <button SoalUTS="<?=$key['Id']?>" class="btn btn-sm btn-warning SoalUTS"><i class="fas fa-eye"></i></button>
                                   <?php } ?>
                                 </td> 
                                 <td class="text-center align-middle">
                                   <?php if ($key['Status'] == 3) { ?>
                                     <button UAS="<?=$key['Id']?>" class="btn btn-sm btn-danger UAS"><i class="fas fa-edit"></i></button>
+                                    <button SoalUAS="<?=$key['Id']?>" class="btn btn-sm btn-warning SoalUAS"><i class="fas fa-eye"></i></button>
                                   <?php } ?>
                                 </td> 
                               </tr>
@@ -270,7 +274,7 @@
     <div class="modal fade" id="ModalSoal" data-backdrop="static">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content bg-warning">
-          <div class="modal-body" style="overflow-y: scroll;height: 400px;">
+          <div class="modal-body" style="height: 500px;">
             <div class="container">
 							<div class="row">
                 <input class="form-control form-control-sm" type="hidden" id="IdSoal">
@@ -323,6 +327,11 @@
 								</div>
 								<div class="col-sm-12">
                   <textarea id="Soal"></textarea>
+                </div>
+                <div class="col-sm-12 mt-0">
+                  <div class="input-group input-group-sm">
+                    <textarea style="width: 100%;" id="CatatanSoal" rows="3" placeholder="Catatan Koreksi Mengenai Soal"></textarea>
+                  </div>
 								</div>
               </div>
             </div>
@@ -350,6 +359,7 @@
         var BaseURL = '<?=base_url()?>'
         
         $('#Soal').summernote({
+            height: 250,
             imageAttributes: {
               icon: '<i class="note-icon-pencil"/>',
               figureClass: 'figureClass',
@@ -360,10 +370,11 @@
             lang: 'en-US',
             popover: {
                 image: [
-                    ['remove', ['removeMedia']],
-                    ['custom', ['imageAttributes']],
+                  ['remove', ['removeMedia']],
+                  ['custom', ['imageAttributes']],
                 ],
             },
+            toolbar: [ ['image', ['picture']] ]
         }); 
 
         $('#TabelRPS').DataTable( {
@@ -377,6 +388,14 @@
 						}
 					}
         })
+
+        $(document).on("click",".SoalUTS",function(){
+					window.location = BaseURL + "Dashboard/Soal/" + $(this).attr('SoalUTS') + "/TENGAH"
+        })
+        
+        $(document).on("click",".SoalUAS",function(){
+					window.location = BaseURL + "Dashboard/Soal/" + $(this).attr('SoalUAS') + "/AKHIR"
+				})
 
         $("#InputMengajar").click(function() {
           var RPS = { KodeMK: $("#MengajarMK").val() }
@@ -404,6 +423,7 @@
             $("#SoalMK").val(Data.KodeMK)
             $("#Catatan").val(Data.CatatanUTS)
             $('#Soal').summernote('code',Data.SoalUTS);
+            $("#CatatanSoal").val(Data.EvaluasiUTS)
             $("#ModalSoal").modal('show')
 					})
 				})
@@ -418,6 +438,7 @@
             $("#SoalMK").val(Data.KodeMK)
             $("#Catatan").val(Data.CatatanUAS)
             $('#Soal').summernote('code',Data.SoalUAS);
+            $("#CatatanSoal").val(Data.EvaluasiUAS)
             $("#ModalSoal").modal('show')
 					})
 				})

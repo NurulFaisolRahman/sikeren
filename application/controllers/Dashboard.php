@@ -1982,7 +1982,7 @@ class Dashboard extends CI_Controller {
 	public function InputMengajar(){
 		if($this->db->get_where('mengajar', array('KodeMK' => $_POST['KodeMK']))->num_rows() === 0){
 			$_POST['NIP'] = $this->session->userdata('NIP');
-			$_POST['Status'] = 0;
+			$_POST['Status'] = 0;$_POST['Tahun'] = date("Y");
 			$this->db->insert('mengajar',$_POST);
 			if ($this->db->affected_rows()){
 				echo '1';
@@ -1997,18 +1997,23 @@ class Dashboard extends CI_Controller {
 	public function InputSoal(){
 		$this->db->where('Id', $_POST['Id']);
 		$this->db->update('mengajar',$_POST);
-		if ($this->db->affected_rows()){
-			echo '1';
-		} else {
-			echo 'Gagal Menyimpan Data!'; 
-		}
+		echo '1';
+	}
+
+	public function ValidasiSoal(){
+		$Data['Halaman'] = 'Jamu';
+		$Data['SubMenu'] = 'ValidasiSoal';
+		$NIP = $this->session->userdata('NIP');
+		$Data['Soal'] = $this->db->query("SELECT mengajar.*,rps.NamaMK,rps.BobotMK,rps.Semester,dosen.Nama FROM mengajar,rps,dosen where mengajar.KodeMK=rps.KodeMK AND mengajar.NIP=dosen.NIP AND (SoalUTS != '' OR SoalUAS != '')")->result_array();
+    $this->load->view('Header',$Data);
+    $this->load->view('ValidasiSoal',$Data); 
 	}
 
 	public function RPS(){
 		$Data['Halaman'] = 'Mengajar';
 		$Data['SubMenu'] = '';
 		$NIP = $this->session->userdata('NIP');
-		$Data['Mengajar'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Id,mengajar.Status FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.NIP='.$NIP)->result_array();
+		$Data['Mengajar'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Id,mengajar.Status,mengajar.Tahun FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.NIP='.$NIP)->result_array();
 		$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` ORDER BY Semester ASC')->result_array();
 		// $Bulan = date("m");
 		// if (intval($Bulan[1]) < 8) {
@@ -2077,8 +2082,9 @@ class Dashboard extends CI_Controller {
 		echo json_encode($this->db->query("SELECT * FROM mengajar WHERE Id=".$Id)->row_array());	
 	}
 
-	public function Soal(){
-		$Data['Soal'] = $this->db->query("SELECT * FROM mengajar WHERE Id=8")->row_array();
+	public function Soal($Id,$Jenis){
+		$Data['Soal'] = $this->db->query("SELECT mengajar.*,dosen.Nama,rps.NamaMK,rps.Semester FROM mengajar,dosen,rps WHERE mengajar.Id=".$Id." and mengajar.KodeMK=rps.KodeMK and mengajar.NIP=dosen.NIP")->row_array();
+		$Data['Jenis'] = $Jenis;
 		$this->load->library('Pdf');
 		$this->load->view('Soal',$Data);
 	}

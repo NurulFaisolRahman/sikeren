@@ -350,5 +350,5 @@
     </tr>
   </table>';
   $pdf->writeHTML($Validasi, true, false, true, false, '');
-  $pdf->Output('RPS_'.$RPS['NamaMK'].'.pdf', 'D');
+  $pdf->Output('RPS_'.$RPS['NamaMK'].'.pdf', 'I');
  ?>

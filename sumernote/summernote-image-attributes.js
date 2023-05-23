@@ -26,16 +26,16 @@
       imageAttributes: {
         dialogTitle: 'Image Attributes',
         tooltip: 'Image Attributes',
+        tabAttributes: 'Attributes',
+          class: 'Class',
+          style: 'Style',
+          role: 'Role',
         tabImage: 'Image',
           src: 'Source',
           browse: 'Browse',
           title: 'Title',
           alt: 'Alt Text',
           dimensions: 'Dimensions',
-        tabAttributes: 'Attributes',
-          class: 'Class',
-          style: 'Style',
-          role: 'Role',
         tabLink: 'Link',
           linkHref: 'URL',
           linkTarget: 'Target',
@@ -95,17 +95,13 @@
         var i = $.summernote.options.imageAttributes._counter;
         // console.log('indice for imageAttribute : ', i);
         var body = '<ul class="nav note-nav nav-tabs note-nav-tabs">' +
-                      '<li class="nav-item note-nav-item active"><a class="nav-link note-nav-link active" href="#note-imageAttributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabImage + '</a></li>' +
-                      '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-attributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabAttributes + '</a></li>' +
-                      '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-link-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabLink + '</a></li>';
-        if (options.imageAttributes.disableUpload == false) {
-           body +=    '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-upload-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabUpload + '</a></li>';
-        }
+                      '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link active" href="#note-imageAttributes-attributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabAttributes + '</a></li>' +
+                      '<li class="nav-item note-nav-item active"><a class="nav-link note-nav-link" href="#note-imageAttributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabImage + '</a></li>';
         body +=     '</ul>' +
                     '<div class="tab-content">' +
 // Tab 2
                     '<div class="tab-pane note-tab-pane" id="note-imageAttributes-attributes-' + i + '">' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-class">' +
+                      '<div style="display:none;" class="note-form-group form-group note-group-imageAttributes-class">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.class + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-class form-control note-form-control note-input" type="text">' +
@@ -117,7 +113,7 @@
                           '<input class="note-imageAttributes-style form-control note-form-control note-input" type="text">' +
                         '</div>' +
                       '</div>' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-role">' +
+                      '<div style="display:none;" class="note-form-group form-group note-group-imageAttributes-role">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.role + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-role form-control note-form-control note-input" type="text">' +
@@ -165,31 +161,21 @@
                         '</div>' +
                       '</div>' +
                     '</div>';
-      if (options.imageAttributes.disableUpload == false) {
-// Tab 4
-        body +=     '<div class="tab-pane note-tab-pane" id="note-imageAttributes-upload-' + i + '">' +
-                      '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.upload + '</label>' +
-                      '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
-                        '<input class="note-imageAttributes-input form-control note-form-control note-input" type="file" name="files" accept="image/*" multiple="multiple">' +
-                        imageAttributesLimitation +
-                      '</div>' +
-                    '</div>';
-        }
 // Tab 1
         body +=     '<div class="tab-pane note-tab-pane fade in active" id="note-imageAttributes-' + i + '">' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-url">' +
+                      '<div style="display:none;" class="note-form-group form-group note-group-imageAttributes-url">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.src + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-src form-control note-form-control note-input" type="text">' +
                         '</div>' +
                       '</div>' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-title">' +
+                      '<div style="display:none;" class="note-form-group form-group note-group-imageAttributes-title">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.title + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-title form-control note-form-control note-input" type="text">' +
                         '</div>' +
                       '</div>' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-alt">' +
+                      '<div style="display:none;" class="note-form-group form-group note-group-imageAttributes-alt">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.alt + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-alt form-control note-form-control note-input" type="text">' +
@@ -197,9 +183,9 @@
                       '</div>' +
                       '<div class="note-form-group form-group note-group-imageAttributes-dimensions">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.dimensions + '</label>' +
-                        '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
+                        '<div class="input-group note-input-group col-xs-4 col-sm-4">' +
                           '<input class="note-imageAttributes-width form-control note-form-control note-input" type="text">' +
-                          '<span class="input-group-addon note-input-group-addon">x</span>' +
+                          '<span class="input-group-addon note-input-group-addon mt-1">&nbsp;x&nbsp;</span>' +
                           '<input class="note-imageAttributes-height form-control note-form-control note-input" type="text">' +
                         '</div>' +
                       '</div>' +
@@ -353,7 +339,7 @@
             $imageWidth.val(imgInfo.width);
             $imageHeight.val(imgInfo.height);
             $imageClass.val(imgInfo.class);
-            $imageStyle.val(imgInfo.style);
+            $imageStyle.val('');
             $imageRole.val(imgInfo.role);
             self.bindEnterKey($editBtn);
             self.bindLabels();
