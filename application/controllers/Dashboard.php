@@ -2056,7 +2056,7 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'Jamu';
 		$Data['SubMenu'] = 'ValidasiSoal';
 		$NIP = $this->session->userdata('NIP');
-		$Data['Soal'] = $this->db->query("SELECT mengajar.*,rps.NamaMK,rps.BobotMK,rps.Semester,dosen.Nama FROM mengajar,rps,dosen where mengajar.KodeMK=rps.KodeMK AND mengajar.NIP=dosen.NIP AND (SoalUTS != '' OR SoalUAS != '')")->result_array();
+		$Data['Soal'] = $this->db->query("SELECT mengajar.*,rps.NamaMK,rps.BobotMK,rps.Semester,Dosen.Nama FROM mengajar,rps,Dosen where mengajar.KodeMK=rps.KodeMK AND mengajar.NIP=Dosen.NIP AND (mengajar.SoalUTS != '' OR mengajar.SoalUAS != '')")->result_array();
     $this->load->view('Header',$Data);
     $this->load->view('ValidasiSoal',$Data); 
 	}
@@ -2080,7 +2080,7 @@ class Dashboard extends CI_Controller {
 	public function PlotRPS(){
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'PlotRPS';
-		$Data['RPS'] = $this->db->query("SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Id,mengajar.Status,dosen.Nama FROM rps,mengajar,dosen WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.NIP=dosen.NIP")->result_array();
+		$Data['RPS'] = $this->db->query("SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Id,mengajar.Status,Dosen.Nama FROM rps,mengajar,Dosen WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.NIP=Dosen.NIP")->result_array();
 		$this->load->view('Header',$Data);
     $this->load->view('PlotRPS',$Data); 
 	}
@@ -2135,7 +2135,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function Soal($Id,$Jenis){
-		$Data['Soal'] = $this->db->query("SELECT mengajar.*,dosen.Nama,rps.NamaMK,rps.Semester FROM mengajar,dosen,rps WHERE mengajar.Id=".$Id." and mengajar.KodeMK=rps.KodeMK and mengajar.NIP=dosen.NIP")->row_array();
+		$Data['Soal'] = $this->db->query("SELECT mengajar.*,Dosen.Nama,rps.NamaMK,rps.Semester FROM mengajar,Dosen,rps WHERE mengajar.Id=".$Id." and mengajar.KodeMK=rps.KodeMK and mengajar.NIP=Dosen.NIP")->row_array();
 		$Data['Jenis'] = $Jenis;
 		$this->load->library('Pdf');
 		$this->load->view('Soal',$Data);
@@ -2143,7 +2143,7 @@ class Dashboard extends CI_Controller {
 
 	public function UnduhRPS($KodeMK){
 		$Data['RPS'] = $this->db->get_where("rps", array('KodeMK' => $KodeMK))->row_array();
-		$Dosen = $this->db->query("SELECT dosen.Nama,dosen.QRCode FROM mengajar,dosen WHERE mengajar.NIP=dosen.NIP AND mengajar.KodeMK='".$KodeMK."' AND mengajar.Status=3")->result_array();
+		$Dosen = $this->db->query("SELECT Dosen.Nama,Dosen.QRCode FROM mengajar,Dosen WHERE mengajar.NIP=Dosen.NIP AND mengajar.KodeMK='".$KodeMK."' AND mengajar.Status=3")->result_array();
 		$Data['Dosen1'] = $Dosen[0]['Nama'];
 		$Data['QRCode1'] = $Dosen[0]['QRCode'];
 		if (count($Dosen) > 1) { 
