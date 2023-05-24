@@ -16,7 +16,7 @@
                               <th style="width: 20%;" class="align-middle">Nama</th>
                               <th class="align-middle">Judul Proposal</th>
                               <th style="width: 5%;" class="align-middle text-center">Aksi</th>
-                              <th style="width: 7%;" class="text-center align-middle">Cek Data</th>
+                              <th class="text-center align-middle">Cek Data</th>
                             </tr>
                           </thead>
                           <tbody>

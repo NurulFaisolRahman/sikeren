@@ -17,7 +17,7 @@
                               <th class="align-middle">Dosen Pembimbing</th>
                               <th style="width: 12%;" class="align-middle">Tanggal Ujian</th>
                               <th style="width: 5%;" class="align-middle text-center">Aksi</th>
-                              <th style="width: 7%;" class="text-center align-middle">Cek Data</th>
+                              <th class="text-center align-middle">Cek Data</th>
                             </tr>
                           </thead>
                           <tbody>
