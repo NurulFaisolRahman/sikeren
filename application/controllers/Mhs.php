@@ -639,7 +639,7 @@ class Mhs extends CI_Controller {
 
 	public function UnduhRPS($KodeMK){
 		$Data['RPS'] = $this->db->get_where("rps", array('KodeMK' => $KodeMK))->row_array();
-		$Dosen = $this->db->query("SELECT dosen.Nama,dosen.QRCode FROM mengajar,dosen WHERE mengajar.NIP=dosen.NIP AND mengajar.KodeMK='".$KodeMK."' AND mengajar.Status=3")->result_array();
+		$Dosen = $this->db->query("SELECT Dosen.Nama,Dosen.QRCode FROM mengajar,Dosen WHERE mengajar.NIP=Dosen.NIP AND mengajar.KodeMK='".$KodeMK."' AND mengajar.Status=3")->result_array();
 		if (count($Dosen) >= 1) {
 			$Data['Dosen1'] = $Dosen[0]['Nama'];
 			$Data['QRCode1'] = $Dosen[0]['QRCode'];
