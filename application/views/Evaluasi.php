@@ -74,7 +74,7 @@
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Tutup</b></button>
-            <button type="submit" class="btn btn-success" id="Input"><b>Simpan</b></button>
+            <button type="submit" class="btn btn-success" id="Input"><b>Simpan <div id="LoadingInput" class="spinner-border spinner-border-sm text-white" style="display: none;" role="status"></div></b></button>
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Tutup</b></button>
-            <button type="submit" class="btn btn-success" id="Edit"><b>Simpan</b></button>
+            <button type="submit" class="btn btn-success" id="Edit"><b>Simpan <div id="LoadingEdit" class="spinner-border spinner-border-sm text-white" style="display: none;" role="status"></div></b></button>
           </div>
         </div>
       </div>
@@ -184,6 +184,8 @@
           } else if (!$('#_Bukti')[0].files[0] == false && $('#_Bukti')[0].files[0].type != "application/pdf") {
 						alert('Input Dokumen Wajib Pdf!')
 					} else {
+            $("#Edit").attr("disabled", true);                              
+            $("#LoadingEdit").show();
             var fd = new FormData()
             fd.append('Id',$("#Id").val())
             fd.append('NamaDokumen',$("#_Nama").val())
@@ -201,7 +203,9 @@
 									window.location = BaseURL + "Dashboard/DokumenEvaluasi"
 								}
 								else {
-									alert(Respon)
+                  alert(Respon)
+                  $("#Edit").attr("disabled", false);                              
+                  $("#LoadingEdit").hide();
 								}
 							}
 						})
@@ -214,6 +218,8 @@
           } else if (!$('#Bukti')[0].files[0] || $('#Bukti')[0].files[0].type != "application/pdf") {
 						alert('Input Dokumen Wajib Pdf!')
 					} else {
+            $("#Input").attr("disabled", true);                              
+            $("#LoadingInput").show();
             var fd = new FormData()
 						fd.append('NamaDokumen',$("#Nama").val())
             fd.append("Bukti", $('#Bukti')[0].files[0])
@@ -228,7 +234,9 @@
 									window.location = BaseURL + "Dashboard/DokumenEvaluasi"
 								}
 								else {
-									alert(Respon)
+                  alert(Respon)
+                  $("#LoadingInput").hide();
+                  $("#Input").attr("disabled", false);
 								}
 							}
 						})
