@@ -57,7 +57,7 @@
                       <div class="col-lg-auto my-1">
                         <div class="input-group input-group-sm d-flex justify-content-center">
                           <div class="input-group-prepend">
-                            <label class="input-group-text bg-primary text-light"><b>Penilaian Anda</b></label>
+                            <label class="input-group-text bg-warning text-dark"><b>Penilaian Anda</b></label>
                           </div>
                         </div>
                       </div>
@@ -95,6 +95,21 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="Auth" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="input-group input-group-sm mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-primary text-light"><b>Password</b></span>
+              </div>
+              <input type="password" class="form-control" id="sandi">
+              <button type="button" class="btn btn-sm btn-danger" id="Buka"><b>Open</b></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
     <script src="<?=base_url('bootstrap/js/popper.min.js')?>" ></script>
     <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
@@ -103,6 +118,14 @@
       $(document).ready(function(){
         $('[data-mask]').inputmask()
         var BaseURL = '<?=base_url()?>'
+        $("#Auth").modal("show");
+        $("#Buka").click(function() {
+          if ($("#sandi").val() == "ebsie") {
+            $("#Auth").modal("hide");
+          } else {
+            alert("Password Salah!")
+          }
+        })
         $("#Kirim").click(function() {
           if (isNaN($("#NIM").val()) || $("#NIM").val() === "") {
             alert('Mohon Input NIM 12 Digit Angka!')

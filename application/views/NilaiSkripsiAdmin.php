@@ -18,9 +18,9 @@
                               <th style="width: 12%;" class="align-middle">NIM</th>
                               <th style="width: 20%;" class="align-middle">Nama</th>
                               <th style="width: 20%;" class="align-middle">Dosen Pembimbing</th>
-                              <th class="align-middle">Tanggal Ujian</th>
                               <th class="align-middle">Semester Tahun Ajaran</th>
-                              <th style="width: 7%;" class="text-center align-middle">Data</th>
+                              <th style="width: 7%;" class="text-center align-middle">Nilai</th>
+                              <th class="align-middle text-center">Rekap File</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -30,7 +30,6 @@
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
                                 <td class="align-middle"><?=$key['NamaPembimbing']?></td>
-                                <td class="align-middle"><?=$key['TanggalUjianSkripsi']?></td>
                                 <td class="align-middle">
                                   <?php $Bulan = explode("-",$key['TanggalUjianSkripsi']) ;
                                   if (intval($Bulan[1]) < 8) {
@@ -51,6 +50,11 @@
                                 <td class="text-center align-middle">
                                   <a href="<?=base_url('Admin/BeritaAcaraUjianSkripsi/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
                                 </td> 
+                                <td class="text-center align-middle">
+                                  <button Administrasi="<?=base_url('Proposal/'.$key['Administrasi'])?>" class="btn btn-sm btn-warning Administrasi"><i class="fas fa-download"></i></button>  
+                                  <button ToeflSertifikat="<?=base_url('Proposal/'.$key['ToeflSertifikat'])?>" class="btn btn-sm btn-primary ToeflSertifikat"><i class="fas fa-download"></i></button>  
+                                  <button RevisiProposalBimbingan="<?=base_url('Proposal/'.$key['RevisiProposalBimbingan'])?>" class="btn btn-sm btn-success RevisiProposalBimbingan"><i class="fas fa-download"></i></button>  
+                                </td> 
                               </tr>
                             <?php } ?>
                           </tbody>
@@ -63,6 +67,15 @@
             </div>
           </div>
         </section>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalFile">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-body">
+            <embed id="PathFile" src="" type="application/pdf" width="100%" height="530"/>
+          </div>
+        </div>
       </div>
     </div>
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
@@ -86,7 +99,26 @@
 							'next': '<b class="text-primary">></b>'
 						}
 					}
-				})
+        })
+        
+        $(document).on("click",".Administrasi",function(){
+					var Path = $(this).attr('Administrasi')
+          $('#PathFile').attr('src',Path)		
+          $('#ModalFile').modal("show")
+        }) 
+
+        $(document).on("click",".ToeflSertifikat",function(){
+					var Path = $(this).attr('ToeflSertifikat')
+          $('#PathFile').attr('src',Path)		
+          $('#ModalFile').modal("show")
+        }) 
+
+        $(document).on("click",".RevisiProposalBimbingan",function(){
+					var Path = $(this).attr('RevisiProposalBimbingan')
+          $('#PathFile').attr('src',Path)		
+          $('#ModalFile').modal("show")
+        }) 
+
 			})
 		</script>
   </body>

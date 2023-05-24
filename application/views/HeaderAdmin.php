@@ -126,32 +126,32 @@
             <?php } else if($this->session->userdata('Role') == 3) {?>
               <li class="nav-item">
                 <a href="<?=base_url("Admin/DosenPembimbing")?>" class="nav-link <?php if ($SubMenu == 'Dosen Pembimbing') { echo "active"; } ?>">
-                  <i class="nav-icon fas fa-users"></i>
+                  <i class="nav-icon fas fa-user"></i>
                   <p><b>Dosen Pembimbing</b></p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?=base_url("Admin/UjianProposal")?>" class="nav-link <?php if ($SubMenu == 'Ujian Proposal') { echo "active"; } ?>">
-                  <i class="nav-icon fas fa-users"></i>
+                  <i class="nav-icon fas fa-tasks"></i>
                   <p><b>Ujian Proposal</b></p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?=base_url("Admin/UjianSkripsi")?>" class="nav-link <?php if ($SubMenu == 'Ujian Skripsi') { echo "active"; } ?>">
-                  <i class="nav-icon fas fa-users"></i>
+                  <i class="nav-icon fas fa-tasks"></i>
                   <p><b>Ujian Skripsi</b></p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=base_url("Admin/RekapSkripsi")?>" class="nav-link <?php if ($SubMenu == 'Rekap Skripsi') { echo "active"; } ?>">
-                  <i class="nav-icon fas fa-users"></i>
-                  <p><b>Rekap Skripsi</b></p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?=base_url("Admin/RekapProposal")?>" class="nav-link <?php if ($SubMenu == 'Rekap Proposal') { echo "active"; } ?>">
                   <i class="nav-icon fas fa-users"></i>
                   <p><b>Rekap Proposal</b></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?=base_url("Admin/RekapSkripsi")?>" class="nav-link <?php if ($SubMenu == 'Rekap Skripsi') { echo "active"; } ?>">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p><b>Rekap Skripsi</b></p>
                 </a>
               </li>
             <?php } else if($this->session->userdata('Role') == 2) {?>

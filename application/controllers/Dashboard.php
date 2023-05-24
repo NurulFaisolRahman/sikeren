@@ -2000,6 +2000,58 @@ class Dashboard extends CI_Controller {
 		echo '1';
 	}
 
+	public function DokumenEvaluasi(){
+		$Data['Halaman'] = 'Jamu';
+		$Data['SubMenu'] = 'DokumenEvaluasi';
+		$Data['Data'] = $this->db->get('evaluasi')->result_array();
+    $this->load->view('Header',$Data);
+    $this->load->view('Evaluasi',$Data); 
+	}
+
+	public function InputDokumen(){
+		$NamaDokumen = date('Ymd',time()).substr(password_hash('NamaDokumen', PASSWORD_DEFAULT),7,7);
+		$NamaDokumen = str_replace("/","E",$NamaDokumen);
+		$NamaDokumen = str_replace(".","F",$NamaDokumen);
+		move_uploaded_file($_FILES['Bukti']['tmp_name'], "Evaluasi/".$NamaDokumen.".pdf");
+		$_POST['Bukti'] = $NamaDokumen.".pdf";
+		$this->db->insert('evaluasi',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Input Data!'; 
+		}
+	}
+
+	public function EditDokumen(){
+		if (count($_FILES) == 0) {
+			unset($_POST['_Bukti']);unset($_POST['Bukti']);
+      $this->db->where('Id', $_POST['Id']);
+			$this->db->update('evaluasi',$_POST);
+			echo '1';
+    } else {
+      unlink('Evaluasi/'.$_POST['_Bukti']);
+			unset($_POST['_Bukti']);
+			$NamaDokumen = date('Ymd',time()).substr(password_hash('NamaDokumen', PASSWORD_DEFAULT),7,7);
+			$NamaDokumen = str_replace("/","E",$NamaDokumen);
+			$NamaDokumen = str_replace(".","F",$NamaDokumen);
+			move_uploaded_file($_FILES['Bukti']['tmp_name'], "Evaluasi/".$NamaDokumen.".pdf");
+			$_POST['Bukti'] = $NamaDokumen.".pdf";
+			$this->db->where('Id', $_POST['Id']);
+			$this->db->update('evaluasi',$_POST);
+			echo '1';
+		}
+	}
+
+	public function HapusDokumen(){
+		$this->db->delete('evaluasi', array('Id' => $_POST['Id']));
+		if ($this->db->affected_rows()){
+			unlink('Evaluasi/'.$_POST['Bukti']);
+			echo '1';
+		} else {
+			echo 'Gagal Menghapus Data!';
+		}
+	}
+
 	public function ValidasiSoal(){
 		$Data['Halaman'] = 'Jamu';
 		$Data['SubMenu'] = 'ValidasiSoal';
