@@ -118,6 +118,7 @@
     </div>
     <div class="modal fade" id="ModalDokumen">
       <div class="modal-dialog modal-xl">
+        <div class="modal-content">
           <div class="modal-body">
             <embed id="PathData" src="" type="application/pdf" width="100%" height="530"/>
           </div>
