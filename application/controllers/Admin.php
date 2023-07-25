@@ -156,7 +156,7 @@ class Admin extends CI_Controller {
 	public function RekapSkripsi(){
 		$Data['Halaman'] = 'Nilai';
 		$Data['SubMenu'] = 'Rekap Skripsi';
-		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
+		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != '' AND NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
     $this->load->view('HeaderAdmin',$Data);
     $this->load->view('NilaiSkripsiAdmin',$Data); 
 	}
@@ -199,7 +199,7 @@ class Admin extends CI_Controller {
 	}
 
 	public function ExcelRekapSkripsi(){
-		$Mhs = $this->db->query("SELECT * FROM mahasiswa where NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
+		$Mhs = $this->db->query("SELECT * FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != '' AND  NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
 		$Data['Mhs'] = array();
 		foreach ($Mhs as $key) {
 			$TempMhs = array();$TempMhs[0] = $key['NIM'];$TempMhs[1] = $key['Nama'];$TempMhs[2] = $key['JudulProposal'];
