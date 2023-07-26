@@ -402,6 +402,23 @@ class Admin extends CI_Controller {
 			$NilaiSekretaris += $Bobot[$i]*(float)$RekapNilai[$i];
 		}
 		$Data['Nilai'] = number_format(((0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris)),2);
+		if ($Data['Nilai'] >= 80) {
+			$Data['Nilai'] .= ' (A)';
+		} else if ($Data['Nilai'] > 75) {
+			$Data['Nilai'] .= ' (B+)';
+		} else if ($Data['Nilai'] > 70) {
+			$Data['Nilai'] .= ' (B)';
+		} else if ($Data['Nilai'] > 65) {
+			$Data['Nilai'] .= ' (C+)';
+		} else if ($Data['Nilai'] > 60) {
+			$Data['Nilai'] .= ' (C)';
+		} else if ($Data['Nilai'] > 55) {
+			$Data['Nilai'] .= ' (D+)';
+		} else if ($Data['Nilai'] > 50) {
+			$Data['Nilai'] .= ' (D)';
+		} else {
+			$Data['Nilai'] .= ' (E)';
+		}
 		$this->load->view('BeritaAcaraUjianProposal',$Data);
 	}
 
