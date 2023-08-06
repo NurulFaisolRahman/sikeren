@@ -11,9 +11,9 @@
   $pdf->SetFooterMargin(10);
   $pdf->AddPage('P', 'A4');
   if ($Soal['Semester'] % 2 == 0) {
-    $SMT = 'GENAP '.($Soal['Tahun']-1).'/'.$Soal['Tahun'];
+    $SMT = 'GENAP '.((int)$Soal['Tahun']-1).'/'.((int)$Soal['Tahun']);
   } else {
-    $SMT = 'GASAL '.$Soal['Tahun'].'/'.$Soal['Tahun']+1;
+    $SMT = 'GASAL '.((int)$Soal['Tahun']).'/'.((int)$Soal['Tahun']+1);
   }
   if ($Jenis == 'TENGAH') {
     $Ujian = '<td style="width:55%;">: '.$Soal['NamaMK'].'<br>: '.$Soal['Nama'].'<br>: '.$Soal['SifatUTS'].'<br>: '.$Soal['WaktuUTS'].'<br>: '.$Soal['CatatanUTS'].'</td>';
