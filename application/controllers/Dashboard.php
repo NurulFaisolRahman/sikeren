@@ -1980,7 +1980,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function InputMengajar(){
-		if($this->db->get_where('mengajar', array('KodeMK' => $_POST['KodeMK'],'NIP' => $_POST['NIP'],'Tahun' => date("Y")))->num_rows() === 0){
+		if($this->db->get_where('mengajar', array('KodeMK' => $_POST['KodeMK'],'NIP' => $this->session->userdata('NIP'),'Tahun' => date("Y")))->num_rows() === 0){
 			$_POST['NIP'] = $this->session->userdata('NIP');
 			$_POST['Status'] = 0;$_POST['Tahun'] = date("Y");
 			$this->db->insert('mengajar',$_POST);
