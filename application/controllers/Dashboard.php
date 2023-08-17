@@ -1980,7 +1980,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function InputMengajar(){
-		if($this->db->get_where('mengajar', array('KodeMK' => $_POST['KodeMK'],'NIP' => $this->session->userdata('NIP'),'Tahun' => date("Y")))->num_rows() === 0){
+		if($this->db->get_where('mengajar', array('KodeMK' => $_POST['KodeMK'],'NIP' => $this->session->userdata('NIP')PDF,'Tahun' => date("Y")))->num_rows() === 0){
 			$_POST['NIP'] = $this->session->userdata('NIP');
 			$_POST['Status'] = 0;$_POST['Tahun'] = date("Y");
 			$this->db->insert('mengajar',$_POST);
@@ -2067,12 +2067,12 @@ class Dashboard extends CI_Controller {
 		$NIP = $this->session->userdata('NIP');
 		$Data['Mengajar'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Id,mengajar.Status,mengajar.Tahun FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.NIP='.$NIP)->result_array();
 		$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` ORDER BY Semester ASC')->result_array();
-		$Bulan = date("m");
-		if (intval($Bulan[1]) < 8) {
-			$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` WHERE (Semester % 2) = 0 ORDER BY Semester ASC')->result_array();
-		} else {
-			$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` WHERE (Semester % 2) > 0 ORDER BY Semester ASC')->result_array();
-		}
+		// $Bulan = date("m");
+		// if (intval($Bulan[1]) < 8) {
+		// 	$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` WHERE (Semester % 2) = 0 ORDER BY Semester ASC')->result_array();
+		// } else {
+		// 	$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` WHERE (Semester % 2) > 0 ORDER BY Semester ASC')->result_array();
+		// }
     $this->load->view('Header',$Data);
     $this->load->view('MengajarRPS',$Data); 
 	}
