@@ -185,7 +185,7 @@
                       $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal","ValidasiUjianSkripsi","PlotRPS","PlotMBKM");
                       $NamaKegiatan = array("Pembimbing","Ujian Proposal","Ujian Skripsi","Validasi RPS","DPL MBKM");
                       // $Icon = array("users","users","users");
-                      $Icon = array("users","users","book","users");
+                      $Icon = array("users","users","users","book","users");
                     ?>
                     <?php for ($i=0; $i < count($JenisKegiatan); $i++) { ?>
                     <ul class="nav nav-treeview <ml-1></ml-3>">
