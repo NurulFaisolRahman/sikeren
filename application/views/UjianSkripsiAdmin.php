@@ -151,7 +151,7 @@
           var Mhs = { NIM: $("#NIM").val(),
                       PengujiSkripsi1: $("#PengujiSkripsi1").val(),
                       PengujiSkripsi2: $("#PengujiSkripsi2").val(),
-                      StatusUjianSkripsi: 'Menunggu Persetujuan Penguji' }
+                      StatusUjianProposal: 'Menunggu Persetujuan KPS' }
           var Konfirmasi = confirm("Yakin Ingin Validasi Data?"); 
       		if (Konfirmasi == true) {
             $("#ValidasiProposal").attr("disabled", true); 

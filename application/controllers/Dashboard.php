@@ -1593,7 +1593,13 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'PlotMBKM';
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
-		$Data['MBKM'] = $this->db->query("SELECT mbkm.*,mahasiswa.Nama,kodewilayah.Nama AS Kabupaten FROM mbkm,mahasiswa,kodewilayah WHERE mbkm.NIM=mahasiswa.NIM AND mbkm.Kabupaten=kodewilayah.Kode AND Status NOT LIKE '%Ditolak%' ORDER BY Tanggal ASC")->result_array();
+		// $Data['MBKM'] = $this->db->query("SELECT mbkm.*,mahasiswa.Nama,kodewilayah.Nama AS Kabupaten FROM mbkm,mahasiswa,kodewilayah WHERE mbkm.NIM=mahasiswa.NIM AND mbkm.Kabupaten=kodewilayah.Kode AND Status NOT LIKE '%Ditolak%' ORDER BY Tanggal ASC")->result_array();
+		$Data['MBKM'] = $this->db->query("SELECT mbkm.*,mahasiswa.Nama FROM mbkm,mahasiswa WHERE mbkm.NIM=mahasiswa.NIM AND Status NOT LIKE '%Ditolak%' ORDER BY Tanggal ASC")->result_array();
+		$Wilayah = $this->db->query("SELECT * FROM `kodewilayah` WHERE Kode LIKE '3%'")->result_array();
+		$Data['Wilayah'] = array();
+		foreach ($Wilayah as $key) {
+			$Data['Wilayah'][$key['Kode']] = $key['Nama'];
+		}
 		$this->load->view('Header',$Data);
     $this->load->view('PlotMBKM',$Data); 
 	}
@@ -1679,6 +1685,14 @@ class Dashboard extends CI_Controller {
 		}
     $this->load->view('Header',$Data);
     $this->load->view('ValidasiUjianProposal',$Data); 
+	}
+
+	public function ValidasiUjianSkripsi(){ 
+		$Data['Halaman'] = 'Validasi';
+		$Data['SubMenu'] = 'ValidasiUjianSkripsi';
+		$Data['UjianSkripsi'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan KPS'")->result_array();
+    $this->load->view('Header',$Data);
+    $this->load->view('ValidasiUjianSkripsi',$Data); 
 	}
 
 	public function ValidasiPengujiProposal(){
@@ -1947,6 +1961,16 @@ class Dashboard extends CI_Controller {
 			echo '1';
 		} else {
 			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
+	public function KPSValidasiUjianSkripsi(){
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Validasi Data!';
 		}
 	}
 

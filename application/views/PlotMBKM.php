@@ -43,7 +43,7 @@
                                 <td class="align-middle"><?=$key['Tanggal']?></td>
                                 <td class="align-middle"><?=$key['Status']?></td>
                                 <td class="text-center align-middle">
-                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['Jenis']."|".$key['Konsentrasi']."|".$key['Instansi']."|".$key['NamaInstansi']."|".$key['Kabupaten']."|".$key['IPK'].$key['Dosen']?>" class="btn btn-sm btn-primary CekData"><i class="fas fa-edit"></i></button>
+                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['Jenis']."|".$key['Konsentrasi']."|".$key['Instansi']."|".$key['NamaInstansi']."|".$Wilayah[$key['Kabupaten']]."|".$key['IPK'].$key['Dosen']?>" class="btn btn-sm btn-primary CekData"><i class="fas fa-edit"></i></button>
                                 </td> 
                               </tr>
                             <?php } ?>

@@ -182,8 +182,8 @@
                     <?php
                       // $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal","PlotMBKM");
                       // $NamaKegiatan = array("Dosen Pembimbing","Penguji Proposal","DPL MBKM");
-                      $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal","PlotRPS","PlotMBKM");
-                      $NamaKegiatan = array("Dosen Pembimbing","Penguji Proposal","Validasi RPS","DPL MBKM");
+                      $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal","ValidasiUjianSkripsi","PlotRPS","PlotMBKM");
+                      $NamaKegiatan = array("Pembimbing","Ujian Proposal","Ujian Skripsi","Validasi RPS","DPL MBKM");
                       // $Icon = array("users","users","users");
                       $Icon = array("users","users","book","users");
                     ?>
