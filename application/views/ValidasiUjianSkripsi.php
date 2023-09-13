@@ -59,7 +59,7 @@
         var BaseURL = '<?=base_url()?>';
         
         $(document).on("click",".Validasi",function(){
-          var Mhs = { NIM: $("#NIM").val(),
+          var Mhs = { NIM: $(this).attr('Validasi'),
                       StatusUjianSkripsi: 'Menunggu Persetujuan Penguji' }
           var Konfirmasi = confirm("Yakin Ingin Validasi?"); 
       		if (Konfirmasi == true) {
