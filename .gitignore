@@ -22,7 +22,7 @@ SitasiMahasiswa/*
 FotoDosen/*
 FotoMhs/*
 LogBookMBKM/*
-application/config/config.php
+# application/config/config.php
 application/config/database.php
 akuntansi/BukuMahasiswa/*
 akuntansi/DosenKontrak/*
