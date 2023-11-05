@@ -8,7 +8,7 @@ class SMD extends CI_Controller {
 	}
 
 	public function RekapSkripsi(){
-		$Data['Mhs'] = $this->db->query("SELECT * FROM `mahasiswa` WHERE `TanggalUjianSkripsi` > '2023-01-31'")->result_array();
+		$Data['Mhs'] = $this->db->query("SELECT * FROM `mahasiswa` WHERE `TanggalUjianSkripsi` > '2023-07-31'")->result_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM `Dosen`")->result_array();
 		$this->load->view('RekapSkripsi',$Data);
 	}

@@ -21,7 +21,7 @@
         <div class="col-lg-12">
           <div class="card my-1 bg-primary">
             <div class="card-body p-2 text-light">
-              <p class="font-weight-bold mb-1 text-center" style="font-size: 25px;">Rekap Ujian Skripsi Semester Genap 2022/2023 </p>
+              <p class="font-weight-bold mb-1 text-center" style="font-size: 25px;">Rekap Ujian Skripsi Semester Ganjil 2023/2024 </p>
               <div class="row">
                 <div class="col-lg-12">
                   <div class="table-responsive">
