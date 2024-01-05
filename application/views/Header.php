@@ -70,7 +70,7 @@
                   </a>
                   <?php
                     $JenisKegiatan = array("ValidasiBimbingan","ValidasiPengujiProposal","ValidasiPengujiSkripsi");
-                    $NamaKegiatan = array("Validasi Bimbingan","Penguji Proposal","Penguji Skripsi");
+                    $NamaKegiatan = array("Mhs Bimbingan","Ujian Proposal","Ujian Skripsi");
                     $Icon = array("users","users","users");
                   ?>
                   <?php for ($i=0; $i < count($JenisKegiatan); $i++) {?>

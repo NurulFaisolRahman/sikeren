@@ -34,6 +34,8 @@
                                 <td class="text-center align-middle">
                                   <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['Gender']."|".$key['Alamat']."|".$key['HP']."|".$key['Konsentrasi']."|".$key['JudulProposal']."|".$key['NIPPembimbing']?>" class="btn btn-sm btn-warning CekData"><i class="fas fa-edit"></i></button>
                                   <button LihatProposal="<?=base_url('Proposal/'.$key['DraftProposal'])?>" class="btn btn-sm btn-danger LihatProposal"><i class="fas fa-file-pdf"></i></button>  
+                                  <button LihatPersetujuanJudul="<?=base_url('Proposal/'.$key['PersetujuanJudul'])?>" class="btn btn-sm btn-primary LihatPersetujuanJudul"><i class="fas fa-file-pdf"></i></button>  
+                                  <button LihatKRS="<?=base_url('Proposal/'.$key['KRS'])?>" class="btn btn-sm btn-success text-white LihatKRS"><i class="fas fa-file-pdf"></i></button>  
                                 </td> 
                               </tr>
                             <?php } ?>
@@ -163,6 +165,24 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="ModalPersetujuanJudul">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-body">
+            <embed id="PathPersetujuanJudul" src="" type="application/pdf" width="100%" height="520"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalKRS">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-body">
+            <embed id="PathKRS" src="" type="application/pdf" width="100%" height="520"/>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="modal fade" id="ModalListDosenPembimbing">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content bg-primary">
@@ -267,6 +287,18 @@
           $('#PathProposal').attr('src',Path)		
           $('#ModalProposal').modal("show")
 				}) 
+
+        $(document).on("click",".LihatPersetujuanJudul",function(){
+					var Path = $(this).attr('LihatPersetujuanJudul')
+          $('#PathPersetujuanJudul').attr('src',Path)		
+          $('#ModalPersetujuanJudul').modal("show")
+				})
+
+        $(document).on("click",".LihatKRS",function(){
+					var Path = $(this).attr('LihatKRS')
+          $('#PathKRS').attr('src',Path)		
+          $('#ModalKRS').modal("show")
+				})
 
         $('#TabelDosenPembimbing').DataTable( {
 					// dom:'lfrtip',

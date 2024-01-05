@@ -1653,7 +1653,7 @@ class Dashboard extends CI_Controller {
 	public function ValidasiUjianProposal(){ 
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'ValidasiUjianProposal';
-		$Data['UjianProposal'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan KPS' or StatusPengujiProposal1 LIKE 'Ditolak%' or StatusPengujiProposal2 LIKE 'Ditolak%'")->result_array();
+		$Data['UjianProposal'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan KPS' or StatusUjianProposal = 'Ditolak Pembimbing' or StatusPengujiProposal1 LIKE 'Ditolak%' or StatusPengujiProposal2 LIKE 'Ditolak%'")->result_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
 		$Penguji1 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal1,COUNT(mahasiswa.PengujiProposal1) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal1 = Dosen.NIP AND PengujiProposal1 != '' GROUP BY PengujiProposal1")->result_array();
 		$Penguji2 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal2,COUNT(mahasiswa.PengujiProposal2) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal2 = Dosen.NIP AND PengujiProposal2 != '' GROUP BY PengujiProposal2")->result_array();
@@ -1690,7 +1690,7 @@ class Dashboard extends CI_Controller {
 	public function ValidasiUjianSkripsi(){ 
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'ValidasiUjianSkripsi';
-		$Data['UjianSkripsi'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan KPS'")->result_array();
+		$Data['UjianSkripsi'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan KPS' or StatusUjianSkripsi = 'Ditolak Pembimbing'")->result_array();
     $this->load->view('Header',$Data);
     $this->load->view('ValidasiUjianSkripsi',$Data); 
 	}
@@ -1699,8 +1699,8 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'ValidasiDosen';
 		$Data['SubMenu'] = 'ValidasiPengujiProposal';
 		$Data['PengujiProposal'] = array();
-		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan Penguji' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal1 = ''")->result_array();
-		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan Penguji' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal2 = ''")->result_array();
+		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where (StatusUjianProposal = 'Disetujui Pembimbing' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal1 = '') OR (StatusUjianProposal = 'Menunggu Persetujuan Penguji' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."')")->result_array();
+		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where (StatusUjianProposal = 'Disetujui Pembimbing' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal2 = '') OR (StatusUjianProposal = 'Menunggu Persetujuan Penguji' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."')")->result_array();
 		for ($i=0; $i < count($Penguji1); $i++) { 
 			array_push($Data['PengujiProposal'],$Penguji1[$i]);
 		}
@@ -1715,8 +1715,8 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'ValidasiDosen';
 		$Data['SubMenu'] = 'ValidasiPengujiSkripsi';
 		$Data['PengujiSkripsi'] = array();
-		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan Penguji' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi1 = ''")->result_array();
-		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan Penguji' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi2 = ''")->result_array();
+		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where (StatusUjianSkripsi = 'Disetujui Pembimbing' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi1 = '') OR (StatusUjianSkripsi = 'Menunggu Persetujuan Penguji' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."')")->result_array();
+		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where (StatusUjianSkripsi = 'Disetujui Pembimbing' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi2 = '') OR (StatusUjianSkripsi = 'Menunggu Persetujuan Penguji' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."')")->result_array();
 		for ($i=0; $i < count($Penguji1); $i++) { 
 			array_push($Data['PengujiSkripsi'],$Penguji1[$i]);
 		}
@@ -1889,6 +1889,8 @@ class Dashboard extends CI_Controller {
 			$_POST['StatusPengujiSkripsi1'] = 'Ditolak Karena '.$_POST['Alasan'];
 		} else if ($Data['PengujiSkripsi']['PengujiSkripsi2'] == $this->session->userdata('NIP')) {
 			$_POST['StatusPengujiSkripsi2'] = 'Ditolak Karena '.$_POST['Alasan'];
+		} else if ($Data['PengujiSkripsi']['NIPPembimbing'] == $this->session->userdata('NIP')) {
+			$_POST['StatusUjianSkripsi'] = 'Ditolak Pembimbing';
 		} 
 		unset($_POST['Alasan']);
     $this->db->where('NIM', $_POST['NIM']);
@@ -1901,11 +1903,13 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function TerimaMengujiProposal(){
-		$Data['PengujiProposal'] = $this->db->query("SELECT PengujiProposal1,PengujiProposal2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		$Data['PengujiProposal'] = $this->db->query("SELECT NIPPembimbing,PengujiProposal1,PengujiProposal2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
 		if ($Data['PengujiProposal']['PengujiProposal1'] == $this->session->userdata('NIP')) {
 			$_POST['StatusPengujiProposal1'] = 'Setuju';
 		} else if ($Data['PengujiProposal']['PengujiProposal2'] == $this->session->userdata('NIP')) {
 			$_POST['StatusPengujiProposal2'] = 'Setuju';
+		} else if ($Data['PengujiProposal']['NIPPembimbing'] == $this->session->userdata('NIP')) {
+			$_POST['StatusUjianProposal'] = 'Disetujui Pembimbing';
 		} 
     $this->db->where('NIM', $_POST['NIM']);
 		$this->db->update('mahasiswa',$_POST);
@@ -1922,6 +1926,8 @@ class Dashboard extends CI_Controller {
 			$_POST['StatusPengujiProposal1'] = 'Ditolak Karena '.$_POST['Alasan'];
 		} else if ($Data['PengujiProposal']['PengujiProposal2'] == $this->session->userdata('NIP')) {
 			$_POST['StatusPengujiProposal2'] = 'Ditolak Karena '.$_POST['Alasan'];
+		} else if ($Data['PengujiProposal']['NIPPembimbing'] == $this->session->userdata('NIP')) {
+			$_POST['StatusUjianProposal'] = 'Ditolak Pembimbing';
 		} 
 		unset($_POST['Alasan']);
     $this->db->where('NIM', $_POST['NIM']);
