@@ -1865,6 +1865,8 @@ class Dashboard extends CI_Controller {
 			$_POST['StatusPengujiSkripsi1'] = 'Setuju';
 		} else if ($Data['PengujiSkripsi']['PengujiSkripsi2'] == $this->session->userdata('NIP')) {
 			$_POST['StatusPengujiSkripsi2'] = 'Setuju';
+		} else if ($Data['PengujiSkripsi']['NIPPembimbing'] == $this->session->userdata('NIP')) {
+			$_POST['StatusUjianSkripsi'] = 'Disetujui Pembimbing';
 		} 
     $this->db->where('NIM', $_POST['NIM']);
 		$this->db->update('mahasiswa',$_POST);
