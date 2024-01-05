@@ -1860,7 +1860,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function TerimaMengujiSkripsi(){
-		$Data['PengujiSkripsi'] = $this->db->query("SELECT PengujiSkripsi1,PengujiSkripsi2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		$Data['PengujiSkripsi'] = $this->db->query("SELECT NIPPembimbing,PengujiSkripsi1,PengujiSkripsi2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
 		if ($Data['PengujiSkripsi']['PengujiSkripsi1'] == $this->session->userdata('NIP')) {
 			$_POST['StatusPengujiSkripsi1'] = 'Setuju';
 		} else if ($Data['PengujiSkripsi']['PengujiSkripsi2'] == $this->session->userdata('NIP')) {
@@ -1878,7 +1878,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function TolakMengujiSkripsi(){
-		$Data['PengujiSkripsi'] = $this->db->query("SELECT PengujiSkripsi1,PengujiSkripsi2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		$Data['PengujiSkripsi'] = $this->db->query("SELECT NIPPembimbing,PengujiSkripsi1,PengujiSkripsi2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
 		if ($Data['PengujiSkripsi']['PengujiSkripsi1'] == $this->session->userdata('NIP')) {
 			$_POST['StatusPengujiSkripsi1'] = 'Ditolak Karena '.$_POST['Alasan'];
 		} else if ($Data['PengujiSkripsi']['PengujiSkripsi2'] == $this->session->userdata('NIP')) {
@@ -1915,7 +1915,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function TolakMengujiProposal(){
-		$Data['PengujiProposal'] = $this->db->query("SELECT PengujiProposal1,PengujiProposal2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		$Data['PengujiProposal'] = $this->db->query("SELECT NIPPembimbing,PengujiProposal1,PengujiProposal2 FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
 		if ($Data['PengujiProposal']['PengujiProposal1'] == $this->session->userdata('NIP')) {
 			$_POST['StatusPengujiProposal1'] = 'Ditolak Karena '.$_POST['Alasan'];
 		} else if ($Data['PengujiProposal']['PengujiProposal2'] == $this->session->userdata('NIP')) {
