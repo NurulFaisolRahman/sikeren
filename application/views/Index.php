@@ -169,7 +169,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text bg-primary text-light"><b>Username</b></span>
                         </div>
-                        <input type="text" class="form-control" id="nip" placeholder="NIP">
+                        <input type="text" class="form-control" id="nip">
                       </div>
                       <div class="input-group input-group-sm mb-2">
                         <div class="input-group-prepend">
