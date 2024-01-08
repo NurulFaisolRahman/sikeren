@@ -150,7 +150,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Latar Belakang</b></label>
@@ -163,14 +163,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_LatarBelakang" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Rumusan Permasalahan</b></label>
@@ -183,14 +183,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_RumusanPermasalahan" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Teori Penunjang</b></label>
@@ -203,14 +203,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_TeoriPenunjang" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Penelitian Terdahulu</b></label>
@@ -223,14 +223,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_PenelitianTerdahulu" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Kerangka Fikir</b></label>
@@ -243,14 +243,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_KerangkaFikir" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Fokus Penelitian</b></label>
@@ -263,14 +263,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_FokusPenelitin" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Alat Analisis</b></label>
@@ -283,14 +283,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_AlatAnalisis" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Gambaran Umum Penelitian</b></label>
@@ -303,14 +303,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_GambaranPenelitian" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Analisis Data</b></label>
@@ -323,14 +323,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_AnalisisData" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Kesimpulan</b></label>
@@ -343,14 +343,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_Kesimpulan" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Saran</b></label>
@@ -363,7 +363,7 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_Saran" value="0.0">
                             </div>
                           </div>
@@ -434,7 +434,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Kemutakhiran & Keterbaruan Artikel</b></label>
@@ -447,14 +447,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_Artikel" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Abstrak</b></label>
@@ -467,14 +467,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_AbstrakArtikel" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Pendahuluan/tujuan penelitian/urgensi penelitian</b></label>
@@ -487,14 +487,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_PendahuluanArtikel" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Study Literatur/refrensi</b></label>
@@ -507,14 +507,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_LiteraturArtikel" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Komposisi refrensi</b></label>
@@ -527,14 +527,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_KomposisiArtikel" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Metodologi Penelitian</b></label>
@@ -547,14 +547,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_MetodologiArtikel" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Pembahasan dan Analisis Data</b></label>
@@ -567,14 +567,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_PembahasanArtikel" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Kesimpulan dan keterbatasan penelitian</b></label>
@@ -587,14 +587,14 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_KesimpulanArtikel" value="0.0">
                             </div>
                           </div>
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-11">
+                            <div class="col-12">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Sistematika Daftar Pustaka</b></label>
@@ -607,7 +607,7 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_DapusArtikel" value="0.0">
                             </div>
                           </div>
