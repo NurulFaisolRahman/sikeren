@@ -208,7 +208,7 @@ class Admin extends CI_Controller {
 			$TempMhs[6] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$key['PengujiProposal2'])->row_array()['Nama'];
 			$Bobot = array(5,3.75,2.5,2.5,2.5,5,3.75);
 			$_Bobot = array(2.5,2.5,3,3,2,3,5,2.5,1.5);
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal1']);
+			$RekapNilai = explode("$",$Mhs['NilaiProposal1']);
 			$NilaiKetuaPenguji = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -219,7 +219,7 @@ class Admin extends CI_Controller {
 					$NilaiKetuaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal2']);
+			$RekapNilai = explode("$",$Mhs['NilaiProposal2']);
 			$NilaiAnggotaPenguji = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -230,7 +230,7 @@ class Admin extends CI_Controller {
 					$NilaiAnggotaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal3']);
+			$RekapNilai = explode("$",$Mhs['NilaiProposal3']);
 			$NilaiSekretaris = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -244,7 +244,7 @@ class Admin extends CI_Controller {
 			$NilaiProposal = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
 			$Bobot = array(2.5,2.5,2,2,2,2.5,2.5,2,2.5,2.5,2);
 			$_Bobot = array(2.5,2.5,3,3,2,3,5,2.5,1.5);
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiSkripsi1']);
+			$RekapNilai = explode("$",$Mhs['NilaiSkripsi1']);
 			$NilaiKetuaPenguji = 0;
 			if (count($RekapNilai) == 11) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -255,7 +255,7 @@ class Admin extends CI_Controller {
 					$NilaiKetuaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiSkripsi2']);
+			$RekapNilai = explode("$",$Mhs['NilaiSkripsi2']);
 			$NilaiAnggotaPenguji = 0;
 			if (count($RekapNilai) == 11) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -266,7 +266,7 @@ class Admin extends CI_Controller {
 					$NilaiAnggotaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiSkripsi3']);
+			$RekapNilai = explode("$",$Mhs['NilaiSkripsi3']);
 			$NilaiSekretaris = 0;
 			if (count($RekapNilai) == 11) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -312,7 +312,7 @@ class Admin extends CI_Controller {
 			$TempMhs[6] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$key['PengujiProposal2'])->row_array()['Nama'];
 			$Bobot = array(5,3.75,2.5,2.5,2.5,5,3.75);
 			$_Bobot = array(2.5,2.5,3,3,2,3,5,2.5,1.5);
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal1']);
+			$RekapNilai = explode("$",$Mhs['NilaiProposal1']);
 			$NilaiKetuaPenguji = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -323,7 +323,7 @@ class Admin extends CI_Controller {
 					$NilaiKetuaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal2']);
+			$RekapNilai = explode("$",$Mhs['NilaiProposal2']);
 			$NilaiAnggotaPenguji = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -334,7 +334,7 @@ class Admin extends CI_Controller {
 					$NilaiAnggotaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal3']);
+			$RekapNilai = explode("$",$Mhs['NilaiProposal3']);
 			$NilaiSekretaris = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
