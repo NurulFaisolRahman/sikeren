@@ -64,13 +64,18 @@
                   <a href="#" class="nav-link <?php if ($Halaman == "ValidasiDosen") { echo "active"; } ?>">
                   <i class="nav-icon fas fa-tasks"></i>
                   <p>
-                    <b>Validasi Dosen</b>
+                  <?php 
+                    $Bimbingan = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array();
+                    $Proposal = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan KPS' or StatusUjianSkripsi = 'Ditolak Pembimbing'")->result_array();
+                    $Skripsi = $this->db->query("SELECT * FROM mahasiswa where (StatusUjianSkripsi = 'Disetujui Pembimbing' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi1 = '') OR (StatusUjianSkripsi = 'Disetujui Pembimbing' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi2 = '') OR (StatusUjianSkripsi = 'Menunggu Persetujuan Penguji' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."' AND TanggalUjianSkripsi > '2024-01-05')")->result_array();
+                  ?>
+                  <b>Validasi <span class="badge badge-danger"><?=count($Bimbingan)+count($Proposal)+count($Skripsi)?></span></b>
                     <i class="right fas fa-angle-left"></i>
                   </p>
                   </a>
                   <?php
                     $JenisKegiatan = array("ValidasiBimbingan","ValidasiPengujiProposal","ValidasiPengujiSkripsi");
-                    $NamaKegiatan = array("Mhs Bimbingan","Ujian Proposal","Ujian Skripsi");
+                    $NamaKegiatan = array("Pembimbing","Ujian Proposal","Ujian Skripsi");
                     $Icon = array("users","users","users");
                   ?>
                   <?php for ($i=0; $i < count($JenisKegiatan); $i++) {?>
@@ -87,7 +92,7 @@
                 <li class="nav-item">
                     <a href="<?=base_url("Dashboard/BimbinganSkripsi")?>" class="nav-link <?php if ($Halaman == "Bimbingan Skripsi") { echo "active";} ?>">
                     <i class="nav-icon fas fa-users"></i>
-                    <p><b>Bimbingan Skripsi</b></p>
+                    <p><b>Mhs Bimbingan</b></p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -100,7 +105,11 @@
                   <a href="#" class="nav-link <?php if ($Halaman == "Menilai") { echo "active"; } ?>">
                   <i class="nav-icon fas fa-tasks"></i>
                   <p>
-                    <b>Menilai Ujian</b>
+                    <?php 
+                      $_Proposal = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal2 = 'Setuju' AND (PengujiProposal1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal1 = '' OR PengujiProposal2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal2 = '' OR NIPPembimbing = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal3 = '')")->result_array();
+                      $_Skripsi = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi2 = 'Setuju' AND (PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi1 = '' OR PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi2 = '' OR NIPPembimbing = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi3 = '')")->result_array();
+                    ?>
+                    <b>Menilai <span class="badge badge-danger"><?=count($_Proposal)+count($_Skripsi)?></span></b>
                     <i class="right fas fa-angle-left"></i>
                   </p>
                   </a>
@@ -201,7 +210,7 @@
                   <li class="nav-item">
                     <a href="<?=base_url("Dashboard/RekapMahasiswa/1")?>" class="nav-link <?php if ($Halaman == "Rekap Mahasiswa") { echo "active";} ?>">
                     <i class="nav-icon fas fa-users"></i>
-                    <p><b>Rekap Mahasiswa</b></p>
+                    <p><b>Rekap Data</b></p>
                     </a>
                   </li>
                   <li class="nav-item">

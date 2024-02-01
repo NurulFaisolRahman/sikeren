@@ -2006,7 +2006,7 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'ValidasiDosen';
 		$Data['SubMenu'] = 'ValidasiBimbingan';
 		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array();
-    $this->load->view('Header',$Data);
+		$this->load->view('Header',$Data);
     $this->load->view('ValidasiBimbingan',$Data); 
 	}
 

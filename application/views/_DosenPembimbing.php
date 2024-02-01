@@ -296,8 +296,8 @@
             alert('Pilih Dosen Pengganti!')
           } else {
             var Mhs = { NIM: $("#_NIM").val(),
-                        NIPPembimbing: $( "#_DosenPengganti option:selected" ).text(),
-                        NamaPembimbing: $("#_DosenPengganti").val(),
+                        NIPPembimbing: $("#_DosenPengganti").val(),
+                        NamaPembimbing: $( "#_DosenPengganti option:selected" ).text(),
                         StatusProposal: 'Menunggu Persetujuan Pembimbing' }
             var Konfirmasi = confirm("Yakin Ingin Mengganti?"); 
             if (Konfirmasi == true) {
