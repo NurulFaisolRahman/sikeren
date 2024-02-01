@@ -7,7 +7,8 @@
                 <div class="container-fluid border border-warning rounded bg-light">
                   <div class="row align-items-center">
                     <div class="col-12 mt-2">
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#ModalListDosenPembimbing"><b>Rekap Dosen Pembimbing</b></button>  
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#ModalListDosenPembimbing"><b>Rekap Dosen Pembimbing</b></button> 
+                      <button class="btn btn-warning text-white" data-toggle="modal" data-target="#ModalGantiDosenPembimbing"><b>Ganti Dosen Pembimbing</b></button>  
                       <a class="btn btn-success" href="<?=base_url('Dashboard/RekapDosenPembimbing')?>"><b>Excel Dosen Pembimbing</b></a>   
                     </div>
                     <div class="col-sm-12 my-2 ">    
@@ -214,6 +215,47 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="ModalGantiDosenPembimbing">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-warning">
+          <div class="modal-body text-white">
+            <div class="input-group input-group-sm mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-primary text-light"><b>NIM</b></span>
+              </div>
+              <select class="custom-select custom-select-sm" id="_NIM">										
+                <option value="">Pilih NIM</option>
+                <?php foreach ($Mhs as $key) { ?>
+                  <option value="<?=$key['NIM']?>"><?=$key['NIM']?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="input-group input-group-sm mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-primary text-light"><b>Nama</b></span>
+              </div>
+              <select class="custom-select custom-select-sm" id="_Nama">										
+                <option value=""></option>
+                <?php foreach ($Mhs as $key) { ?>
+                  <option value="<?=$key['NIM']?>"><?=$key['Nama']?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="input-group input-group-sm mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-primary text-light"><b>Dosen Pengganti</b></span>
+              </div>
+              <select class="custom-select custom-select-sm" id="_DosenPengganti">										
+                <?php foreach ($Dosen as $key) { ?>
+                  <option value="<?=$key['NIP']?>"><?=$key['Nama']?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <button type="button" class="btn btn-danger" id="_Ganti"><b>GANTI&nbsp;<div id="LoadingGanti" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
     <script src="<?=base_url('bootstrap/js/popper.min.js')?>" ></script>
     <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
@@ -240,6 +282,32 @@
             $("#DosenPembimbing").val(Pisah[7])
           }
 					$('#ModalValidasiProposal').modal("show")
+        })
+
+        $('#_NIM').on('change', function() {
+          $("#_Nama").val($("#_NIM").val())
+        });
+
+        $("#_Ganti").click(function() {
+          var Mhs = { NIM: $("#_NIM").val(),
+                      NIPPembimbing: $( "#_DosenPengganti option:selected" ).text(),
+                      NamaPembimbing: $("#_DosenPengganti").val(),
+                      StatusProposal: 'Menunggu Persetujuan Pembimbing' }
+          var Konfirmasi = confirm("Yakin Ingin Mengganti?"); 
+      		if (Konfirmasi == true) {
+            $("#_Ganti").attr("disabled", true); 
+            $("#LoadingGanti").show();                             
+            $.post(BaseURL+"Dashboard/GantiPembimbing", Mhs).done(function(Respon) {
+              if (Respon == '1') {
+                alert('Dosen Pembimbing Berhasil Di Ganti!')
+                window.location = BaseURL + "Dashboard/DosenPembimbing"
+              } else {
+                alert(Respon)
+                $("#_Ganti").attr("disabled", false); 
+                $("#LoadingGanti").hide();                             
+              }
+            })
+          }
         })
         
         $("#ValidasiProposal").click(function() {
