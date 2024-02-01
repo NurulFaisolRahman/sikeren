@@ -184,7 +184,12 @@
                     <a href="#" class="nav-link <?php if ($Halaman == "Validasi") { echo "active"; } ?>">
                     <i class="nav-icon fas fa-tasks"></i>
                     <p>
-                      <b>Validasi KPS</b>
+                      <?php 
+                        $Validasi1 = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' or StatusProposal LIKE 'Ditolak Oleh Pembimbing%'")->result_array();
+                        $Validasi2 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan KPS' or StatusUjianProposal = 'Ditolak Pembimbing' or StatusPengujiProposal1 LIKE 'Ditolak%' or StatusPengujiProposal2 LIKE 'Ditolak%'")->result_array();
+                        $Validasi3 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan KPS' or StatusUjianSkripsi = 'Ditolak Pembimbing'")->result_array();
+                      ?>
+                      <b>Validasi KPS <span class="badge badge-danger"><?=count($Validasi1)+count($Validasi2)+count($Validasi3)?></b>
                       <i class="right fas fa-angle-left"></i>
                     </p>
                     </a>
