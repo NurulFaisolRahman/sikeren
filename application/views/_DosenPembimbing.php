@@ -234,7 +234,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg-primary text-light"><b>Nama</b></span>
               </div>
-              <select class="custom-select custom-select-sm" id="_Nama">										
+              <select class="custom-select custom-select-sm" id="_Nama" disabled>										
                 <option value=""></option>
                 <?php foreach ($Mhs as $key) { ?>
                   <option value="<?=$key['NIM']?>"><?=$key['Nama']?></option>
@@ -245,7 +245,8 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg-primary text-light"><b>Dosen Pengganti</b></span>
               </div>
-              <select class="custom-select custom-select-sm" id="_DosenPengganti">										
+              <select class="custom-select custom-select-sm" id="_DosenPengganti">	
+                <option value="">Pilih Dosen</option>									
                 <?php foreach ($Dosen as $key) { ?>
                   <option value="<?=$key['NIP']?>"><?=$key['Nama']?></option>
                 <?php } ?>
@@ -289,24 +290,30 @@
         });
 
         $("#_Ganti").click(function() {
-          var Mhs = { NIM: $("#_NIM").val(),
-                      NIPPembimbing: $( "#_DosenPengganti option:selected" ).text(),
-                      NamaPembimbing: $("#_DosenPengganti").val(),
-                      StatusProposal: 'Menunggu Persetujuan Pembimbing' }
-          var Konfirmasi = confirm("Yakin Ingin Mengganti?"); 
-      		if (Konfirmasi == true) {
-            $("#_Ganti").attr("disabled", true); 
-            $("#LoadingGanti").show();                             
-            $.post(BaseURL+"Dashboard/GantiPembimbing", Mhs).done(function(Respon) {
-              if (Respon == '1') {
-                alert('Dosen Pembimbing Berhasil Di Ganti!')
-                window.location = BaseURL + "Dashboard/DosenPembimbing"
-              } else {
-                alert(Respon)
-                $("#_Ganti").attr("disabled", false); 
-                $("#LoadingGanti").hide();                             
-              }
-            })
+          if ($("#_NIM").val()=="") {
+            alert('Pilih NIM!')
+          } else if ($("#_DosenPengganti").val()=="") {
+            alert('Pilih Dosen Pengganti!')
+          } else {
+            var Mhs = { NIM: $("#_NIM").val(),
+                        NIPPembimbing: $( "#_DosenPengganti option:selected" ).text(),
+                        NamaPembimbing: $("#_DosenPengganti").val(),
+                        StatusProposal: 'Menunggu Persetujuan Pembimbing' }
+            var Konfirmasi = confirm("Yakin Ingin Mengganti?"); 
+            if (Konfirmasi == true) {
+              $("#_Ganti").attr("disabled", true); 
+              $("#LoadingGanti").show();                             
+              $.post(BaseURL+"Dashboard/GantiPembimbing", Mhs).done(function(Respon) {
+                if (Respon == '1') {
+                  alert('Dosen Pembimbing Berhasil Di Ganti!')
+                  window.location = BaseURL + "Dashboard/DosenPembimbing"
+                } else {
+                  alert(Respon)
+                  $("#_Ganti").attr("disabled", false); 
+                  $("#LoadingGanti").hide();                             
+                }
+              })
+            } 
           }
         })
         
