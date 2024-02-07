@@ -207,6 +207,343 @@
                         <?php } ?>
                       </tbody>
                     </table>
+                    <b>Metode Pembelajaran : CK (Ceramah Kuliah), SCL (Student Center Learning), SGD (Student Grup Discussion), PK (Presentasi Kelompok), PI (Presentasi Individu),
+                  PBL (Problem Base Learning)</b><br>
+                  <b class="text-warning">RUBRIK PENILAIAN TUGAS</b>
+                    <div class="table-responsive mt-2">
+                      <table class="table table-bordered">
+                        <tbody>
+                          <tr style="font-weight: bold;">
+                            <td colspan="3">Bentuk Tugas</td>
+                            <td colspan="4">Waktu Pengerjaan Tugas</td>
+                          </tr>
+                          <tr>
+                            <td colspan="3"><input class="form-control form-control-sm" type="text" id="BentukTugas"></td>
+                            <td colspan="4"><input class="form-control form-control-sm" type="text" id="WaktuTugas"></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">Judul Tugas</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><input class="form-control form-control-sm" type="text" id="JudulTugas"></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">SUB CAPAIAN PEMBELAJARAN MATA KULIAH</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="SubTugas" rows="4"></textarea></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">DISKRIPSI TUGAS</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="DeskripsiTugas" rows="4"></textarea></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">METODE PENGERJAAN TUGAS</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="MetodeTugas" rows="4"></textarea></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">BENTUK DAN FORMAT LUARAN</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="FormatTugas" rows="4"></textarea></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">INDIKATOR, KRITERIA DAN BOBOT PENILAIAN</td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td>Dimensi</td>
+                            <td>Skor</td>
+                            <td>Sangat Baik</td>
+                            <td>Baik</td>
+                            <td>Cukup</td>
+                            <td>Bobot</td>
+                            <td>Nilai Akhir</td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td></td>
+                            <td></td>
+                            <td>80-100</td>
+                            <td>70-79</td>
+                            <td>60-69</td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td>Makalah</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>1. Kualitas Data</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>10%</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>2. Ketepatan Penghitungan</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>20%</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>3. Kualitas interptertasi Analisa Data</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>20%</td>
+                            <td></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td>Presentasi</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>1. Kualitas Presentasi (Visual Dan Oral)</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>20%</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>2. Kemampuan Menjawab Pertanyaan</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>20%</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>3. Kerjasama</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>10%</td>
+                            <td></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">JADWAL PELAKSANAAN</td>
+                          </tr><tr>
+                            <td colspan="7"><input class="form-control form-control-sm" type="text" id="JadwalTugas"></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">LAIN_LAIN</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="LainTugas" rows="2"></textarea></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">DAFTAR RUJUKAN</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="RujukanTugas" rows="2"></textarea></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <b class="text-warning">RUBRIK PENILAIAN TUGAS</b>
+                    <div class="table-responsive mt-2">
+                      <table class="table table-bordered">
+                        <tbody>
+                          <tr style="font-weight: bold;">
+                            <td colspan="3">Bentuk Tugas</td>
+                            <td colspan="4">Waktu Pengerjaan Tugas</td>
+                          </tr>
+                          <tr>
+                            <td colspan="3"><input class="form-control form-control-sm" type="text" id="BentukTugas2"></td>
+                            <td colspan="4"><input class="form-control form-control-sm" type="text" id="WaktuTugas2"></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">Judul Tugas</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><input class="form-control form-control-sm" type="text" id="JudulTugas2"></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">SUB CAPAIAN PEMBELAJARAN MATA KULIAH</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="SubTugas2" rows="4"></textarea></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">DISKRIPSI TUGAS</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="DeskripsiTugas2" rows="4"></textarea></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">METODE PENGERJAAN TUGAS</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="MetodeTugas2" rows="4"></textarea></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">BENTUK DAN FORMAT LUARAN</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="FormatTugas2" rows="4"></textarea></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">INDIKATOR, KRITERIA DAN BOBOT PENILAIAN</td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td>Dimensi</td>
+                            <td>Skor</td>
+                            <td>Sangat Baik</td>
+                            <td>Baik</td>
+                            <td>Cukup</td>
+                            <td>Bobot</td>
+                            <td>Nilai Akhir</td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td></td>
+                            <td></td>
+                            <td>80-100</td>
+                            <td>70-79</td>
+                            <td>60-69</td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td>Makalah</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>1. Kualitas Data</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>10%</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>2. Ketepatan Penghitungan</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>20%</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>3. Kualitas interptertasi Analisa Data</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>20%</td>
+                            <td></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td>Presentasi</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>1. Kualitas Presentasi (Visual Dan Oral)</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>20%</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>2. Kemampuan Menjawab Pertanyaan</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>20%</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>3. Kerjasama</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>10%</td>
+                            <td></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">JADWAL PELAKSANAAN</td>
+                          </tr><tr>
+                            <td colspan="7"><input class="form-control form-control-sm" type="text" id="JadwalTugas2"></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">LAIN_LAIN</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="LainTugas2" rows="2"></textarea></td>
+                          </tr>
+                          <tr style="font-weight: bold;">
+                            <td colspan="7">DAFTAR RUJUKAN</td>
+                          </tr>
+                          <tr>
+                            <td colspan="7"><textarea class="form-control form-control-sm" id="RujukanTugas2" rows="2"></textarea></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <b class="text-warning">RUBRIK PENILAIAN AKHIR</b>
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <tbody>
+                          <tr style="font-weight: bold;">
+                            <td style="width: 70%;">Unsur Penilaian</td>
+                            <td style="width: 30%;">Bobot (%)</td>
+                          </tr>
+                          <tr>
+                            <td>Unsur Sikap</td>
+                            <td><input class="form-control form-control-sm" type="text" id="Sikap"></td>
+                          </tr>
+                          <tr>
+                            <td>Tugas</td>
+                            <td><input class="form-control form-control-sm" type="text" id="Tugas"></td>
+                          </tr>
+                          <tr>
+                            <td>UTS & UAS</td>
+                            <td><input class="form-control form-control-sm" type="text" id="Ujian"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
                 <button type="submit" class="btn btn-danger d-flex mx-auto" id="InputRPS"><b>Simpan <div id="LoadingInput" class="spinner-border spinner-border-sm text-white" style="display: none;" role="status"></div></b></button>
@@ -377,8 +714,345 @@
                         <?php } ?>
                       </tbody>
                     </table>
+                    <b>Metode Pembelajaran : CK (Ceramah Kuliah), SCL (Student Center Learning), SGD (Student Grup Discussion), PK (Presentasi Kelompok), PI (Presentasi Individu),
+                  PBL (Problem Base Learning)</b><br>
+                    <b class="text-warning">RUBRIK PENILAIAN TUGAS</b>
+                      <div class="table-responsive mt-2">
+                        <table class="table table-bordered">
+                          <tbody>
+                            <tr style="font-weight: bold;">
+                              <td colspan="3">Bentuk Tugas</td>
+                              <td colspan="4">Waktu Pengerjaan Tugas</td>
+                            </tr>
+                            <tr>
+                              <td colspan="3"><input class="form-control form-control-sm" type="text" id="_BentukTugas"></td>
+                              <td colspan="4"><input class="form-control form-control-sm" type="text" id="_WaktuTugas"></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">Judul Tugas</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><input class="form-control form-control-sm" type="text" id="_JudulTugas"></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">SUB CAPAIAN PEMBELAJARAN MATA KULIAH</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_SubTugas" rows="4"></textarea></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">DISKRIPSI TUGAS</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_DeskripsiTugas" rows="4"></textarea></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">METODE PENGERJAAN TUGAS</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_MetodeTugas" rows="4"></textarea></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">BENTUK DAN FORMAT LUARAN</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_FormatTugas" rows="4"></textarea></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">INDIKATOR, KRITERIA DAN BOBOT PENILAIAN</td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td>Dimensi</td>
+                              <td>Skor</td>
+                              <td>Sangat Baik</td>
+                              <td>Baik</td>
+                              <td>Cukup</td>
+                              <td>Bobot</td>
+                              <td>Nilai Akhir</td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td></td>
+                              <td></td>
+                              <td>80-100</td>
+                              <td>70-79</td>
+                              <td>60-69</td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td>Makalah</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>1. Kualitas Data</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>10%</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>2. Ketepatan Penghitungan</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>20%</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>3. Kualitas interptertasi Analisa Data</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>20%</td>
+                              <td></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td>Presentasi</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>1. Kualitas Presentasi (Visual Dan Oral)</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>20%</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>2. Kemampuan Menjawab Pertanyaan</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>20%</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>3. Kerjasama</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>10%</td>
+                              <td></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">JADWAL PELAKSANAAN</td>
+                            </tr><tr>
+                              <td colspan="7"><input class="form-control form-control-sm" type="text" id="_JadwalTugas"></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">LAIN_LAIN</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_LainTugas" rows="2"></textarea></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">DAFTAR RUJUKAN</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_RujukanTugas" rows="2"></textarea></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <b class="text-warning">RUBRIK PENILAIAN TUGAS</b>
+                      <div class="table-responsive mt-2">
+                        <table class="table table-bordered">
+                          <tbody>
+                            <tr style="font-weight: bold;">
+                              <td colspan="3">Bentuk Tugas</td>
+                              <td colspan="4">Waktu Pengerjaan Tugas</td>
+                            </tr>
+                            <tr>
+                              <td colspan="3"><input class="form-control form-control-sm" type="text" id="_BentukTugas2"></td>
+                              <td colspan="4"><input class="form-control form-control-sm" type="text" id="_WaktuTugas2"></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">Judul Tugas</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><input class="form-control form-control-sm" type="text" id="_JudulTugas2"></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">SUB CAPAIAN PEMBELAJARAN MATA KULIAH</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_SubTugas2" rows="4"></textarea></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">DISKRIPSI TUGAS</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_DeskripsiTugas2" rows="4"></textarea></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">METODE PENGERJAAN TUGAS</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_MetodeTugas2" rows="4"></textarea></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">BENTUK DAN FORMAT LUARAN</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_FormatTugas2" rows="4"></textarea></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">INDIKATOR, KRITERIA DAN BOBOT PENILAIAN</td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td>Dimensi</td>
+                              <td>Skor</td>
+                              <td>Sangat Baik</td>
+                              <td>Baik</td>
+                              <td>Cukup</td>
+                              <td>Bobot</td>
+                              <td>Nilai Akhir</td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td></td>
+                              <td></td>
+                              <td>80-100</td>
+                              <td>70-79</td>
+                              <td>60-69</td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td>Makalah</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>1. Kualitas Data</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>10%</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>2. Ketepatan Penghitungan</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>20%</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>3. Kualitas interptertasi Analisa Data</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>20%</td>
+                              <td></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td>Presentasi</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>1. Kualitas Presentasi (Visual Dan Oral)</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>20%</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>2. Kemampuan Menjawab Pertanyaan</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>20%</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>3. Kerjasama</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>10%</td>
+                              <td></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">JADWAL PELAKSANAAN</td>
+                            </tr><tr>
+                              <td colspan="7"><input class="form-control form-control-sm" type="text" id="_JadwalTugas2"></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">LAIN_LAIN</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_LainTugas2" rows="2"></textarea></td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                              <td colspan="7">DAFTAR RUJUKAN</td>
+                            </tr>
+                            <tr>
+                              <td colspan="7"><textarea class="form-control form-control-sm" id="_RujukanTugas2" rows="2"></textarea></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <b class="text-warning">RUBRIK PENILAIAN AKHIR</b>
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                          <tbody>
+                            <tr style="font-weight: bold;">
+                              <td style="width: 70%;">Unsur Penilaian</td>
+                              <td style="width: 30%;">Bobot (%)</td>
+                            </tr>
+                            <tr>
+                              <td>Unsur Sikap</td>
+                              <td><input class="form-control form-control-sm" type="text" id="_Sikap"></td>
+                            </tr>
+                            <tr>
+                              <td>Tugas</td>
+                              <td><input class="form-control form-control-sm" type="text" id="_Tugas"></td>
+                            </tr>
+                            <tr>
+                              <td>UTS & UAS</td>
+                              <td><input class="form-control form-control-sm" type="text" id="_Ujian"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
-                </div>
                 <button type="submit" class="btn btn-danger d-flex mx-auto" id="EditRPS"><b>Simpan <div id="LoadingEdit" class="spinner-border spinner-border-sm text-white" style="display: none;" role="status"></div></b></button>
               </div>                              
             </div>
@@ -429,6 +1103,29 @@
                 P.push($(this).val())
               })
               Minggu[i] = $("#SubCPMK"+i).val()+'|'+A.join("|")+'|'+C.join("|")+'|'+P.join("|")+'$'+$("#MateriPembelajaran"+i).val().split("\n").join("<br/>")+'$'+$("#MetodePembelajaran"+i).val().split("\n").join("<br/>")+'$'+$("#EstimasiWaktu"+i).val().split("\n").join("<br/>")+'$'+$("#Penugasan"+i).val().split("\n").join("<br/>")+'$'+$("#Kriteria"+i).val().split("\n").join("<br/>")+'$'+$("#Indikator"+i).val().split("\n").join("<br/>")+'$'+$("#Bobot"+i).val().split("\n").join("<br/>")
+              var Nugas = []
+              Nugas.push($("#BentukTugas").val())
+              Nugas.push($("#WaktuTugas").val())
+              Nugas.push($("#JudulTugas").val())
+              Nugas.push($("#SubTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#DeskripsiTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#MetodeTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#FormatTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#JadwalTugas").val())
+              Nugas.push($("#LainTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#RujukanTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#BentukTugas2").val())
+              Nugas.push($("#WaktuTugas2").val())
+              Nugas.push($("#JudulTugas2").val())
+              Nugas.push($("#SubTugas2").val().split("\n").join("<br/>"))
+              Nugas.push($("#DeskripsiTugas2").val().split("\n").join("<br/>"))
+              Nugas.push($("#MetodeTugas2").val().split("\n").join("<br/>"))
+              Nugas.push($("#FormatTugas2").val().split("\n").join("<br/>"))
+              Nugas.push($("#JadwalTugas2").val())
+              Nugas.push($("#LainTugas2").val().split("\n").join("<br/>"))
+              Nugas.push($("#RujukanTugas2").val().split("\n").join("<br/>"))
+              var Tugas = Nugas.join('$')
+              var Bobot = $("#Sikap").val() + '$' + $("#Tugas").val() + '$' + $("#Ujian").val()
             }
             var RPS = { Homebase: $("#HomebaseRPS").val(),
                         NamaMK: $("#NamaMK").val(),
@@ -448,6 +1145,7 @@
                         ReferensiPendudukung: $("#ReferensiPendudukung").val().split("\n").join("<br/>"),
                         // DosenPengampu: $("#DosenPengampu").val().split("\n").join("<br/>"),
                         MKPrasyarat: $("#MKPrasyarat").val().split("\n").join("<br/>"),
+                        Tugas: Tugas, Bobot: Bobot,
                         Minggu1: Minggu[1],Minggu9: Minggu[9],
                         Minggu2: Minggu[2],Minggu10: Minggu[10],
                         Minggu3: Minggu[3],Minggu11: Minggu[11],
@@ -526,6 +1224,29 @@
               $("#EditIndikator"+i).val(Minggu[i-1][6].split("<br/>").join("\n"))
               $("#EditBobot"+i).val(Minggu[i-1][7].split("<br/>").join("\n"))
             }
+            $("#_BentukTugas").val(Data.Tugas.split('$')[0])
+            $("#_WaktuTugas").val(Data.Tugas.split('$')[1])
+            $("#_JudulTugas").val(Data.Tugas.split('$')[2])
+            $("#_SubTugas").val(Data.Tugas.split('$')[3].split("<br/>").join("\n"))
+            $("#_DeskripsiTugas").val(Data.Tugas.split('$')[4].split("<br/>").join("\n"))
+            $("#_MetodeTugas").val(Data.Tugas.split('$')[5].split("<br/>").join("\n"))
+            $("#_FormatTugas").val(Data.Tugas.split('$')[6].split("<br/>").join("\n"))
+            $("#_JadwalTugas").val(Data.Tugas.split('$')[7])
+            $("#_LainTugas").val(Data.Tugas.split('$')[8].split("<br/>").join("\n"))
+            $("#_RujukanTugas").val(Data.Tugas.split('$')[9].split("<br/>").join("\n"))
+            $("#_BentukTugas2").val(Data.Tugas.split('$')[10])
+            $("#_WaktuTugas2").val(Data.Tugas.split('$')[11])
+            $("#_JudulTugas2").val(Data.Tugas.split('$')[12])
+            $("#_SubTugas2").val(Data.Tugas.split('$')[13].split("<br/>").join("\n"))
+            $("#_DeskripsiTugas2").val(Data.Tugas.split('$')[14].split("<br/>").join("\n"))
+            $("#_MetodeTugas2").val(Data.Tugas.split('$')[15].split("<br/>").join("\n"))
+            $("#_FormatTugas2").val(Data.Tugas.split('$')[16].split("<br/>").join("\n"))
+            $("#_JadwalTugas2").val(Data.Tugas.split('$')[17])
+            $("#_LainTugas2").val(Data.Tugas.split('$')[18].split("<br/>").join("\n"))
+            $("#_RujukanTugas2").val(Data.Tugas.split('$')[19].split("<br/>").join("\n"))
+            $("#_Sikap").val(Data.Bobot.split('$')[0])
+            $("#_Tugas").val(Data.Bobot.split('$')[1])
+            $("#_Ujian").val(Data.Bobot.split('$')[2])
             $('#ModalEditRPS').modal("show")
           })
 				})
@@ -551,6 +1272,29 @@
                 P.push($(this).val())
               })
               Minggu[i] = $("#EditSubCPMK"+i).val()+'|'+A.join("|")+'|'+C.join("|")+'|'+P.join("|")+'$'+$("#EditMateriPembelajaran"+i).val().split("\n").join("<br/>")+'$'+$("#EditMetodePembelajaran"+i).val().split("\n").join("<br/>")+'$'+$("#EditEstimasiWaktu"+i).val().split("\n").join("<br/>")+'$'+$("#EditPenugasan"+i).val().split("\n").join("<br/>")+'$'+$("#EditKriteria"+i).val().split("\n").join("<br/>")+'$'+$("#EditIndikator"+i).val().split("\n").join("<br/>")+'$'+$("#EditBobot"+i).val().split("\n").join("<br/>")
+              var Nugas = []
+              Nugas.push($("#_BentukTugas").val())
+              Nugas.push($("#_WaktuTugas").val())
+              Nugas.push($("#_JudulTugas").val())
+              Nugas.push($("#_SubTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#_DeskripsiTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#_MetodeTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#_FormatTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#_JadwalTugas").val())
+              Nugas.push($("#_LainTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#_RujukanTugas").val().split("\n").join("<br/>"))
+              Nugas.push($("#_BentukTugas2").val())
+              Nugas.push($("#_WaktuTugas2").val())
+              Nugas.push($("#_JudulTugas2").val())
+              Nugas.push($("#_SubTugas2").val().split("\n").join("<br/>"))
+              Nugas.push($("#_DeskripsiTugas2").val().split("\n").join("<br/>"))
+              Nugas.push($("#_MetodeTugas2").val().split("\n").join("<br/>"))
+              Nugas.push($("#_FormatTugas2").val().split("\n").join("<br/>"))
+              Nugas.push($("#_JadwalTugas2").val())
+              Nugas.push($("#_LainTugas2").val().split("\n").join("<br/>"))
+              Nugas.push($("#_RujukanTugas2").val().split("\n").join("<br/>"))
+              var Tugas = Nugas.join('$')
+              var Bobot = $("#_Sikap").val() + '$' + $("#_Tugas").val() + '$' + $("#_Ujian").val()
             }
             var RPS = { Homebase: $("#EditHomebaseRPS").val(),
                         NamaMK: $("#EditNamaMK").val(),
@@ -571,6 +1315,7 @@
                         ReferensiPendudukung: $("#EditReferensiPendudukung").val().split("\n").join("<br/>"),
                         // DosenPengampu: $("#EditDosenPengampu").val().split("\n").join("<br/>"),
                         MKPrasyarat: $("#EditMKPrasyarat").val().split("\n").join("<br/>"),
+                        Tugas: Tugas, Bobot: Bobot,
                         Minggu1: Minggu[1],Minggu9: Minggu[9],
                         Minggu2: Minggu[2],Minggu10: Minggu[10],
                         Minggu3: Minggu[3],Minggu11: Minggu[11],

@@ -156,7 +156,7 @@ class Admin extends CI_Controller {
 	public function RekapSkripsi(){
 		$Data['Halaman'] = 'Nilai';
 		$Data['SubMenu'] = 'Rekap Skripsi';
-		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != '' AND NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != ''")->result_array();
+		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != '' AND NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != '' ORDER BY TanggalUjianSkripsi DESC")->result_array();
     $this->load->view('HeaderAdmin',$Data);
     $this->load->view('NilaiSkripsiAdmin',$Data); 
 	}
@@ -164,7 +164,7 @@ class Admin extends CI_Controller {
 	public function RekapProposal(){
 		$Data['Halaman'] = 'Nilai';
 		$Data['SubMenu'] = 'Rekap Proposal';
-		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != ''")->result_array();
+		$Data['RekapNilai'] = $this->db->query("SELECT * FROM mahasiswa where NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != '' ORDER BY TanggalUjianProposal DESC")->result_array();
     $this->load->view('HeaderAdmin',$Data);
     $this->load->view('NilaiProposalAdmin',$Data); 
 	}
