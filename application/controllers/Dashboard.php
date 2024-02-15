@@ -1700,7 +1700,7 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'ValidasiDosen';
 		$Data['SubMenu'] = 'ValidasiPengujiProposal';
 		$Data['PengujiProposal'] = array();
-		$Penguji = $this->db->query("SELECT * FROM mahasiswa where (StatusUjianProposal = 'Disetujui Pembimbing' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal1 = '') OR (StatusUjianProposal = 'Disetujui Pembimbing' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal2 = '') OR (StatusUjianProposal = 'Menunggu Persetujuan Penguji' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."' AND TanggalUjianProposal > '2024-01-05')")->result_array();
+		$Penguji = $this->db->query("SELECT * FROM mahasiswa where (StatusUjianProposal = 'Disetujui Pembimbing' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal1 = '') OR (StatusUjianProposal = 'Disetujui Pembimbing' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal2 = '') OR (StatusUjianProposal = 'Menunggu Persetujuan Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."')")->result_array();
 		for ($i=0; $i < count($Penguji); $i++) { 
 			array_push($Data['PengujiProposal'],$Penguji[$i]);
 		}
@@ -1712,7 +1712,7 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'ValidasiDosen';
 		$Data['SubMenu'] = 'ValidasiPengujiSkripsi';
 		$Data['PengujiSkripsi'] = array();
-		$Penguji = $this->db->query("SELECT * FROM mahasiswa where (StatusUjianSkripsi = 'Disetujui Pembimbing' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi1 = '') OR (StatusUjianSkripsi = 'Disetujui Pembimbing' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi2 = '') OR (StatusUjianSkripsi = 'Menunggu Persetujuan Penguji' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."' AND TanggalUjianSkripsi > '2024-01-05')")->result_array();
+		$Penguji = $this->db->query("SELECT * FROM mahasiswa where (StatusUjianSkripsi = 'Disetujui Pembimbing' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi1 = '') OR (StatusUjianSkripsi = 'Disetujui Pembimbing' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi2 = '') OR (StatusUjianSkripsi = 'Menunggu Persetujuan Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."')")->result_array();
 		for ($i=0; $i < count($Penguji); $i++) { 
 			array_push($Data['PengujiSkripsi'],$Penguji[$i]);
 		}

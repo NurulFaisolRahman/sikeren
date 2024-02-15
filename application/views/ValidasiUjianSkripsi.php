@@ -60,7 +60,7 @@
         
         $(document).on("click",".Validasi",function(){
           var Mhs = { NIM: $(this).attr('Validasi'),
-                      StatusUjianSkripsi: 'Menunggu Persetujuan Penguji' }
+                      StatusUjianSkripsi: 'Menunggu Persetujuan Pembimbing' }
           var Konfirmasi = confirm("Yakin Ingin Validasi?"); 
       		if (Konfirmasi == true) {
             $.post(BaseURL+"Dashboard/KPSValidasiUjianSkripsi", Mhs).done(function(Respon) {
