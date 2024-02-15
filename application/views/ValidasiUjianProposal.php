@@ -211,7 +211,7 @@
           var Mhs = { NIM: $("#NIM").val(),
                       PengujiProposal1: $("#KetuaPenguji").prop("disabled") == true ? '' : $("#KetuaPenguji").val(),
                       PengujiProposal2: $("#AnggotaPenguji").prop("disabled") == true ? '' : $("#AnggotaPenguji").val(),
-                      StatusUjianProposal: 'Menunggu Persetujuan Penguji' }
+                      StatusUjianProposal: 'Menunggu Persetujuan Pembimbing' }
           var Konfirmasi = confirm("Yakin Ingin Validasi?"); 
       		if (Konfirmasi == true) {
             $("#ValidasiProposal").attr("disabled", true); 
