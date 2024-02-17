@@ -2102,7 +2102,7 @@ class Dashboard extends CI_Controller {
 		$Data['SubMenu'] = '';
 		$NIP = $this->session->userdata('NIP');
 		$Data['Mengajar'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Id,mengajar.Status,mengajar.Tahun FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.NIP='.$NIP)->result_array();
-		$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` ORDER BY Semester ASC')->result_array();
+		$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` ORDER BY NamaMK ASC')->result_array();
 		// $Bulan = date("m");
 		// if (intval($Bulan[1]) < 8) {
 		// 	$Data['RPS'] = $this->db->query('SELECT KodeMK,NamaMK,BobotMK,Semester FROM `rps` WHERE (Semester % 2) = 0 ORDER BY Semester ASC')->result_array();

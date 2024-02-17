@@ -175,7 +175,7 @@
                           <td><textarea class="form-control form-control-sm" id="EditDeskripsi" rows="3"></textarea></td>
                         </tr>
                         <tr>
-                          <td><b>Bahan Kajian / Materi Pembelajaran</b></td>
+                          <td><b>Sub CPMK</b></td>
                           <td><textarea class="form-control form-control-sm" id="EditBahanKajian" rows="10"></textarea></td>
                         </tr>
                         <tr style="font-weight: bold;">
