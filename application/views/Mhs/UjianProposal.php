@@ -21,15 +21,18 @@
 														<th scope="col" style="width: 7%;text-align: center;">Tanggal</th>
 														<th scope="col" style="width: 15%;">Status</th>
 														<th scope="col" style="width: 10%;text-align: center;">Data</th>
-														<th scope="col" style="width: 25%;">Ketua Penguji</th>
-														<th scope="col" style="width: 25%;">Anggota Penguji</th>
+														<th scope="col" style="width: 25%;">Penguji 1</th>
+														<th scope="col" style="width: 25%;">Penguji 2</th>
 													</tr>
 												</thead>
 												<tbody class="bg-primary">
-													<?php if ($Mhs['StatusUjianProposal'] != "") { ?>
+													<?php if ($Mhs['StatusUjianProposal'] != "") { 
+														$Penguji1 = $Mhs['StatusPengujiProposal1'] == 'Setuju' ? 'Validasi' : 'Belum Validasi';
+														$Penguji2 = $Mhs['StatusPengujiProposal2'] == 'Setuju' ? 'Validasi' : 'Belum Validasi';
+													?>
 														<tr>
 															<td style="vertical-align: middle;text-align: center;"><?=$Mhs['TanggalUjianProposal']?></td>
-															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianProposal'].'<br>1. '.$Mhs['StatusPengujiProposal1'].'<br>2. '.$Mhs['StatusPengujiProposal2']?></td>
+															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianProposal'].'<br>1. Penguji 1 '.$Penguji1.'<br>2. Penguji 2'.$Penguji2?></td>
 															<td style="text-align: center;vertical-align: middle;">
 																<button LihatKartuBimbingan="<?=base_url('Proposal/'.$Mhs['KartuBimbinganProposal'])?>" class="btn btn-sm btn-danger border-light LihatKartuBimbingan"><i class="fa fa-file-pdf-o"></i></button>  
 																<button LihatPlagiasi="<?=base_url('Proposal/'.$Mhs['PlagiasiProposal'])?>" class="btn btn-sm btn-warning border-light LihatPlagiasi"><i class="fa fa-file-pdf-o"></i></button>  

@@ -26,10 +26,13 @@
 													</tr>
 												</thead>
 												<tbody class="bg-primary">
-													<?php if ($Mhs['StatusUjianSkripsi'] != "") { ?>
+													<?php if ($Mhs['StatusUjianSkripsi'] != "") { 
+														$Penguji1 = $Mhs['StatusPengujiSkripsi1'] == 'Setuju' ? 'Validasi' : 'Belum Validasi';
+														$Penguji2 = $Mhs['StatusPengujiSkripsi2'] == 'Setuju' ? 'Validasi' : 'Belum Validasi';	
+													?>
 														<tr>
 															<td style="vertical-align: middle;text-align: center;"><?=$Mhs['TanggalUjianSkripsi']?></td>
-															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianSkripsi'].'<br>1. '.$Mhs['StatusPengujiSkripsi1'].'<br>2. '.$Mhs['StatusPengujiSkripsi2']?></td>
+															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianSkripsi'].'<br>1. Penguji 1 '.$Penguji1.'<br>2. Penguji 2'.$Penguji2?></td>
 															<td style="text-align: center;vertical-align: middle;">
 																<button LihatAdministrasi="<?=base_url('Proposal/'.$Mhs['Administrasi'])?>" class="btn btn-sm btn-primary border-light LihatAdministrasi"><i class="fa fa-file-pdf-o"></i></button>  
 																<button LihatRevisiProposalBimbingan="<?=base_url('Proposal/'.$Mhs['RevisiProposalBimbingan'])?>" class="btn btn-sm btn-success border-light LihatRevisiProposalBimbingan"><i class="fa fa-file-pdf-o"></i></button>  
