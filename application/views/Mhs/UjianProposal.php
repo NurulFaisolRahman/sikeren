@@ -32,7 +32,7 @@
 													?>
 														<tr>
 															<td style="vertical-align: middle;text-align: center;"><?=$Mhs['TanggalUjianProposal']?></td>
-															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianProposal'].'<br>1. Penguji 1 '.$Penguji1.'<br>2. Penguji 2'.$Penguji2?></td>
+															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianProposal'].'<br>1. Penguji 1 '.$Penguji1.'<br>2. Penguji 2 '.$Penguji2?></td>
 															<td style="text-align: center;vertical-align: middle;">
 																<button LihatKartuBimbingan="<?=base_url('Proposal/'.$Mhs['KartuBimbinganProposal'])?>" class="btn btn-sm btn-danger border-light LihatKartuBimbingan"><i class="fa fa-file-pdf-o"></i></button>  
 																<button LihatPlagiasi="<?=base_url('Proposal/'.$Mhs['PlagiasiProposal'])?>" class="btn btn-sm btn-warning border-light LihatPlagiasi"><i class="fa fa-file-pdf-o"></i></button>  
