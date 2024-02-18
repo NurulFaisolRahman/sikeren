@@ -289,7 +289,7 @@
                               <td colspan="7"><textarea class="form-control form-control-sm" id="_SubTugas" rows="4"></textarea></td>
                             </tr>
                             <tr style="font-weight: bold;">
-                              <td colspan="7">DISKRIPSI TUGAS</td>
+                              <td colspan="7">DESKRIPSI TUGAS</td>
                             </tr>
                             <tr>
                               <td colspan="7"><textarea class="form-control form-control-sm" id="_DeskripsiTugas" rows="4"></textarea></td>
@@ -444,7 +444,7 @@
                               <td colspan="7"><textarea class="form-control form-control-sm" id="_SubTugas2" rows="4"></textarea></td>
                             </tr>
                             <tr style="font-weight: bold;">
-                              <td colspan="7">DISKRIPSI TUGAS</td>
+                              <td colspan="7">DESKRIPSI TUGAS</td>
                             </tr>
                             <tr>
                               <td colspan="7"><textarea class="form-control form-control-sm" id="_DeskripsiTugas2" rows="4"></textarea></td>

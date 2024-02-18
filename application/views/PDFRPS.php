@@ -12,6 +12,7 @@
   $pdf->AddPage('L', 'A4');
   if (isset($Dosen2)) {
     $Dosen = $Dosen1.' dan '.$Dosen2;
+    $Satu = '<td style="width:33.3%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode1.'" width="100" alt="Dosen1"><br>'.$Dosen1.'</td>';
     $Dua = '<td style="width:33.3%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode2.'" width="100" alt="Dosen2"><br>'.$Dosen2.'</td>';
     $Tiga = '<td style="width:33.3%;text-align:center;">Koorprodi<br><img src="img/22.png" width="100" alt="Koorprodi"><br>Titov Chuk'."'s".' Mayvani, SE., ME.</td>';
   } else if (isset($Dosen1)) {
