@@ -101,6 +101,12 @@
                     <p><b>RPS Mengajar</b></p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?=base_url("Dashboard/ListRPS")?>" class="nav-link <?php if ($Halaman == "ListRPS") { echo "active";} ?>">
+                    <i class="nav-icon fas fa-book"></i>
+                    <p><b>LIST RPS</b></p>
+                    </a>
+                </li>
                 <li class="nav-item has-treeview <?php if ($Halaman == "Menilai") { echo "menu-open"; } ?>">
                   <a href="#" class="nav-link <?php if ($Halaman == "Menilai") { echo "active"; } ?>">
                   <i class="nav-icon fas fa-tasks"></i>

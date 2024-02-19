@@ -306,7 +306,7 @@
                             <tr>
                               <td colspan="7"><textarea class="form-control form-control-sm" id="_FormatTugas" rows="4"></textarea></td>
                             </tr>
-                            <tr style="font-weight: bold;">
+                            <!-- <tr style="font-weight: bold;">
                               <td colspan="7">INDIKATOR, KRITERIA DAN BOBOT PENILAIAN</td>
                             </tr>
                             <tr style="font-weight: bold;">
@@ -398,7 +398,7 @@
                               <td></td>
                               <td>10%</td>
                               <td></td>
-                            </tr>
+                            </tr> -->
                             <tr style="font-weight: bold;">
                               <td colspan="7">JADWAL PELAKSANAAN</td>
                             </tr><tr>
@@ -461,7 +461,7 @@
                             <tr>
                               <td colspan="7"><textarea class="form-control form-control-sm" id="_FormatTugas2" rows="4"></textarea></td>
                             </tr>
-                            <tr style="font-weight: bold;">
+                            <!-- <tr style="font-weight: bold;">
                               <td colspan="7">INDIKATOR, KRITERIA DAN BOBOT PENILAIAN</td>
                             </tr>
                             <tr style="font-weight: bold;">
@@ -553,7 +553,7 @@
                               <td></td>
                               <td>10%</td>
                               <td></td>
-                            </tr>
+                            </tr> -->
                             <tr style="font-weight: bold;">
                               <td colspan="7">JADWAL PELAKSANAAN</td>
                             </tr><tr>
