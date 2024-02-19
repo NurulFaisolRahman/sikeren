@@ -10,21 +10,41 @@
   $pdf->SetAutoPageBreak(TRUE, 10);
   $pdf->SetFooterMargin(10);
   $pdf->AddPage('L', 'A4');
-  if (isset($Dosen2)) {
-    $Dosen = $Dosen1.' dan '.$Dosen2;
-    $Satu = '<td style="width:33.3%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode1.'" width="100" alt="Dosen1"><br>'.$Dosen1.'</td>';
-    $Dua = '<td style="width:33.3%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode2.'" width="100" alt="Dosen2"><br>'.$Dosen2.'</td>';
-    $Tiga = '<td style="width:33.3%;text-align:center;">Koorprodi<br><img src="img/22.png" width="100" alt="Koorprodi"><br>Titov Chuk'."'s".' Mayvani, SE., ME.</td>';
+  if (isset($Dosen4)) {
+    $Dosen = ' 1. '.$Dosen1.' <br>2. '.$Dosen2.' <br>3. '.$Dosen3.' 4. '.$Dosen4;
+    $Satu = '<td style="width:25%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode1.'" width="50" alt="Dosen1"><br>'.$Dosen1.'</td>';
+    $Dua = '<td style="width:25%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode2.'" width="50" alt="Dosen2"><br>'.$Dosen2.'</td>';
+    $Tiga = '<td style="width:25%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode3.'" width="50" alt="Dosen2"><br>'.$Dosen3.'</td>';
+    $Empat = '<td style="width:25%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode4.'" width="50" alt="Dosen2"><br>'.$Dosen4.'</td>';
+    $KPS = '<td style="width:33.3%;text-align:center;">Koorprodi<br><img src="img/22.png" width="50" alt="Koorprodi"><br>Titov Chuk'."'s".' Mayvani, SE., ME.</td>';
+  } else if (isset($Dosen3)) {
+    $Dosen = ' 1. '.$Dosen1.' <br>2. '.$Dosen2.' <br>3. '.$Dosen3;
+    $Satu = '<td style="width:33.3%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode1.'" width="50" alt="Dosen1"><br>'.$Dosen1.'</td>';
+    $Dua = '<td style="width:33.3%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode2.'" width="50" alt="Dosen2"><br>'.$Dosen2.'</td>';
+    $Tiga = '<td style="width:33.3%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode3.'" width="50" alt="Dosen2"><br>'.$Dosen3.'</td>';
+    $Empat = '';
+    $KPS = '<td style="width:33.3%;text-align:center;">Koorprodi<br><img src="img/22.png" width="50" alt="Koorprodi"><br>Titov Chuk'."'s".' Mayvani, SE., ME.</td>';
+  } else if (isset($Dosen2)) {
+    $Dosen = ' 1. '.$Dosen1.' <br>2. '.$Dosen2;
+    $Satu = '<td style="width:25%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode1.'" width="50" alt="Dosen1"><br>'.$Dosen1.'</td>';
+    $Dua = '<td style="width:25%;text-align:center;"></td>';
+    $Tiga = '<td style="width:25%;text-align:center;"></td>';
+    $Empat = '<td style="width:25%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode2.'" width="50" alt="Dosen2"><br>'.$Dosen2.'</td>';
+    $KPS = '<td style="width:33.3%;text-align:center;">Koorprodi<br><img src="img/22.png" width="50" alt="Koorprodi"><br>Titov Chuk'."'s".' Mayvani, SE., ME.</td>';
   } else if (isset($Dosen1)) {
-    $Dosen = $Dosen1;
-    $Satu = '<td style="width:33.3%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode1.'" width="100" alt="Dosen1"><br>'.$Dosen1.'</td>';
-    $Dua = '<td style="width:33.3%;text-align:center;">Koorprodi<br><img src="img/22.png" width="100" alt="Koorprodi"><br>Titov Chuk'."'s".' Mayvani, SE., ME.</td>';
-    $Tiga = '';
+    $Dosen = ' 1. '.$Dosen1;
+    $Satu = '<td style="width:25%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode1.'" width="50" alt="Dosen1"><br>'.$Dosen1.'</td>';
+    $Dua = '<td style="width:25%;text-align:center;"></td>';
+    $Tiga = '<td style="width:25%;text-align:center;"></td>';
+    $Empat = '<td style="width:25%;text-align:center;"></td>';
+    $KPS = '<td style="width:33.3%;text-align:center;">Koorprodi<br><img src="img/22.png" width="50" alt="Koorprodi"><br>Titov Chuk'."'s".' Mayvani, SE., ME.</td>';
   } else {
     $Dosen = '';
-    $Satu = '<td style="width:33.3%;text-align:center;"></td>';
-    $Dua = '<td style="width:33.3%;text-align:center;"></td>';
-    $Tiga = '';
+    $Satu = '<td style="width:25%;text-align:center;"></td>';
+    $Dua = '<td style="width:25%;text-align:center;"></td>';
+    $Tiga = '<td style="width:25%;text-align:center;"></td>';
+    $Empat = '<td style="width:25%;text-align:center;"></td>';
+    $KPS = '';
   }
   $Deskripsi = '<table border="1" cellpadding="2" nobr="true">
     <tr>
@@ -308,9 +328,127 @@
       <td>'.$Data[6].'</td>
       <td style="text-align:center;">'.$Data[7].'</td>
     </tr>';
-  $Materi .= '</table>';
+  $Materi .= '</table><br pagebreak="true"/>';
   $pdf->writeHTML($Materi, true, false, true, false, '');
-  $Validasi = '<br pagebreak="true"/><table cellpadding="2" border="1" style="font-weight:bold;">
+  $Nugas = explode("$",$RPS['Tugas']);
+  $Tugas = '<h4>1. RUBRIK PENILAIAN TUGAS</h4><table cellpadding="2" border="1">
+    <tr style="font-weight:bold;">
+      <td style="width:60%;"> BENTUK TUGAS</td>
+      <td style="width:40%;"> WAKTU PENGERJAAN TUGAS</td>
+    </tr>
+    <tr>
+      <td style="width:60%;"> '.$Nugas[0].'</td>
+      <td style="width:40%;"> '.$Nugas[1].'</td>
+    </tr>
+    <tr style="font-weight:bold;">
+      <td colspan="2"> JUDUL TUGAS</td>
+    </tr>
+    <tr>
+      <td colspan="2"> '.$Nugas[2].'</td>
+    </tr>
+    <tr style="font-weight:bold;">
+      <td colspan="2"> SUB CAPAIAN PEMBELAJARAN MATA KULIAH</td>
+    </tr>
+    <tr>
+      <td colspan="2">'.$Nugas[3].'</td>
+    </tr>
+    <tr style="font-weight:bold;">
+      <td colspan="2"> DESKRIPSI TUGAS</td>
+    </tr>
+    <tr>
+      <td colspan="2">'.$Nugas[4].'</td>
+    </tr>
+    <tr style="font-weight:bold;">
+      <td colspan="2"> METODE PENGERJAAN TUGAS</td>
+    </tr>
+    <tr>
+      <td colspan="2">'.$Nugas[5].'</td>
+    </tr>
+    <tr style="font-weight:bold;">
+      <td colspan="2"> BENTUK DAN FORMAT LUARAN</td>
+    </tr>
+    <tr>
+      <td colspan="2">'.$Nugas[6].'</td>
+    </tr>
+    <tr style="font-weight:bold;">
+      <td colspan="2"> JADWAL PELAKSANAAN</td>
+    </tr>
+    <tr>
+      <td colspan="2">'.$Nugas[7].'</td>
+    </tr>
+    <tr style="font-weight:bold;">
+      <td colspan="2"> LAIN LAIN</td>
+    </tr>
+    <tr>
+      <td colspan="2">'.$Nugas[8].'</td>
+    </tr>
+    <tr style="font-weight:bold;">
+      <td colspan="2"> DAFTAR RUJUKAN</td>
+    </tr>
+    <tr>
+      <td colspan="2">'.$Nugas[9].'</td>
+    </tr>
+  </table><br pagebreak="true"/><h4>2. RUBRIK PENILAIAN TUGAS</h4><table cellpadding="2" border="1">
+  <tr style="font-weight:bold;">
+    <td style="width:60%;"> BENTUK TUGAS</td>
+    <td style="width:40%;"> WAKTU PENGERJAAN TUGAS</td>
+  </tr>
+  <tr>
+    <td style="width:60%;"> '.$Nugas[10].'</td>
+    <td style="width:40%;"> '.$Nugas[11].'</td>
+  </tr>
+  <tr style="font-weight:bold;">
+    <td colspan="2"> JUDUL TUGAS</td>
+  </tr>
+  <tr>
+    <td colspan="2"> '.$Nugas[12].'</td>
+  </tr>
+  <tr style="font-weight:bold;">
+    <td colspan="2"> SUB CAPAIAN PEMBELAJARAN MATA KULIAH</td>
+  </tr>
+  <tr>
+    <td colspan="2">'.$Nugas[13].'</td>
+  </tr>
+  <tr style="font-weight:bold;">
+    <td colspan="2"> DESKRIPSI TUGAS</td>
+  </tr>
+  <tr>
+    <td colspan="2">'.$Nugas[14].'</td>
+  </tr>
+  <tr style="font-weight:bold;">
+    <td colspan="2"> METODE PENGERJAAN TUGAS</td>
+  </tr>
+  <tr>
+    <td colspan="2">'.$Nugas[15].'</td>
+  </tr>
+  <tr style="font-weight:bold;">
+    <td colspan="2"> BENTUK DAN FORMAT LUARAN</td>
+  </tr>
+  <tr>
+    <td colspan="2">'.$Nugas[16].'</td>
+  </tr>
+  <tr style="font-weight:bold;">
+    <td colspan="2"> JADWAL PELAKSANAAN</td>
+  </tr>
+  <tr>
+    <td colspan="2">'.$Nugas[17].'</td>
+  </tr>
+  <tr style="font-weight:bold;">
+    <td colspan="2"> LAIN LAIN</td>
+  </tr>
+  <tr>
+    <td colspan="2">'.$Nugas[18].'</td>
+  </tr>
+  <tr style="font-weight:bold;">
+    <td colspan="2"> DAFTAR RUJUKAN</td>
+  </tr>
+  <tr>
+    <td colspan="2">'.$Nugas[19].'</td>
+  </tr>
+</table>';
+  $pdf->writeHTML($Tugas, true, false, true, false, '');
+  $Validasi = '<br pagebreak="true"/><b>Metode Pembelajaran : CK (Ceramah Kuliah), SCL (Student Center Learning), SGD (Student Grup Discussion), PK (Presentasi Kelompok), <br> PI (Presentasi Individu),
+  PBL (Problem Base Learning)</b><h6></h6><table cellpadding="2" border="1" style="font-weight:bold;">
     <tr>
       <td style="text-align:center;">(C1)<br>Mengingat</td>
       <td style="text-align:center;">(C2)<br>Memahami</td>
@@ -339,14 +477,12 @@
   </table>
   <br><br>
   <table cellpadding="2">
-    <tr>
-      '.$Satu.'
+    <tr style="font-size:8pt;">
+      '.$Satu.$Dua.$Tiga.$Empat.'
+    </tr><tr><td></td></tr>
+    <tr style="font-size:8pt;">
       <td style="width:33.3%;text-align:center;"></td>
-      '.$Dua.'
-    </tr>
-    <tr>
-      <td style="width:33.3%;text-align:center;"></td>
-      '.$Tiga.'
+      '.$KPS.'
       <td style="width:33.3%;text-align:center;"></td>
     </tr>
   </table>';

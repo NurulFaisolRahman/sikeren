@@ -209,20 +209,20 @@
                     </table>
                     <b>Metode Pembelajaran : CK (Ceramah Kuliah), SCL (Student Center Learning), SGD (Student Grup Discussion), PK (Presentasi Kelompok), PI (Presentasi Individu),
                   PBL (Problem Base Learning)</b><br>
-                  <b class="text-warning">RUBRIK PENILAIAN TUGAS</b>
+                  <b class="text-warning">1. RUBRIK PENILAIAN TUGAS</b>
                     <div class="table-responsive mt-2">
                       <table class="table table-bordered">
                         <tbody>
                           <tr style="font-weight: bold;">
-                            <td colspan="3">Bentuk Tugas</td>
-                            <td colspan="4">Waktu Pengerjaan Tugas</td>
+                            <td colspan="3">BENTUK TUGAS</td>
+                            <td colspan="4">WAKTU PENGERJAAN TUGAS</td>
                           </tr>
                           <tr>
                             <td colspan="3"><input class="form-control form-control-sm" type="text" id="BentukTugas"></td>
                             <td colspan="4"><input class="form-control form-control-sm" type="text" id="WaktuTugas"></td>
                           </tr>
                           <tr style="font-weight: bold;">
-                            <td colspan="7">Judul Tugas</td>
+                            <td colspan="7">JUDUL TUGAS</td>
                           </tr>
                           <tr>
                             <td colspan="7"><input class="form-control form-control-sm" type="text" id="JudulTugas"></td>
@@ -364,20 +364,20 @@
                         </tbody>
                       </table>
                     </div>
-                    <b class="text-warning">RUBRIK PENILAIAN TUGAS</b>
+                    <b class="text-warning">2. RUBRIK PENILAIAN TUGAS</b>
                     <div class="table-responsive mt-2">
                       <table class="table table-bordered">
                         <tbody>
                           <tr style="font-weight: bold;">
-                            <td colspan="3">Bentuk Tugas</td>
-                            <td colspan="4">Waktu Pengerjaan Tugas</td>
+                            <td colspan="3">BENTUK TUGAS</td>
+                            <td colspan="4">WAKTU PENGERJAAN TUGAS</td>
                           </tr>
                           <tr>
                             <td colspan="3"><input class="form-control form-control-sm" type="text" id="BentukTugas2"></td>
                             <td colspan="4"><input class="form-control form-control-sm" type="text" id="WaktuTugas2"></td>
                           </tr>
                           <tr style="font-weight: bold;">
-                            <td colspan="7">Judul Tugas</td>
+                            <td colspan="7">JUDUL TUGAS</td>
                           </tr>
                           <tr>
                             <td colspan="7"><input class="form-control form-control-sm" type="text" id="JudulTugas2"></td>
@@ -716,20 +716,20 @@
                     </table>
                     <b>Metode Pembelajaran : CK (Ceramah Kuliah), SCL (Student Center Learning), SGD (Student Grup Discussion), PK (Presentasi Kelompok), PI (Presentasi Individu),
                   PBL (Problem Base Learning)</b><br>
-                    <b class="text-warning">RUBRIK PENILAIAN TUGAS</b>
+                    <b class="text-warning">1. RUBRIK PENILAIAN TUGAS</b>
                       <div class="table-responsive mt-2">
                         <table class="table table-bordered">
                           <tbody>
                             <tr style="font-weight: bold;">
-                              <td colspan="3">Bentuk Tugas</td>
-                              <td colspan="4">Waktu Pengerjaan Tugas</td>
+                              <td colspan="3">BENTUK TUGAS</td>
+                              <td colspan="4">WAKTU PENGERJAAN TUGAS</td>
                             </tr>
                             <tr>
                               <td colspan="3"><input class="form-control form-control-sm" type="text" id="_BentukTugas"></td>
                               <td colspan="4"><input class="form-control form-control-sm" type="text" id="_WaktuTugas"></td>
                             </tr>
                             <tr style="font-weight: bold;">
-                              <td colspan="7">Judul Tugas</td>
+                              <td colspan="7">JUDUL TUGAS</td>
                             </tr>
                             <tr>
                               <td colspan="7"><input class="form-control form-control-sm" type="text" id="_JudulTugas"></td>
@@ -871,20 +871,20 @@
                           </tbody>
                         </table>
                       </div>
-                      <b class="text-warning">RUBRIK PENILAIAN TUGAS</b>
+                      <b class="text-warning">2. RUBRIK PENILAIAN TUGAS</b>
                       <div class="table-responsive mt-2">
                         <table class="table table-bordered">
                           <tbody>
                             <tr style="font-weight: bold;">
-                              <td colspan="3">Bentuk Tugas</td>
-                              <td colspan="4">Waktu Pengerjaan Tugas</td>
+                              <td colspan="3">BENTUK TUGAS</td>
+                              <td colspan="4">WAKTU PENGERJAAN TUGAS</td>
                             </tr>
                             <tr>
                               <td colspan="3"><input class="form-control form-control-sm" type="text" id="_BentukTugas2"></td>
                               <td colspan="4"><input class="form-control form-control-sm" type="text" id="_WaktuTugas2"></td>
                             </tr>
                             <tr style="font-weight: bold;">
-                              <td colspan="7">Judul Tugas</td>
+                              <td colspan="7">JUDUL TUGAS</td>
                             </tr>
                             <tr>
                               <td colspan="7"><input class="form-control form-control-sm" type="text" id="_JudulTugas2"></td>
