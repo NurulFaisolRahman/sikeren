@@ -630,25 +630,36 @@ class Mhs extends CI_Controller {
 		}
 	}
 
-	public function RPS(){
+	public function ListRPS(){
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
-		$Data['RPS'] = $this->db->query("SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Status FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.Status=3")->result_array();
+		$Data['RPS'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Status,mengajar.Tahun FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.Status=3')->result_array();
     $this->load->view('Mhs/Header',$Data);
-    $this->load->view('Mhs/RPS',$Data); 
+    $this->load->view('Mhs/ListRPS',$Data); 
 	}
 
 	public function UnduhRPS($KodeMK){
 		$Data['RPS'] = $this->db->get_where("rps", array('KodeMK' => $KodeMK))->row_array();
 		$Dosen = $this->db->query("SELECT Dosen.Nama,Dosen.QRCode FROM mengajar,Dosen WHERE mengajar.NIP=Dosen.NIP AND mengajar.KodeMK='".$KodeMK."' AND mengajar.Status=3")->result_array();
-		if (count($Dosen) >= 1) {
-			$Data['Dosen1'] = $Dosen[0]['Nama'];
-			$Data['QRCode1'] = $Dosen[0]['QRCode'];
-			if (count($Dosen) > 1) { 
-				$Data['Dosen2'] = $Dosen[1]['Nama']; 
-				$Data['QRCode2'] = $Dosen[1]['QRCode'];
-			}
+		$Data['Dosen1'] = $Dosen[0]['Nama'];
+		$Data['QRCode1'] = $Dosen[0]['QRCode'];
+		if (count($Dosen) == 2) { 
+			$Data['Dosen2'] = $Dosen[1]['Nama']; 
+			$Data['QRCode2'] = $Dosen[1]['QRCode'];
+		} else if (count($Dosen) == 3) { 
+			$Data['Dosen2'] = $Dosen[1]['Nama']; 
+			$Data['QRCode2'] = $Dosen[1]['QRCode'];
+			$Data['Dosen3'] = $Dosen[2]['Nama']; 
+			$Data['QRCode3'] = $Dosen[2]['QRCode'];
+		} else if (count($Dosen) == 4) { 
+			$Data['Dosen2'] = $Dosen[1]['Nama']; 
+			$Data['QRCode2'] = $Dosen[1]['QRCode'];
+			$Data['Dosen3'] = $Dosen[2]['Nama']; 
+			$Data['QRCode3'] = $Dosen[2]['QRCode'];
+			$Data['Dosen4'] = $Dosen[3]['Nama']; 
+			$Data['QRCode4'] = $Dosen[3]['QRCode'];
 		}
 		$this->load->library('Pdf');
 		$this->load->view('PDFRPS',$Data);
+		// $this->load->view('ExcelRPS',$Data);
 	}
 }

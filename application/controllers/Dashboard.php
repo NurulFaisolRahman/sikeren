@@ -2113,6 +2113,14 @@ class Dashboard extends CI_Controller {
     $this->load->view('MengajarRPS',$Data); 
 	}
 
+	public function ListRPS(){
+		$Data['Halaman'] = 'List RPS';
+		$Data['SubMenu'] = '';
+		$Data['RPS'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Status,mengajar.Tahun FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.Status=3')->result_array();
+    $this->load->view('Header',$Data);
+    $this->load->view('ListRPS',$Data); 
+	}
+
 	public function PlotRPS(){
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'PlotRPS';

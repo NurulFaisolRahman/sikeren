@@ -102,7 +102,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?=base_url("Dashboard/ListRPS")?>" class="nav-link <?php if ($Halaman == "ListRPS") { echo "active";} ?>">
+                    <a href="<?=base_url("Dashboard/ListRPS")?>" class="nav-link <?php if ($Halaman == "List RPS") { echo "active";} ?>">
                     <i class="nav-icon fas fa-book"></i>
                     <p><b>LIST RPS</b></p>
                     </a>

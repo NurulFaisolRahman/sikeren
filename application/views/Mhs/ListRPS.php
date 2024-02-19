@@ -16,6 +16,7 @@
                               <th class="align-middle">Nama Mata Kuliah</th>
                               <th class="align-middle">Bobot</th>
                               <th class="align-middle">Semester</th>
+                              <th class="align-middle">Tahun</th>
                               <th class="align-middle">Unduh</th>
                             </tr>
                           </thead>
@@ -27,6 +28,7 @@
                                 <td class="align-middle"><?=$key['NamaMK']?></td>
                                 <td class="align-middle"><?=$key['BobotMK'].' sks'?></td>
                                 <td class="align-middle"><?=$key['Semester']?></td>
+                                <td class="align-middle"><?=$key['Tahun']?></td>
                                 <td class="align-middle">
                                   <button Unduh="<?=$key['KodeMK']?>" class="btn btn-sm btn-success Unduh"><i class="fa fa-download"></i></button> 
                                 </td> 
