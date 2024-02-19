@@ -632,7 +632,7 @@ class Mhs extends CI_Controller {
 
 	public function ListRPS(){
 		$Data['Mhs'] = $this->db->query("SELECT * FROM mahasiswa WHERE NIM = ".$this->session->userdata('NIM'))->row_array();
-		$Data['RPS'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Status,mengajar.Tahun FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.Status=3')->result_array();
+		$Data['RPS'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Status,mengajar.Tahun FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.Status=3 GROUP BY mengajar.KodeMK')->result_array();
     $this->load->view('Mhs/Header',$Data);
     $this->load->view('Mhs/ListRPS',$Data); 
 	}
