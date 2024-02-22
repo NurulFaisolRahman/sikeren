@@ -1,5 +1,6 @@
 							<div class="row p-2">
 								<div class="col-12">
+									<a href="<?=base_url('Panduan/BeritaAcaraKehadiranUjianSkripsi.docx')?>" class="btn btn-sm border-light btn-sm btn-primary"><i class="fa fa-file-word-o"> <b>Berita Acara Kehadiran Ujian Skripsi</b></i></a>
 									<?php if ($Mhs['StatusUjianSkripsi'] == "") { ?>
 										<button type="button" class="btn btn-sm btn-primary border-white mb-2" data-toggle="modal" data-target="#ModalInputUjianSkripsi"><b>Ajukan Ujian Skripsi</b></button>
 									<?php } else { ?>
@@ -96,6 +97,7 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col-lg-12">
+													<pre class="text-danger mb-0"><b>* Wajib Membawa Form Berita Acara Kehadiran Ujian Skripsi</b></pre>
 													<div class="input-group input-group-sm mb-0">
 														<div class="input-group-prepend">
 															<span class="input-group-text bg-primary text-light"><b>Upload Lampiran Cek Plagiasi</b></span>
@@ -158,6 +160,7 @@
 										<div class="container-fluid">
 											<div class="row">
 											<div class="col-lg-12">
+													<pre class="text-danger mb-0"><b>* Wajib Membawa Form Berita Acara Kehadiran Ujian Skripsi</b></pre>
 													<div class="input-group input-group-sm mb-0">
 														<div class="input-group-prepend">
 															<span class="input-group-text bg-primary text-light"><b>Update Lampiran Cek Plagiasi</b></span>
