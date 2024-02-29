@@ -226,7 +226,7 @@
               <select class="custom-select custom-select-sm" id="_NIM">										
                 <option value="">Pilih Mahasiswa</option>
                 <?php foreach ($Mhs as $key) { ?>
-                  <option value="<?=$key['NIM']?>"><?=$key['Nama'].' => '.$key['NamaPembimbing']?></option>
+                  <option value="<?=$key['NIM']?>"><?=$key['NamaPembimbing'].' => '.$key['Nama']?></option>
                 <?php } ?>
               </select>
             </div>
