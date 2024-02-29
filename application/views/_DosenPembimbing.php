@@ -221,23 +221,12 @@
           <div class="modal-body text-white">
             <div class="input-group input-group-sm mb-2">
               <div class="input-group-prepend">
-                <span class="input-group-text bg-primary text-light"><b>NIM</b></span>
+                <span class="input-group-text bg-primary text-light"><b>Mahasiswa</b></span>
               </div>
               <select class="custom-select custom-select-sm" id="_NIM">										
-                <option value="">Pilih NIM</option>
+                <option value="">Pilih Mahasiswa</option>
                 <?php foreach ($Mhs as $key) { ?>
-                  <option value="<?=$key['NIM']?>"><?=$key['NIM']?></option>
-                <?php } ?>
-              </select>
-            </div>
-            <div class="input-group input-group-sm mb-2">
-              <div class="input-group-prepend">
-                <span class="input-group-text bg-primary text-light"><b>Nama</b></span>
-              </div>
-              <select class="custom-select custom-select-sm" id="_Nama" disabled>										
-                <option value=""></option>
-                <?php foreach ($Mhs as $key) { ?>
-                  <option value="<?=$key['NIM']?>"><?=$key['Nama']?></option>
+                  <option value="<?=$key['NIM']?>"><?=$key['Nama'].' => '.$key['NamaPembimbing']?></option>
                 <?php } ?>
               </select>
             </div>
