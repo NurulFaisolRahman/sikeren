@@ -91,6 +91,16 @@ class Mhs extends CI_Controller {
 		$this->load->view('Mhs/UjianSkripsi',$Data); 
 	}
 
+	public function UpdateRevisi(){
+    $this->db->where('NIM', $this->session->userdata('NIM'));
+		$this->db->update('mahasiswa',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
 	public function InputUjianSkripsi(){
 		$NamaAdministrasi = date('Ymd',time()).substr(password_hash('Administrasi', PASSWORD_DEFAULT),7,7);
 		$NamaAdministrasi = str_replace("/","E",$NamaAdministrasi);

@@ -79,16 +79,16 @@
                         <div class="col-lg-12">
                           <div class="input-group input-group-sm"> 
                             <div class="input-group-prepend">
-                              <label class="input-group-text bg-primary text-light"><b>Catatan Penguji</b></label>
+                              <label class="input-group-text bg-primary text-light"><b>Catatan Revisi</b></label>
                             </div>
                             <textarea class="form-control" id="CatatanPenguji" rows="3"></textarea>
                           </div>
                         </div>
-                        <div class="col-12 my-1">
+                        <!-- <div class="col-12 my-1">
                           <div class="input-group input-group-sm">
                             <button type="button" class="btn btn-primary" id="ValidasiRevisi"><b>SIMPAN CATATAN&nbsp;<div id="LoadingRevisi" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
                           </div>
-                        </div>
+                        </div> -->
                       </div> 
                     </div>
                   </div>
@@ -651,24 +651,24 @@
           })    
         })
 
-        $("#ValidasiRevisi").click(function() {
-          var Revisi = { NIM: $("#_NIM").val(),
-                         Catatan: $("#CatatanPenguji").val() }
-          var Konfirmasi = confirm("Yakin Ingin Menyimpan Catatan?"); 
-      		if (Konfirmasi == true) {
-            $("#ValidasiRevisi").attr("disabled", true); 
-            $("#LoadingRevisi").show();                             
-            $.post(BaseURL+"Dashboard/UpdateRevisiSkripsi", Revisi).done(function(Respon) {
-              if (Respon == '1') {
-                window.location = BaseURL + "Dashboard/PengujiSkripsi"
-              } else {
-                alert(Respon)
-                $("#ValidasiRevisi").attr("disabled", false); 
-                $("#LoadingRevisi").hide();                             
-              }
-            })
-          }
-        })
+        // $("#ValidasiRevisi").click(function() {
+        //   var Revisi = { NIM: $("#_NIM").val(),
+        //                  Catatan: $("#CatatanPenguji").val() }
+        //   var Konfirmasi = confirm("Yakin Ingin Menyimpan Catatan?"); 
+      	// 	if (Konfirmasi == true) {
+        //     $("#ValidasiRevisi").attr("disabled", true); 
+        //     $("#LoadingRevisi").show();                             
+        //     $.post(BaseURL+"Dashboard/UpdateRevisiSkripsi", Revisi).done(function(Respon) {
+        //       if (Respon == '1') {
+        //         window.location = BaseURL + "Dashboard/PengujiSkripsi"
+        //       } else {
+        //         alert(Respon)
+        //         $("#ValidasiRevisi").attr("disabled", false); 
+        //         $("#LoadingRevisi").hide();                             
+        //       }
+        //     })
+        //   }
+        // })
 
         $(document).on("click",".CekData",function(){
 					var Data = $(this).attr('CekData')

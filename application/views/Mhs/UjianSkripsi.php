@@ -30,10 +30,19 @@
 													<?php if ($Mhs['StatusUjianSkripsi'] != "") { 
 														$Penguji1 = $Mhs['StatusPengujiSkripsi1'] == 'Setuju' ? 'Validasi' : 'Belum Validasi';
 														$Penguji2 = $Mhs['StatusPengujiSkripsi2'] == 'Setuju' ? 'Validasi' : 'Belum Validasi';	
+														if ($Mhs['StatusPengujiSkripsi1'] == 'Setuju' && $Mhs['StatusPengujiSkripsi2'] == 'Setuju') {
+															$Penguji1 = $Mhs['NilaiSkripsi1'] == '' ? 'Belum Menilai' : 'Sudah Menilai';
+															$Penguji2 = $Mhs['NilaiSkripsi2'] == '' ? 'Belum Menilai' : 'Sudah Menilai';
+															$Penguji3 = $Mhs['NilaiSkripsi3'] == '' ? 'Belum Menilai' : 'Sudah Menilai';
+														}
 													?>
 														<tr>
 															<td style="vertical-align: middle;text-align: center;"><?=$Mhs['TanggalUjianSkripsi']?></td>
+															<?php if ($Mhs['StatusPengujiSkripsi1'] == "Setuju" && $Mhs['StatusPengujiSkripsi2'] == "Setuju") { ?>
+															<td style="vertical-align: middle;"><?='1. Penguji 1 '.$Penguji1.'<br>2. Penguji 2 '.$Penguji2.'<br>3. Penguji 3 '.$Penguji3?></td>	
+															<?php } else { ?>
 															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianSkripsi'].'<br>1. Penguji 1 '.$Penguji1.'<br>2. Penguji 2 '.$Penguji2?></td>
+															<?php } ?>
 															<td style="text-align: center;vertical-align: middle;">
 																<button LihatAdministrasi="<?=base_url('Proposal/'.$Mhs['Administrasi'])?>" class="btn btn-sm btn-primary border-light LihatAdministrasi"><i class="fa fa-file-pdf-o"></i></button>  
 																<button LihatRevisiProposalBimbingan="<?=base_url('Proposal/'.$Mhs['RevisiProposalBimbingan'])?>" class="btn btn-sm btn-success border-light LihatRevisiProposalBimbingan"><i class="fa fa-file-pdf-o"></i></button>  
@@ -55,14 +64,15 @@
 									<div class="card-header bg-danger text-light mt-2">
 										<b>Status Ujian Skripsi Skripsi</b>
 									</div>
-									<div class="card-body border border-light bg-warning p-2">
+									<div class="card-body border border-light bg-light p-2">
 										<div class="table-responsive">
 											<table class="table table-bordered bg-primary text-white mb-0">
+											<button type="button" class="btn btn-sm btn-warning border-white mb-2" CatatanRevisi="<?=$Mhs['CatatanSkripsi1'].'|'.$Mhs['CatatanSkripsi2'].'|'.$Mhs['CatatanSkripsi3']?>" id="Revisi"><b>Input Catatan Revisi</b></button>
 												<thead>
 													<tr>
-														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Ketua Penguji</th>
-														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Anggota Penguji</th>
-														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Sekretaris</th>
+														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Ketua Penguji (Penguji 1)</th>
+														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Anggota Penguji (Penguji 2)</th>
+														<th scope="col" style="width: 30%;vertical-align: middle;">Catatan Sekretaris (Dosen Pembimbing)</th>
 													</tr>
 												</thead>
 												<tbody class="bg-danger">
@@ -83,6 +93,58 @@
         <!-- /page content -->
       </div>
 		</div>
+		<div class="modal fade" id="ModalRevisi">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-success">
+          <div class="modal-body">
+            <div class="container">
+							<div class="row">
+                <div class="col-12">
+									<div class="card-header bg-danger text-light mt-2">
+										<b>Form Catatan Revisi Ujian Skripsi</b>
+									</div>
+									<div class="card-body border border-primary bg-warning">
+										<div class="container-fluid">
+											<div class="row">
+                        <div class="col-lg-12">
+                          <div class="input-group input-group-sm"> 
+                            <div class="input-group-prepend">
+                              <label class="input-group-text bg-primary text-light"><b>Catatan Penguji 1</b></label>
+                            </div>
+                            <textarea class="form-control" id="CatatanPenguji1" rows="4"></textarea>
+                          </div>
+												</div>
+												<div class="col-lg-12">
+                          <div class="input-group input-group-sm"> 
+                            <div class="input-group-prepend">
+                              <label class="input-group-text bg-primary text-light"><b>Catatan Penguji 2</b></label>
+                            </div>
+                            <textarea class="form-control" id="CatatanPenguji2" rows="4"></textarea>
+                          </div>
+												</div>
+												<div class="col-lg-12">
+                          <div class="input-group input-group-sm"> 
+                            <div class="input-group-prepend">
+                              <label class="input-group-text bg-primary text-light"><b>Catatan Penguji 3</b></label>
+                            </div>
+                            <textarea class="form-control" id="CatatanPenguji3" rows="4"></textarea>
+                          </div>
+                        </div>
+                        <div class="col-12 mt-1">
+                          <div class="input-group input-group-sm">
+                            <button type="button" class="btn btn-danger" id="ValidasiRevisi"><b>SIMPAN CATATAN&nbsp;<div id="LoadingRevisi" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+                          </div>
+                        </div>
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 		<div class="modal fade" id="ModalInputUjianSkripsi">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content bg-success">
@@ -267,6 +329,35 @@
           $('#ModalToeflSertifikat').modal("show")
 				}) 
 
+				$("#Revisi").click(function() {
+					var Data = $(this).attr('CatatanRevisi')
+					var Pisah = Data.split("|")
+					$("#CatatanPenguji1").val(Pisah[0])
+					$("#CatatanPenguji2").val(Pisah[1])
+					$("#CatatanPenguji3").val(Pisah[2])
+					$('#ModalRevisi').modal("show")
+				})
+				
+				$("#ValidasiRevisi").click(function() {
+          var Revisi = { CatatanSkripsi1: $("#CatatanPenguji1").val(),
+												 CatatanSkripsi2: $("#CatatanPenguji2").val(),
+                         CatatanSkripsi3: $("#CatatanPenguji3").val() }
+          var Konfirmasi = confirm("Yakin Ingin Menyimpan Catatan?"); 
+      		if (Konfirmasi == true) {
+            $("#ValidasiRevisi").attr("disabled", true); 
+            $("#LoadingRevisi").show();                             
+            $.post(BaseURL+"Mhs/UpdateRevisi", Revisi).done(function(Respon) {
+              if (Respon == '1') {
+                window.location = BaseURL + "Mhs/UjianSkripsi"
+              } else {
+                alert(Respon)
+                $("#ValidasiRevisi").attr("disabled", false); 
+                $("#LoadingRevisi").hide();                             
+              }
+            })
+          }
+        })
+
 				$("#InputUjianSkripsi").click(function() {
 					if (!$('#Administrasi')[0].files[0]) {
 						alert('Wajib Input Administrasi!')
@@ -311,6 +402,7 @@
 						})
 					}
 				})
+
 				$(document).on("click",".Edit",function(){
 					var Data = $(this).attr('Edit')
 					var Pisah = Data.split("|")
