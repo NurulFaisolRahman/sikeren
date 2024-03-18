@@ -1654,7 +1654,7 @@ class Dashboard extends CI_Controller {
 	public function ValidasiUjianProposal(){ 
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'ValidasiUjianProposal';
-		$Data['Mhs'] = $this->db->query("SELECT NIM,Nama,PengujiProposal1,PengujiProposal2 FROM mahasiswa WHERE PengujiProposal1 != '' AND PengujiProposal2 != '' AND NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != '' ORDER BY Nama ASC")->result_array();
+		$Data['Mhs'] = $this->db->query("SELECT NIM,Nama,PengujiProposal1,PengujiProposal2 FROM mahasiswa WHERE PengujiProposal1 != '' AND PengujiProposal2 != '' AND !(NilaiProposal1 != '' AND NilaiProposal2 != '' AND NilaiProposal3 != '') ORDER BY Nama ASC")->result_array();
 		$Data['UjianProposal'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan KPS' or StatusUjianProposal = 'Ditolak Pembimbing' or StatusPengujiProposal1 LIKE 'Ditolak%' or StatusPengujiProposal2 LIKE 'Ditolak%'")->result_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
 		$Penguji1 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal1,COUNT(mahasiswa.PengujiProposal1) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal1 = Dosen.NIP AND PengujiProposal1 != '' GROUP BY PengujiProposal1")->result_array();
@@ -1693,7 +1693,7 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'ValidasiUjianSkripsi';
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
-		$Data['Mhs'] = $this->db->query("SELECT NIM,Nama,PengujiSkripsi1,PengujiSkripsi2 FROM mahasiswa WHERE PengujiSkripsi1 != '' AND PengujiSkripsi2 != '' AND NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != '' ORDER BY Nama ASC")->result_array();
+		$Data['Mhs'] = $this->db->query("SELECT NIM,Nama,PengujiSkripsi1,PengujiSkripsi2 FROM mahasiswa WHERE PengujiSkripsi1 != '' AND PengujiSkripsi2 != '' AND !(NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != '') ORDER BY Nama ASC")->result_array();
 		$Data['UjianSkripsi'] = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan KPS' or StatusUjianSkripsi = 'Ditolak Pembimbing'")->result_array();
     $this->load->view('Header',$Data);
     $this->load->view('ValidasiUjianSkripsi',$Data); 
