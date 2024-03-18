@@ -221,7 +221,7 @@
           <div class="modal-body text-white">
             <div class="input-group input-group-sm mb-2">
               <div class="input-group-prepend">
-                <span class="input-group-text bg-primary text-light"><b>Mahasiswa</b></span>
+                <span class="input-group-text bg-primary text-light"><b>Pilih Mahasiswa</b></span>
               </div>
               <select class="custom-select custom-select-sm" id="_NIM">										
                 <option value="">Pilih Mahasiswa</option>

@@ -221,7 +221,7 @@
 									<div class="card-body border border-primary bg-warning">
 										<div class="container-fluid">
 											<div class="row">
-											<div class="col-lg-12">
+												<div class="col-lg-12">
 													<pre class="text-danger mb-0"><b>* Wajib Membawa Form Berita Acara Kehadiran Ujian Skripsi</b></pre>
 													<div class="input-group input-group-sm mb-0">
 														<div class="input-group-prepend">
