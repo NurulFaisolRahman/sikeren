@@ -1700,7 +1700,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function ValidasiPengujiProposal(){
-		$Data['Halaman'] = 'ValidasiDosen';
+		$Data['Halaman'] = 'Validasi Dosen';
 		$Data['SubMenu'] = 'ValidasiPengujiProposal';
 		$Data['PengujiProposal'] = array();
 		$Penguji = $this->db->query("SELECT * FROM mahasiswa where (StatusUjianProposal = 'Disetujui Pembimbing' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal1 = '') OR (StatusUjianProposal = 'Disetujui Pembimbing' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiProposal2 = '') OR (StatusUjianProposal = 'Menunggu Persetujuan Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."')")->result_array();
@@ -1712,7 +1712,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function ValidasiPengujiSkripsi(){
-		$Data['Halaman'] = 'ValidasiDosen';
+		$Data['Halaman'] = 'Validasi Dosen';
 		$Data['SubMenu'] = 'ValidasiPengujiSkripsi';
 		$Data['PengujiSkripsi'] = array();
 		$Penguji = $this->db->query("SELECT * FROM mahasiswa where (StatusUjianSkripsi = 'Disetujui Pembimbing' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi1 = '') OR (StatusUjianSkripsi = 'Disetujui Pembimbing' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."' AND StatusPengujiSkripsi2 = '') OR (StatusUjianSkripsi = 'Menunggu Persetujuan Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."')")->result_array();
@@ -2016,11 +2016,37 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function ValidasiBimbingan(){
-		$Data['Halaman'] = 'ValidasiDosen';
+		$Data['Halaman'] = 'Validasi Dosen';
 		$Data['SubMenu'] = 'ValidasiBimbingan';
 		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array();
 		$this->load->view('Header',$Data);
     $this->load->view('ValidasiBimbingan',$Data); 
+	}
+
+	public function InfoBimbingan(){
+		$Data['Halaman'] = 'Info Dosen';
+		$Data['SubMenu'] = 'InfoBimbingan';
+		$Data['Info'] = $this->db->query("SELECT * FROM `mahasiswa` WHERE StatusProposal != '' AND StatusProposal != 'Disetujui Pembimbing'")->result_array();
+		$this->load->view('Header',$Data);
+    $this->load->view('InfoBimbingan',$Data); 
+	}
+
+	public function InfoUjianProposal(){
+		$Data['Halaman'] = 'Info Dosen';
+		$Data['SubMenu'] = 'InfoUjianProposal';
+		$Data['Info'] = $this->db->query("SELECT * FROM `mahasiswa` WHERE StatusUjianProposal != '' AND (NilaiProposal1 = '' OR NilaiProposal2 = '' OR NilaiProposal3 = '')")->result_array();
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
+		$this->load->view('Header',$Data);
+    $this->load->view('InfoUjianProposal',$Data); 
+	}
+
+	public function InfoUjianSkripsi(){
+		$Data['Halaman'] = 'Info Dosen';
+		$Data['SubMenu'] = 'InfoUjianSkripsi';
+		$Data['Info'] = $this->db->query("SELECT * FROM `mahasiswa` WHERE StatusUjianSkripsi != '' AND (NilaiSkripsi1 = '' OR NilaiSkripsi2 = '' OR NilaiSkripsi3 = '')")->result_array();
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
+		$this->load->view('Header',$Data);
+    $this->load->view('InfoUjianSkripsi',$Data); 
 	}
 
 	public function SesiBimbingan(){

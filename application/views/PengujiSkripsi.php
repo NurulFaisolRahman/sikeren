@@ -26,7 +26,7 @@
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
                                 <td class="align-middle"><?=$key['NamaPembimbing']?></td>
-                                <td class="align-middle"><?=$key['JudulProposal']?></td>
+                                <td class="align-middle"><?=$key['TanggalUjianSkripsi']?></td>
                                 <td class="text-center align-middle">
                                   <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianSkripsi']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData" data-toggle="tooltip" data-placement="top" title="Menilai Skripsi"><i class="fas fa-edit"></i></button>
                                   <button CekArtikel="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-success CekArtikel" data-toggle="tooltip" data-placement="top" title="Menilai Artikel"><i class="fas fa-edit"></i></button>
