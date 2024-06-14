@@ -1660,13 +1660,23 @@ class Dashboard extends CI_Controller {
 		$Penguji1 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal1,COUNT(mahasiswa.PengujiProposal1) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal1 = Dosen.NIP AND PengujiProposal1 != '' GROUP BY PengujiProposal1")->result_array();
 		$Penguji2 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal2,COUNT(mahasiswa.PengujiProposal2) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal2 = Dosen.NIP AND PengujiProposal2 != '' GROUP BY PengujiProposal2")->result_array();
 		$Penguji3 = $this->db->query("SELECT Dosen.Nama,mahasiswa.NIPPembimbing,COUNT(mahasiswa.NIPPembimbing) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.NIPPembimbing = Dosen.NIP AND (PengujiProposal1 != '' OR PengujiProposal2 != '') GROUP BY NIPPembimbing")->result_array();
-		$Data['NamaDosen'] = array();$Data['JumlahMenguji'] = array();
+		$_Penguji1 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal1,COUNT(mahasiswa.PengujiProposal1) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal1 = Dosen.NIP AND PengujiProposal1 != '' AND NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != '' GROUP BY PengujiProposal1")->result_array();
+		$_Penguji2 = $this->db->query("SELECT Dosen.Nama,mahasiswa.PengujiProposal2,COUNT(mahasiswa.PengujiProposal2) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.PengujiProposal2 = Dosen.NIP AND PengujiProposal2 != '' AND NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != '' GROUP BY PengujiProposal2")->result_array();
+		$_Penguji3 = $this->db->query("SELECT Dosen.Nama,mahasiswa.NIPPembimbing,COUNT(mahasiswa.NIPPembimbing) AS Jumlah FROM `Dosen`,`mahasiswa` WHERE mahasiswa.NIPPembimbing = Dosen.NIP AND (PengujiProposal1 != '' OR PengujiProposal2 != '') AND NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != '' GROUP BY NIPPembimbing")->result_array();
+		$Data['NamaDosen'] = array();$Data['JumlahMenguji'] = array();$Data['JumlahLulus'] = array();
 		foreach ($Penguji1 as $key) {
 			if (isset($Data['NamaDosen'][$key['PengujiProposal1']])) {
 				$Data['JumlahMenguji'][$key['PengujiProposal1']] += $key['Jumlah'];
 			} else {
 				$Data['NamaDosen'][$key['PengujiProposal1']] = $key['Nama'];
 				$Data['JumlahMenguji'][$key['PengujiProposal1']] = $key['Jumlah'];
+			}
+		}
+		foreach ($_Penguji1 as $key) {
+			if (isset($Data['JumlahLulus'][$key['PengujiProposal1']])) {
+				$Data['JumlahLulus'][$key['PengujiProposal1']] += $key['Jumlah'];
+			} else {
+				$Data['JumlahLulus'][$key['PengujiProposal1']] = $key['Jumlah'];
 			}
 		}
 		foreach ($Penguji2 as $key) {
@@ -1677,12 +1687,26 @@ class Dashboard extends CI_Controller {
 				$Data['JumlahMenguji'][$key['PengujiProposal2']] = $key['Jumlah'];
 			}
 		}
+		foreach ($_Penguji2 as $key) {
+			if (isset($Data['JumlahLulus'][$key['PengujiProposal2']])) {
+				$Data['JumlahLulus'][$key['PengujiProposal2']] += $key['Jumlah'];
+			} else {
+				$Data['JumlahLulus'][$key['PengujiProposal2']] = $key['Jumlah'];
+			}
+		}
 		foreach ($Penguji3 as $key) {
 			if (isset($Data['NamaDosen'][$key['NIPPembimbing']])) {
 				$Data['JumlahMenguji'][$key['NIPPembimbing']] += $key['Jumlah'];
 			} else {
 				$Data['NamaDosen'][$key['NIPPembimbing']] = $key['Nama'];
 				$Data['JumlahMenguji'][$key['NIPPembimbing']] = $key['Jumlah'];
+			}
+		}
+		foreach ($_Penguji3 as $key) {
+			if (isset($Data['JumlahLulus'][$key['NIPPembimbing']])) {
+				$Data['JumlahLulus'][$key['NIPPembimbing']] += $key['Jumlah'];
+			} else {
+				$Data['JumlahLulus'][$key['NIPPembimbing']] = $key['Jumlah'];
 			}
 		}
     $this->load->view('Header',$Data);

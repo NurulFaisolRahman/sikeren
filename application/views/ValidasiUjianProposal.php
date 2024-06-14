@@ -51,7 +51,7 @@
       </div>
     </div>
     <div class="modal fade" id="ModalRekapDosenPenguji">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content bg-primary">
           <div class="modal-body">
             <div class="table-responsive">
@@ -60,13 +60,17 @@
                   <tr>
                     <th scope="col" style="width: 10%;" class="text-center">No</th>
                     <th scope="col">Nama Dosen</th>
-                    <th scope="col" style="width: 10%;" class="text-center">Jumlah</th>
+                    <th scope="col" style="width: 10%;" class="text-center">Lulus</th>
+                    <th scope="col" style="width: 10%;" class="text-center">Belum</th>
+                    <th scope="col" style="width: 10%;" class="text-center">Total</th>
                   </tr>
                   <tbody>
                     <?php $No = 1; foreach ($NamaDosen as $key => $value) { ?>
                       <tr>
                         <th class="text-center"><?=$No++?></th>
                         <td><?=$value?></td>
+                        <td class="text-center"><?=$JumlahLulus[$key]?></td>
+                        <td class="text-center"><?=$JumlahMenguji[$key]-$JumlahLulus[$key]?></td>
                         <td class="text-center"><?=$JumlahMenguji[$key]?></td>
                       </tr>
                     <?php } ?>
