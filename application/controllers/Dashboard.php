@@ -2058,7 +2058,7 @@ class Dashboard extends CI_Controller {
 	public function InfoUjianProposal(){
 		$Data['Halaman'] = 'Info Dosen';
 		$Data['SubMenu'] = 'InfoUjianProposal';
-		$Data['Info'] = $this->db->query("SELECT * FROM `mahasiswa` WHERE StatusUjianProposal != '' AND (NilaiProposal1 = '' OR NilaiProposal2 = '' OR NilaiProposal3 = '')")->result_array();
+		$Data['Info'] = $this->db->query("SELECT * FROM `mahasiswa` WHERE StatusUjianProposal != '' AND PengujiProposal1 != '' AND PengujiProposal2 != '' AND (NilaiProposal1 = '' OR NilaiProposal2 = '' OR NilaiProposal3 = '')")->result_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
 		$this->load->view('Header',$Data);
     $this->load->view('InfoUjianProposal',$Data); 
