@@ -926,12 +926,8 @@ td
 						echo 'GENAP '.(intval($Bulan[0])-1).'/'.intval($Bulan[0]);
 					}
 				} else {
-					if (intval($Bulan[1]) < 2) {
-						echo 'GENAP '.intval($Bulan[0]).'/'.(intval($Bulan[0])+1);
-					} else {
-						echo 'GANJIL '.intval($Bulan[0]).'/'.(intval($Bulan[0])+1);
-					}
-				} 
+					echo 'GENAP '.intval($Bulan[0]).'/'.(intval($Bulan[0])+1); 
+				}
 			?>
 			<td class=3D"xl71"><?=$Mhs[$i][4]?></td>
 			<td class=3D"xl71"><?=$Mhs[$i][5]?></td>
