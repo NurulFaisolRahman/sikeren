@@ -19,7 +19,7 @@
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-12">
-          <div class="card my-1 bg-primary">
+          <div class="card my-1 bg-success">
             <div class="card-body p-2 text-light">
               <p class="font-weight-bold mb-1 text-center" style="font-size: 25px;">Rekap Ujian Skripsi Semester Genap 2023/2024 </p>
               <div class="row">
@@ -45,8 +45,12 @@
                       <tbody style="font-size: 12px;" class="bg-white">
                         <?php $No = 1; foreach ($Mhs as $key) { ?>
                           <tr class="text-dark font-weight-bold">	
-                            <td class="text-center align-middle"><?=$No++?></td>
-                            <td class="align-middle"><b class="text-danger"><?=$key['NIM']?></b><br><b class="text-success"><?=$key['Nama']?></b></td>
+                            <td rowspan="2" class="text-center align-middle"><?=$No++?></td>
+                            <td rowspan="2" class="align-middle bg-primary"><b class="text-white"><?=$key['NIM']?></b><br><b class="text-white"><?=$key['Nama']?></b></td>
+                            <th colspan="3" class="text-center align-middle text-white bg-primary"><?='Tanggal Ujian Proposal : '.date('d-m-Y',strtotime($key['TanggalUjianProposal']))?></th>
+                            <th colspan="3" class="text-center align-middle text-white bg-primary"><?='Tanggal Ujian Skripsi : '.date('d-m-Y',strtotime($key['TanggalUjianSkripsi']))?></th>
+                          </tr>
+                          <tr class="text-dark font-weight-bold">	
                             <?php if ($key['NilaiProposal1'] == '') { ?>
                               <td class='text-center text-danger align-middle'><?=$NamaDosen[$key['PengujiProposal1']]?></td>
                             <?php } else { ?>
