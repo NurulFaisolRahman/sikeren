@@ -920,7 +920,7 @@ td
 			<td class=3D"xl70" x:str>
 			<?php
 				if (intval($Bulan[1]) < 8) {
-					if (intval($Bulan[1]) < 3) {
+					if (intval($Bulan[1]) < 2) {
 						echo 'GANJIL '.(intval($Bulan[0])-1).'/'.intval($Bulan[0]);
 					} else {
 						echo 'GENAP '.(intval($Bulan[0])-1).'/'.intval($Bulan[0]);
