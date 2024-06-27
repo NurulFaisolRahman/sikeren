@@ -477,46 +477,6 @@
                             <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
-                                  <label class="input-group-text bg-primary text-light"><b>Pembahasan dan Analisis Data</b></label>
-                                </div>
-                                <select class="custom-select custom-select-sm" id="PembahasanArtikel">										
-                                  <option value="0">Klik Disini</option><option value="1">1. Analisis tidak sesuai dengan metodologi</option>
-                                  <option value="2">2. Analisis dan pembahasan kurang mendalam, kurang sesuai dengan metodologi  dan tujuan penelitian</option>
-                                  <option value="3">3. Analisis dan pembahasan dilakukan cukup mendalam sesuai metodologi, cukup hasil sesuai tujuan penelitian, namun deskripsi kurang memadai</option>
-                                  <option value="4">4. Analisis dan pembahasan sangat mendalam, sudah sesuai metodologi, hasil sesuai tujuan penelitian dan deskripsi memadai</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-2">
-                              <input class="form-control form-control-sm" type="text" id="_PembahasanArtikel" value="0.0">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 my-1">
-                          <div class="row">
-                            <div class="col-10">
-                              <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                  <label class="input-group-text bg-primary text-light"><b>Kesimpulan dan keterbatasan penelitian</b></label>
-                                </div>
-                                <select class="custom-select custom-select-sm" id="KesimpulanArtikel">										
-                                  <option value="0">Klik Disini</option><option value="1">1. tidak sesuai dengan hasil analisis tujuan penelitian dan tidak dijelaskan keterbatasan penelitian</option>
-                                  <option value="2">2. sesuai dengan tujuan penelitian namun tidak fokus dan tidak lengkap dan tidak dijelaskan keterbatasan peneltiian</option>
-                                  <option value="3">3. Sesuai dengan tujuan penelitian fokus namun tidak lengkap keterbatasan penelitian tidak dijelaskan</option>
-                                  <option value="4">4. Sesuai dengan tujuan penelitian, fokus, lengkap dan keterbatasan penelitian dijelaskan</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-2">
-                              <input class="form-control form-control-sm" type="text" id="_KesimpulanArtikel" value="0.0">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 my-1">
-                          <div class="row">
-                            <div class="col-10">
-                              <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Sistematika Daftar Pustaka</b></label>
                                 </div>
                                 <select class="custom-select custom-select-sm" id="DapusArtikel">										
@@ -529,6 +489,26 @@
                             </div>
                             <div class="col-2">
                               <input class="form-control form-control-sm" type="text" id="_DapusArtikel" value="0.0">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 my-1">
+                          <div class="row">
+                            <div class="col-10">
+                              <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text bg-primary text-light"><b>Publikasi</b></label>
+                                </div>
+                                <select class="custom-select custom-select-sm" id="PublikasiArtikel">										
+                                  <option value="0">Klik Disini</option><option value="1">1. Sinta 6</option>
+                                  <option value="2">2. Sinta 5</option>
+                                  <option value="3">3. sinta 3 dan 4</option>
+                                  <option value="4">4. sinta 1 dan 2 / Scopus</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-2">
+                              <input class="form-control form-control-sm" type="text" id="_PublikasiArtikel" value="0.0">
                             </div>
                           </div>
                         </div>
@@ -659,16 +639,14 @@
             alert('Input Nilai Komposisi refrensi Belum Benar')
           } else if ($("#_MetodologiArtikel").val() == 0 || isNaN($("#_MetodologiArtikel").val()) || $("#_MetodologiArtikel").val() > 4 || $("#_MetodologiArtikel").val().match(/^ *$/) !== null) {
             alert('Input Nilai Metodologi Penelitian Belum Benar')
-          } else if ($("#_PembahasanArtikel").val() == 0 || isNaN($("#_PembahasanArtikel").val()) || $("#_PembahasanArtikel").val() > 4 || $("#_PembahasanArtikel").val().match(/^ *$/) !== null) {
-            alert('Input Nilai Pembahasan dan Analisis Data Belum Benar')
-          } else if ($("#_KesimpulanArtikel").val() == 0 || isNaN($("#_KesimpulanArtikel").val()) || $("#_KesimpulanArtikel").val() > 4 || $("#_KesimpulanArtikel").val().match(/^ *$/) !== null) {
-            alert('Input Nilai Kesimpulan dan keterbatasan penelitian Belum Benar')
           } else if ($("#_DapusArtikel").val() == 0 || isNaN($("#_DapusArtikel").val()) || $("#_DapusArtikel").val() > 4 || $("#_DapusArtikel").val().match(/^ *$/) !== null) {
             alert('Input Nilai Sistematika Daftar Pustaka Belum Benar')
+          } else if ($("#_PublikasiArtikel").val() == 0 || isNaN($("#_PublikasiArtikel").val()) || $("#_PublikasiArtikel").val() > 4 || $("#_PublikasiArtikel").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Publikasi Artikel Belum Benar')
           } else {
             var Mhs = { NIM: $("#NIM_").val(),
                       Nilai: $("#_Artikel").val().replace(/\s/g, "")+"$"+$("#_AbstrakArtikel").val().replace(/\s/g, "")+"$"+ $("#_PendahuluanArtikel").val().replace(/\s/g, "")+"$"+ $("#_LiteraturArtikel").val().replace(/\s/g, "")
-                                +"$"+ $("#_KomposisiArtikel").val().replace(/\s/g, "")+"$"+ $("#_MetodologiArtikel").val().replace(/\s/g, "")+"$"+ $("#_PembahasanArtikel").val().replace(/\s/g, "")+"$"+ $("#_KesimpulanArtikel").val().replace(/\s/g, "")+"$"+ $("#_DapusArtikel").val().replace(/\s/g, "") }
+                                +"$"+ $("#_KomposisiArtikel").val().replace(/\s/g, "")+"$"+ $("#_MetodologiArtikel").val().replace(/\s/g, "")+"$"+ $("#_DapusArtikel").val().replace(/\s/g, "")+"$"+ $("#_PublikasiArtikel").val().replace(/\s/g, "") }
             var Konfirmasi = confirm("Yakin Ingin Menyimpan Penilaian?"); 
             if (Konfirmasi == true) {
               $("#ValidasiArtikel").attr("disabled", true); 

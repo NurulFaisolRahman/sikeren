@@ -346,20 +346,52 @@ class Mhs extends CI_Controller {
 		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
 		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$Bobot = array(5,3.75,2.5,2.5,2.5,5,3.75);
+		$_Bobot = array(2.5,2.5,3,3,2,3,5,2.5,1.5);
+		$_Bobot_ = array(4,1.5,4,4,3,4,1.5,3);
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal1']);
 		$NilaiKetuaPenguji = 0;
-		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiKetuaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+		if (count($RekapNilai) == 7) {
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiKetuaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+			}
+		} else if (count($RekapNilai) == 8) {
+			for ($i=0; $i < count($_Bobot_); $i++) { 
+				$NilaiKetuaPenguji += $_Bobot_[$i]*(float)$RekapNilai[$i];
+			}
+		} else {
+			for ($i=0; $i < count($_Bobot); $i++) { 
+				$NilaiKetuaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
+			}
 		}
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal2']);
 		$NilaiAnggotaPenguji = 0;
-		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiAnggotaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+		if (count($RekapNilai) == 7) {
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiAnggotaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+			}
+		} else if (count($RekapNilai) == 8) {
+			for ($i=0; $i < count($_Bobot_); $i++) { 
+				$NilaiAnggotaPenguji += $_Bobot_[$i]*(float)$RekapNilai[$i];
+			}
+		} else {
+			for ($i=0; $i < count($_Bobot); $i++) { 
+				$NilaiAnggotaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
+			}
 		}
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal3']);
 		$NilaiSekretaris = 0;
-		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiSekretaris += $Bobot[$i]*(float)$RekapNilai[$i];
+		if (count($RekapNilai) == 7) {
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiSekretaris += $Bobot[$i]*(float)$RekapNilai[$i];
+			}
+		} else if (count($RekapNilai) == 8) {
+			for ($i=0; $i < count($_Bobot_); $i++) { 
+				$NilaiSekretaris += $_Bobot_[$i]*(float)$RekapNilai[$i];
+			}
+		} else {
+			for ($i=0; $i < count($_Bobot); $i++) { 
+				$NilaiSekretaris += $_Bobot[$i]*(float)$RekapNilai[$i];
+			}
 		}
 		$Data['Nilai'] = number_format(((0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris)),2,",",".");
 		$this->load->view('BeritaAcaraUjianProposal',$Data);
@@ -375,37 +407,101 @@ class Mhs extends CI_Controller {
 		$Data['NamaAnggota'] = $this->db->query("SELECT Nama FROM Dosen WHERE NIP = ".$Data['Mhs']['PengujiProposal2'])->row_array()['Nama'];
 		$Data['Sekretaris'] = $this->db->query("SELECT QRCode FROM Dosen WHERE NIP = ".$Data['Mhs']['NIPPembimbing'])->row_array()['QRCode'];
 		$Bobot = array(5,3.75,2.5,2.5,2.5,5,3.75);
+		$_Bobot = array(2.5,2.5,3,3,2,3,5,2.5,1.5);
+		$_Bobot_ = array(4,1.5,4,4,3,4,1.5,3);
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal1']);
 		$NilaiKetuaPenguji = 0;
-		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiKetuaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+		if (count($RekapNilai) == 7) {
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiKetuaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+			}
+		} else if (count($RekapNilai) == 8) {
+			for ($i=0; $i < count($_Bobot_); $i++) { 
+				$NilaiKetuaPenguji += $_Bobot_[$i]*(float)$RekapNilai[$i];
+			}
+		} else {
+			for ($i=0; $i < count($_Bobot); $i++) { 
+				$NilaiKetuaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
+			}
 		}
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal2']);
 		$NilaiAnggotaPenguji = 0;
-		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiAnggotaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+		if (count($RekapNilai) == 7) {
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiAnggotaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+			}
+		} else if (count($RekapNilai) == 8) {
+			for ($i=0; $i < count($_Bobot_); $i++) { 
+				$NilaiAnggotaPenguji += $_Bobot_[$i]*(float)$RekapNilai[$i];
+			}
+		} else {
+			for ($i=0; $i < count($_Bobot); $i++) { 
+				$NilaiAnggotaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
+			}
 		}
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal3']);
 		$NilaiSekretaris = 0;
-		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiSekretaris += $Bobot[$i]*(float)$RekapNilai[$i];
+		if (count($RekapNilai) == 7) {
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiSekretaris += $Bobot[$i]*(float)$RekapNilai[$i];
+			}
+		} else if (count($RekapNilai) == 8) {
+			for ($i=0; $i < count($_Bobot_); $i++) { 
+				$NilaiSekretaris += $_Bobot_[$i]*(float)$RekapNilai[$i];
+			}
+		} else {
+			for ($i=0; $i < count($_Bobot); $i++) { 
+				$NilaiSekretaris += $_Bobot[$i]*(float)$RekapNilai[$i];
+			}
 		}
 		$NilaiProposal = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
 		$Bobot = array(2.5,2.5,2,2,2,2.5,2.5,2,2.5,2.5,2);
+		$_Bobot = array(2.5,2.5,3,3,2,3,5,2.5,1.5);
+		$_Bobot_ = array(2.5,1.5,2.5,2.5,2,3,5,1.5,1.5,3);
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiSkripsi1']);
 		$NilaiKetuaPenguji = 0;
-		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiKetuaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+		if (count($RekapNilai) == 11) {
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiKetuaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+			}
+		} else if (count($RekapNilai) == 10) {
+			for ($i=0; $i < count($_Bobot_); $i++) { 
+				$NilaiKetuaPenguji += $_Bobot_[$i]*(float)$RekapNilai[$i];
+			}
+		} else {
+			for ($i=0; $i < count($_Bobot); $i++) { 
+				$NilaiKetuaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
+			}
 		}
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiSkripsi2']);
 		$NilaiAnggotaPenguji = 0;
-		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiAnggotaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+		if (count($RekapNilai) == 11) {
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiAnggotaPenguji += $Bobot[$i]*(float)$RekapNilai[$i];
+			}
+		} else if (count($RekapNilai) == 10) {
+			for ($i=0; $i < count($_Bobot_); $i++) { 
+				$NilaiAnggotaPenguji += $_Bobot_[$i]*(float)$RekapNilai[$i];
+			}
+		} else {
+			for ($i=0; $i < count($_Bobot); $i++) { 
+				$NilaiAnggotaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
+			}
 		}
 		$RekapNilai = explode("$",$Data['Mhs']['NilaiSkripsi3']);
 		$NilaiSekretaris = 0;
-		for ($i=0; $i < count($Bobot); $i++) { 
-			$NilaiSekretaris += $Bobot[$i]*(float)$RekapNilai[$i];
+		if (count($RekapNilai) == 11) {
+			for ($i=0; $i < count($Bobot); $i++) { 
+				$NilaiSekretaris += $Bobot[$i]*(float)$RekapNilai[$i];
+			}
+		} else if (count($RekapNilai) == 10) {
+			for ($i=0; $i < count($_Bobot_); $i++) { 
+				$NilaiSekretaris += $_Bobot_[$i]*(float)$RekapNilai[$i];
+			}
+		} else {
+			for ($i=0; $i < count($_Bobot); $i++) { 
+				$NilaiSekretaris += $_Bobot[$i]*(float)$RekapNilai[$i];
+			}
 		}
 		$NilaiSkripsi = (0.3*$NilaiKetuaPenguji)+(0.3*$NilaiAnggotaPenguji)+(0.4*$NilaiSekretaris);
 		$Data['Nilai'] = number_format(((0.3*$NilaiProposal)+(0.7*$NilaiSkripsi)),2,",",".");

@@ -29,7 +29,7 @@
                                 <td class="align-middle"><?=$key['TanggalUjianSkripsi']?></td>
                                 <td class="text-center align-middle">
                                   <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianSkripsi']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData" data-toggle="tooltip" data-placement="top" title="Menilai Skripsi"><i class="fas fa-edit"></i></button>
-                                  <button CekArtikel="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-success CekArtikel" data-toggle="tooltip" data-placement="top" title="Menilai Artikel"><i class="fas fa-edit"></i></button>
+                                  <button CekArtikel="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianSkripsi']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-success CekArtikel" data-toggle="tooltip" data-placement="top" title="Menilai Artikel"><i class="fas fa-edit"></i></button>
                                   <button Revisi="<?=$key['NIM']."|".$key['Nama']?>" class="btn btn-sm btn-primary Revisi" data-toggle="tooltip" data-placement="top" title="Catatan Revisi"><i class="fas fa-edit"></i></button>
                                   <a href="<?=base_url('Dashboard/PersetujuanUjianSkripsi/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
                                 </td> 
@@ -415,9 +415,9 @@
                         <div class="col-lg-5 my-1">
 													<div class="input-group input-group-sm mb-0">
 														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Tanggal Ujian Proposal</b></label>
+															<label class="input-group-text bg-primary text-light"><b>Tanggal Ujian Skripsi</b></label>
 														</div>
-														<input class="form-control form-control-sm" type="date" id="TanggalUjianProposal_" value="<?=date('Y-m-d')?>" disabled>
+														<input class="form-control form-control-sm" type="date" id="TanggalUjianSkripsi_" value="<?=date('Y-m-d')?>" disabled>
 													</div>
 												</div>
 												<div class="col-7 my-1"> 
@@ -612,6 +612,26 @@
                             </div>
                           </div>
                         </div>
+                        <div class="col-12 my-1">
+                          <div class="row">
+                            <div class="col-10">
+                              <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text bg-primary text-light"><b>Publikasi</b></label>
+                                </div>
+                                <select class="custom-select custom-select-sm" id="PublikasiArtikel">										
+                                  <option value="0">Klik Disini</option><option value="1">1. Sinta 6</option>
+                                  <option value="2">2. Sinta 5</option>
+                                  <option value="3">3. sinta 3 dan 4</option>
+                                  <option value="4">4. sinta 1 dan 2 / Scopus</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-2">
+                              <input class="form-control form-control-sm" type="text" id="_PublikasiArtikel" value="0.0">
+                            </div>
+                          </div>
+                        </div>
 												<div class="col-12 my-1">
                           <div class="input-group input-group-sm">
                             <button type="button" class="btn btn-primary" id="ValidasiArtikel"><b>SIMPAN PENILAIAN&nbsp;<div id="LoadingArtikel" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
@@ -685,7 +705,7 @@
 					var Pisah = Data.split("|")
 					$("#NIM_").val(Pisah[0])
 					$("#Nama_").val(Pisah[1])
-					$("#TanggalUjianProposal_").val(Pisah[2])
+					$("#TanggalUjianSkripsi_").val(Pisah[2])
           $("#Konsentrasi_").val(Pisah[3])
 					$('#ModalValidasiArtikel').modal("show")
         })
@@ -754,10 +774,12 @@
             alert('Input Nilai Kesimpulan dan keterbatasan penelitian Belum Benar')
           } else if ($("#_DapusArtikel").val() == 0 || isNaN($("#_DapusArtikel").val()) || $("#_DapusArtikel").val() > 4 || $("#_DapusArtikel").val().match(/^ *$/) !== null) {
             alert('Input Nilai Sistematika Daftar Pustaka Belum Benar')
+          } else if ($("#_PublikasiArtikel").val() == 0 || isNaN($("#_PublikasiArtikel").val()) || $("#_PublikasiArtikel").val() > 4 || $("#_PublikasiArtikel").val().match(/^ *$/) !== null) {
+            alert('Input Nilai Publikasi Artikel Belum Benar')
           } else {
             var Mhs = { NIM: $("#NIM_").val(),
                       Nilai: $("#_Artikel").val().replace(/\s/g, "")+"$"+$("#_AbstrakArtikel").val().replace(/\s/g, "")+"$"+ $("#_PendahuluanArtikel").val().replace(/\s/g, "")+"$"+ $("#_LiteraturArtikel").val().replace(/\s/g, "")
-                                +"$"+ $("#_KomposisiArtikel").val().replace(/\s/g, "")+"$"+ $("#_MetodologiArtikel").val().replace(/\s/g, "")+"$"+ $("#_PembahasanArtikel").val().replace(/\s/g, "")+"$"+ $("#_KesimpulanArtikel").val().replace(/\s/g, "")+"$"+ $("#_DapusArtikel").val().replace(/\s/g, "") }
+                                +"$"+ $("#_KomposisiArtikel").val().replace(/\s/g, "")+"$"+ $("#_MetodologiArtikel").val().replace(/\s/g, "")+"$"+ $("#_PembahasanArtikel").val().replace(/\s/g, "")+"$"+ $("#_KesimpulanArtikel").val().replace(/\s/g, "")+"$"+ $("#_DapusArtikel").val().replace(/\s/g, "")+ $("#_PublikasiArtikel").val().replace(/\s/g, "") }
             var Konfirmasi = confirm("Yakin Ingin Menyimpan Penilaian?"); 
             if (Konfirmasi == true) {
               $("#ValidasiArtikel").attr("disabled", true); 
