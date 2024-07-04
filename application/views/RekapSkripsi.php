@@ -29,28 +29,29 @@
                       <thead style="font-size: 15px;" class="bg-warning">
                         <tr>
                           <th rowspan="2" style="width: 40px;" class="text-center align-middle">No</th>
-                          <th rowspan="2" style="width: 200px;" class="text-center align-middle">NIM & Nama</th>
+                          <th rowspan="2" class="text-center align-middle">NIM</th>
+                          <th rowspan="2" class="text-center align-middle">Nama</th>
+                          <th rowspan="2" class="text-center align-middle">Tanggal</th>
                           <th colspan="3" class="text-center align-middle">Ujian Proposal</th>
+                          <th rowspan="2" class="text-center align-middle">Tanggal</th>
                           <th colspan="3" class="text-center align-middle">Ujian Skripsi</th>
                         </tr>
                         <tr class="text-center align-middle">
                           <th>Penguji 1</th>
                           <th>Penguji 2</th>
-                          <th>Penguji 3</th>
+                          <th>Pembimbing</th>
                           <th>Penguji 1</th>
                           <th>Penguji 2</th>
-                          <th>Penguji 3</th>
+                          <th>Pembimbing</th>
                         </tr>
                       </thead>
                       <tbody style="font-size: 12px;" class="bg-white">
                         <?php $No = 1; foreach ($Mhs as $key) { ?>
-                          <tr class="text-dark font-weight-bold">	
-                            <td rowspan="2" class="text-center align-middle"><?=$No++?></td>
-                            <td rowspan="2" class="align-middle bg-primary"><b class="text-white"><?=$key['NIM']?></b><br><b class="text-white"><?=$key['Nama']?></b></td>
-                            <th colspan="3" class="text-center align-middle text-white bg-primary"><?='Tanggal Ujian Proposal : '.date('d-m-Y',strtotime($key['TanggalUjianProposal']))?></th>
-                            <th colspan="3" class="text-center align-middle text-white bg-primary"><?='Tanggal Ujian Skripsi : '.date('d-m-Y',strtotime($key['TanggalUjianSkripsi']))?></th>
-                          </tr>
-                          <tr class="text-dark font-weight-bold">	
+                          <tr class="text-dark font-weight-bold bg-white">	
+                            <td class="text-center align-middle bg-white"><?=$No++?></td>
+                            <td class="align-middle"><?=$key['NIM']?></td>
+                            <td class="align-middle"><?=$key['Nama']?></td>
+                            <th class="align-middle"><?=date('d-m-Y',strtotime($key['TanggalUjianProposal']))?></th>
                             <?php if ($key['NilaiProposal1'] == '') { ?>
                               <td class='text-center text-danger align-middle'><?=$NamaDosen[$key['PengujiProposal1']]?></td>
                             <?php } else { ?>
@@ -66,6 +67,7 @@
                             <?php } else { ?>
                               <td class='text-center text-success align-middle'><?=$key['NamaPembimbing']?></td>
                             <?php } ?>
+                            <th class="align-middle"><?=date('d-m-Y',strtotime($key['TanggalUjianSkripsi']))?></th>
                             <?php if ($key['NilaiSkripsi1'] == '') { ?>
                               <td class='text-center text-danger align-middle'><?=$NamaDosen[$key['PengujiSkripsi1']]?></td>
                             <?php } else { ?>

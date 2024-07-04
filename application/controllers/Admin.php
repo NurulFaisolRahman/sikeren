@@ -209,7 +209,7 @@ class Admin extends CI_Controller {
 			$Bobot = array(5,3.75,2.5,2.5,2.5,5,3.75);
 			$_Bobot = array(2.5,2.5,3,3,2,3,5,2.5,1.5);
 			$_Bobot_ = array(4,1.5,4,4,3,4,1.5,3);
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal1']);
+			$RekapNilai = explode("$",$key['NilaiProposal1']);
 			$NilaiKetuaPenguji = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -224,7 +224,7 @@ class Admin extends CI_Controller {
 					$NilaiKetuaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal2']);
+			$RekapNilai = explode("$",$key['NilaiProposal2']);
 			$NilaiAnggotaPenguji = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -239,7 +239,7 @@ class Admin extends CI_Controller {
 					$NilaiAnggotaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal3']);
+			$RekapNilai = explode("$",$key['NilaiProposal3']);
 			$NilaiSekretaris = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -258,7 +258,7 @@ class Admin extends CI_Controller {
 			$Bobot = array(2.5,2.5,2,2,2,2.5,2.5,2,2.5,2.5,2);
 			$_Bobot = array(2.5,2.5,3,3,2,3,5,2.5,1.5);
 			$_Bobot_ = array(2.5,1.5,2.5,2.5,2,3,5,1.5,1.5,3);
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiSkripsi1']);
+			$RekapNilai = explode("$",$key['NilaiSkripsi1']);
 			$NilaiKetuaPenguji = 0;
 			if (count($RekapNilai) == 11) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -273,7 +273,7 @@ class Admin extends CI_Controller {
 					$NilaiKetuaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiSkripsi2']);
+			$RekapNilai = explode("$",$key['NilaiSkripsi2']);
 			$NilaiAnggotaPenguji = 0;
 			if (count($RekapNilai) == 11) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -288,7 +288,7 @@ class Admin extends CI_Controller {
 					$NilaiAnggotaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiSkripsi3']);
+			$RekapNilai = explode("$",$key['NilaiSkripsi3']);
 			$NilaiSekretaris = 0;
 			if (count($RekapNilai) == 11) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -339,7 +339,7 @@ class Admin extends CI_Controller {
 			$Bobot = array(5,3.75,2.5,2.5,2.5,5,3.75);
 			$_Bobot = array(2.5,2.5,3,3,2,3,5,2.5,1.5);
 			$_Bobot_ = array(4,1.5,4,4,3,4,1.5,3);
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal1']);
+			$RekapNilai = explode("$",$key['NilaiProposal1']);
 			$NilaiKetuaPenguji = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -354,7 +354,7 @@ class Admin extends CI_Controller {
 					$NilaiKetuaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal2']);
+			$RekapNilai = explode("$",$key['NilaiProposal2']);
 			$NilaiAnggotaPenguji = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
@@ -369,7 +369,7 @@ class Admin extends CI_Controller {
 					$NilaiAnggotaPenguji += $_Bobot[$i]*(float)$RekapNilai[$i];
 				}
 			}
-			$RekapNilai = explode("$",$Data['Mhs']['NilaiProposal3']);
+			$RekapNilai = explode("$",$key['NilaiProposal3']);
 			$NilaiSekretaris = 0;
 			if (count($RekapNilai) == 7) {
 				for ($i=0; $i < count($Bobot); $i++) { 
