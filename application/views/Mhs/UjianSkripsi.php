@@ -31,11 +31,11 @@
 														<tr>
 															<td style="vertical-align: middle;text-align: center;"><?=$Mhs['TanggalUjianSkripsi']?></td>
 															<?php 
-																$Penguji3 = $key['StatusUjianSkripsi'] == 'Menunggu Persetujuan Pembimbing' ? 'Belum Validasi' : ($key['NilaiSkripsi3'] == '' ? 'Belum Menilai' : 'Sudah Menilai');
-																$Penguji1 = $key['StatusPengujiSkripsi1'] == '' ? 'Belum Validasi' : ($key['NilaiSkripsi1'] == '' ? 'Belum Menilai' : 'Sudah Menilai');
-																$Penguji2 = $key['StatusPengujiSkripsi2'] == '' ? 'Belum Validasi' : ($key['NilaiSkripsi2'] == '' ? 'Belum Menilai' : 'Sudah Menilai');
+																$Penguji3 = $Mhs['StatusUjianSkripsi'] == 'Menunggu Persetujuan Pembimbing' ? 'Belum Validasi' : ($Mhs['NilaiSkripsi3'] == '' ? 'Belum Menilai' : 'Sudah Menilai');
+																$Penguji1 = $Mhs['StatusPengujiSkripsi1'] == '' ? 'Belum Validasi' : ($Mhs['NilaiSkripsi1'] == '' ? 'Belum Menilai' : 'Sudah Menilai');
+																$Penguji2 = $Mhs['StatusPengujiSkripsi2'] == '' ? 'Belum Validasi' : ($Mhs['NilaiSkripsi2'] == '' ? 'Belum Menilai' : 'Sudah Menilai');
 															?>
-															<td style="vertical-align: middle;"><?=$key['StatusUjianSkripsi'].' : <br> 1. Pembimbing '.$Penguji3.' <br> 2. Penguji 1 '.$Penguji1.' <br> 3. Penguji 2 '.$Penguji2?></td>
+															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianSkripsi'].' : <br> 1. Pembimbing '.$Penguji3.' <br> 2. Penguji 1 '.$Penguji1.' <br> 3. Penguji 2 '.$Penguji2?></td>
 															<td style="text-align: center;vertical-align: middle;">
 																<button LihatAdministrasi="<?=base_url('Proposal/'.$Mhs['Administrasi'])?>" class="btn btn-sm btn-primary border-light LihatAdministrasi"><i class="fa fa-file-pdf-o"></i></button>  
 																<button LihatRevisiProposalBimbingan="<?=base_url('Proposal/'.$Mhs['RevisiProposalBimbingan'])?>" class="btn btn-sm btn-success border-light LihatRevisiProposalBimbingan"><i class="fa fa-file-pdf-o"></i></button>  
