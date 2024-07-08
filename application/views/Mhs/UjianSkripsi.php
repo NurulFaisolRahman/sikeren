@@ -27,22 +27,15 @@
 													</tr>
 												</thead>
 												<tbody class="bg-primary">
-													<?php if ($Mhs['StatusUjianSkripsi'] != "") { 
-														$Penguji1 = $Mhs['StatusPengujiSkripsi1'] == 'Setuju' ? 'Validasi' : 'Belum Validasi';
-														$Penguji2 = $Mhs['StatusPengujiSkripsi2'] == 'Setuju' ? 'Validasi' : 'Belum Validasi';	
-														if ($Mhs['StatusPengujiSkripsi1'] == 'Setuju' && $Mhs['StatusPengujiSkripsi2'] == 'Setuju') {
-															$Penguji1 = $Mhs['NilaiSkripsi1'] == '' ? 'Belum Menilai' : 'Sudah Menilai';
-															$Penguji2 = $Mhs['NilaiSkripsi2'] == '' ? 'Belum Menilai' : 'Sudah Menilai';
-															$Penguji3 = $Mhs['NilaiSkripsi3'] == '' ? 'Belum Menilai' : 'Sudah Menilai';
-														}
-													?>
+													<?php if ($Mhs['StatusUjianSkripsi'] != "") { ?>
 														<tr>
 															<td style="vertical-align: middle;text-align: center;"><?=$Mhs['TanggalUjianSkripsi']?></td>
-															<?php if ($Mhs['StatusPengujiSkripsi1'] == "Setuju" && $Mhs['StatusPengujiSkripsi2'] == "Setuju") { ?>
-															<td style="vertical-align: middle;"><?='1. Penguji 1 '.$Penguji1.'<br>2. Penguji 2 '.$Penguji2.'<br>3. Penguji 3 '.$Penguji3?></td>	
-															<?php } else { ?>
-															<td style="vertical-align: middle;"><?=$Mhs['StatusUjianSkripsi'].'<br>1. Penguji 1 '.$Penguji1.'<br>2. Penguji 2 '.$Penguji2?></td>
-															<?php } ?>
+															<?php 
+																$Penguji3 = $key['StatusUjianSkripsi'] == 'Menunggu Persetujuan Pembimbing' ? 'Belum Validasi' : ($key['NilaiSkripsi3'] == '' ? 'Belum Menilai' : 'Sudah Menilai');
+																$Penguji1 = $key['StatusPengujiSkripsi1'] == '' ? 'Belum Validasi' : ($key['NilaiSkripsi1'] == '' ? 'Belum Menilai' : 'Sudah Menilai');
+																$Penguji2 = $key['StatusPengujiSkripsi2'] == '' ? 'Belum Validasi' : ($key['NilaiSkripsi2'] == '' ? 'Belum Menilai' : 'Sudah Menilai');
+															?>
+															<td style="vertical-align: middle;"><?=$key['StatusUjianSkripsi'].' : <br> 1. Pembimbing '.$Penguji3.' <br> 2. Penguji 1 '.$Penguji1.' <br> 3. Penguji 2 '.$Penguji2?></td>
 															<td style="text-align: center;vertical-align: middle;">
 																<button LihatAdministrasi="<?=base_url('Proposal/'.$Mhs['Administrasi'])?>" class="btn btn-sm btn-primary border-light LihatAdministrasi"><i class="fa fa-file-pdf-o"></i></button>  
 																<button LihatRevisiProposalBimbingan="<?=base_url('Proposal/'.$Mhs['RevisiProposalBimbingan'])?>" class="btn btn-sm btn-success border-light LihatRevisiProposalBimbingan"><i class="fa fa-file-pdf-o"></i></button>  

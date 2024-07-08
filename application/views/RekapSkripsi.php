@@ -52,33 +52,45 @@
                             <td class="align-middle"><?=$key['NIM']?></td>
                             <td class="align-middle"><?=$key['Nama']?></td>
                             <th class="align-middle"><?=date('d-m-Y',strtotime($key['TanggalUjianProposal']))?></th>
-                            <?php if ($key['NilaiProposal1'] == '') { ?>
+                            <?php if ($key['PengujiProposal1'] == '') { ?>
+                              <td></td>
+                            <?php } else if ($key['NilaiProposal1'] == '') { ?>
                               <td class='text-center text-danger align-middle'><?=$NamaDosen[$key['PengujiProposal1']]?></td>
                             <?php } else { ?>
                               <td class='text-center text-success align-middle'><?=$NamaDosen[$key['PengujiProposal1']]?></td>
                             <?php } ?>
-                            <?php if ($key['NilaiProposal2'] == '') { ?>
+                            <?php if ($key['PengujiProposal1'] == '') { ?>
+                              <td></td>
+                            <?php } else if ($key['NilaiProposal2'] == '') { ?>
                               <td class='text-center text-danger align-middle'><?=$NamaDosen[$key['PengujiProposal2']]?></td>
                             <?php } else { ?>
                               <td class='text-center text-success align-middle'><?=$NamaDosen[$key['PengujiProposal2']]?></td>
                             <?php } ?>
-                            <?php if ($key['NilaiProposal3'] == '') { ?>
+                            <?php if ($key['PengujiProposal1'] == '') { ?>
+                              <td></td>
+                            <?php } else if ($key['NilaiProposal3'] == '') { ?>
                               <td class='text-center text-danger align-middle'><?=$key['NamaPembimbing']?></td>
                             <?php } else { ?>
                               <td class='text-center text-success align-middle'><?=$key['NamaPembimbing']?></td>
                             <?php } ?>
                             <th class="align-middle"><?=date('d-m-Y',strtotime($key['TanggalUjianSkripsi']))?></th>
-                            <?php if ($key['NilaiSkripsi1'] == '') { ?>
+                            <?php if ($key['PengujiSkripsi1'] == '') { ?>
+                              <td></td>
+                            <?php } else if ($key['NilaiSkripsi1'] == '') { ?>
                               <td class='text-center text-danger align-middle'><?=$NamaDosen[$key['PengujiSkripsi1']]?></td>
                             <?php } else { ?>
                               <td class='text-center text-success align-middle'><?=$NamaDosen[$key['PengujiSkripsi1']]?></td>
                             <?php } ?>
-                            <?php if ($key['NilaiSkripsi2'] == '') { ?>
+                            <?php if ($key['PengujiSkripsi2'] == '') { ?>
+                              <td></td>
+                            <?php } else if ($key['NilaiSkripsi2'] == '') { ?>
                               <td class='text-center text-danger align-middle'><?=$NamaDosen[$key['PengujiSkripsi2']]?></td>
                             <?php } else { ?>
                               <td class='text-center text-success align-middle'><?=$NamaDosen[$key['PengujiSkripsi2']]?></td>
                             <?php } ?>
-                            <?php if ($key['NilaiSkripsi3'] == '') { ?>
+                            <?php if ($key['PengujiSkripsi1'] == '') { ?>
+                              <td></td>
+                            <?php } else if ($key['NilaiSkripsi3'] == '') { ?>
                               <td class='text-center text-danger align-middle'><?=$key['NamaPembimbing']?></td>
                             <?php } else { ?>
                               <td class='text-center text-success align-middle'><?=$key['NamaPembimbing']?></td>

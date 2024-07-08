@@ -27,8 +27,8 @@
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
                                 <td class="align-middle"><?=$key['NamaPembimbing']?></td>
-                                <td class="align-middle"><?=$NamaDosen[$key['PengujiProposal1']]?></td>
-                                <td class="align-middle"><?=$NamaDosen[$key['PengujiProposal2']]?></td>
+                                <td class="align-middle"><?=$key['PengujiProposal1'] != '' ? $NamaDosen[$key['PengujiProposal1']] : '';?></td>
+                                <td class="align-middle"><?=$key['PengujiProposal2'] != '' ? $NamaDosen[$key['PengujiProposal2']] : '';?></td>
                                 <?php 
                                   $Penguji3 = $key['StatusUjianProposal'] == 'Menunggu Persetujuan Pembimbing' ? 'Belum Validasi' : ($key['NilaiProposal3'] == '' ? 'Belum Menilai' : 'Sudah Menilai');
                                   $Penguji1 = $key['StatusPengujiProposal1'] == '' ? 'Belum Validasi' : ($key['NilaiProposal1'] == '' ? 'Belum Menilai' : 'Sudah Menilai');
