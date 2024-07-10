@@ -16,6 +16,7 @@
                               <th style="width: 22%;" class="align-middle">Nama</th>
                               <th style="width: 25%;" class="align-middle">Dosen Pembimbing</th>
                               <th style="width: 10%;" class="align-middle">Tanggal Ujian</th>
+                              <th style="width: 7%;" class="text-center align-middle">File</th>
                               <th style="width: 7%;" class="text-center align-middle">Menilai</th>
                             </tr>
                           </thead>
@@ -28,10 +29,12 @@
                                 <td class="align-middle"><?=$key['NamaPembimbing']?></td>
                                 <td class="align-middle"><?=$key['TanggalUjianSkripsi']?></td>
                                 <td class="text-center align-middle">
+                                  <button LihatProposal="<?=base_url('Proposal/'.$key['RevisiProposalBimbingan'])?>" class="btn btn-sm btn-danger LihatProposal"><i class="fas fa-file-pdf"></i></button>
+                                  <button Revisi="<?=$key['NIM']."|".$key['Nama']?>" class="btn btn-sm btn-primary Revisi" data-toggle="tooltip" data-placement="top" title="Catatan Revisi"><i class="fas fa-edit"></i></button>
+                                </td> 
+                                <td class="text-center align-middle">
                                   <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianSkripsi']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData" data-toggle="tooltip" data-placement="top" title="Menilai Skripsi"><i class="fas fa-edit"></i></button>
                                   <button CekArtikel="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianSkripsi']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-success CekArtikel" data-toggle="tooltip" data-placement="top" title="Menilai Artikel"><i class="fas fa-edit"></i></button>
-                                  <button Revisi="<?=$key['NIM']."|".$key['Nama']?>" class="btn btn-sm btn-primary Revisi" data-toggle="tooltip" data-placement="top" title="Catatan Revisi"><i class="fas fa-edit"></i></button>
-                                  <a href="<?=base_url('Dashboard/PersetujuanUjianSkripsi/'.$key['NIM'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
                                 </td> 
                               </tr>
                             <?php } ?>
@@ -45,6 +48,15 @@
             </div>
           </div>
         </section>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalProposal">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-body">
+            <embed id="PathProposal" src="" type="application/pdf" width="100%" height="520"/>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal fade" id="ModalRevisi">
@@ -150,7 +162,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Latar Belakang</b></label>
@@ -170,7 +182,7 @@
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Rumusan Permasalahan</b></label>
@@ -190,7 +202,7 @@
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Teori Penunjang</b></label>
@@ -210,7 +222,7 @@
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Penelitian Terdahulu</b></label>
@@ -230,7 +242,7 @@
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Kerangka Fikir</b></label>
@@ -250,7 +262,7 @@
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Fokus Penelitian</b></label>
@@ -270,7 +282,7 @@
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Alat Analisis</b></label>
@@ -290,7 +302,7 @@
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Gambaran Umum Penelitian</b></label>
@@ -310,7 +322,7 @@
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Analisis Data</b></label>
@@ -330,7 +342,7 @@
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Kesimpulan</b></label>
@@ -350,7 +362,7 @@
                         </div>
                         <div class="col-12 my-1"> 
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Saran</b></label>
@@ -391,7 +403,7 @@
 							<div class="row">
                 <div class="col-12">
 									<div class="card-header bg-danger text-light mt-2">
-										<b>Form Penilaian Ujian Skripsi (Artikel)</b>
+										<b>Form Penilaian Ujian Artikel</b>
 									</div>
 									<div class="card-body border border-primary bg-warning">
 										<div class="container-fluid">
@@ -434,7 +446,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Kemutakhiran & Keterbaruan Artikel</b></label>
@@ -454,7 +466,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Abstrak</b></label>
@@ -474,7 +486,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Pendahuluan/tujuan penelitian/urgensi penelitian</b></label>
@@ -494,7 +506,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Study Literatur/refrensi</b></label>
@@ -514,7 +526,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Komposisi refrensi</b></label>
@@ -534,7 +546,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Metodologi Penelitian</b></label>
@@ -554,7 +566,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Pembahasan dan Analisis Data</b></label>
@@ -574,7 +586,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Kesimpulan dan keterbatasan penelitian</b></label>
@@ -594,7 +606,7 @@
                         </div>
                         <div class="col-12 my-1">
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-10">
                               <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                   <label class="input-group-text bg-primary text-light"><b>Sistematika Daftar Pustaka</b></label>
@@ -659,6 +671,24 @@
 				"use strict";
         var BaseURL = '<?=base_url()?>';
 
+        $('#TabelUjianSkripsi').DataTable( {
+					// dom:'lfrtip',
+					"ordering": false,
+          "lengthMenu": [[ 10, 20, 30, -1 ],[ 10, 20, 30, "All"]],
+					"language": {
+						"paginate": {
+							'previous': '<b class="text-primary"><</b>',
+							'next': '<b class="text-primary">></b>'
+						}
+					}
+				})
+
+        $(document).on("click",".LihatProposal",function(){
+					var Path = $(this).attr('LihatProposal')
+          $('#PathProposal').attr('src',Path)		
+          $('#ModalProposal').modal("show")
+				})
+
         $(document).on("click",".Revisi",function(){
 					var Data = $(this).attr('Revisi')
 					var Pisah = Data.split("|")
@@ -670,25 +700,6 @@
             $('#ModalRevisi').modal("show")
           })    
         })
-
-        // $("#ValidasiRevisi").click(function() {
-        //   var Revisi = { NIM: $("#_NIM").val(),
-        //                  Catatan: $("#CatatanPenguji").val() }
-        //   var Konfirmasi = confirm("Yakin Ingin Menyimpan Catatan?"); 
-      	// 	if (Konfirmasi == true) {
-        //     $("#ValidasiRevisi").attr("disabled", true); 
-        //     $("#LoadingRevisi").show();                             
-        //     $.post(BaseURL+"Dashboard/UpdateRevisiSkripsi", Revisi).done(function(Respon) {
-        //       if (Respon == '1') {
-        //         window.location = BaseURL + "Dashboard/PengujiSkripsi"
-        //       } else {
-        //         alert(Respon)
-        //         $("#ValidasiRevisi").attr("disabled", false); 
-        //         $("#LoadingRevisi").hide();                             
-        //       }
-        //     })
-        //   }
-        // })
 
         $(document).on("click",".CekData",function(){
 					var Data = $(this).attr('CekData')
@@ -797,17 +808,25 @@
           }
         })
 
-        $('#TabelUjianSkripsi').DataTable( {
-					// dom:'lfrtip',
-					"ordering": false,
-          "lengthMenu": [[ 10, 20, 30, -1 ],[ 10, 20, 30, "All"]],
-					"language": {
-						"paginate": {
-							'previous': '<b class="text-primary"><</b>',
-							'next': '<b class="text-primary">></b>'
-						}
-					}
-				})
+        // $("#ValidasiRevisi").click(function() {
+        //   var Revisi = { NIM: $("#_NIM").val(),
+        //                  Catatan: $("#CatatanPenguji").val() }
+        //   var Konfirmasi = confirm("Yakin Ingin Menyimpan Catatan?"); 
+      	// 	if (Konfirmasi == true) {
+        //     $("#ValidasiRevisi").attr("disabled", true); 
+        //     $("#LoadingRevisi").show();                             
+        //     $.post(BaseURL+"Dashboard/UpdateRevisiSkripsi", Revisi).done(function(Respon) {
+        //       if (Respon == '1') {
+        //         window.location = BaseURL + "Dashboard/PengujiSkripsi"
+        //       } else {
+        //         alert(Respon)
+        //         $("#ValidasiRevisi").attr("disabled", false); 
+        //         $("#LoadingRevisi").hide();                             
+        //       }
+        //     })
+        //   }
+        // })
+
 			})
 		</script>
   </body>

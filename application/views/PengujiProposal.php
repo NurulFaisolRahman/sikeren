@@ -16,6 +16,7 @@
                               <th style="width: 22%;" class="align-middle">Nama</th>
                               <th style="width: 25%;" class="align-middle">Dosen Pembimbing</th>
                               <th style="width: 10%;" class="align-middle">Tanggal Ujian</th>
+                              <th style="width: 7%;" class="text-center align-middle">File</th>
                               <th style="width: 7%;" class="text-center align-middle">Menilai</th>
                             </tr>
                           </thead>
@@ -28,10 +29,13 @@
                                 <td class="align-middle"><?=$key['NamaPembimbing']?></td>
                                 <td class="align-middle"><?=$key['TanggalUjianProposal']?></td>
                                 <td class="text-center align-middle">
-                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData" data-toggle="tooltip" data-placement="top" title="Menilai Skripsi"><i class="fas fa-edit"></i></button>
-                                  <button CekArtikel="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-success CekArtikel" data-toggle="tooltip" data-placement="top" title="Menilai Artikel"><i class="fas fa-edit"></i></button>
+                                  <button LihatProposal="<?=base_url('Proposal/'.$key['DraftProposal'])?>" class="btn btn-sm btn-danger LihatProposal"><i class="fas fa-file-pdf"></i></button>
                                   <button Revisi="<?=$key['NIM']."|".$key['Nama']?>" class="btn btn-sm btn-primary Revisi" data-toggle="tooltip" data-placement="top" title="Catatan Revisi"><i class="fas fa-edit"></i></button>
-                                  <a href="<?=base_url('Dashboard/PersetujuanUjianProposal/'.$key['NIM'])?>" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Undangan"><i class="fas fa-file-pdf"></i></a>
+                                </td> 
+                                <td class="text-center align-middle">
+                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData" data-toggle="tooltip" data-placement="top" title="Menilai Skripsi"><i class="fas fa-edit"></i></button>
+                                  <button CekArtikel="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-success CekArtikel" data-toggle="tooltip" data-placement="top" title="Menilai Artikel"><i class="fas fa-edit"></i></button>                                  
+                                  <!-- <a href="<?=base_url('Dashboard/PersetujuanUjianProposal/'.$key['NIM'])?>" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Undangan"><i class="fas fa-file-pdf"></i></a> -->
                                 </td> 
                               </tr>
                             <?php } ?>
@@ -45,6 +49,15 @@
             </div>
           </div>
         </section>
+      </div>
+    </div>
+    <div class="modal fade" id="ModalProposal">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-body">
+            <embed id="PathProposal" src="" type="application/pdf" width="100%" height="520"/>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal fade" id="ModalRevisi">
@@ -107,7 +120,7 @@
 							<div class="row">
                 <div class="col-12">
 									<div class="card-header bg-danger text-light mt-2">
-										<b>Form Penilaian Ujian Proposal Skripsi</b>
+										<b>Form Penilaian Ujian Proposal</b>
 									</div>
 									<div class="card-body border border-primary bg-warning">
 										<div class="container-fluid">
@@ -311,7 +324,7 @@
 							<div class="row">
                 <div class="col-12">
 									<div class="card-header bg-danger text-light mt-2">
-										<b>Form Penilaian Ujian Proposal Skripsi (Artikel)</b>
+										<b>Form Penilaian Ujian Artikel</b>
 									</div>
 									<div class="card-body border border-primary bg-warning">
 										<div class="container-fluid">
@@ -539,6 +552,24 @@
 				"use strict";
         var BaseURL = '<?=base_url()?>';
 
+        $('#TabelUjianProposal').DataTable( {
+					// dom:'lfrtip',
+					"ordering": false,
+          "lengthMenu": [[ 10, 20, 30, -1 ],[ 10, 20, 30, "All"]],
+					"language": {
+						"paginate": {
+							'previous': '<b class="text-primary"><</b>',
+							'next': '<b class="text-primary">></b>'
+						}
+					}
+				})
+
+        $(document).on("click",".LihatProposal",function(){
+					var Path = $(this).attr('LihatProposal')
+          $('#PathProposal').attr('src',Path)		
+          $('#ModalProposal').modal("show")
+				}) 
+
         $(document).on("click",".Revisi",function(){
 					var Data = $(this).attr('Revisi')
 					var Pisah = Data.split("|")
@@ -550,25 +581,6 @@
             $('#ModalRevisi').modal("show")
           })    
         })
-
-        // $("#ValidasiRevisi").click(function() {
-        //   var Revisi = { NIM: $("#_NIM").val(),
-        //                  Catatan: $("#CatatanPenguji").val() }
-        //   var Konfirmasi = confirm("Yakin Ingin Menyimpan Catatan?"); 
-      	// 	if (Konfirmasi == true) {
-        //     $("#ValidasiRevisi").attr("disabled", true); 
-        //     $("#LoadingRevisi").show();                             
-        //     $.post(BaseURL+"Dashboard/UpdateRevisiProposal", Revisi).done(function(Respon) {
-        //       if (Respon == '1') {
-        //         window.location = BaseURL + "Dashboard/PengujiProposal"
-        //       } else {
-        //         alert(Respon)
-        //         $("#ValidasiRevisi").attr("disabled", false); 
-        //         $("#LoadingRevisi").hide();                             
-        //       }
-        //     })
-        //   }
-        // })
 
         $(document).on("click",".CekData",function(){
 					var Data = $(this).attr('CekData')
@@ -664,17 +676,25 @@
           }
         })
 
-        $('#TabelUjianProposal').DataTable( {
-					// dom:'lfrtip',
-					"ordering": false,
-          "lengthMenu": [[ 10, 20, 30, -1 ],[ 10, 20, 30, "All"]],
-					"language": {
-						"paginate": {
-							'previous': '<b class="text-primary"><</b>',
-							'next': '<b class="text-primary">></b>'
-						}
-					}
-				})
+        // $("#ValidasiRevisi").click(function() {
+        //   var Revisi = { NIM: $("#_NIM").val(),
+        //                  Catatan: $("#CatatanPenguji").val() }
+        //   var Konfirmasi = confirm("Yakin Ingin Menyimpan Catatan?"); 
+      	// 	if (Konfirmasi == true) {
+        //     $("#ValidasiRevisi").attr("disabled", true); 
+        //     $("#LoadingRevisi").show();                             
+        //     $.post(BaseURL+"Dashboard/UpdateRevisiProposal", Revisi).done(function(Respon) {
+        //       if (Respon == '1') {
+        //         window.location = BaseURL + "Dashboard/PengujiProposal"
+        //       } else {
+        //         alert(Respon)
+        //         $("#ValidasiRevisi").attr("disabled", false); 
+        //         $("#LoadingRevisi").hide();                             
+        //       }
+        //     })
+        //   }
+        // })
+
 			})
 		</script>
   </body>
