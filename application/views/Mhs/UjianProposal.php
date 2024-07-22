@@ -432,7 +432,7 @@
 							processData: false,
 							beforeSend: function(){
 								$("#EditUjianProposal").attr("disabled", true);                              
-								$("#LoadingEdit").show();
+								$("#LoadingAjukan").show();
 							},
 							success: function(Respon){
 								if (Respon == '1') {
@@ -440,7 +440,7 @@
 								}
 								else {
 									alert(Respon)
-									$("#LoadingEdit").hide();
+									$("#LoadingAjukan").hide();
 									$("#EditUjianProposal").attr("disabled", false);                              
 								}
 							}

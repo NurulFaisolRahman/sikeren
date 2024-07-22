@@ -790,7 +790,7 @@
           } else {
             var Mhs = { NIM: $("#NIM_").val(),
                       Nilai: $("#_Artikel").val().replace(/\s/g, "")+"$"+$("#_AbstrakArtikel").val().replace(/\s/g, "")+"$"+ $("#_PendahuluanArtikel").val().replace(/\s/g, "")+"$"+ $("#_LiteraturArtikel").val().replace(/\s/g, "")
-                                +"$"+ $("#_KomposisiArtikel").val().replace(/\s/g, "")+"$"+ $("#_MetodologiArtikel").val().replace(/\s/g, "")+"$"+ $("#_PembahasanArtikel").val().replace(/\s/g, "")+"$"+ $("#_KesimpulanArtikel").val().replace(/\s/g, "")+"$"+ $("#_DapusArtikel").val().replace(/\s/g, "")+ $("#_PublikasiArtikel").val().replace(/\s/g, "") }
+                                +"$"+ $("#_KomposisiArtikel").val().replace(/\s/g, "")+"$"+ $("#_MetodologiArtikel").val().replace(/\s/g, "")+"$"+ $("#_PembahasanArtikel").val().replace(/\s/g, "")+"$"+ $("#_KesimpulanArtikel").val().replace(/\s/g, "")+"$"+$("#_DapusArtikel").val().replace(/\s/g, "")+"$"+$("#_PublikasiArtikel").val().replace(/\s/g, "") }
             var Konfirmasi = confirm("Yakin Ingin Menyimpan Penilaian?"); 
             if (Konfirmasi == true) {
               $("#ValidasiArtikel").attr("disabled", true); 

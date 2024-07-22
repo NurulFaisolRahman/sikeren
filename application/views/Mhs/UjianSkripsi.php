@@ -486,7 +486,7 @@
 							processData: false,
 							beforeSend: function(){
 								$("#EditUjianSkripsi").attr("disabled", true);                              
-								$("#LoadingEdit").show();
+								$("#LoadingAjukan").show();
 							},
 							success: function(Respon){
 								if (Respon == '1') {
@@ -494,7 +494,7 @@
 								}
 								else {
 									alert(Respon)
-									$("#LoadingEdit").hide();
+									$("#LoadingAjukan").hide();
 									$("#EditUjianSkripsi").attr("disabled", false);                              
 								}
 							}
