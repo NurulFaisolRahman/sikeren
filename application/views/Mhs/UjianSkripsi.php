@@ -187,7 +187,7 @@
 														<input class="form-control form-control-sm" type="date" id="TanggalUjianSkripsi" value="<?=date('Y-m-d')?>">
 													</div>
 												</div>
-												<pre class="text-danger mb-0 ml-3"><b>* Minimal 1 Minggu Setelah Mengajukan & Konsultasi Dengan Dosen Pembimbing</b></pre>
+												<pre class="text-danger mb-0 ml-3"><b>* Minimal 1 Minggu Setelah Mengajukan & Konsultasi Dengan Dosen Pembimbing<br>* Mohon Ditunggu Saat Loading Hingga Selesai</b></pre>
 												<div class="col-lg-12">
 													<button type="button" class="btn btn-sm btn-primary" id="InputUjianSkripsi"><b>AJUKAN&nbsp;<div id="LoadingInput" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
 												</div>
@@ -253,7 +253,7 @@
 														<input class="form-control form-control-sm" type="date" id="_TanggalUjianSkripsi" value="<?=date('Y-m-d')?>">
 													</div>
 												</div>
-												<pre class="text-danger mb-0 ml-3"><b>* Minimal 1 Minggu Setelah Mengajukan & Konsultasi Dengan Dosen Pembimbing</b></pre>
+												<pre class="text-danger mb-0 ml-3"><b>* Minimal 1 Minggu Setelah Mengajukan & Konsultasi Dengan Dosen Pembimbing<br>* Mohon Ditunggu Saat Loading Hingga Selesai</b></pre>
 												<div class="col-lg-12">
 													<button type="button" class="btn btn-sm btn-primary" id="EditUjianSkripsi"><b>UPDATE&nbsp;<div id="LoadingEdit" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
 													<?php $Pisah = explode(" ",$Mhs['StatusUjianSkripsi']); if ($Pisah[0] == 'Ditolak') { ?>

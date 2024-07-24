@@ -1754,6 +1754,7 @@ class Dashboard extends CI_Controller {
 		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal2 = 'Setuju' AND PengujiProposal1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal1 = ''")->result_array();
 		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal2 = 'Setuju' AND PengujiProposal2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal2 = ''")->result_array();
 		$Penguji3 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiProposal1 = 'Setuju' AND StatusPengujiProposal2 = 'Setuju' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'"." AND NilaiProposal3 = ''")->result_array();
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
 		for ($i=0; $i < count($Penguji1); $i++) { 
 			array_push($Data['PengujiProposal'],$Penguji1[$i]);
 		}
@@ -1774,6 +1775,7 @@ class Dashboard extends CI_Controller {
 		$Penguji1 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi2 = 'Setuju' AND PengujiSkripsi1 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi1 = ''")->result_array();
 		$Penguji2 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi2 = 'Setuju' AND PengujiSkripsi2 = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi2 = ''")->result_array();
 		$Penguji3 = $this->db->query("SELECT * FROM mahasiswa where StatusPengujiSkripsi1 = 'Setuju' AND StatusPengujiSkripsi2 = 'Setuju' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'"." AND NilaiSkripsi3 = ''")->result_array();
+		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
 		for ($i=0; $i < count($Penguji1); $i++) { 
 			array_push($Data['PengujiSkripsi'],$Penguji1[$i]);
 		}
@@ -1831,6 +1833,44 @@ class Dashboard extends CI_Controller {
 			echo '1';
 		} else {
 			echo 'Gagal Menyimpnan Data!';
+		}
+	}
+
+	public function RevisiNilaiProposal(){
+		$Nilai = $this->db->query("SELECT * FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		$Penguji = array();
+		if ($Nilai['PengujiProposal1'] == $_POST['Penguji']) {
+			$Penguji['NilaiProposal1'] = '';
+		} else if ($Nilai['NilaiProposal2'] == $_POST['Penguji']) {
+			$Penguji['NilaiProposal1'] = '';
+		} else if ($Nilai['NIPPembimbing'] == $_POST['Penguji']) {
+			$Penguji['NilaiProposal3'] = '';
+		} 
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$Penguji);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Revisi Nilai!';
+		}
+	}
+
+	public function RevisiNilaiSkripsi(){
+		$Nilai = $this->db->query("SELECT * FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
+		$Penguji = array();
+		if ($Nilai['PengujiSkripsi1'] == $_POST['Penguji']) {
+			$Penguji['NilaiSkripsi1'] = '';
+		} else if ($Nilai['NilaiSkripsi2'] == $_POST['Penguji']) {
+			$Penguji['NilaiSkripsi1'] = '';
+		} else if ($Nilai['NIPPembimbing'] == $_POST['Penguji']) {
+			$Penguji['NilaiSkripsi3'] = '';
+		} 
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',$Penguji);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Revisi Nilai!';
 		}
 	}
 
