@@ -50,7 +50,7 @@
 									</div>
 								</div>
 								<div class="col-12">
-									<?php if ($Mhs['NilaiProposal1'] != '' && $Mhs['NilaiProposal2'] != '' && $Mhs['NilaiProposal3'] != '' && $Mhs['NIM'] != '160231100128' && $Mhs['NIM'] != '160231100148' && $Mhs['NIM'] != '160231100135') { ?>
+									<?php if ($Mhs['NilaiProposal1'] != '' && $Mhs['NilaiProposal2'] != '' && $Mhs['NilaiProposal3'] != '' && $Mhs['NIM'] != '160231100128' && $Mhs['NIM'] != '160231100148' && $Mhs['NIM'] != '160231100135' && $Mhs['NIM'] != '170231100149') { ?>
 										<a href="<?=base_url('Mhs/BeritaAcaraUjianProposal')?>" class="btn btn-sm border-light btn-sm btn-danger mt-4"><i class="fa fa-file-pdf-o"> <b>Berita Acara Ujian Proposal</b></i></a>  
 									<?php } ?>
 									<div class="card-header bg-danger text-light mt-2">

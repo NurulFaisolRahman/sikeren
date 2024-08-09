@@ -1122,6 +1122,14 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function ListRPS(){
+		$Data['Halaman'] = 'List RPS';
+		$Data['SubMenu'] = '';
+		$Data['RPS'] = $this->db->query('SELECT rps.KodeMK,rps.NamaMK,rps.BobotMK,rps.Semester,mengajar.Status,mengajar.Tahun FROM rps,mengajar WHERE mengajar.KodeMK=rps.KodeMK AND mengajar.Status=3 GROUP BY mengajar.KodeMK')->result_array();
+    $this->load->view('Header',$Data);
+    $this->load->view('ListRPS',$Data); 
+	}
+
 	public function RPS(){
 		$Data['Halaman'] = 'Prodi';
 		$Data['SubMenu'] = 'RPS';

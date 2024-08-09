@@ -161,6 +161,12 @@
                   <p><b>RPS</b></p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?=base_url("Admin/ListRPS")?>" class="nav-link <?php if ($Halaman == "List RPS") { echo "active";} ?>">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p><b>LIST RPS</b></p>
+                </a>
+              </li>
             <?php } ?>
           </ul>
         </nav>
