@@ -1340,7 +1340,7 @@
 				})
 
         $(document).on("click",".Unduh",function(){
-          window.location = BaseURL + "Admin/UnduhRPS/" + $(this).attr('Unduh')
+          window.location = BaseURL + "SMD/UnduhRPS/" + $(this).attr('Unduh')
 				})
 
         // $(document).on("click",".Hapus",function(){

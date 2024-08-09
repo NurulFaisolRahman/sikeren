@@ -71,7 +71,7 @@
         })
 
         $(document).on("click",".Unduh",function(){
-          window.location = BaseURL + "Mhs/UnduhRPS/" + $(this).attr('Unduh')
+          window.location = BaseURL + "SMD/UnduhRPS/" + $(this).attr('Unduh')
 				})
       })
     </script>
