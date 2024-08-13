@@ -1,11 +1,11 @@
 							<div class="row p-2">
 								<div class="col-12">
-									<a href="<?=base_url('Panduan/BeritaAcaraKehadiranUjianProposal.docx')?>" class="btn btn-sm border-light btn-sm btn-primary"><i class="fa fa-file-word-o"> <b>Berita Acara Kehadiran Ujian Proposal</b></i></a>
 									<?php if ($Mhs['StatusUjianProposal'] == "") { ?>
 										<button type="button" class="btn btn-sm btn-primary border-white mb-2" data-toggle="modal" data-target="#ModalInputUjianProposal"><b>Ajukan Ujian Proposal</b></button>
 									<?php } else { ?>
 										<button Edit="<?=$Mhs['KartuBimbinganProposal']."|".$Mhs['PlagiasiProposal']."|".$Mhs['TanggalUjianProposal']?>" class="btn btn-sm btn-warning border-light Edit text-white"><i class="fa fa-edit"> <b>Edit Data Pengajuan Ujian Proposal</b></i></button>
 									<?php } ?>
+									<a href="<?=base_url('Panduan/BeritaAcaraKehadiranUjianProposal.docx')?>" class="btn btn-sm border-light btn-sm btn-warning mb-2"><i class="fa fa-file-word-o"> <b>BA Ujian Proposal</b></i></a>
 									<?php if ($Mhs['StatusPengujiProposal1'] == 'Setuju' && $Mhs['StatusPengujiProposal2'] == 'Setuju') { ?>
 										<a href="<?=base_url('Mhs/PersetujuanUjianProposal')?>" class="btn btn-sm border-light btn-sm btn-danger"><i class="fa fa-file-pdf-o"> <b>Undangan Ujian Proposal</b></i></a>  
 									<?php } ?>
@@ -145,7 +145,7 @@
 							<div class="row">
                 <div class="col-12">
 									<div class="card-header bg-danger text-light mt-2">
-										<b>Form Pengajuan Ujian Proposal Skripsi</b>
+										<b>Form Pengajuan Ujian Proposal</b>
 									</div>
 									<div class="card-body border border-primary bg-warning">
 										<div class="container-fluid">
@@ -199,7 +199,7 @@
 							<div class="row">
                 <div class="col-12">
 									<div class="card-header bg-danger text-light mt-2">
-										<b>Form Pengajuan Ujian Proposal Skripsi</b>
+										<b>Edit Form Pengajuan Ujian Proposal</b>
 									</div>
 									<div class="card-body border border-primary bg-warning">
 										<div class="container-fluid">

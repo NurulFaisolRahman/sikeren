@@ -38,9 +38,15 @@
                                   <button Revisi="<?=$key['NIM']."|".$key['Nama']?>" class="btn btn-sm btn-primary Revisi" data-toggle="tooltip" data-placement="top" title="Catatan Revisi"><i class="fas fa-edit"></i></button>
                                 </td> 
                                 <td class="text-center align-middle">
-                                  <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData" data-toggle="tooltip" data-placement="top" title="Menilai Skripsi"><i class="fas fa-edit"></i></button>
-                                  <button CekArtikel="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-success CekArtikel" data-toggle="tooltip" data-placement="top" title="Menilai Artikel"><i class="fas fa-edit"></i></button>                                  
-                                  <!-- <a href="<?=base_url('Dashboard/PersetujuanUjianProposal/'.$key['NIM'])?>" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Undangan"><i class="fas fa-file-pdf"></i></a> -->
+                                  <?php if ($key['JenisSkripsi'] == 'Skripsi') { ?>
+                                    <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData" data-toggle="tooltip" data-placement="top" title="Menilai Skripsi"><i class="fas fa-edit"></i></button>
+                                  <?php } else if ($key['JenisSkripsi'] == 'Artikel') { ?>
+                                    <button CekArtikel="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-success CekArtikel" data-toggle="tooltip" data-placement="top" title="Menilai Artikel"><i class="fas fa-edit"></i></button>                                  
+                                  <?php } else { ?>
+                                    <button CekData="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-warning CekData" data-toggle="tooltip" data-placement="top" title="Menilai Skripsi"><i class="fas fa-edit"></i></button>
+                                    <button CekArtikel="<?=$key['NIM']."|".$key['Nama']."|".$key['TanggalUjianProposal']."|".$key['Konsentrasi']?>" class="btn btn-sm btn-success CekArtikel" data-toggle="tooltip" data-placement="top" title="Menilai Artikel"><i class="fas fa-edit"></i></button>                                  
+                                    <!-- <a href="<?=base_url('Dashboard/PersetujuanUjianProposal/'.$key['NIM'])?>" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Undangan"><i class="fas fa-file-pdf"></i></a> -->
+                                  <?php } ?>
                                 </td> 
                               </tr>
                             <?php } ?>

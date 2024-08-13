@@ -1,11 +1,11 @@
 							<div class="row">
 								<div class="col-sm-12">
-									<a href="<?=base_url('Panduan/FormPersetujuanJudulProposal.doc')?>" class="btn btn-sm border-light btn-sm btn-primary"><i class="fa fa-file-word-o"> <b>Form Persetujuan Judul Proposal</b></i></a>  
 									<?php if ($Mhs['DraftProposal'] == "") { ?>
 										<button type="button" class="btn btn-sm btn-primary border-white" data-toggle="modal" data-target="#ModalInputProposal"><b>Ajukan Dosen Pembimbing</b></button>
 									<?php } else { ?>
-										<button Edit="<?=$Mhs['NIM']."|".$Mhs['Nama']."|".$Mhs['Gender']."|".$Mhs['Alamat']."|".$Mhs['HP']."|".$Mhs['Konsentrasi']."|".$Mhs['JudulProposal']."|".$Mhs['DraftProposal']."|".$Mhs['KRS']."|".$Mhs['Transkrip']."|".$Mhs['PersetujuanJudul']?>" class="btn btn-sm btn-warning border-light Edit text-white"><i class="fa fa-edit"> <b>Edit Data Proposal</b></i></button>
+										<button Edit="<?=$Mhs['NIM']."|".$Mhs['Nama']."|".$Mhs['Gender']."|".$Mhs['Alamat']."|".$Mhs['HP']."|".$Mhs['Konsentrasi']."|".$Mhs['JudulProposal']."|".$Mhs['DraftProposal']."|".$Mhs['KRS']."|".$Mhs['Transkrip']."|".$Mhs['PersetujuanJudul']."|".$Mhs['JenisSkripsi']?>" class="btn btn-sm btn-warning border-light Edit text-white"><i class="fa fa-edit"> <b>Edit Data Proposal</b></i></button>
 									<?php } ?>
+									<a href="<?=base_url('Panduan/FormPersetujuanJudulProposal.doc')?>" class="btn btn-sm border-light btn-sm btn-warning"><i class="fa fa-file-word-o"> <b>Form Persetujuan Judul Proposal</b></i></a>  
 									<?php if ($Mhs['StatusProposal'] == 'Disetujui Pembimbing') { ?>
 										<a href="<?=base_url('Mhs/PersetujuanPembimbing')?>" class="btn btn-sm border-light btn-sm btn-danger"><i class="fa fa-file-pdf-o"> <b>Persetujuan Pembimbing</b></i></a>  
 									<?php } ?>
@@ -165,6 +165,17 @@
 														</select>
 													</div>
 												</div>
+												<div class="col-lg-12"> 
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Skripsi / Artikel</b></label>
+														</div>
+														<select class="custom-select custom-select-sm" id="JenisSkripsi">										
+															<option value="Skripsi">Skripsi</option>
+															<option value="Artikel">Artikel</option>
+														</select>
+													</div>
+												</div>
 												<div class="col-lg-12">
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
@@ -287,6 +298,17 @@
 															<option value="Perencanaan Pembangunan">Perencanaan Pembangunan</option>
 															<option value="Ekonomi Publik">Ekonomi Publik</option>
 															<option value="Ekonomi Moneter & Perbankan">Ekonomi Moneter & Perbankan</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-lg-12"> 
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Skripsi / Artikel</b></label>
+														</div>
+														<select class="custom-select custom-select-sm" id="_JenisSkripsi">										
+															<option value="Skripsi">Skripsi</option>
+															<option value="Artikel">Artikel</option>
 														</select>
 													</div>
 												</div>
@@ -588,6 +610,7 @@
 						fd.append('Alamat',$("#Alamat").val())
 						fd.append('HP',$("#HP").val())
 						fd.append('Konsentrasi',$("#Konsentrasi").val())
+						fd.append('JenisSkripsi',$("#JenisSkripsi").val())
 						fd.append('JudulProposal',$("#JudulProposal").val())
 						fd.append("PersetujuanJudul",$('#PersetujuanJudul')[0].files[0])
 						fd.append("KRS",$('#KRS')[0].files[0])
@@ -626,6 +649,7 @@
 					$("#_Alamat").val(Pisah[3])
 					$("#_HP").val(Pisah[4])
 					$("#_Konsentrasi").val(Pisah[5])
+					$("#_JenisSkripsi").val(Pisah[11])
 					$("#_JudulProposal").val(Pisah[6])
 					$("#_DraftPoposal_").val(Pisah[7])
 					$("#_KRS_").val(Pisah[8])
@@ -658,6 +682,7 @@
 						fd.append('Alamat',$("#_Alamat").val())
 						fd.append('HP',$("#_HP").val())
 						fd.append('Konsentrasi',$("#_Konsentrasi").val())
+						fd.append('JenisSkripsi',$("#_JenisSkripsi").val())
 						fd.append('JudulProposal',$("#_JudulProposal").val())
 						if (!$('#_PersetujuanJudul')[0].files[0] == false) {
 							fd.append("PersetujuanJudul",$('#_PersetujuanJudul')[0].files[0])

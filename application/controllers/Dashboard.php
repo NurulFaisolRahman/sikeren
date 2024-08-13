@@ -2118,21 +2118,6 @@ class Dashboard extends CI_Controller {
 		$this->session->set_userdata('NamaBimbingan', $_POST['NamaBimbingan']);
 	}
 
-	public function InputMengajar(){
-		if($this->db->get_where('mengajar', array('KodeMK' => $_POST['KodeMK'],'NIP' => $this->session->userdata('NIP'),'Tahun' => date("Y")))->num_rows() === 0){
-			$_POST['NIP'] = $this->session->userdata('NIP');
-			$_POST['Status'] = 0;$_POST['Tahun'] = date("Y");
-			$this->db->insert('mengajar',$_POST);
-			if ($this->db->affected_rows()){
-				echo '1';
-			} else {
-				echo 'Gagal Input Data!'; 
-			}
-		} else {
-			echo 'Mata Kuliah Sudah Ada!'; 
-		}
-	}
-
 	public function InputSoal(){
 		$this->db->where('Id', $_POST['Id']);
 		$this->db->update('mengajar',$_POST);
@@ -2238,6 +2223,21 @@ class Dashboard extends CI_Controller {
 			echo '1';
 		} else {
 			echo 'Gagal Menghapus!';
+		}
+	}
+
+	public function InputMengajar(){
+		if($this->db->get_where('mengajar', array('KodeMK' => $_POST['KodeMK'],'NIP' => $this->session->userdata('NIP'),'Tahun' => date("Y")))->num_rows() === 0){
+			$_POST['NIP'] = $this->session->userdata('NIP');
+			$_POST['Status'] = 0;$_POST['Tahun'] = date("Y");
+			$this->db->insert('mengajar',$_POST);
+			if ($this->db->affected_rows()){
+				echo '1';
+			} else {
+				echo 'Gagal Input Data!'; 
+			}
+		} else {
+			echo 'Mata Kuliah Sudah Ada!'; 
 		}
 	}
 

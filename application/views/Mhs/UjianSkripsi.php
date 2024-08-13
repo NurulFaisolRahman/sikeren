@@ -1,11 +1,14 @@
 							<div class="row p-2">
 								<div class="col-12">
-									<a href="<?=base_url('Panduan/BeritaAcaraKehadiranUjianSkripsi.docx')?>" class="btn btn-sm border-light btn-sm btn-primary"><i class="fa fa-file-word-o"> <b>Berita Acara Kehadiran Ujian Skripsi</b></i></a>
 									<?php if ($Mhs['StatusUjianSkripsi'] == "") { ?>
 										<button type="button" class="btn btn-sm btn-primary border-white mb-2" data-toggle="modal" data-target="#ModalInputUjianSkripsi"><b>Ajukan Ujian Skripsi</b></button>
 									<?php } else { ?>
 										<button Edit="<?=$Mhs['Administrasi']."|".$Mhs['IjazahKHS']."|".$Mhs['RevisiProposalBimbingan']."|".$Mhs['ToeflSertifikat']."|".$Mhs['TanggalUjianSkripsi']?>" class="btn btn-sm btn-warning border-light Edit text-white"><i class="fa fa-edit"> <b>Edit Data Pengajuan Ujian Skripsi</b></i></button>
 									<?php } ?>
+									<a href="<?=base_url('Panduan/BeritaAcaraKehadiranUjianSkripsi.docx')?>" class="btn btn-sm border-light btn-sm btn-warning mb-2"><i class="fa fa-file-word-o"> <b>BA Ujian Skripsi</b></i></a>
+									<a href="<?=base_url('Panduan/LembarPengesahan.docx')?>" class="btn btn-sm border-light btn-sm btn-warning mb-2"><i class="fa fa-file-word-o"> <b>Lembar Pengesahan</b></i></a>
+									<a href="<?=base_url('Panduan/LembarPersetujuan.docx')?>" class="btn btn-sm border-light btn-sm btn-warning mb-2"><i class="fa fa-file-word-o"> <b>Lembar Persetujuan</b></i></a>
+									<a href="<?=base_url('Panduan/LembarPublikasi.docx')?>" class="btn btn-sm border-light btn-sm btn-warning mb-2"><i class="fa fa-file-word-o"> <b>Lembar Publikasi</b></i></a>
 									<?php if ($Mhs['StatusPengujiSkripsi1'] == 'Setuju' && $Mhs['StatusPengujiSkripsi2'] == 'Setuju') { ?>
 										<a href="<?=base_url('Mhs/PersetujuanUjianSkripsi')?>" class="btn btn-sm border-light btn-sm btn-danger"><i class="fa fa-file-pdf-o"> <b>Undangan Ujian Skripsi</b></i></a>  
 									<?php } ?>
@@ -209,7 +212,7 @@
 							<div class="row">
                 <div class="col-12">
 									<div class="card-header bg-danger text-light mt-2">
-										<b>Form Pengajuan Ujian Skripsi</b>
+										<b>Edit Form Pengajuan Ujian Skripsi</b>
 									</div>
 									<div class="card-body border border-primary bg-warning">
 										<div class="container-fluid">
