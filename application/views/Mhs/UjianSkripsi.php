@@ -3,7 +3,7 @@
 									<?php if ($Mhs['StatusUjianSkripsi'] == "") { ?>
 										<button type="button" class="btn btn-sm btn-primary border-white mb-2" data-toggle="modal" data-target="#ModalInputUjianSkripsi"><b>Ajukan Ujian Skripsi</b></button>
 									<?php } else { ?>
-										<button Edit="<?=$Mhs['Administrasi']."|".$Mhs['IjazahKHS']."|".$Mhs['RevisiProposalBimbingan']."|".$Mhs['ToeflSertifikat']."|".$Mhs['TanggalUjianSkripsi']?>" class="btn btn-sm btn-warning border-light Edit text-white"><i class="fa fa-edit"> <b>Edit Data Pengajuan Ujian Skripsi</b></i></button>
+										<button Edit="<?=$Mhs['Administrasi']."|".$Mhs['RevisiProposalBimbingan']."|".$Mhs['ToeflSertifikat']."|".$Mhs['TanggalUjianSkripsi']?>" class="btn btn-sm btn-warning border-light Edit text-white"><i class="fa fa-edit"> <b>Edit Data Pengajuan Ujian Skripsi</b></i></button>
 									<?php } ?>
 									<a href="<?=base_url('Panduan/BeritaAcaraKehadiranUjianSkripsi.docx')?>" class="btn btn-sm border-light btn-sm btn-warning mb-2"><i class="fa fa-file-word-o"> <b>BA Ujian Skripsi</b></i></a>
 									<a href="<?=base_url('Panduan/LembarPengesahan.docx')?>" class="btn btn-sm border-light btn-sm btn-warning mb-2"><i class="fa fa-file-word-o"> <b>Lembar Pengesahan</b></i></a>
@@ -403,9 +403,9 @@
 					var Data = $(this).attr('Edit')
 					var Pisah = Data.split("|")
 					$("#_Administrasi_").val(Pisah[0])
-					$("#_RevisiProposalBimbingan_").val(Pisah[2])
-					$("#_ToeflSertifikat_").val(Pisah[3])
-					$("#_TanggalUjianSkripsi").val(Pisah[4])
+					$("#_RevisiProposalBimbingan_").val(Pisah[1])
+					$("#_ToeflSertifikat_").val(Pisah[2])
+					$("#_TanggalUjianSkripsi").val(Pisah[3])
 					$('#ModalEditUjianSkripsi').modal("show")
 				})
 				
