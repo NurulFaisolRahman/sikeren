@@ -442,6 +442,38 @@ public function Kuisioner($Jenis){
 		}
 	}
 
+	public function SendEmail(){
+		/* $config = Array(
+				'mailtype' => 'html',
+				'charset' => 'iso-8859-1',
+				'wordwrap' => TRUE
+			);
+		 */
+		/*This email configuration for sending email by Google Email(Gmail Acccount) from localhost */
+		$config = Array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_port' => 465,
+			'smtp_user' => 'jigenqoh@gmail.com',  //gmail id
+			'smtp_pass' => 'vobakridimcmcilu',   //gmail password
+			'mailtype' => 'html',
+			'charset' => 'iso-8859-1',
+			'wordwrap' => TRUE
+			);
+				$this->load->library('email', $config);
+				$this->email->set_newline("\r\n");
+				$this->email->from('jigenqoh@gmail.com');
+				$this->email->to('hydanqoh@gmail.com');
+				$this->email->subject('Hydan');
+				$this->email->message('Jygen');
+			if($this->email->send())			 {
+				echo 'Sukses';
+				return true;
+			} else {
+				return false;
+			}
+	}
+
 	public function SignOut(){
 		$this->session->sess_destroy();
 		redirect(base_url());
