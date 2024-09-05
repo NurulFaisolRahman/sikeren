@@ -147,6 +147,7 @@ class Dashboard extends CI_Controller {
 															'Homebase' => $_POST['Homebase'],
 															'Kelahiran' => htmlentities($_POST['Kelahiran']),
 															'Jabatan' => $_POST['Jabatan'],
+															'Email' => $_POST['Email'],
 															'Pangkat' => $_POST['Pangkat'],
 															'Golongan' => $_POST['Golongan'],
 															'Semester' => $_POST['Semester'],

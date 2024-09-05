@@ -3,7 +3,7 @@
 									<?php if ($Mhs['DraftProposal'] == "") { ?>
 										<button type="button" class="btn btn-sm btn-primary border-white" data-toggle="modal" data-target="#ModalInputProposal"><b>Ajukan Dosen Pembimbing</b></button>
 									<?php } else { ?>
-										<button Edit="<?=$Mhs['NIM']."|".$Mhs['Nama']."|".$Mhs['Gender']."|".$Mhs['Alamat']."|".$Mhs['HP']."|".$Mhs['Konsentrasi']."|".$Mhs['JudulProposal']."|".$Mhs['DraftProposal']."|".$Mhs['KRS']."|".$Mhs['Transkrip']."|".$Mhs['PersetujuanJudul']."|".$Mhs['JenisSkripsi']?>" class="btn btn-sm btn-warning border-light Edit text-white"><i class="fa fa-edit"> <b>Edit Data Proposal</b></i></button>
+										<button Edit="<?=$Mhs['NIM']."|".$Mhs['Nama']."|".$Mhs['Gender']."|".$Mhs['Alamat']."|".$Mhs['HP']."|".$Mhs['Konsentrasi']."|".$Mhs['JudulProposal']."|".$Mhs['DraftProposal']."|".$Mhs['KRS']."|".$Mhs['Transkrip']."|".$Mhs['PersetujuanJudul']."|".$Mhs['JenisSkripsi']."|".$Mhs['Email']?>" class="btn btn-sm btn-warning border-light Edit text-white"><i class="fa fa-edit"> <b>Edit Data Proposal</b></i></button>
 									<?php } ?>
 									<a href="<?=base_url('Panduan/FormPersetujuanJudulProposal.doc')?>" class="btn btn-sm border-light btn-sm btn-warning"><i class="fa fa-file-word-o"> <b>Form Persetujuan Judul Proposal</b></i></a>  
 									<?php if ($Mhs['StatusProposal'] == 'Disetujui Pembimbing') { ?>
@@ -165,7 +165,7 @@
 														</select>
 													</div>
 												</div>
-												<div class="col-lg-12"> 
+												<div class="col-lg-4"> 
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Skripsi / Artikel</b></label>
@@ -174,6 +174,14 @@
 															<option value="Skripsi">Skripsi</option>
 															<option value="Artikel">Artikel</option>
 														</select>
+													</div>
+												</div>
+												<div class="col-lg-8">
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Email</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="Email" value="<?=$Mhs['Email']?>">
 													</div>
 												</div>
 												<div class="col-lg-12">
@@ -301,7 +309,7 @@
 														</select>
 													</div>
 												</div>
-												<div class="col-lg-12"> 
+												<div class="col-lg-4"> 
 													<div class="input-group input-group-sm">
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Skripsi / Artikel</b></label>
@@ -310,6 +318,14 @@
 															<option value="Skripsi">Skripsi</option>
 															<option value="Artikel">Artikel</option>
 														</select>
+													</div>
+												</div>
+												<div class="col-lg-8">
+													<div class="input-group input-group-sm">
+														<div class="input-group-prepend">
+															<label class="input-group-text bg-primary text-light"><b>Email</b></label>
+														</div>
+														<input class="form-control form-control-sm" type="text" id="_Email">
 													</div>
 												</div>
 												<div class="col-lg-12">
@@ -611,6 +627,7 @@
 						fd.append('HP',$("#HP").val())
 						fd.append('Konsentrasi',$("#Konsentrasi").val())
 						fd.append('JenisSkripsi',$("#JenisSkripsi").val())
+						fd.append('Email',$("#Email").val())
 						fd.append('JudulProposal',$("#JudulProposal").val())
 						fd.append("PersetujuanJudul",$('#PersetujuanJudul')[0].files[0])
 						fd.append("KRS",$('#KRS')[0].files[0])
@@ -649,12 +666,13 @@
 					$("#_Alamat").val(Pisah[3])
 					$("#_HP").val(Pisah[4])
 					$("#_Konsentrasi").val(Pisah[5])
-					$("#_JenisSkripsi").val(Pisah[11])
 					$("#_JudulProposal").val(Pisah[6])
 					$("#_DraftPoposal_").val(Pisah[7])
 					$("#_KRS_").val(Pisah[8])
 					$("#_Transkrip_").val(Pisah[9])
 					$("#_PersetujuanJudul_").val(Pisah[10])
+					$("#_JenisSkripsi").val(Pisah[11])
+					$("#_Email").val(Pisah[12])
 					$('#ModalEditProposal').modal("show")
 				})
 				
@@ -683,6 +701,7 @@
 						fd.append('HP',$("#_HP").val())
 						fd.append('Konsentrasi',$("#_Konsentrasi").val())
 						fd.append('JenisSkripsi',$("#_JenisSkripsi").val())
+						fd.append('Email',$("#_Email").val())
 						fd.append('JudulProposal',$("#_JudulProposal").val())
 						if (!$('#_PersetujuanJudul')[0].files[0] == false) {
 							fd.append("PersetujuanJudul",$('#_PersetujuanJudul')[0].files[0])
@@ -748,6 +767,8 @@
 						fd.append('Alamat',$("#_Alamat").val())
 						fd.append('HP',$("#_HP").val())
 						fd.append('Konsentrasi',$("#_Konsentrasi").val())
+						fd.append('JenisSkripsi',$("#_JenisSkripsi").val())
+						fd.append('Email',$("#_Email").val())
 						fd.append('JudulProposal',$("#_JudulProposal").val())
 						if (!$('#_PersetujuanJudul')[0].files[0] == false) {
 							fd.append("PersetujuanJudul",$('#_PersetujuanJudul')[0].files[0])

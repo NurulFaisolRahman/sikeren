@@ -195,20 +195,27 @@
 							<div class="row d-flex justify-content-center">
 								<div class="col-lg-9 col-sm-12 my-1">
                   <div class="card border border-light">
-                    <div class="card-body bg-success">
+                    <div class="card-body bg-light">
                       <div class="input-group input-group-sm mb-2">
                         <div class="input-group-prepend">
-                          <span class="input-group-text bg-danger text-light"><b>Username</b></span>
+                          <span class="input-group-text bg-primary text-light"><b>NIM</b></span>
                         </div>
                         <input type="text" class="form-control" id="NIM" placeholder="NIM">
                       </div>
-                      <div class="input-group input-group-sm mb-2">
+                      <div class="input-group input-group-sm">
                         <div class="input-group-prepend">
-                          <span class="input-group-text bg-danger text-light"><b>Password</b></span>
+                          <span class="input-group-text bg-primary text-light"><b>Sandi</b></span>
                         </div>
                         <input type="password" class="form-control" id="Password">
                       </div>
-                      <div class="btn btn-danger text-light d-flex justify-content-center mt-3" id="Masuk"><b>SIGN IN</b></div>
+                      <div class="btn btn-primary text-light d-flex justify-content-center mt-2" id="Masuk"><b>MASUK</b></div>
+                      <div class="input-group input-group-sm mt-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-danger text-light"><b>Email</b></span>
+                        </div>
+                        <input type="text" class="form-control" id="_Email" placeholder="Email">
+                      </div>
+                      <div class="btn btn-sm btn-danger text-light d-flex justify-content-center mt-1" id="Lupa"><b>RESET SANDI&nbsp;<div id="LoadingLupa" class="spinner-border spinner-border-sm text-white mt-1" role="status" style="display: none;"></b></div>
                     </div>
                   </div>
                 </div>
@@ -263,7 +270,13 @@
                       </div>
                       <div class="input-group input-group-sm mb-2">
                         <div class="input-group-prepend">
-                          <span class="input-group-text bg-danger text-light"><b>Password</b></span>
+                          <span class="input-group-text bg-danger text-light"><b>Email</b></span>
+                        </div>
+                        <input type="text" class="form-control" id="_Email">
+                      </div>
+                      <div class="input-group input-group-sm mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-danger text-light"><b>Sandi</b></span>
                         </div>
                         <input type="password" class="form-control" id="_Password">
                       </div>
@@ -346,16 +359,35 @@
             }
           })                     
         })
+        $("#Lupa").click(function() {
+          $("#Lupa").attr("disabled", true);                              
+					$("#LoadingLupa").show();
+          if ($("#_Email").val() === "") {
+            alert('Mohon Input Email!')
+            $("#Lupa").attr("disabled", false);                              
+					  $("#LoadingLupa").hide();
+          } else {
+            var Email = { Email: $("#_Email").val() } 
+            $.post(BaseURL+"SMD/LupaPassword", Email).done(function(Respon) {
+              alert(Respon)
+              $("#Lupa").attr("disabled", false);                              
+					    $("#LoadingLupa").hide();
+            })
+          }                    
+        })
         $("#Daftar").click(function() {
           if ($("#_NIM").val() === "" || isNaN($("#_NIM").val()) || $("#_NIM").val().length != 12) {
             alert('Mohon Input NIM 12 Digit Angka!')
           } else if ($("#_Nama").val() === "") {
             alert('Mohon Input Nama!')
+          } else if ($("#_Email").val() === "") {
+            alert('Mohon Input Email!')
           } else if ($("#_Password").val() === "") {
             alert('Mohon Input Password!')
           } else {
             var Mhs = { NIM: $("#_NIM").val(),
                         Nama: $("#_Nama").val(),
+                        Email: $("#_Email").val(),
                         Password: $("#_Password").val() }
             $("#Daftar").attr("disabled", true);                              
             $.post(BaseURL+"SMD/MhsDaftar", Mhs).done(function(Respon) {

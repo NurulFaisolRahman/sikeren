@@ -442,36 +442,42 @@ public function Kuisioner($Jenis){
 		}
 	}
 
-	public function SendEmail(){
-		/* $config = Array(
-				'mailtype' => 'html',
-				'charset' => 'iso-8859-1',
-				'wordwrap' => TRUE
-			);
-		 */
-		/*This email configuration for sending email by Google Email(Gmail Acccount) from localhost */
-		$config = Array(
-			'protocol' => 'smtp',
-			'smtp_host' => 'ssl://smtp.googlemail.com',
-			'smtp_port' => 465,
-			'smtp_user' => 'jigenqoh@gmail.com',  //gmail id
-			'smtp_pass' => 'vobakridimcmcilu',   //gmail password
-			'mailtype' => 'html',
-			'charset' => 'iso-8859-1',
-			'wordwrap' => TRUE
-			);
-				$this->load->library('email', $config);
-				$this->email->set_newline("\r\n");
-				$this->email->from('jigenqoh@gmail.com');
-				$this->email->to('hydanqoh@gmail.com');
-				$this->email->subject('Tes SMTP');
-				$this->email->message('Jygen SMTP');
-			if($this->email->send()){
-				echo 'Sukses';
-				return true;
+	public function LupaPassword(){
+		$Cek = $this->db->get_where('mahasiswa', array('Email' => htmlentities($_POST['Email'])));
+		if ($Cek->num_rows() == 0){
+			echo "Email Belum Terdaftar, Hubungi Admin Sikeren.";
+		}
+		else {
+			$Akun = $Cek->row_array();
+			$this->db->where('NIM', $Cek->row_array()['NIM']);
+			$Reset = substr(password_hash($_POST['Email'], PASSWORD_DEFAULT),-8);
+			$this->db->update('mahasiswa',array('Password' => password_hash($Reset, PASSWORD_DEFAULT)));	
+			if ($this->db->affected_rows()){
+				$config = Array(
+					'protocol' => 'smtp',
+					'smtp_host' => 'ssl://smtp.googlemail.com',
+					'smtp_port' => 465,
+					'smtp_user' => 'koorprodi-ep@trunojoyo.ac.id',
+					'smtp_pass' => 'lvbqveygzppzvlvh', 
+					'mailtype' => 'html',
+					'charset' => 'utf-8',
+					'wordwrap' => TRUE
+					);
+					$this->load->library('email', $config);
+					$this->email->set_newline("\r\n");
+					$this->email->from('koorprodi-ep@gmail.com');
+					$this->email->to($_POST['Email']);
+					$this->email->subject('Reset Password');
+					$this->email->message('Reset Password Akun Anda Adalah '.$Reset);
+				if($this->email->send()){
+					echo "Silahkan Cek Reset Password di Email";
+				} else {
+					echo "Gagal Kirim Email, Hubungi Admin Sikeren.";
+				}
 			} else {
-				return false;
+				echo "Gagal Reset, Hubungi Admin Sikeren.";
 			}
+		}
 	}
 
 	public function SignOut(){

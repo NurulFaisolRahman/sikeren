@@ -107,9 +107,11 @@
 										</div>
 										<div class="input-group input-group-sm mb-2">
 											<div class="input-group-prepend">
-												<span class="input-group-text bg-primary"><b>Whatsapp</b></span>
+												<!-- <span class="input-group-text bg-primary"><b>Whatsapp</b></span> -->
+												<span class="input-group-text bg-primary"><b>Email</b></span>
 											</div>
-											<input type="text" class="form-control" value="<?='0'.$Profil['WA']?>" disabled>
+											<!-- <input type="text" class="form-control" value="<?='0'.$Profil['WA']?>" disabled> -->
+											<input type="text" class="form-control" value="<?=$Profil['Email']?>" disabled>
 										</div>
 									</div>
 									<div class="col-sm-8 mt-2">
@@ -121,13 +123,13 @@
 										</div>
 										<div class="input-group input-group-sm mb-2">
 											<div class="input-group-prepend">
-												<span class="input-group-text bg-primary"><b>Nomor Seri Kartu Pegawai</b></span>
+												<span class="input-group-text bg-primary"><b>Nomor Kartu Pegawai</b></span>
 											</div>
 											<input type="text" class="form-control" value="<?=$Profil['KarPeg']?>" disabled>
 										</div>
 										<div class="input-group input-group-sm mb-2">
 											<div class="input-group-prepend">
-												<span class="input-group-text bg-primary"><b>Tempat dan Tanggal Lahir</b></span>
+												<span class="input-group-text bg-primary"><b>Tempat Tanggal Lahir</b></span>
 											</div>
 											<input type="text" class="form-control" value="<?=$Profil['Kelahiran']?>" disabled>
 										</div>
@@ -379,6 +381,12 @@
                       <option value="Lektor Kepala" <?=$Profil['Jabatan']=='Lektor Kepala'?'selected':''?>>Lektor Kepala</option>
                       <option value="Profesor" <?=$Profil['Jabatan']=='Profesor'?'selected':''?>>Profesor</option>
                     </select>
+									</div>
+									<div class="input-group input-group-sm mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-primary"><b>Email</b></span>
+                    </div>
+                    <input type="text" class="form-control" id="Email" value="<?=$Profil['Email']?>">
                   </div>
                 </div>
                 <div class="col-sm-7">
@@ -390,7 +398,7 @@
 									</div>
 									<div class="input-group input-group-sm mb-2">
                     <div class="input-group-prepend">
-                      <span class="input-group-text bg-primary"><b>Kartu Pegawai</b></span>
+                      <span class="input-group-text bg-primary"><b>Nomor Kartu Pegawai</b></span>
                     </div>
                     <input type="text" class="form-control" id="KarPeg" value="<?=$Profil['KarPeg']?>" placeholder="Input Nomor Seri Kartu Pegawai">
                   </div>
@@ -419,14 +427,14 @@
                       <option value="S2" <?=$Profil['Homebase']=='S2'?'selected':''?>>S2</option>
                     </select>
 									</div>
-                </div>
-                <div class="col-sm-12">
 									<div class="input-group input-group-sm mb-2">
                     <div class="input-group-prepend">
-                      <span class="input-group-text bg-primary"><b>Tempat dan Tanggal Lahir</b></span>
+                      <span class="input-group-text bg-primary"><b>Tempat Tanggal Lahir</b></span>
                     </div>
                     <input type="text" class="form-control" id="Kelahiran" value="<?=$Profil['Kelahiran']?>" placeholder="Contoh : Situbondo 15 Juli 1996">
                   </div>
+                </div>
+                <div class="col-sm-12">
 									<div class="input-group input-group-sm mb-2">
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-primary"><b>Kredit Yang Divalidasi Asesor</b></span>
@@ -672,6 +680,7 @@
 						fd.append('Pangkat',Pangkat[0])
 						fd.append('Golongan',Pangkat[1])
 						fd.append('Jabatan',$("#Jabatan").val())
+						fd.append('Email',$("#Email").val())
 						fd.append('Tahun',parseInt($("#TahunKreditLama").val()))
 						fd.append('Semester',$("#SemesterKredit").val())
 						fd.append('KreditLama',$("#KreditLama").val())
