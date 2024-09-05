@@ -464,9 +464,9 @@ public function Kuisioner($Jenis){
 				$this->email->set_newline("\r\n");
 				$this->email->from('jigenqoh@gmail.com');
 				$this->email->to('hydanqoh@gmail.com');
-				$this->email->subject('Hydan');
-				$this->email->message('Jygen');
-			if($this->email->send())			 {
+				$this->email->subject('Tes SMTP');
+				$this->email->message('Jygen SMTP');
+			if($this->email->send()){
 				echo 'Sukses';
 				return true;
 			} else {
