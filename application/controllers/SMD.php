@@ -457,8 +457,8 @@ public function Kuisioner($Jenis){
 					'protocol' => 'smtp',
 					'smtp_host' => 'ssl://smtp.googlemail.com',
 					'smtp_port' => 465,
-					'smtp_user' => 'koorprodi-ep@trunojoyo.ac.id',
-					'smtp_pass' => 'lvbqveygzppzvlvh', 
+					'smtp_user' => 'febeputm@gmail.com',
+					'smtp_pass' => 'fixxypmyzyikuaqa', 
 					'mailtype' => 'html',
 					'charset' => 'utf-8',
 					'wordwrap' => TRUE
