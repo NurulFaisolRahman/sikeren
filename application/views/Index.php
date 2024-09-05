@@ -213,9 +213,9 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text bg-danger text-light"><b>Email</b></span>
                         </div>
-                        <input type="text" class="form-control" id="_Email" placeholder="Email">
+                        <input type="text" class="form-control" id="Email" placeholder="Email">
                       </div>
-                      <div class="btn btn-sm btn-danger text-light d-flex justify-content-center mt-1" id="Lupa"><b>RESET SANDI&nbsp;<div id="LoadingLupa" class="spinner-border spinner-border-sm text-white mt-1" role="status" style="display: none;"></b></div>
+                      <div class="btn btn-sm btn-danger text-light d-flex justify-content-center mt-1" id="Lupa"><b>RESET SANDI&nbsp;<div id="LoadingLupa" class="spinner-border spinner-border-sm text-white mt-1" role="status" style="display: none;"></div></b></div>
                     </div>
                   </div>
                 </div>
@@ -223,28 +223,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="modal-content bg-transparent">
-          <div class="modal-body">
-            <div class="container-fluid">
-							<div class="row d-flex justify-content-center">
-								<div class="col-sm-12 my-1"> -->
-                  <!-- <ul class="list-group">
-                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/KepuasanMahasiswa')?>">1. Kepuasan Terhadap Proses Pendidikan</a></li>
-                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PrestasiMahasiswa')?>">2. Prestasi Akademik & Non Akademik</a></li>
-                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PublikasiMahasiswa')?>">3. Publikasi Ilmiah</a></li>
-                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/SitasiMahasiswa')?>">4. Karya Ilmiah Yang Disitasi</a></li>
-                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PatenMahasiswa')?>">5. HKI (Paten, Paten Sederhana)</a></li>
-                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/HKIMahasiswa')?>">6. HKI (Hak Cipta, Desain Produk Industri, dll.)</a></li>
-                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/KaryaMahasiswa')?>">7. Teknologi Tepat Guna, Produk, Karya Seni, Rekayasa Sosial</a></li>
-                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/BukuMahasiswa')?>">8. Buku ber-ISBN, Book Chapter</a></li>
-                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/Alumni')?>">9. Alumni Yang Telah Bekerja</a></li>
-                    <li class="list-group-item bg-danger py-1"><a class="text-white font-weight-bold" href="<?=base_url('SMD/Kuisioner/PenggunaLulusan')?>">10. Pengguna Lulusan</a></li>
-                  </ul> -->
-                <!-- </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
     <div class="modal fade" id="ModalMhsDaftar">
@@ -362,12 +340,12 @@
         $("#Lupa").click(function() {
           $("#Lupa").attr("disabled", true);                              
 					$("#LoadingLupa").show();
-          if ($("#_Email").val() === "") {
+          if ($("#Email").val() === "") {
             alert('Mohon Input Email!')
             $("#Lupa").attr("disabled", false);                              
 					  $("#LoadingLupa").hide();
           } else {
-            var Email = { Email: $("#_Email").val() } 
+            var Email = { Email: $("#Email").val() } 
             $.post(BaseURL+"SMD/LupaPassword", Email).done(function(Respon) {
               alert(Respon)
               $("#Lupa").attr("disabled", false);                              
