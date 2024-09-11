@@ -213,7 +213,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text bg-danger text-light"><b>Email</b></span>
                         </div>
-                        <input type="text" class="form-control" id="Email" placeholder="Email">
+                        <input type="text" class="form-control" id="Email" placeholder="Email@student.trunojoyo.ac.id">
                       </div>
                       <div class="btn btn-sm btn-danger text-light d-flex justify-content-center mt-1" id="Lupa"><b>RESET SANDI&nbsp;<div id="LoadingLupa" class="spinner-border spinner-border-sm text-white mt-1" role="status" style="display: none;"></div></b></div>
                     </div>
@@ -245,12 +245,6 @@
                           <span class="input-group-text bg-danger text-light"><b>Nama</b></span>
                         </div>
                         <input type="text" class="form-control" id="_Nama">
-                      </div>
-                      <div class="input-group input-group-sm mb-2">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text bg-danger text-light"><b>Email</b></span>
-                        </div>
-                        <input type="text" class="form-control" id="_Email">
                       </div>
                       <div class="input-group input-group-sm mb-2">
                         <div class="input-group-prepend">
@@ -358,14 +352,11 @@
             alert('Mohon Input NIM 12 Digit Angka!')
           } else if ($("#_Nama").val() === "") {
             alert('Mohon Input Nama!')
-          } else if ($("#_Email").val() === "") {
-            alert('Mohon Input Email!')
           } else if ($("#_Password").val() === "") {
             alert('Mohon Input Password!')
           } else {
             var Mhs = { NIM: $("#_NIM").val(),
                         Nama: $("#_Nama").val(),
-                        Email: $("#_Email").val(),
                         Password: $("#_Password").val() }
             $("#Daftar").attr("disabled", true);                              
             $.post(BaseURL+"SMD/MhsDaftar", Mhs).done(function(Respon) {

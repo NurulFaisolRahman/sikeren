@@ -663,7 +663,6 @@
 		<script>
 			$(document).ready(function(){
 				var BaseURL = '<?=base_url()?>'  
-				alert('Mohon Update Email Di Menu Dosen Pembimbing di Form Data Proposal Guna Antisipasi Lupa Password, Abaikan Jika Sudah.')
 				// $("#Kuisioner").modal("show");
 
 				$("#KirimKepuasan").click(function() {

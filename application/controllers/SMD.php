@@ -7,6 +7,15 @@ class SMD extends CI_Controller {
 		$this->load->view('Index.php');
 	}
 
+	// public function Email(){
+	// 	$Data = $this->db->query("SELECT NIM,Email FROM `mahasiswa` WHERE Email=''")->result_array();
+	// 	for ($i=0; $i < count($Data); $i++) { 
+	// 		$Data[$i]['Email'] = $Data[$i]['NIM'].'@student.trunojoyo.ac.id';
+	// 	}
+	// 	$this->db->update_batch('mahasiswa', $Data, 'NIM');
+	// 	echo 'ok';
+	// }
+
 	public function RekapSkripsi(){
 		$Data['Mhs'] = $this->db->query("SELECT * FROM `mahasiswa` WHERE `TanggalUjianSkripsi` > '2024-01-31' ORDER BY TanggalUjianSkripsi DESC")->result_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM `Dosen`")->result_array();
@@ -89,6 +98,7 @@ class SMD extends CI_Controller {
 	public function MhsDaftar(){
 		if ($this->db->get_where('mahasiswa',array('NIM' => $_POST['NIM']))->num_rows() === 0) {
 			$_POST['Password'] = password_hash($_POST['Password'], PASSWORD_DEFAULT);
+			$_POST['Email'] = $_POST['NIM'].'@student.trunojoyo.ac.id';
 			$this->db->insert('mahasiswa',$_POST);
 			if ($this->db->affected_rows()){
 				$Session = array('AkunMhs' => 'Mhs',

@@ -1620,7 +1620,7 @@ class Dashboard extends CI_Controller {
 		$Data['SubMenu'] = 'DosenPembimbing';
 		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' or StatusProposal LIKE 'Ditolak Oleh Pembimbing%'")->result_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
-		$Data['Mhs'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa WHERE StatusProposal = 'Disetujui Pembimbing' ORDER BY Nama ASC")->result_array();
+		$Data['Mhs'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa WHERE NIPPembimbing != ''x ORDER BY Nama ASC")->result_array();
 		$Belum = $this->db->query("SELECT NIPPembimbing,NamaPembimbing,COUNT(NIPPembimbing) AS Jumlah FROM `mahasiswa` WHERE NIPPembimbing != '' AND StatusProposal = 'Menunggu Persetujuan Pembimbing' GROUP BY NIPPembimbing")->result_array();
 		$Aktif = $this->db->query("SELECT NIPPembimbing,NamaPembimbing,COUNT(NIPPembimbing) AS Jumlah FROM `mahasiswa` WHERE StatusProposal = 'Disetujui Pembimbing' AND NilaiSkripsi1 = '' AND NilaiSkripsi2 = '' AND NilaiSkripsi3 = '' GROUP BY NIPPembimbing")->result_array();
 		$Lulus = $this->db->query("SELECT NIPPembimbing,NamaPembimbing,COUNT(NIPPembimbing) AS Jumlah FROM `mahasiswa` WHERE StatusProposal = 'Disetujui Pembimbing' AND NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != '' GROUP BY NIPPembimbing")->result_array();
