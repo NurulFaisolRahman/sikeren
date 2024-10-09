@@ -1837,37 +1837,58 @@ class Dashboard extends CI_Controller {
 		}
 	}
 
-	public function RevisiNilaiProposal(){
-		$Nilai = $this->db->query("SELECT * FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
-		$Penguji = array();
-		if ($Nilai['PengujiProposal1'] == $_POST['Penguji']) {
-			$Penguji['NilaiProposal1'] = '';
-		} else if ($Nilai['NilaiProposal2'] == $_POST['Penguji']) {
-			$Penguji['NilaiProposal1'] = '';
-		} else if ($Nilai['NIPPembimbing'] == $_POST['Penguji']) {
-			$Penguji['NilaiProposal3'] = '';
-		} 
-    $this->db->where('NIM', $_POST['NIM']);
-		$this->db->update('mahasiswa',$Penguji);
+	public function RevisiNilai(){
+		$Data['Halaman'] = 'Revisi Nilai';
+		$Data['SubMenu'] = '';
+		$NIP =  $this->session->userdata('NIP');
+		$Data['Proposal'] = $this->db->query("SELECT NIM,Nama FROM `mahasiswa` WHERE PengujiProposal1 = $NIP AND NilaiProposal1 != '' OR PengujiProposal2 = $NIP AND NilaiProposal2 != '' OR NIPPembimbing = $NIP AND NilaiProposal3 != '' ORDER BY Nama ASC")->result_array();
+		$Data['Skripsi'] = $this->db->query("SELECT NIM,Nama FROM `mahasiswa` WHERE PengujiSkripsi1 = $NIP AND NilaiSkripsi1 != '' OR PengujiSkripsi2 = $NIP AND NilaiSkripsi2 != '' OR NIPPembimbing = $NIP AND NilaiSkripsi3 != '' ORDER BY Nama ASC")->result_array();
+		$Data['Revisi'] = $this->db->query("SELECT r.*,m.Nama FROM `revisinilai` AS r,`mahasiswa` AS m WHERE r.NIP = 198303282015041001 AND r.NIM = m.NIM ORDER BY Time DESC")->result_array();
+		$this->load->view('Header',$Data);
+		$this->load->view('RevisiNilai',$Data);
+	}
+
+	public function RevisiNilaiKPS(){
+		$Data['Halaman'] = 'Validasi';
+		$Data['SubMenu'] = '';
+		$Data['Revisi'] = $this->db->query("SELECT r.*,d.Nama AS Penguji,m.Nama FROM `revisinilai` AS r,`dosen` AS d,`mahasiswa` AS m WHERE r.NIP = d.NIP AND r.NIM = m.NIM AND Status = 'Diajukan' ORDER BY Time DESC")->result_array();
+		$this->load->view('Header',$Data);
+		$this->load->view('RevisiNilaiKPS',$Data);
+	}
+
+	public function AjukanRevisi(){
+		$this->db->insert('revisinilai',$_POST);
 		if ($this->db->affected_rows()){
 			echo '1';
 		} else {
-			echo 'Gagal Revisi Nilai!';
+			echo 'Gagal Input Data!'; 
 		}
 	}
 
-	public function RevisiNilaiSkripsi(){
+	public function RevisiNilaiUjian(){
 		$Nilai = $this->db->query("SELECT * FROM mahasiswa where NIM = ".$_POST['NIM'])->row_array();
 		$Penguji = array();
-		if ($Nilai['PengujiSkripsi1'] == $_POST['Penguji']) {
-			$Penguji['NilaiSkripsi1'] = '';
-		} else if ($Nilai['NilaiSkripsi2'] == $_POST['Penguji']) {
-			$Penguji['NilaiSkripsi1'] = '';
-		} else if ($Nilai['NIPPembimbing'] == $_POST['Penguji']) {
-			$Penguji['NilaiSkripsi3'] = '';
-		} 
+		if ($_POST['Revisi'] == 'Skripsi') {
+			if ($Nilai['PengujiSkripsi1'] == $_POST['Penguji']) {
+				$Penguji['NilaiSkripsi1'] = '';
+			} else if ($Nilai['NilaiSkripsi2'] == $_POST['Penguji']) {
+				$Penguji['NilaiSkripsi1'] = '';
+			} else if ($Nilai['NIPPembimbing'] == $_POST['Penguji']) {
+				$Penguji['NilaiSkripsi3'] = '';
+			} 
+		} else {
+			if ($Nilai['PengujiProposal1'] == $_POST['Penguji']) {
+				$Penguji['NilaiProposal1'] = '';
+			} else if ($Nilai['NilaiProposal2'] == $_POST['Penguji']) {
+				$Penguji['NilaiProposal1'] = '';
+			} else if ($Nilai['NIPPembimbing'] == $_POST['Penguji']) {
+				$Penguji['NilaiProposal3'] = '';
+			} 
+		}
     $this->db->where('NIM', $_POST['NIM']);
 		$this->db->update('mahasiswa',$Penguji);
+		$this->db->where('Id', $_POST['Id']);
+		$this->db->update('revisinilai',array('Status' => 'Disetujui'));
 		if ($this->db->affected_rows()){
 			echo '1';
 		} else {

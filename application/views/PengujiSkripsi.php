@@ -6,11 +6,11 @@
               <div class="col-sm-12 mt-2">
                 <div class="container-fluid border border-warning rounded bg-light">
                   <div class="row align-items-center">
-                    <?php if ($this->session->userdata('Kaprodi')) { ?>
+                    <!-- <?php if ($this->session->userdata('Kaprodi')) { ?>
                     <div class="col-12 mt-2">
                       <button class="btn btn-danger text-white" data-toggle="modal" data-target="#ModalRevisiNilai"><b>Revisi Nilai Ujian</b></button>
                     </div>
-                    <?php } ?>
+                    <?php } ?> -->
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
                         <table id="TabelUjianSkripsi" class="table table-bordered table-striped">
@@ -670,7 +670,7 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="ModalRevisiNilai">
+    <!-- <div class="modal fade" id="ModalRevisiNilai">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content bg-success">
           <div class="modal-body">
@@ -718,7 +718,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
     <script src="<?=base_url('bootstrap/js/popper.min.js')?>" ></script>
     <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>

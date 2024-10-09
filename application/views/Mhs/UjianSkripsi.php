@@ -13,6 +13,7 @@
 										<a href="<?=base_url('Mhs/PersetujuanUjianSkripsi')?>" class="btn btn-sm border-light btn-sm btn-danger"><i class="fa fa-file-pdf-o"> <b>Undangan Ujian Skripsi</b></i></a>  
 									<?php } ?>
 								</div>
+								<b class="text-white mb-1 pl-3">Setelah Mengajukan Ujian, Mohon Verifikasi Bukti Asli Persyaratan Ke Admin Untuk Validasi.</b>
 								<div class="col-12">
 									<div class="card-header bg-danger text-light">
 										<b>Status Pengajuan Ujian Skripsi</b>
