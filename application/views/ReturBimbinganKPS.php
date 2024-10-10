@@ -12,23 +12,21 @@
                           <thead class="bg-warning">
                             <tr>
                               <th style="width: 4%;" class="text-center align-middle">No</th>
-                              <th style="width: 25%;" class="align-middle">Penguji</th>
+                              <th style="width: 25%;" class="align-middle">Pembimbing</th>
                               <th style="width: 25%;" class="align-middle">Mahasiswa</th>
-                              <th style="width: 7%;" class="text-center align-middle">Revisi</th>
                               <th style="width: 30%;" class="align-middle">Alasan</th>
                               <th style="width: 5%;" class="text-center align-middle">Validasi</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <?php $No = 1; foreach ($Revisi as $key) { ?>
+                            <?php $No = 1; foreach ($Retur as $key) { ?>
                               <tr>	
                                 <td class="text-center align-middle"><?=$No++?></td>
-                                <td class="align-middle"><?=$key['Penguji']?></td>
+                                <td class="align-middle"><?=$key['Pembimbing']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
-                                <td class="text-center align-middle"><?=$key['Revisi']?></td>
                                 <td class="align-middle"><?=$key['Alasan']?></td>
                                 <td class="text-center align-middle">
-                                  <button Revisi="<?=$key['NIM']."|".$key['Revisi']."|".$key['NIP']."|".$key['Id']?>" class="btn btn-sm btn-primary Revisi" data-toggle="tooltip" data-placement="top" title="Validasi"><i class="fas fa-edit"></i></button>
+                                  <button Retur="<?=$key['NIM']."|".$key['NIP']."|".$key['Id']?>" class="btn btn-sm btn-primary Retur" data-toggle="tooltip" data-placement="top" title="Validasi"><i class="fas fa-edit"></i></button>
                                 </td>
                               </tr>
                             <?php } ?>
@@ -56,7 +54,7 @@
 				"use strict";
         var BaseURL = '<?=base_url()?>';
 
-        $('#TabelRevisi').DataTable( {
+        $('#TabelRetur').DataTable( {
 					// dom:'lfrtip',
 					"ordering": false,
           "lengthMenu": [[ 10, 20, 30, -1 ],[ 10, 20, 30, "All"]],
@@ -68,17 +66,16 @@
 					}
 				})
 
-        $(document).on("click",".Revisi",function(){
-					var Data = $(this).attr('Revisi')
+        $(document).on("click",".Retur",function(){
+					var Data = $(this).attr('Retur')
 					var Pisah = Data.split("|")
           var Data = { NIM: Pisah[0],
-                       Revisi: Pisah[1],
-                       Penguji: Pisah[2],
-                       Id: Pisah[3] }
-          $.post(BaseURL+"Dashboard/RevisiNilaiUjian", Data).done(function(Respon) {
+                       NIP: Pisah[1],
+                       Id: Pisah[2] }
+          $.post(BaseURL+"Dashboard/KPSReturBimbingan", Data).done(function(Respon) {
             if (Respon == '1') {
-              alert('Revisi Berhasil Di Validasi')
-              window.location = BaseURL + "Dashboard/RevisiNilaiKPS"
+              alert('Retur Bimbingan Berhasil')
+              window.location = BaseURL + "Dashboard/ReturBimbinganKPS"
             }
           })    
         })

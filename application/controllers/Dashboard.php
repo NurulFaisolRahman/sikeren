@@ -1618,9 +1618,9 @@ class Dashboard extends CI_Controller {
 	public function DosenPembimbing(){
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'DosenPembimbing';
-		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' or StatusProposal LIKE 'Ditolak Oleh Pembimbing%'")->result_array();
+		$Data['DosenPembimbing'] = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' or StatusProposal LIKE 'Ditolak Pembimbing%'")->result_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM Dosen")->result_array();
-		$Data['Mhs'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa WHERE NIPPembimbing != ''x ORDER BY Nama ASC")->result_array();
+		$Data['Mhs'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa WHERE NIPPembimbing != '' ORDER BY Nama ASC")->result_array();
 		$Belum = $this->db->query("SELECT NIPPembimbing,NamaPembimbing,COUNT(NIPPembimbing) AS Jumlah FROM `mahasiswa` WHERE NIPPembimbing != '' AND StatusProposal = 'Menunggu Persetujuan Pembimbing' GROUP BY NIPPembimbing")->result_array();
 		$Aktif = $this->db->query("SELECT NIPPembimbing,NamaPembimbing,COUNT(NIPPembimbing) AS Jumlah FROM `mahasiswa` WHERE StatusProposal = 'Disetujui Pembimbing' AND NilaiSkripsi1 = '' AND NilaiSkripsi2 = '' AND NilaiSkripsi3 = '' GROUP BY NIPPembimbing")->result_array();
 		$Lulus = $this->db->query("SELECT NIPPembimbing,NamaPembimbing,COUNT(NIPPembimbing) AS Jumlah FROM `mahasiswa` WHERE StatusProposal = 'Disetujui Pembimbing' AND NilaiSkripsi1 != '' AND NilaiSkripsi2 != '' AND NilaiSkripsi3 != '' GROUP BY NIPPembimbing")->result_array();
@@ -1843,17 +1843,37 @@ class Dashboard extends CI_Controller {
 		$NIP =  $this->session->userdata('NIP');
 		$Data['Proposal'] = $this->db->query("SELECT NIM,Nama FROM `mahasiswa` WHERE PengujiProposal1 = $NIP AND NilaiProposal1 != '' OR PengujiProposal2 = $NIP AND NilaiProposal2 != '' OR NIPPembimbing = $NIP AND NilaiProposal3 != '' ORDER BY Nama ASC")->result_array();
 		$Data['Skripsi'] = $this->db->query("SELECT NIM,Nama FROM `mahasiswa` WHERE PengujiSkripsi1 = $NIP AND NilaiSkripsi1 != '' OR PengujiSkripsi2 = $NIP AND NilaiSkripsi2 != '' OR NIPPembimbing = $NIP AND NilaiSkripsi3 != '' ORDER BY Nama ASC")->result_array();
-		$Data['Revisi'] = $this->db->query("SELECT r.*,m.Nama FROM `revisinilai` AS r,`mahasiswa` AS m WHERE r.NIP = 198303282015041001 AND r.NIM = m.NIM ORDER BY Time DESC")->result_array();
+		$Data['Revisi'] = $this->db->query("SELECT r.*,m.Nama FROM `revisinilai` AS r,`mahasiswa` AS m WHERE r.NIP = $NIP AND r.NIM = m.NIM ORDER BY Time DESC")->result_array();
 		$this->load->view('Header',$Data);
 		$this->load->view('RevisiNilai',$Data);
 	}
 
 	public function RevisiNilaiKPS(){
 		$Data['Halaman'] = 'Validasi';
-		$Data['SubMenu'] = '';
+		$Data['SubMenu'] = 'RevisiNIlaiKPS';
 		$Data['Revisi'] = $this->db->query("SELECT r.*,d.Nama AS Penguji,m.Nama FROM `revisinilai` AS r,`dosen` AS d,`mahasiswa` AS m WHERE r.NIP = d.NIP AND r.NIM = m.NIM AND Status = 'Diajukan' ORDER BY Time DESC")->result_array();
 		$this->load->view('Header',$Data);
 		$this->load->view('RevisiNilaiKPS',$Data);
+	}
+
+	public function ReturBimbinganKPS(){
+		$Data['Halaman'] = 'Validasi';
+		$Data['SubMenu'] = 'ReturBimbinganKPS';
+		$Data['Retur'] = $this->db->query("SELECT r.*,d.Nama AS Pembimbing,m.Nama FROM `returbimbingan` AS r,`dosen` AS d,`mahasiswa` AS m WHERE r.NIP = d.NIP AND r.NIM = m.NIM AND Status = 'Diajukan' ORDER BY Time DESC")->result_array();
+		$this->load->view('Header',$Data);
+		$this->load->view('ReturBimbinganKPS',$Data);
+	}
+
+	public function KPSReturBimbingan(){
+    $this->db->where('NIM', $_POST['NIM']);
+		$this->db->update('mahasiswa',array('StatusProposal' => 'Ditolak Pembimbing','NIPPembimbing' => '','NamaPembimbing' => ''));
+		$this->db->where('Id', $_POST['Id']);
+		$this->db->update('returbimbingan',array('Status' => 'Disetujui'));
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Retur Bimbingan!';
+		}
 	}
 
 	public function AjukanRevisi(){
@@ -1893,6 +1913,15 @@ class Dashboard extends CI_Controller {
 			echo '1';
 		} else {
 			echo 'Gagal Revisi Nilai!';
+		}
+	}
+
+	public function ReturBimbingan(){
+		$this->db->insert('returbimbingan',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Retur Bimbingan!'; 
 		}
 	}
 
@@ -2313,7 +2342,9 @@ class Dashboard extends CI_Controller {
 	public function BimbinganSkripsi(){
 		$Data['Halaman'] = 'Bimbingan Skripsi';
 		$Data['SubMenu'] = '';
+		$NIP = $this->session->userdata('NIP');
 		$Data['Bimbingan'] = $this->db->query("SELECT * FROM mahasiswa WHERE StatusProposal = 'Disetujui Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array(); 
+		$Data['Retur'] = $this->db->query("SELECT r.*,m.Nama FROM `returbimbingan` AS r,`mahasiswa` AS m WHERE r.NIP = $NIP AND r.NIM = m.NIM AND r.Status = 'Diajukan' ORDER BY Time DESC")->result_array();
 		$Data['DataBimbingan'] = array();
 		if ($this->session->userdata('NIMBimbingan') != '') {
 			$Data['DataBimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->result_array(); 
@@ -2368,7 +2399,7 @@ class Dashboard extends CI_Controller {
 			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan Pembimbing' ORDER BY TanggalProposal DESC")->result_array();
 			$Data['Status'] = 'Menunggu Validasi Pembimbing';
 		} else if ($Status == '5') {
-			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' OR StatusProposal LIKE '%Ditolak Oleh Pembimbing%' ORDER BY TanggalProposal DESC")->result_array();
+			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' OR StatusProposal LIKE '%Ditolak Pembimbing%' ORDER BY TanggalProposal DESC")->result_array();
 			$Data['Status'] = 'Menunggu Validasi KPS';
 		} else if ($Status == '6') {
 			$Data['Rekap'] = $this->db->query("SELECT NIM,Nama,NamaPembimbing FROM mahasiswa where StatusProposal = 'Diajukan' ORDER BY TanggalProposal DESC")->result_array();

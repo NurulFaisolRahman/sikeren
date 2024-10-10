@@ -663,6 +663,10 @@
 		<script>
 			$(document).ready(function(){
 				var BaseURL = '<?=base_url()?>'  
+				var Foto = '<?=$Mhs['Foto']?>'
+				if (Foto == '') {
+					alert('Wajib Upload Foto Profil!')
+				}
 				// $("#Kuisioner").modal("show");
 
 				$("#KirimKepuasan").click(function() {

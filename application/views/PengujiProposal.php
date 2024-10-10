@@ -103,11 +103,6 @@
                             <textarea class="form-control" id="CatatanPenguji" rows="3"></textarea>
                           </div>
                         </div>
-                        <!-- <div class="col-12 my-1">
-                          <div class="input-group input-group-sm">
-                            <button type="button" class="btn btn-primary" id="ValidasiRevisi"><b>SIMPAN CATATAN&nbsp;<div id="LoadingRevisi" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
-                          </div>
-                        </div> -->
                       </div> 
                     </div>
                   </div>

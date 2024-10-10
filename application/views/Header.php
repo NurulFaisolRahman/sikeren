@@ -225,15 +225,16 @@
                         $Validasi2 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan KPS' or StatusUjianProposal = 'Ditolak Pembimbing' or StatusPengujiProposal1 LIKE 'Ditolak%' or StatusPengujiProposal2 LIKE 'Ditolak%'")->result_array();
                         $Validasi3 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan KPS' or StatusUjianSkripsi = 'Ditolak Pembimbing'")->result_array();
                         $Validasi4 = $this->db->query("SELECT * FROM revisinilai where Status = 'Diajukan'")->result_array();
+                        $Validasi5 = $this->db->query("SELECT * FROM returbimbingan where Status = 'Diajukan'")->result_array();
                       ?>
-                      <b>Validasi KPS <span class="badge badge-danger"><?=count($Validasi1)+count($Validasi2)+count($Validasi3)+count($Validasi4)?></b>
+                      <b>Validasi KPS <span class="badge badge-danger"><?=count($Validasi1)+count($Validasi2)+count($Validasi3)+count($Validasi4)+count($Validasi5)?></b>
                       <i class="right fas fa-angle-left"></i>
                     </p>
                     </a>
                     <?php
-                      $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal","ValidasiUjianSkripsi","RevisiNIlaiKPS","PlotRPS","PlotMBKM");
-                      $NamaKegiatan = array("Pembimbing","Ujian Proposal","Ujian Skripsi","Revisi Nilai","Validasi RPS","DPL MBKM");
-                      $Icon = array("users","users","users","book","book","users");
+                      $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal","ValidasiUjianSkripsi","RevisiNIlaiKPS","ReturBimbinganKPS","PlotRPS","PlotMBKM");
+                      $NamaKegiatan = array("Pembimbing","Ujian Proposal","Ujian Skripsi","Revisi Nilai","Retur Bimbingan","Validasi RPS","DPL MBKM");
+                      $Icon = array("users","users","users","book","book","book","users");
                     ?>
                     <?php for ($i=0; $i < count($JenisKegiatan); $i++) { ?>
                     <ul class="nav nav-treeview <ml-1></ml-3>">

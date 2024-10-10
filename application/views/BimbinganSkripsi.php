@@ -5,8 +5,8 @@
             <div class="row"> 
               <div class="col-sm-12 mt-2">
                 <div class="container-fluid border border-warning rounded bg-light">
-                  <div class="row align-items-center">
-                    <div class="col-6 mt-2">
+                  <div class="row">
+                    <div class="col-5 mt-2">
                       <div class="input-group input-group-sm">
                         <div class="input-group-prepend">
                           <label class="input-group-text bg-primary text-light"><b>Bimbingan</b></label>
@@ -21,19 +21,26 @@
                         </div>
                       </div>
                     </div>
+                    <div class="col-7 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text bg-warning text-white" id="ReturBimbingan"><b class="text-white">Retur Bimbingan</b></label>
+                        </div>
+                      </div>
+                    </div>
                     <?php if (count($Bimbingan) > 0) { ?>
-                    <div class="col-sm-12">
+                    <div class="col-sm-5">
                       <div class="row">
-                        <div class="col-lg-2 col-sm-4 d-flex justify-content-center pl-0 pr-0">
+                        <div class="col-lg-4 col-sm-4 d-flex justify-content-center pl-0 pr-0">
                           <label for="InputFoto">
                             <?php if ($Mhs['Foto'] == '') { ?>
-                              <img src="<?=base_url('img/Profil.jpg')?>" alt="..." class="img-circle profile_img mt-2" width="130px;">
+                              <img src="<?=base_url('img/Profil.jpg')?>" alt="..." class="img-circle profile_img mt-2" width="120px;">
                             <?php	} else { ?>
-                              <img src="<?=base_url('FotoMhs/'.$Mhs['Foto'])?>" class="mt-2" width="130px" height="130px">
+                              <img src="<?=base_url('FotoMhs/'.$Mhs['Foto'])?>" class="mt-2" width="120px">
                             <?php } ?>
                           </label>
                         </div>
-                        <div class="col-lg-4 col-sm-8">
+                        <div class="col-lg-8 col-sm-8">
                           <div class="row">
                             <div class="col-12 my-1 mb-1 pl-0">
                               <div class="input-group input-group-sm"> 
@@ -81,11 +88,33 @@
                         </div>
                       </div>
                     </div>
+                    <div class="col-sm-7 mt-1">    
+                      <div class="table-responsive">
+                        <table id="TabelReturBimbingan" class="table table-bordered table-striped">
+                          <thead class="bg-warning">
+                            <tr style="font-size: 12px;" class="text-white">
+                              <th style="width: 4%;" class="text-center align-middle">No</th>
+                              <th style="width: 35%;">Mahasiswa</th>
+                              <th>Alasan Retur</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php $No = 1; foreach ($Retur as $key) { ?>
+                              <tr style="font-size: 12px;">
+                                <td class="text-center align-middle"><?=$No++?></td>
+                                <td class="align-middle"><?=$key['Nama']?></td>
+                                <td class="align-middle"><?=$key['Alasan']?></td>
+                              </tr>
+                            <?php } ?>
+                          </tbody>
+                        </table>
+                      </div> 
+                    </div>
                     <?php } ?>
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
                         <table id="TabelBimbingan" class="table table-bordered table-striped">
-                          <thead class="bg-warning">
+                          <thead class="bg-primary">
                             <tr>
                               <th style="width: 4%;" class="text-center align-middle">No</th>
                               <th>Tanggal Bimbingan</th>
@@ -179,6 +208,55 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="ModalReturBimbingan">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="container">
+							<div class="row">
+                <div class="col-12">
+									<div class="card-header bg-warning text-light mt-2">
+										<b class="text-white">Retur Bimbingan</b>
+									</div>
+									<div class="card-body border border-warning">
+										<div class="container-fluid">
+											<div class="row mt-1">
+                        <div class="col-12 mt-1">
+                          <div class="input-group input-group-sm">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text bg-warning"><b class="text-light">Bimbingan</b></label>
+                            </div>
+                            <input class="form-control" type="hidden" id="NIP" value="<?=$this->session->userdata('NIP')?>">
+                            <select class="custom-select custom-select-sm" id="MhsBimbingan">					
+                              <?php foreach ($Bimbingan as $key) { if ($key['NilaiSkripsi1']=='' || $key['NilaiSkripsi2']=='' || $key['NilaiSkripsi3']=='') { ?>
+                                <option value="<?=$key['NIM']?>"><?=$key['Nama']?></option>
+                              <?php } } ?>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-12 mt-1">
+                          <div class="input-group input-group-sm"> 
+                            <div class="input-group-prepend">
+                              <label class="input-group-text bg-warning"><b class="text-light">Alasan</b></label>
+                            </div>
+                            <textarea class="form-control" id="AlasanRetur" rows="3"></textarea>
+                          </div>
+                        </div>
+                        <div class="col-12 my-1">
+                          <div class="input-group input-group-sm">
+                            <button type="button" class="btn btn-primary" id="ReturMhsBimbingan"><b>Retur Bimbingan&nbsp;<div id="LoadingReturMhsBimbingan" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+                          </div>
+                        </div>
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
     <script src="<?=base_url('bootstrap/js/popper.min.js')?>" ></script>
     <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
@@ -190,6 +268,18 @@
 			jQuery(document).ready(function($) {
 				"use strict";
         var BaseURL = '<?=base_url()?>';
+
+        $('#TabelBimbingan').DataTable( {
+					// dom:'lfrtip',
+					"ordering": false,
+          "lengthMenu": [[ 5, 10, 20, 30, -1 ],[ 5, 10, 20, 30, "All" ]],
+					"language": {
+						"paginate": {
+							'previous': '<b class="text-primary"><</b>',
+							'next': '<b class="text-primary">></b>'
+						}
+					}
+				})
         
         $(document).on("click",".LihatProposal",function(){
 					var Path = $(this).attr('LihatProposal')
@@ -232,17 +322,35 @@
           $("#PoinBimbingan").val(Pisah[3])
 					$('#ModalUpdateBimbingan').modal("show")
 				})
-        
-        $('#TabelBimbingan').DataTable( {
-					// dom:'lfrtip',
-					"ordering": false,
-          "lengthMenu": [[ 5, 10, 20, 30, -1 ],[ 5, 10, 20, 30, "All" ]],
-					"language": {
-						"paginate": {
-							'previous': '<b class="text-primary"><</b>',
-							'next': '<b class="text-primary">></b>'
-						}
-					}
+
+        $("#ReturBimbingan").click(function() {
+          $('#ModalReturBimbingan').modal("show")
+				})
+
+        $("#ReturMhsBimbingan").click(function() {
+					if ($("#AlasanRetur").val() == '') {
+            alert('Wajib Input Alasan!')
+          } else {
+            var Data = { NIP: $("#NIP").val(),
+                         NIM: $("#MhsBimbingan").val(),
+                         Alasan: $("#AlasanRetur").val(),
+                         Status: 'Diajukan' }
+            var Konfirmasi = confirm("Apakah Data Yang Di Pilih Sudah Benar?"); 
+            if (Konfirmasi == true) {
+              $("#ReturMhsBimbingan").attr("disabled", true); 
+              $("#LoadingReturMhsBimbingan").show();                             
+              $.post(BaseURL+"Dashboard/ReturBimbingan", Data).done(function(Respon) {
+                if (Respon == '1') {
+                  alert('Retur Mahasiswa Bimbingan Di Ajukan')
+                  window.location = BaseURL + "Dashboard/BimbinganSkripsi"
+                } else {
+                  alert(Respon)
+                  $("#ReturMhsBimbingan").attr("disabled", false); 
+                  $("#LoadingReturMhsBimbingan").hide();                             
+                }
+              })
+            }
+          }
 				})
 			})
 		</script>

@@ -6,11 +6,6 @@
               <div class="col-sm-12 mt-2">
                 <div class="container-fluid border border-warning rounded bg-light">
                   <div class="row align-items-center">
-                    <!-- <?php if ($this->session->userdata('Kaprodi')) { ?>
-                    <div class="col-12 mt-2">
-                      <button class="btn btn-danger text-white" data-toggle="modal" data-target="#ModalRevisiNilai"><b>Revisi Nilai Ujian</b></button>
-                    </div>
-                    <?php } ?> -->
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
                         <table id="TabelUjianSkripsi" class="table table-bordered table-striped">
@@ -107,11 +102,6 @@
                             <textarea class="form-control" id="CatatanPenguji" rows="3"></textarea>
                           </div>
                         </div>
-                        <!-- <div class="col-12 my-1">
-                          <div class="input-group input-group-sm">
-                            <button type="button" class="btn btn-primary" id="ValidasiRevisi"><b>SIMPAN CATATAN&nbsp;<div id="LoadingRevisi" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
-                          </div>
-                        </div> -->
                       </div> 
                     </div>
                   </div>
@@ -670,55 +660,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="modal fade" id="ModalRevisiNilai">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content bg-success">
-          <div class="modal-body">
-            <div class="container">
-							<div class="row">
-                <div class="col-12">
-									<div class="card-header bg-danger text-light mt-2">
-										<b>Revisi Nilai Ujian Skripsi</b>
-									</div>
-									<div class="card-body border border-primary bg-warning">
-										<div class="container-fluid">
-											<div class="row">
-                        <div class="col-4 my-1">
-													<div class="input-group input-group-sm">
-														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>NIM</b></label>
-														</div>
-														<input class="form-control form-control-sm" type="text" id="Mhs">
-													</div>
-												</div>
-												<div class="col-8 my-1">
-													<div class="input-group input-group-sm"> 
-														<div class="input-group-prepend">
-															<label class="input-group-text bg-primary text-light"><b>Penguji</b></label>
-														</div>
-														<select class="custom-select custom-select-sm" id="Penguji">	
-                              <option value="">Klik Disini</option>									
-                              <?php foreach ($Dosen as $key) { ?>
-                                <option value="<?=$key['NIP']?>"><?=$key['Nama']?></option>
-                              <?php } ?>
-                            </select>
-													</div>
-                        </div>
-                        <div class="col-12 my-1">
-                          <div class="input-group input-group-sm">
-                            <button type="button" class="btn btn-primary" id="RevisiNilai"><b>RESET NILAI&nbsp;<div id="LoadingRevisiNilai" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
-                          </div>
-                        </div>
-                      </div> 
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <script src="<?=base_url('bootstrap/js/jquery.min.js')?>"></script>
     <script src="<?=base_url('bootstrap/js/popper.min.js')?>" ></script>
     <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
@@ -867,51 +808,6 @@
             } 
           }
         })
-
-        $("#RevisiNilai").click(function() {
-          if ($("#Mhs").val() == '' || isNaN($("#Mhs").val()) || $("#Mhs").val().length != 12) {
-            alert('Input NIM Belum Benar!')
-          } else if ($("#Penguji").val() == '') {
-            alert('Input Penguji Belum Benar!')
-          } else {
-            var Revisi = { NIM: $("#Mhs").val(),
-                           Penguji: $("#Penguji").val() }
-            var Konfirmasi = confirm("Apakah Data Revisi Nilai Sudah Benar?"); 
-            if (Konfirmasi == true) {
-              $("#RevisiNilai").attr("disabled", true); 
-              $("#LoadingRevisiNilai").show();                             
-              $.post(BaseURL+"Dashboard/RevisiNilaiSkripsi", Revisi).done(function(Respon) {
-                if (Respon == '1') {
-                  alert('Nilai Berhasil Di Reset')
-                  window.location = BaseURL + "Dashboard/PengujiSkripsi"
-                } else {
-                  alert(Respon)
-                  $("#RevisiNilai").attr("disabled", false); 
-                  $("#LoadingRevisiNilai").hide();                             
-                }
-              })
-          }
-          }
-        })
-
-        // $("#ValidasiRevisi").click(function() {
-        //   var Revisi = { NIM: $("#_NIM").val(),
-        //                  Catatan: $("#CatatanPenguji").val() }
-        //   var Konfirmasi = confirm("Yakin Ingin Menyimpan Catatan?"); 
-      	// 	if (Konfirmasi == true) {
-        //     $("#ValidasiRevisi").attr("disabled", true); 
-        //     $("#LoadingRevisi").show();                             
-        //     $.post(BaseURL+"Dashboard/UpdateRevisiSkripsi", Revisi).done(function(Respon) {
-        //       if (Respon == '1') {
-        //         window.location = BaseURL + "Dashboard/PengujiSkripsi"
-        //       } else {
-        //         alert(Respon)
-        //         $("#ValidasiRevisi").attr("disabled", false); 
-        //         $("#LoadingRevisi").hide();                             
-        //       }
-        //     })
-        //   }
-        // })
 
 			})
 		</script>
