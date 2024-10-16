@@ -31,7 +31,13 @@
                                 <td class="align-middle"><?=$key['Nama']?></td>
                                 <td class="text-center align-middle"><?=$key['Revisi']?></td>
                                 <td class="align-middle"><?=$key['Alasan']?></td>
-                                <td class="text-center align-middle"><?=$key['Status']?></td>
+                                <td class="text-center align-middle">
+                                  <?php if ($key['Status'] == 'Diajukan') { ?>
+                                    <?=$key['Status']?>
+                                  <?php } else { ?>
+                                    <a href="<?=base_url('Dashboard/BeritaAcaraRevisiNilai/'.$key['Id'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
+                                  <?php } ?>
+                                </td>
                               </tr>
                             <?php } ?>
                           </tbody>

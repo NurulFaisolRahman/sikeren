@@ -221,7 +221,7 @@
                     <i class="nav-icon fas fa-tasks"></i>
                     <p>
                       <?php 
-                        $Validasi1 = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' or StatusProposal LIKE 'Ditolak Oleh Pembimbing%'")->result_array();
+                        $Validasi1 = $this->db->query("SELECT * FROM mahasiswa where StatusProposal = 'Menunggu Persetujuan KPS' or StatusProposal LIKE 'Ditolak Pembimbing%'")->result_array();
                         $Validasi2 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianProposal = 'Menunggu Persetujuan KPS' or StatusUjianProposal = 'Ditolak Pembimbing' or StatusPengujiProposal1 LIKE 'Ditolak%' or StatusPengujiProposal2 LIKE 'Ditolak%'")->result_array();
                         $Validasi3 = $this->db->query("SELECT * FROM mahasiswa where StatusUjianSkripsi = 'Menunggu Persetujuan KPS' or StatusUjianSkripsi = 'Ditolak Pembimbing'")->result_array();
                         $Validasi4 = $this->db->query("SELECT * FROM revisinilai where Status = 'Diajukan'")->result_array();
@@ -232,8 +232,8 @@
                     </p>
                     </a>
                     <?php
-                      $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal","ValidasiUjianSkripsi","RevisiNIlaiKPS","ReturBimbinganKPS","PlotRPS","PlotMBKM");
-                      $NamaKegiatan = array("Pembimbing","Ujian Proposal","Ujian Skripsi","Revisi Nilai","Retur Bimbingan","Validasi RPS","DPL MBKM");
+                      $JenisKegiatan = array("DosenPembimbing","ValidasiUjianProposal","ValidasiUjianSkripsi","RevisiNIlaiKPS","GantiBimbinganKPS","PlotRPS","PlotMBKM");
+                      $NamaKegiatan = array("Pembimbing","Ujian Proposal","Ujian Skripsi","Revisi Nilai","Ganti Bimbingan","Validasi RPS","DPL MBKM");
                       $Icon = array("users","users","users","book","book","book","users");
                     ?>
                     <?php for ($i=0; $i < count($JenisKegiatan); $i++) { ?>

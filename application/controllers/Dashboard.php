@@ -1851,20 +1851,36 @@ class Dashboard extends CI_Controller {
 	public function RevisiNilaiKPS(){
 		$Data['Halaman'] = 'Validasi';
 		$Data['SubMenu'] = 'RevisiNIlaiKPS';
-		$Data['Revisi'] = $this->db->query("SELECT r.*,d.Nama AS Penguji,m.Nama FROM `revisinilai` AS r,`dosen` AS d,`mahasiswa` AS m WHERE r.NIP = d.NIP AND r.NIM = m.NIM AND Status = 'Diajukan' ORDER BY Time DESC")->result_array();
+		$Data['Revisi'] = $this->db->query("SELECT r.*,d.Nama AS Penguji,m.Nama FROM `revisinilai` AS r,`Dosen` AS d,`mahasiswa` AS m WHERE r.NIP = d.NIP AND r.NIM = m.NIM ORDER BY Time DESC")->result_array();
 		$this->load->view('Header',$Data);
 		$this->load->view('RevisiNilaiKPS',$Data);
 	}
 
-	public function ReturBimbinganKPS(){
+	public function GantiBimbinganKPS(){
 		$Data['Halaman'] = 'Validasi';
-		$Data['SubMenu'] = 'ReturBimbinganKPS';
-		$Data['Retur'] = $this->db->query("SELECT r.*,d.Nama AS Pembimbing,m.Nama FROM `returbimbingan` AS r,`dosen` AS d,`mahasiswa` AS m WHERE r.NIP = d.NIP AND r.NIM = m.NIM AND Status = 'Diajukan' ORDER BY Time DESC")->result_array();
+		$Data['SubMenu'] = 'GantiBimbinganKPS';
+		$Data['Ganti'] = $this->db->query("SELECT r.*,d.Nama AS Pembimbing,m.Nama FROM `returbimbingan` AS r,`Dosen` AS d,`mahasiswa` AS m WHERE r.NIP = d.NIP AND r.NIM = m.NIM ORDER BY Time DESC")->result_array();
 		$this->load->view('Header',$Data);
-		$this->load->view('ReturBimbinganKPS',$Data);
+		$this->load->view('GantiBimbinganKPS',$Data);
 	}
 
-	public function KPSReturBimbingan(){
+	public function BeritaAcaraGantiBimbingan($Id){
+		$this->load->library('Pdf');
+		$Data['Ganti'] = $this->db->query("SELECT r.*,d.QRCode,d.Nama AS Pembimbing,m.Nama FROM `returbimbingan` AS r,`Dosen` AS d,`mahasiswa` AS m WHERE r.NIP = d.NIP AND r.NIM = m.NIM AND Id = $Id")->result_array();
+		$Time = explode(" ",$Data['Ganti'][0]['Time'])[0];
+		$Tanggal = explode("-",$Time);$Data['Tanggal'] = $Tanggal[2].' - '.$Tanggal[1].' - '.$Tanggal[0];
+		$this->load->view('BeritaAcaraGantiBimbingan',$Data);
+	}
+
+	public function BeritaAcaraRevisiNilai($Id){
+		$this->load->library('Pdf');
+		$Data['Ganti'] = $this->db->query("SELECT r.*,d.QRCode,d.Nama AS Penguji,m.Nama FROM `revisinilai` AS r,`Dosen` AS d,`mahasiswa` AS m WHERE r.NIP = d.NIP AND r.NIM = m.NIM AND Id = $Id")->result_array();
+		$Time = explode(" ",$Data['Ganti'][0]['Time'])[0];
+		$Tanggal = explode("-",$Time);$Data['Tanggal'] = $Tanggal[2].' - '.$Tanggal[1].' - '.$Tanggal[0];
+		$this->load->view('BeritaAcaraRevisiNilai',$Data);
+	}
+
+	public function KPSGantiBimbingan(){
     $this->db->where('NIM', $_POST['NIM']);
 		$this->db->update('mahasiswa',array('StatusProposal' => 'Ditolak Pembimbing','NIPPembimbing' => '','NamaPembimbing' => ''));
 		$this->db->where('Id', $_POST['Id']);
@@ -1916,7 +1932,7 @@ class Dashboard extends CI_Controller {
 		}
 	}
 
-	public function ReturBimbingan(){
+	public function GantiBimbingan(){
 		$this->db->insert('returbimbingan',$_POST);
 		if ($this->db->affected_rows()){
 			echo '1';
@@ -2343,8 +2359,8 @@ class Dashboard extends CI_Controller {
 		$Data['Halaman'] = 'Bimbingan Skripsi';
 		$Data['SubMenu'] = '';
 		$NIP = $this->session->userdata('NIP');
-		$Data['Bimbingan'] = $this->db->query("SELECT * FROM mahasiswa WHERE StatusProposal = 'Disetujui Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."'")->result_array(); 
-		$Data['Retur'] = $this->db->query("SELECT r.*,m.Nama FROM `returbimbingan` AS r,`mahasiswa` AS m WHERE r.NIP = $NIP AND r.NIM = m.NIM AND r.Status = 'Diajukan' ORDER BY Time DESC")->result_array();
+		$Data['Bimbingan'] = $this->db->query("SELECT * FROM mahasiswa WHERE StatusProposal = 'Disetujui Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."' ORDER BY NIM DESC")->result_array(); 
+		$Data['Ganti'] = $this->db->query("SELECT r.*,m.Nama FROM `returbimbingan` AS r,`mahasiswa` AS m WHERE r.NIP = $NIP AND r.NIM = m.NIM AND r.Status = 'Diajukan' ORDER BY Time DESC")->result_array();
 		$Data['DataBimbingan'] = array();
 		if ($this->session->userdata('NIMBimbingan') != '') {
 			$Data['DataBimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->result_array(); 

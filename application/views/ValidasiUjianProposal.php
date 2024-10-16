@@ -69,9 +69,9 @@
                       <tr>
                         <th class="text-center"><?=$No++?></th>
                         <td><?=$value?></td>
-                        <td class="text-center"><?=$JumlahLulus[$key]?></td>
-                        <td class="text-center"><?=$JumlahMenguji[$key]-$JumlahLulus[$key]?></td>
-                        <td class="text-center"><?=$JumlahMenguji[$key]?></td>
+                        <td class="text-center"><?=isset($JumlahLulus[$key]) == true ? $JumlahLulus[$key] : '0';?></td>
+                        <td class="text-center"><?=isset($JumlahMenguji[$key]) == true ? isset($JumlahLulus[$key]) == true ? $JumlahMenguji[$key]-$JumlahLulus[$key] : $JumlahMenguji[$key] : '0';?></td>
+                        <td class="text-center"><?=isset($JumlahMenguji[$key]) == true ? $JumlahMenguji[$key] : '0';?></td>
                       </tr>
                     <?php } ?>
                 </thead>

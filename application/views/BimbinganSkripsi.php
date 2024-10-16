@@ -24,7 +24,7 @@
                     <div class="col-7 mt-2">
                       <div class="input-group input-group-sm">
                         <div class="input-group-prepend">
-                          <label class="input-group-text bg-warning text-white" id="ReturBimbingan"><b class="text-white">Retur Bimbingan</b></label>
+                          <label class="input-group-text bg-warning text-white" id="GantiBimbingan"><b class="text-white">Ganti Bimbingan</b></label>
                         </div>
                       </div>
                     </div>
@@ -90,16 +90,16 @@
                     </div>
                     <div class="col-sm-7 mt-1">    
                       <div class="table-responsive">
-                        <table id="TabelReturBimbingan" class="table table-bordered table-striped">
+                        <table id="TabelGantiBimbingan" class="table table-bordered table-striped">
                           <thead class="bg-warning">
                             <tr style="font-size: 12px;" class="text-white">
                               <th style="width: 4%;" class="text-center align-middle">No</th>
                               <th style="width: 35%;">Mahasiswa</th>
-                              <th>Alasan Retur</th>
+                              <th>Alasan Ganti</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <?php $No = 1; foreach ($Retur as $key) { ?>
+                            <?php $No = 1; foreach ($Ganti as $key) { ?>
                               <tr style="font-size: 12px;">
                                 <td class="text-center align-middle"><?=$No++?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
@@ -208,7 +208,7 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="ModalReturBimbingan">
+    <div class="modal fade" id="ModalGantiBimbingan">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
@@ -216,7 +216,7 @@
 							<div class="row">
                 <div class="col-12">
 									<div class="card-header bg-warning text-light mt-2">
-										<b class="text-white">Retur Bimbingan</b>
+										<b class="text-white">Ganti Bimbingan</b>
 									</div>
 									<div class="card-body border border-warning">
 										<div class="container-fluid">
@@ -239,12 +239,12 @@
                             <div class="input-group-prepend">
                               <label class="input-group-text bg-warning"><b class="text-light">Alasan</b></label>
                             </div>
-                            <textarea class="form-control" id="AlasanRetur" rows="3"></textarea>
+                            <textarea class="form-control" id="AlasanGanti" rows="3"></textarea>
                           </div>
                         </div>
                         <div class="col-12 my-1">
                           <div class="input-group input-group-sm">
-                            <button type="button" class="btn btn-primary" id="ReturMhsBimbingan"><b>Retur Bimbingan&nbsp;<div id="LoadingReturMhsBimbingan" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
+                            <button type="button" class="btn btn-primary" id="GantiMhsBimbingan"><b>Ganti Bimbingan&nbsp;<div id="LoadingGantiMhsBimbingan" class="spinner-border spinner-border-sm text-white" role="status" style="display: none;"></div></b></button>
                           </div>
                         </div>
                       </div> 
@@ -323,30 +323,30 @@
 					$('#ModalUpdateBimbingan').modal("show")
 				})
 
-        $("#ReturBimbingan").click(function() {
-          $('#ModalReturBimbingan').modal("show")
+        $("#GantiBimbingan").click(function() {
+          $('#ModalGantiBimbingan').modal("show")
 				})
 
-        $("#ReturMhsBimbingan").click(function() {
-					if ($("#AlasanRetur").val() == '') {
+        $("#GantiMhsBimbingan").click(function() {
+					if ($("#AlasanGanti").val() == '') {
             alert('Wajib Input Alasan!')
           } else {
             var Data = { NIP: $("#NIP").val(),
                          NIM: $("#MhsBimbingan").val(),
-                         Alasan: $("#AlasanRetur").val(),
+                         Alasan: $("#AlasanGanti").val(),
                          Status: 'Diajukan' }
             var Konfirmasi = confirm("Apakah Data Yang Di Pilih Sudah Benar?"); 
             if (Konfirmasi == true) {
-              $("#ReturMhsBimbingan").attr("disabled", true); 
-              $("#LoadingReturMhsBimbingan").show();                             
-              $.post(BaseURL+"Dashboard/ReturBimbingan", Data).done(function(Respon) {
+              $("#GantiMhsBimbingan").attr("disabled", true); 
+              $("#LoadingGantiMhsBimbingan").show();                             
+              $.post(BaseURL+"Dashboard/GantiBimbingan", Data).done(function(Respon) {
                 if (Respon == '1') {
-                  alert('Retur Mahasiswa Bimbingan Di Ajukan')
+                  alert('Ganti Mahasiswa Bimbingan Di Ajukan')
                   window.location = BaseURL + "Dashboard/BimbinganSkripsi"
                 } else {
                   alert(Respon)
-                  $("#ReturMhsBimbingan").attr("disabled", false); 
-                  $("#LoadingReturMhsBimbingan").hide();                             
+                  $("#GantiMhsBimbingan").attr("disabled", false); 
+                  $("#LoadingGantiMhsBimbingan").hide();                             
                 }
               })
             }

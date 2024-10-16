@@ -193,7 +193,7 @@
 
         $("#TolakProposal").click(function() {
           var Mhs = { NIM: $("#NIM").val(),
-                      StatusProposal: 'Ditolak Oleh Pembimbing Karena '+ $("#Penolakan").val()}
+                      StatusProposal: 'Ditolak Pembimbing Karena '+ $("#Penolakan").val()}
           var Konfirmasi = confirm("Yakin Ingin Menolak?"); 
       		if (Konfirmasi == true) {
             $("#TolakProposal").attr("disabled", true); 

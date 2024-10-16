@@ -28,7 +28,11 @@
                                 <td class="text-center align-middle"><?=$key['Revisi']?></td>
                                 <td class="align-middle"><?=$key['Alasan']?></td>
                                 <td class="text-center align-middle">
-                                  <button Revisi="<?=$key['NIM']."|".$key['Revisi']."|".$key['NIP']."|".$key['Id']?>" class="btn btn-sm btn-primary Revisi" data-toggle="tooltip" data-placement="top" title="Validasi"><i class="fas fa-edit"></i></button>
+                                  <?php if ($key['Status'] == 'Diajukan') { ?>
+                                    <button Revisi="<?=$key['NIM']."|".$key['Revisi']."|".$key['NIP']."|".$key['Id']?>" class="btn btn-sm btn-primary Revisi" data-toggle="tooltip" data-placement="top" title="Validasi"><i class="fas fa-edit"></i></button>
+                                  <?php } else { ?>
+                                    <a href="<?=base_url('Dashboard/BeritaAcaraRevisiNilai/'.$key['Id'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
+                                  <?php } ?>
                                 </td>
                               </tr>
                             <?php } ?>
