@@ -1888,7 +1888,27 @@ class Dashboard extends CI_Controller {
 		if ($this->db->affected_rows()){
 			echo '1';
 		} else {
-			echo 'Gagal Retur Bimbingan!';
+			echo 'Gagal Validasi Ganti Bimbingan!';
+		}
+	}
+	
+	public function KPSTolakGantiBimbingan(){
+		$this->db->where('Id', $_POST['Id']);
+		$this->db->update('returbimbingan',array('Status' => 'Ditolak'));
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Tolak Ganti Bimbingan!';
+		}
+	}
+
+	public function TolakRevisiNilaiUjian(){
+		$this->db->where('Id', $_POST['Id']);
+		$this->db->update('revisinilai',array('Status' => 'Ditolak'));
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Tolak Revisi Nilai Ujian!';
 		}
 	}
 
@@ -1937,7 +1957,7 @@ class Dashboard extends CI_Controller {
 		if ($this->db->affected_rows()){
 			echo '1';
 		} else {
-			echo 'Gagal Retur Bimbingan!'; 
+			echo 'Gagal Ganti Bimbingan!'; 
 		}
 	}
 
@@ -2360,7 +2380,7 @@ class Dashboard extends CI_Controller {
 		$Data['SubMenu'] = '';
 		$NIP = $this->session->userdata('NIP');
 		$Data['Bimbingan'] = $this->db->query("SELECT * FROM mahasiswa WHERE StatusProposal = 'Disetujui Pembimbing' AND NIPPembimbing = "."'".$this->session->userdata('NIP')."' ORDER BY NIM DESC")->result_array(); 
-		$Data['Ganti'] = $this->db->query("SELECT r.*,m.Nama FROM `returbimbingan` AS r,`mahasiswa` AS m WHERE r.NIP = $NIP AND r.NIM = m.NIM AND r.Status = 'Diajukan' ORDER BY Time DESC")->result_array();
+		$Data['Ganti'] = $this->db->query("SELECT r.*,m.Nama FROM `returbimbingan` AS r,`mahasiswa` AS m WHERE r.NIP = $NIP AND r.NIM = m.NIM ORDER BY Time DESC")->result_array();
 		$Data['DataBimbingan'] = array();
 		if ($this->session->userdata('NIMBimbingan') != '') {
 			$Data['DataBimbingan'] = $this->db->query("SELECT * FROM bimbingan WHERE NIM = ".$this->session->userdata('NIMBimbingan'))->result_array(); 

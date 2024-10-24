@@ -30,8 +30,11 @@
                                 <td class="text-center align-middle">
                                   <?php if ($key['Status'] == 'Diajukan') { ?>
                                     <button Revisi="<?=$key['NIM']."|".$key['Revisi']."|".$key['NIP']."|".$key['Id']?>" class="btn btn-sm btn-primary Revisi" data-toggle="tooltip" data-placement="top" title="Validasi"><i class="fas fa-edit"></i></button>
-                                  <?php } else { ?>
-                                    <a href="<?=base_url('Dashboard/BeritaAcaraRevisiNilai/'.$key['Id'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
+                                    <button Tolak="<?=$key['Id']?>" class="btn btn-sm btn-warning Tolak" data-toggle="tooltip" data-placement="top" title="Tolak"><i class="fas fa-times"></i></button>
+                                  <?php } else if ($key['Status'] == 'Disetujui') { ?>
+                                    <a href="<?=base_url('Dashboard/BeritaAcaraRevisiNilai/'.$key['Id'])?>" class="btn btn-sm btn-success"><i class="fas fa-file-pdf"></i></a>
+                                  <?php } else if ($key['Status'] == 'Ditolak') { ?>
+                                    <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Ditolak"><i class="fas fa-times"></i></button> 
                                   <?php } ?>
                                 </td>
                               </tr>
@@ -79,12 +82,28 @@
                        Revisi: Pisah[1],
                        Penguji: Pisah[2],
                        Id: Pisah[3] }
-          $.post(BaseURL+"Dashboard/RevisiNilaiUjian", Data).done(function(Respon) {
-            if (Respon == '1') {
-              alert('Revisi Berhasil Di Validasi')
-              window.location = BaseURL + "Dashboard/RevisiNilaiKPS"
-            }
-          })    
+          var Konfirmasi = confirm("Apakah Data Yang Di Pilih Sudah Benar Untuk Di Validasi?"); 
+          if (Konfirmasi == true) {
+            $.post(BaseURL+"Dashboard/RevisiNilaiUjian", Data).done(function(Respon) {
+              if (Respon == '1') {
+                alert('Revisi Nilai Berhasil Di Validasi')
+                window.location = BaseURL + "Dashboard/RevisiNilaiKPS"
+              }
+            })    
+          }
+        })
+
+        $(document).on("click",".Tolak",function(){
+					var Data = { Id: $(this).attr('Tolak') }
+          var Konfirmasi = confirm("Apakah Data Yang Di Pilih Sudah Benar Untuk Di Tolak?"); 
+          if (Konfirmasi == true) {
+            $.post(BaseURL+"Dashboard/TolakRevisiNilaiUjian", Data).done(function(Respon) {
+              if (Respon == '1') {
+                alert('Revisi Nilai Berhasil Di Tolak')
+                window.location = BaseURL + "Dashboard/RevisiNilaiKPS"
+              }
+            })    
+          }
         })
 
 			})

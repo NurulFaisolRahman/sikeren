@@ -33,9 +33,11 @@
                                 <td class="align-middle"><?=$key['Alasan']?></td>
                                 <td class="text-center align-middle">
                                   <?php if ($key['Status'] == 'Diajukan') { ?>
-                                    <?=$key['Status']?>
-                                  <?php } else { ?>
-                                    <a href="<?=base_url('Dashboard/BeritaAcaraRevisiNilai/'.$key['Id'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
+                                    <button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Diajukan"><i class="fas fa-spinner"></i></button> 
+                                  <?php } else if ($key['Status'] == 'Disetujui') { ?>
+                                    <a href="<?=base_url('Dashboard/BeritaAcaraRevisiNilai/'.$key['Id'])?>" class="btn btn-sm btn-success"><i class="fas fa-file-pdf"></i></a>
+                                  <?php } else if ($key['Status'] == 'Ditolak') { ?>
+                                    <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Ditolak"><i class="fas fa-times"></i></button> 
                                   <?php } ?>
                                 </td>
                               </tr>
@@ -182,13 +184,13 @@
                          Revisi: 'Proposal',
                          Alasan: $("#AlasanProposal").val(),
                          Status: 'Diajukan' }
-            var Konfirmasi = confirm("Apakah Data Revisi Nilai Sudah Benar?"); 
+            var Konfirmasi = confirm("Apakah Data Revisi Nilai Proposal Sudah Benar?"); 
             if (Konfirmasi == true) {
               $("#RevisiNilaiProposal").attr("disabled", true); 
               $("#LoadingRevisiNilaiProposal").show();                             
               $.post(BaseURL+"Dashboard/AjukanRevisi", Data).done(function(Respon) {
                 if (Respon == '1') {
-                  alert('Revisi Berhasil Di Ajukan')
+                  alert('Revisi Nilai Proposal Berhasil Di Ajukan')
                   window.location = BaseURL + "Dashboard/RevisiNilai"
                 } else {
                   alert(Respon)
@@ -209,13 +211,13 @@
                          Revisi: 'Skripsi',
                          Alasan: $("#AlasanSkripsi").val(),
                          Status: 'Diajukan' }
-            var Konfirmasi = confirm("Apakah Data Revisi Nilai Sudah Benar?"); 
+            var Konfirmasi = confirm("Apakah Data Revisi Nilai Skripsi Sudah Benar?"); 
             if (Konfirmasi == true) {
               $("#RevisiNilaiSkripsi").attr("disabled", true); 
               $("#LoadingRevisiNilaiSkripsi").show();                             
               $.post(BaseURL+"Dashboard/AjukanRevisi", Data).done(function(Respon) {
                 if (Respon == '1') {
-                  alert('Revisi Berhasil Di Ajukan')
+                  alert('Revisi Nilai Skripsi Berhasil Di Ajukan')
                   window.location = BaseURL + "Dashboard/RevisiNilai"
                 } else {
                   alert(Respon)

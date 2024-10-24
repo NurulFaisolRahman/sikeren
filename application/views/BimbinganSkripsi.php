@@ -6,7 +6,7 @@
               <div class="col-sm-12 mt-2">
                 <div class="container-fluid border border-warning rounded bg-light">
                   <div class="row">
-                    <div class="col-5 mt-2">
+                    <div class="col-lg-5 col-sm-12 mt-2">
                       <div class="input-group input-group-sm">
                         <div class="input-group-prepend">
                           <label class="input-group-text bg-primary text-light"><b>Bimbingan</b></label>
@@ -20,82 +20,82 @@
                           <label class="input-group-text bg-danger text-light" id="Lihat"><b>Lihat</b></label>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-7 mt-2">
-                      <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text bg-warning text-white" id="GantiBimbingan"><b class="text-white">Ganti Bimbingan</b></label>
-                        </div>
-                      </div>
-                    </div>
-                    <?php if (count($Bimbingan) > 0) { ?>
-                    <div class="col-sm-5">
-                      <div class="row">
-                        <div class="col-lg-4 col-sm-4 d-flex justify-content-center pl-0 pr-0">
-                          <label for="InputFoto">
-                            <?php if ($Mhs['Foto'] == '') { ?>
-                              <img src="<?=base_url('img/Profil.jpg')?>" alt="..." class="img-circle profile_img mt-2" width="120px;">
-                            <?php	} else { ?>
-                              <img src="<?=base_url('FotoMhs/'.$Mhs['Foto'])?>" class="mt-2" width="120px">
-                            <?php } ?>
-                          </label>
-                        </div>
-                        <div class="col-lg-8 col-sm-8">
-                          <div class="row">
-                            <div class="col-12 my-1 mb-1 pl-0">
-                              <div class="input-group input-group-sm"> 
-                                <div class="input-group-prepend">
-                                  <label class="input-group-text bg-primary text-white"><b>NIM</b></label>
+                      <?php if (count($Bimbingan) > 0) { ?>
+                      <div class="col-lg-12 col-sm-12">
+                        <div class="row">
+                          <div class="col-lg-4 col-sm-12 d-flex justify-content-center">
+                            <label for="InputFoto">
+                              <?php if ($Mhs['Foto'] == '') { ?>
+                                <img src="<?=base_url('img/Profil.jpg')?>" alt="..." class="img-circle profile_img mt-2" width="120px;">
+                              <?php	} else { ?>
+                                <img src="<?=base_url('FotoMhs/'.$Mhs['Foto'])?>" class="mt-2" width="120px">
+                              <?php } ?>
+                            </label>
+                          </div>
+                          <div class="col-lg-8 col-sm-12">
+                            <div class="row">
+                              <div class="col-12 my-1 mb-1 pl-0">
+                                <div class="input-group input-group-sm"> 
+                                  <div class="input-group-prepend">
+                                    <label class="input-group-text bg-primary text-white"><b>NIM</b></label>
+                                  </div>
+                                  <input type="text" class="form-control form-control-sm" value="<?=$Mhs['NIM']?>" disabled>
                                 </div>
-                                <input type="text" class="form-control form-control-sm" value="<?=$Mhs['NIM']?>" disabled>
                               </div>
-                            </div>
-                            <div class="col-12 mb-1 pl-0">
-                              <div class="input-group input-group-sm"> 
-                                <div class="input-group-prepend">
-                                  <label class="input-group-text bg-primary text-white"><b>Nama</b></label>
+                              <div class="col-12 mb-1 pl-0">
+                                <div class="input-group input-group-sm"> 
+                                  <div class="input-group-prepend">
+                                    <label class="input-group-text bg-primary text-white"><b>Nama</b></label>
+                                  </div>
+                                  <input type="text" class="form-control form-control-sm" value="<?=$Mhs['Nama']?>" disabled>
                                 </div>
-                                <input type="text" class="form-control form-control-sm" value="<?=$Mhs['Nama']?>" disabled>
                               </div>
-                            </div>
-                            <div class="col-12 mb-1 pl-0">
-                              <div class="input-group input-group-sm"> 
-                                <div class="input-group-prepend">
-                                  <label class="input-group-text bg-primary text-white"><b>Kontak</b></label>
+                              <div class="col-12 mb-1 pl-0">
+                                <div class="input-group input-group-sm"> 
+                                  <div class="input-group-prepend">
+                                    <label class="input-group-text bg-primary text-white"><b>Kontak</b></label>
+                                  </div>
+                                  <input type="text" class="form-control form-control-sm" value="<?=$Mhs['HP']?>" disabled>
                                 </div>
-                                <input type="text" class="form-control form-control-sm" value="<?=$Mhs['HP']?>" disabled>
                               </div>
-                            </div>
-                            <div class="col-12 pl-0">
-                              <div class="input-group input-group-sm"> 
-                                <div class="input-group-prepend">
-                                  <label class="input-group-text bg-primary text-white"><b>Status</b></label>
+                              <div class="col-12 pl-0">
+                                <div class="input-group input-group-sm"> 
+                                  <div class="input-group-prepend">
+                                    <label class="input-group-text bg-primary text-white"><b>Status</b></label>
+                                  </div>
+                                  <?php 
+                                    $Status = '';
+                                    if ($Mhs['NilaiSkripsi1'] != '' && $Mhs['NilaiSkripsi2'] != '' && $Mhs['NilaiSkripsi3'] != '') {
+                                      $Status = 'Sudah Ujian Skripsi';
+                                    } else if ($Mhs['NilaiProposal1'] != '' && $Mhs['NilaiProposal3'] != '' && $Mhs['NilaiProposal3'] != '') {
+                                      $Status = 'Sudah Ujian Proposal';
+                                    } else {
+                                      $Status = 'Belum Ujian Proposal';
+                                    } 
+                                  ?>
+                                  <input type="text" class="form-control form-control-sm" value="<?=$Status?>" disabled>
                                 </div>
-                                <?php 
-                                  $Status = '';
-                                  if ($Mhs['NilaiSkripsi1'] != '' && $Mhs['NilaiSkripsi2'] != '' && $Mhs['NilaiSkripsi3'] != '') {
-                                    $Status = 'Sudah Ujian Skripsi';
-                                  } else if ($Mhs['NilaiProposal1'] != '' && $Mhs['NilaiProposal3'] != '' && $Mhs['NilaiProposal3'] != '') {
-                                    $Status = 'Sudah Ujian Proposal';
-                                  } else {
-                                    $Status = 'Belum Ujian Proposal';
-                                  } 
-                                ?>
-                                <input type="text" class="form-control form-control-sm" value="<?=$Status?>" disabled>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
+                      <?php } ?>
                     </div>
-                    <div class="col-sm-7 mt-1">    
-                      <div class="table-responsive">
+                    <div class="col-lg-7 col-sm-12 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text bg-warning text-white" id="GantiBimbingan"><b class="text-white">Ganti Bimbingan</b></label>
+                        </div>
+                      </div>
+                      <div class="table-responsive mt-1">
                         <table id="TabelGantiBimbingan" class="table table-bordered table-striped">
                           <thead class="bg-warning">
                             <tr style="font-size: 12px;" class="text-white">
                               <th style="width: 4%;" class="text-center align-middle">No</th>
                               <th style="width: 35%;">Mahasiswa</th>
                               <th>Alasan Ganti</th>
+                              <th style="width: 4%;" class="text-center align-middle">Status</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -104,13 +104,21 @@
                                 <td class="text-center align-middle"><?=$No++?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
                                 <td class="align-middle"><?=$key['Alasan']?></td>
+                                <td class="text-center align-middle">
+                                  <?php if ($key['Status'] == 'Diajukan') { ?>
+                                    <button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Diajukan"><i class="fas fa-spinner"></i></button> 
+                                  <?php } else if ($key['Status'] == 'Disetujui') { ?>
+                                    <a href="<?=base_url('Dashboard/BeritaAcaraGantiBimbingan/'.$key['Id'])?>" class="btn btn-sm btn-success"><i class="fas fa-file-pdf"></i></a>
+                                  <?php } else if ($key['Status'] == 'Ditolak') { ?>
+                                    <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Ditolak"><i class="fas fa-times"></i></button> 
+                                  <?php } ?>
+                                </td>
                               </tr>
                             <?php } ?>
                           </tbody>
                         </table>
                       </div> 
                     </div>
-                    <?php } ?>
                     <div class="col-sm-12 my-2 ">    
                       <div class="table-responsive mb-2">
                         <table id="TabelBimbingan" class="table table-bordered table-striped">

@@ -15,7 +15,7 @@
                               <th style="width: 25%;" class="align-middle">Pembimbing</th>
                               <th style="width: 25%;" class="align-middle">Mahasiswa</th>
                               <th style="width: 30%;" class="align-middle">Alasan Ganti</th>
-                              <th style="width: 5%;" class="text-center align-middle">Validasi</th>
+                              <th style="width: 8%;" class="text-center align-middle">Status</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -28,8 +28,11 @@
                                 <td class="text-center align-middle">
                                   <?php if ($key['Status'] == 'Diajukan') { ?>
                                     <button Ganti="<?=$key['NIM']."|".$key['NIP']."|".$key['Id']?>" class="btn btn-sm btn-primary Ganti" data-toggle="tooltip" data-placement="top" title="Validasi"><i class="fas fa-edit"></i></button>
-                                  <?php } else { ?>
-                                    <a href="<?=base_url('Dashboard/BeritaAcaraGantiBimbingan/'.$key['Id'])?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
+                                    <button Tolak="<?=$key['Id']?>" class="btn btn-sm btn-warning Tolak" data-toggle="tooltip" data-placement="top" title="Tolak"><i class="fas fa-times"></i></button>
+                                  <?php } else if ($key['Status'] == 'Disetujui') { ?>
+                                    <a href="<?=base_url('Dashboard/BeritaAcaraGantiBimbingan/'.$key['Id'])?>" class="btn btn-sm btn-success"><i class="fas fa-file-pdf"></i></a>
+                                  <?php } else if ($key['Status'] == 'Ditolak') { ?>
+                                    <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Ditolak"><i class="fas fa-times"></i></button> 
                                   <?php } ?>
                                 </td>
                               </tr>
@@ -76,11 +79,24 @@
           var Data = { NIM: Pisah[0],
                        NIP: Pisah[1],
                        Id: Pisah[2] }
-          var Konfirmasi = confirm("Apakah Data Yang Di Pilih Sudah Benar?"); 
+          var Konfirmasi = confirm("Apakah Data Yang Di Pilih Sudah Benar Untuk Di Validasi?"); 
           if (Konfirmasi == true) {
             $.post(BaseURL+"Dashboard/KPSGantiBimbingan", Data).done(function(Respon) {
               if (Respon == '1') {
                 alert('Ganti Bimbingan Berhasil')
+                window.location = BaseURL + "Dashboard/GantiBimbinganKPS"
+              }
+            })    
+          }
+        })
+
+        $(document).on("click",".Tolak",function(){
+					var Data = { Id: $(this).attr('Tolak') }
+          var Konfirmasi = confirm("Apakah Data Yang Di Pilih Sudah Benar Untuk Di Tolak?"); 
+          if (Konfirmasi == true) {
+            $.post(BaseURL+"Dashboard/KPSTolakGantiBimbingan", Data).done(function(Respon) {
+              if (Respon == '1') {
+                alert('Tolak Ganti Bimbingan Berhasil')
                 window.location = BaseURL + "Dashboard/GantiBimbinganKPS"
               }
             })    
