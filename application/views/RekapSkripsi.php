@@ -21,7 +21,7 @@
         <div class="col-lg-12">
           <div class="card my-1 bg-success">
             <div class="card-body p-2 text-light">
-              <p class="font-weight-bold mb-1 text-center" style="font-size: 25px;">Rekap Ujian Skripsi Semester Genap 2023/2024 </p>
+              <p class="font-weight-bold mb-1 text-center" style="font-size: 25px;">Rekap Ujian Skripsi Semester Genap 2024/2025 </p>
               <div class="row">
                 <div class="col-lg-12">
                   <div class="table-responsive">
@@ -31,6 +31,7 @@
                           <th rowspan="2" style="width: 40px;" class="text-center align-middle">No</th>
                           <th rowspan="2" class="text-center align-middle">NIM</th>
                           <th rowspan="2" class="text-center align-middle">Nama</th>
+                          <th rowspan="2" class="text-center align-middle">Judul</th>
                           <th rowspan="2" class="text-center align-middle">Tanggal</th>
                           <th colspan="3" class="text-center align-middle">Ujian Proposal</th>
                           <th rowspan="2" class="text-center align-middle">Tanggal</th>
@@ -51,6 +52,7 @@
                             <td class="text-center align-middle bg-white"><?=$No++?></td>
                             <td class="align-middle"><?=$key['NIM']?></td>
                             <td class="align-middle"><?=$key['Nama']?></td>
+                            <td class="align-middle"><?=ucwords(strtolower($key['JudulProposal']))?></td>
                             <th class="align-middle"><?=date('d-m-Y',strtotime($key['TanggalUjianProposal']))?></th>
                             <?php if ($key['PengujiProposal1'] == '') { ?>
                               <td></td>

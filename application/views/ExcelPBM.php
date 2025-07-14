@@ -954,7 +954,7 @@ td
     <td class=3D"xl74" x:num>11</td>
     <td class=3D"xl74" x:num>12</td>
    </tr>
-	 <?php foreach ($PBM as $key) { $Nilai = explode("$",$key['PoinDosen']); $Poin = explode("|",$key['PBM']); ?>
+	 <?php foreach ($PBM as $key) { $Nilai = explode("$",$key['PoinDosen']); $Poin = explode("|",$key['PBM']); $App = explode("$",$key['AppDosen']); ?>
 		<?php for ($i=0; $i < $key['JumlahDosen']; $i++) { ?>
 		<tr height=3D"20" style=3D'height:15.00pt;'>
 			<td class=3D"xl68" height=3D"20" style=3D'height:15.00pt;' x:str><?=$key['NIM']?></td>
@@ -980,7 +980,7 @@ td
 			<td class=3D"xl70" x:num><?=explode("|",$Nilai[15])[$i]?></td>
 			<td class=3D"xl70" x:num><?=explode("|",$Nilai[16])[$i]?></td>
 			<td class=3D"xl70" x:num><?=explode("|",$Nilai[17])[$i]?></td>
-			<td class=3D"xl75" x:str><?=$key['AppDosen']?></td>
+			<td class=3D"xl75" x:str><?=$App[$i]?></td>
 			<td class=3D"xl70" x:num><?=$Poin[0]?></td>
 			<td class=3D"xl70" x:num><?=$Poin[1]?></td>
 			<td class=3D"xl70" x:num><?=$Poin[2]?></td>

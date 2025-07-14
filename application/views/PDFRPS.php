@@ -33,7 +33,11 @@
     $KPS = '<td style="width:33.3%;text-align:center;">Koorprodi<br><img src="img/22.png" width="50" alt="Koorprodi"><br>Titov Chuk'."'s".' Mayvani, SE., ME.</td>';
   } else if (isset($Dosen1)) {
     $Dosen = ' 1. '.$Dosen1;
-    $Satu = '<td style="width:25%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode1.'" width="50" alt="Dosen1"><br>'.$Dosen1.'</td>';
+    if ($QRCode1 == '') {
+      $Satu = '<td style="width:25%;text-align:center;">Dosen Pengampu<br><br>'.$Dosen1.'</td>';    
+    } else {
+        $Satu = '<td style="width:25%;text-align:center;">Dosen Pengampu<br><img src="img/'.$QRCode1.'" width="50" alt="Dosen1"><br>'.$Dosen1.'</td>';
+    }
     $Dua = '<td style="width:25%;text-align:center;"></td>';
     $Tiga = '<td style="width:25%;text-align:center;"></td>';
     $Empat = '<td style="width:25%;text-align:center;"></td>';
@@ -447,7 +451,29 @@
   </tr>
 </table>';
   $pdf->writeHTML($Tugas, true, false, true, false, '');
-  $Validasi = '<br pagebreak="true"/><b>Metode Pembelajaran : CK (Ceramah Kuliah), SCL (Student Center Learning), SGD (Student Grup Discussion), PK (Presentasi Kelompok), <br> PI (Presentasi Individu),
+  $Penilaian = explode("$",$RPS['Bobot']);
+  $Validasi = '<br pagebreak="true"/><h4>3. RUBRIK PENILAIAN AKHIR</h4><table cellpadding="2" border="1">
+    <tr style="font-weight:bold;">
+      <td style="width:5%;"> No</td>
+      <td style="width:60%;"> Unsur Penilaian</td>
+      <td style="width:35%;"> Bobot (%)</td>
+    </tr>
+    <tr>
+      <td> 1</td>
+      <td> Unsur Sikap</td>
+      <td> '.$Penilaian[0].'</td>
+    </tr>
+    <tr>
+      <td> 2</td>
+      <td> Tugas</td>
+      <td> '.$Penilaian[1].'</td>
+    </tr>
+    <tr>
+      <td> 3</td>
+      <td> UTS dan UAS</td>
+      <td> '.$Penilaian[2].'</td>
+    </tr>
+  </table><b>Metode Pembelajaran : CK (Ceramah Kuliah), SCL (Student Center Learning), SGD (Student Grup Discussion), PK (Presentasi Kelompok), <br> PI (Presentasi Individu),
   PBL (Problem Base Learning)</b><h6></h6><table cellpadding="2" border="1" style="font-weight:bold;">
     <tr>
       <td style="text-align:center;">(C1)<br>Mengingat</td>

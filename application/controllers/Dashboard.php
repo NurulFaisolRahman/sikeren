@@ -1927,16 +1927,16 @@ class Dashboard extends CI_Controller {
 		if ($_POST['Revisi'] == 'Skripsi') {
 			if ($Nilai['PengujiSkripsi1'] == $_POST['Penguji']) {
 				$Penguji['NilaiSkripsi1'] = '';
-			} else if ($Nilai['NilaiSkripsi2'] == $_POST['Penguji']) {
-				$Penguji['NilaiSkripsi1'] = '';
+			} else if ($Nilai['PengujiSkripsi2'] == $_POST['Penguji']) {
+				$Penguji['NilaiSkripsi2'] = '';
 			} else if ($Nilai['NIPPembimbing'] == $_POST['Penguji']) {
 				$Penguji['NilaiSkripsi3'] = '';
 			} 
 		} else {
 			if ($Nilai['PengujiProposal1'] == $_POST['Penguji']) {
 				$Penguji['NilaiProposal1'] = '';
-			} else if ($Nilai['NilaiProposal2'] == $_POST['Penguji']) {
-				$Penguji['NilaiProposal1'] = '';
+			} else if ($Nilai['PengujiProposal2'] == $_POST['Penguji']) {
+				$Penguji['NilaiProposal2'] = '';
 			} else if ($Nilai['NIPPembimbing'] == $_POST['Penguji']) {
 				$Penguji['NilaiProposal3'] = '';
 			} 

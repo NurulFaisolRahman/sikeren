@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SMD extends CI_Controller {
 
 	public function index(){
-		$this->load->view('Index.php');
+	    $this->load->view('Index.php');
 	}
 
 	// public function Email(){
@@ -17,7 +17,7 @@ class SMD extends CI_Controller {
 	// }
 
 	public function RekapSkripsi(){
-		$Data['Mhs'] = $this->db->query("SELECT * FROM `mahasiswa` WHERE `TanggalUjianSkripsi` > '2024-01-31' ORDER BY TanggalUjianSkripsi DESC")->result_array();
+		$Data['Mhs'] = $this->db->query("SELECT * FROM `mahasiswa` WHERE `TanggalUjianSkripsi` > '2025-02-25' ORDER BY TanggalUjianSkripsi DESC")->result_array();
 		$Data['Dosen'] = $this->db->query("SELECT NIP,Nama FROM `Dosen`")->result_array();
 		$this->load->view('RekapSkripsi',$Data);
 	}
@@ -30,17 +30,24 @@ class SMD extends CI_Controller {
 	public function UnduhRPS($KodeMK){
 		$Data['RPS'] = $this->db->get_where("rps", array('KodeMK' => $KodeMK))->row_array();
 		$Dosen = $this->db->query("SELECT Dosen.Nama,Dosen.QRCode FROM mengajar,Dosen WHERE mengajar.NIP=Dosen.NIP AND mengajar.KodeMK='".$KodeMK."' AND mengajar.Status=3")->result_array();
-		$Data['Dosen1'] = $Dosen[0]['Nama'];
-		$Data['QRCode1'] = $Dosen[0]['QRCode'];
-		if (count($Dosen) == 2) { 
+		if (count($Dosen) == 1) { 
+			$Data['Dosen1'] = $Dosen[0]['Nama'];
+		    $Data['QRCode1'] = $Dosen[0]['QRCode'];
+		} else if (count($Dosen) == 2) { 
+		    $Data['Dosen1'] = $Dosen[0]['Nama'];
+		    $Data['QRCode1'] = $Dosen[0]['QRCode'];
 			$Data['Dosen2'] = $Dosen[1]['Nama']; 
 			$Data['QRCode2'] = $Dosen[1]['QRCode'];
 		} else if (count($Dosen) == 3) { 
+		    $Data['Dosen1'] = $Dosen[0]['Nama'];
+		    $Data['QRCode1'] = $Dosen[0]['QRCode'];
 			$Data['Dosen2'] = $Dosen[1]['Nama']; 
 			$Data['QRCode2'] = $Dosen[1]['QRCode'];
 			$Data['Dosen3'] = $Dosen[2]['Nama']; 
 			$Data['QRCode3'] = $Dosen[2]['QRCode'];
 		} else if (count($Dosen) == 4) { 
+		    $Data['Dosen1'] = $Dosen[0]['Nama'];
+		    $Data['QRCode1'] = $Dosen[0]['QRCode'];
 			$Data['Dosen2'] = $Dosen[1]['Nama']; 
 			$Data['QRCode2'] = $Dosen[1]['QRCode'];
 			$Data['Dosen3'] = $Dosen[2]['Nama']; 

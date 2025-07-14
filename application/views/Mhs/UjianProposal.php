@@ -14,7 +14,8 @@
 									<div class="card-header bg-danger text-light">
 										<b>Status Pengajuan Ujian Proposal</b>
 									</div>
-									<div class="card-body border border-light bg-warning p-2">
+									<div class="card-body border border-light bg-light p-2">
+										<b class="text-danger">Maksimal Revisi 3 Bulan</b>
 										<div class="table-responsive">
 											<table class="table table-bordered bg-danger text-white mb-0">
 												<thead>
@@ -230,7 +231,7 @@
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Tanggal Ujian Proposal</b></label>
 														</div>
-														<input class="form-control form-control-sm" type="date" id="_TanggalUjianProposal" value="<?=date('Y-m-d')?>">
+														<input class="form-control form-control-sm" type="date" id="_TanggalUjianProposal" value="<?=date('Y-m-d')?>" disabled>
 													</div>
 												</div>
 												<pre class="text-danger mb-0 ml-3"><b>* Minimal 1 Minggu Setelah Mengajukan & Konsultasi Dengan Dosen Pembimbing<br>* Mohon Ditunggu Saat Loading Hingga Selesai</b></pre>

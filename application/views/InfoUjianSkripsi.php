@@ -12,12 +12,14 @@
                           <thead class="bg-warning">
                             <tr>
                               <th style="width: 4%;" class="text-center align-middle">No</th>
-                              <th style="width: 8%;" class="align-middle">NIM</th>
-                              <th style="width: 15%;" class="align-middle">Nama</th>
-                              <th style="width: 15%;" class="align-middle">Pembimbing</th>
-                              <th style="width: 15%;" class="align-middle">Penguji 1</th>
-                              <th style="width: 15%;" class="align-middle">Penguji 2</th>
-                              <th style="width: 15%;" class="align-middle">Status</th>
+                              <th style="width: 10%;" class="align-middle">NIM</th>
+                              <th style="width: 10%;" class="align-middle">Nama</th>
+                              <th style="width: 21%;" class="align-middle">Judul</th>
+                              <th style="width: 10%;" class="align-middle">Nomer HP</th>
+                              <th style="width: 10%;" class="align-middle">Pembimbing</th>
+                              <th style="width: 10%;" class="align-middle">Penguji 1</th>
+                              <th style="width: 10%;" class="align-middle">Penguji 2</th>
+                              <th style="width: 10%;" class="align-middle">Status</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -26,6 +28,8 @@
                                 <td class="text-center align-middle"><?=$No++?></td>
                                 <td class="align-middle"><?=$key['NIM']?></td>
                                 <td class="align-middle"><?=$key['Nama']?></td>
+                                <td class="align-middle"><?=$key['JudulProposal']?></td>
+                                <td class="align-middle"><?=$key['HP']?></td>
                                 <td class="align-middle"><?=$key['NamaPembimbing']?></td>
                                 <td class="align-middle"><?=$key['PengujiSkripsi1'] != '' ? $NamaDosen[$key['PengujiSkripsi1']] : '';?></td>
                                 <td class="align-middle"><?=$key['PengujiSkripsi2'] != '' ? $NamaDosen[$key['PengujiSkripsi2']] : '';?></td>

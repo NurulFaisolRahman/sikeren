@@ -254,7 +254,7 @@
 														<div class="input-group-prepend">
 															<label class="input-group-text bg-primary text-light"><b>Tanggal Ujian Skripsi</b></label>
 														</div>
-														<input class="form-control form-control-sm" type="date" id="_TanggalUjianSkripsi" value="<?=date('Y-m-d')?>">
+														<input class="form-control form-control-sm" type="date" id="_TanggalUjianSkripsi" value="<?=date('Y-m-d')?>" disabled>
 													</div>
 												</div>
 												<pre class="text-danger mb-0 ml-3"><b>* Minimal 1 Minggu Setelah Mengajukan & Konsultasi Dengan Dosen Pembimbing<br>* Mohon Ditunggu Saat Loading Hingga Selesai</b></pre>

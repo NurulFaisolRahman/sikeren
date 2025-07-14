@@ -192,25 +192,26 @@
                           '16. Media pembelajaran (PPT, video conference, youtube, games, rekaman suara, alat peraga, dll) yang digunakan oleh dosen dalam menyampaikan materi pada mata kuliah ini? <span id="Opsi">(1) Sangat Kurang Menarik dan Sangat Tidak Mudah Dipahami (2) Kurang Menarik dan Kurang Mudah Dipahami (3) Menarik dan Mudah Dipahami (4) Sangat Menarik dan Sangat Mudah Dipahami',
                           '17. Rencana Pembelajaran terlaksana dengan Baik? <span id="Opsi">(1) Sangat Kurang Terlaksana (2) Terlaksana < 50% (3) Terlaksana > 50% (4) Terlaksana > 80%',
                           '18. Intensitas Pemberian tugas Selama LFH (Learn From Home)? <span id="Opsi">(1) Sangat Kurang (2) Kurang (3) Cukup (4) Sangat Cukup',
-                          '20. Perlengkapan kuliah (Bangku, papan tulis, spidol, penghapus, kipas angin, LCD)? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                          '21. Kondisi ruang kuliah (kerapian, kebersihan, penerangan, ketenangan, dan kenyamanan)? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                          '22. Layanan petugas administrasi (daftar hadir dan kunci ruangan)? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                          '23. Layanan perpustakaan dan/atau ruang baca FE? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                          '24. Kondisi toilet ? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                          '25. Layanan pengumuman / informasi? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                          '26. Layanan wifi ? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                          '27. Penyediaan / Ketersediaan berita acara dan presensi perkuliahan? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                          '28. Penyediaan kelengkapan administrasi UTS / UAS? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                          '29. Kecepatan Pelayanan administrasi oleh petugas? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                          '30. Keramahan dalam pelayanan administrasi akademik? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
-                          '31. Berapa rata-rata penggunaan paket data setiap pertemuan perkuliahan? <span id="Opsi">(1) 100 Mb - 200 Mb (2) 200 Mb - 500 Mb (3) 500 mb - 1 Gb (4) 1 Gb'); 
+                          '19. Apakah Buku Ajar / Buku Referensi / Modul yang diberikan cukup update dan mapu mencapai capaian pembelajaran mata kuliah? <span id="Opsi">(1) Sangat Kurang (2) Kurang (3) Cukup (4) Sangat Cukup',
+                          '21. Perlengkapan kuliah (Bangku, papan tulis, spidol, penghapus, kipas angin, LCD)? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '22. Kondisi ruang kuliah (kerapian, kebersihan, penerangan, ketenangan, dan kenyamanan)? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '23. Layanan petugas administrasi (daftar hadir dan kunci ruangan)? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '24. Layanan perpustakaan dan/atau ruang baca FE? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '25. Kondisi toilet ? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '26. Layanan pengumuman / informasi? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '27. Layanan wifi ? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '28. Penyediaan / Ketersediaan berita acara dan presensi perkuliahan? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '29. Penyediaan kelengkapan administrasi UTS / UAS? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '30. Kecepatan Pelayanan administrasi oleh petugas? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '31. Keramahan dalam pelayanan administrasi akademik? <span id="Opsi">(1) Sangat kurang (2) Kurang (3) Memadai (4) Sangat Memadai',
+                          '32. Berapa rata-rata penggunaan paket data setiap pertemuan perkuliahan? <span id="Opsi">(1) 100 Mb - 200 Mb (2) 200 Mb - 500 Mb (3) 500 mb - 1 Gb (4) 1 Gb'); 
   ?>
     <div class="container">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-8">
           <div class="card my-1 bg-danger">
             <div class="card-body p-2 text-light">
-              <p class="font-weight-bold" style="font-size: 25px;">Evaluasi Proses Belajar Mengajar (PBM) Oleh Mahasiswa FEB UTM Tahun 2022</p>
+              <p class="font-weight-bold" style="font-size: 25px;">Evaluasi Proses Belajar Mengajar (PBM) Oleh Mahasiswa</p>
               <p class="text-justify">Berilah penilaian secara jujur, objektif, dan penuh tanggung jawab terhadap dosen Saudara. Informasi yang Saudara berikan hanya akan dipergunakan dalam proses PBM dan tidak akan berpengaruh terhadap nilai akhir mata kuliah yang Anda tempuh.</p>
               <p class="text-justify font-weight-bold">SEMUA PERTANYAAN WAJIB DI ISI *</p>
               <div class="row">
@@ -318,7 +319,7 @@
                     </div>
                   <?php } ?>									
                 </div>
-                <?php for ($i=0; $i < 18; $i++) { ?>
+                <?php for ($i=0; $i < 19; $i++) { ?>
                   <div class="col-lg-12 my-1">
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
@@ -353,7 +354,7 @@
                 <div class="col-sm-12 my-1">
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
-                      <label class="input-group-text bg-primary text-light text-wrap text-left"><b>19. Penggunaan Aplikasi Pembelajaran Dalam Mata Kuliah Ini? <span id="Opsi">(Bisa Pilih Lebih dari satu jawaban)</span></b></label>
+                      <label class="input-group-text bg-primary text-light text-wrap text-left"><b>20. Penggunaan Aplikasi Pembelajaran Dalam Mata Kuliah Ini? <span id="Opsi">(Bisa Pilih Lebih dari satu jawaban)</span></b></label>
                     </div>
                   </div>
                 </div>
@@ -384,7 +385,7 @@
                     <?php } ?>
                   </div>
                 </div> 
-                <?php for ($i=18; $i < count($Question); $i++) { ?>
+                <?php for ($i=19; $i < count($Question); $i++) { ?>
                   <div class="col-lg-12 my-1">
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
@@ -407,7 +408,7 @@
                 <div class="col-sm-12 my-1">
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
-                      <label class="input-group-text bg-primary text-light text-wrap text-left"><b>32. Kendala Dalam Penggunaan Metode Daring? (Bisa Pilih Lebih dari satu jawaban)</b></label>
+                      <label class="input-group-text bg-primary text-light text-wrap text-left"><b>33. Kendala Dalam Penggunaan Metode Daring? (Bisa Pilih Lebih dari satu jawaban)</b></label>
                     </div>
                   </div>
                 </div>
@@ -428,7 +429,7 @@
                 <div class="col-lg-12 my-1">
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
-                      <label class="input-group-text bg-primary text-light text-wrap text-left"><b>33. Mohon menuliskan saran bagi pengembangan proses belajar mengajar di FEB UTM</b></label>
+                      <label class="input-group-text bg-primary text-light text-wrap text-left"><b>34. Mohon menuliskan saran bagi pengembangan proses belajar mengajar di FEB UTM</b></label>
                     </div>
                   </div>
                 </div>
@@ -611,7 +612,7 @@
                 }
               }
             }
-            for (let i = 0; i < 18; i++) {
+            for (let i = 0; i < 19; i++) {
               for (let j = 1; j <= JumlahDosen; j++) {
                 if ($("input[name='Input"+i+j+"']:checked").val() == undefined) {
                   alert('Pertanyaan Nomer '+(i+1)+', Nilai Untuk Dosen '+j+' Wajib Di Isi!')
@@ -628,7 +629,7 @@
               Tampung.push($("#AppLain1").val())
             }
             if (!Tampung.length) {
-              alert("Pertanyaan Nomer 19, Untuk Dosen 1 Wajib Di Isi!")
+              alert("Pertanyaan Nomer 20, Untuk Dosen 1 Wajib Di Isi!")
               return true
             } else {
               AppDosen = Tampung.join("|")
@@ -642,14 +643,14 @@
                 Tampung.push($("#AppLain"+i).val())
               }
               if (!Tampung.length) {
-                alert("Pertanyaan Nomer 19, Untuk Dosen "+i+" Wajib Di Isi!")
+                alert("Pertanyaan Nomer 20, Untuk Dosen "+i+" Wajib Di Isi!")
                 return true
               } else {
                 AppDosen += ("$"+Tampung.join("|"))
               }
             }
             Tampung = []
-            for (let i = 18; i < 30; i++) {
+            for (let i = 19; i < 31; i++) {
               if ($("input[name='PBM"+i+"']:checked").val() == undefined) {
                 alert('Pertanyaan Nomer '+(i+2)+', Wajib Di Isi!')
                 return true
@@ -673,12 +674,12 @@
               Kendala += Tampung.join("|")
             }
             PoinDosen = ""
-            for (let i = 0; i < 18; i++) {
+            for (let i = 0; i < 19; i++) {
               for (let j = 1; j <= $("#JumlahDosen").val(); j++) {
                 PoinDosen += $("input[name='Input"+i+j+"']:checked").val()
                 if (j < $("#JumlahDosen").val()) { PoinDosen += '|' }   
               }
-              if (i < 17) { PoinDosen += '$' } 
+              if (i < 18) { PoinDosen += '$' } 
             }
             var Data = { NIM: $("#NIM").val(),
                          Nama: $("#Nama").val(),
@@ -692,8 +693,8 @@
                          PBM: PBM,
                          Kendala: Kendala,
                          Saran: $("#Saran").val(),
-                         SMT: "Gasal",
-                         Tahun: "2022" }
+                         SMT: "Genap",
+                         Tahun: "2025" }
             $("#Kirim").prop('disabled', true);
             $.post(BaseURL+"SMD/InputEvaluasiPBM", Data).done(function(Respon) {
               if (Respon == '1') {
