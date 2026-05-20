@@ -184,6 +184,112 @@ class SMD extends CI_Controller {
 		$this->load->view('EvaluasiPBM');
 	}
 
+	public function EPBM(){
+		$this->load->view('EPBM');
+	}
+
+	public function InputEPBM(){
+		$this->db->insert('epbm',$_POST);
+		if ($this->db->affected_rows()){
+			echo '1';
+		} else {
+			echo 'Gagal Mengirim Kuisioner!'; 
+		}
+	}
+
+	public function epbm_excel() {
+		// Mengatur zona waktu ke Waktu Indonesia Barat (WIB)
+        date_default_timezone_set('Asia/Jakarta');
+        // Ambil semua data dari tabel epbm
+        // Disarankan menambahkan order by created_at DESC agar data terbaru di atas
+        $this->db->order_by('created_at', 'DESC');
+        $query = $this->db->get('epbm');
+        $data_responden = $query->result();
+
+        // Deklarasi nama file Excel
+        $nama_file = "Data_Evaluasi_PBM_" . date('d-m-Y_H-i-s') . ".xls";
+
+        // Pengaturan header untuk force download sebagai file Excel (.xls)
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=" . $nama_file);
+        header("Pragma: no-cache");
+        header("Expires: 0");
+
+        // Membuat format tabel HTML yang akan dibaca oleh Excel
+        echo "<table border='1'>";
+        echo "<thead>
+                <tr>
+                    <th style='background-color: #f2f2f2;'>No</th>
+                    <th style='background-color: #f2f2f2;'>Waktu Input</th>
+                    <th style='background-color: #f2f2f2;'>NIM</th>
+                    <th style='background-color: #f2f2f2;'>Nama Mahasiswa</th>
+                    <th style='background-color: #f2f2f2;'>Semester</th>
+                    <th style='background-color: #f2f2f2;'>Mata Kuliah</th>
+                    <th style='background-color: #f2f2f2;'>Nama Dosen</th>
+                    <th style='background-color: #e0e7ff;'>Q1</th>
+                    <th style='background-color: #e0e7ff;'>Q2</th>
+                    <th style='background-color: #e0e7ff;'>Q3</th>
+                    <th style='background-color: #e0e7ff;'>Q4</th>
+                    <th style='background-color: #e0e7ff;'>Q5</th>
+                    <th style='background-color: #e0e7ff;'>Q6</th>
+                    <th style='background-color: #e0e7ff;'>Q7</th>
+                    <th style='background-color: #e0e7ff;'>Q8</th>
+                    <th style='background-color: #e0e7ff;'>Q9</th>
+                    <th style='background-color: #e0e7ff;'>Q10</th>
+                    <th style='background-color: #e0e7ff;'>Q11</th>
+                    <th style='background-color: #e0e7ff;'>Q12</th>
+                    <th style='background-color: #e0e7ff;'>Q13</th>
+                    <th style='background-color: #e0e7ff;'>Q14</th>
+                    <th style='background-color: #e0e7ff;'>Q15</th>
+                    <th style='background-color: #f2f2f2;'>Saran & Masukan</th>
+                </tr>
+              </thead>";
+        echo "<tbody>";
+
+        $no = 1;
+        foreach ($data_responden as $row) {
+            
+            // Memisahkan string DaftarDosen menjadi array berdasarkan karakter '|'
+            $dosenArr = explode('|', $row->DaftarDosen);
+            
+            // Memisahkan string PoinDosen antar pertanyaan berdasarkan karakter '$'
+            $poinPertanyaanArr = explode('$', $row->PoinDosen); 
+
+            // Looping sebanyak jumlah dosen yang ada pada record tersebut
+            for ($d = 0; $d < count($dosenArr); $d++) {
+                echo "<tr>";
+                echo "<td>" . $no++ . "</td>";
+                echo "<td>" . $row->created_at . "</td>";
+                echo "<td>" . $row->NIM . "</td>";
+                echo "<td>" . $row->Nama . "</td>";
+                echo "<td>" . $row->Semester . "</td>";
+                echo "<td>" . $row->MataKuliah . "</td>";
+                
+                // Menampilkan nama dosen ke-$d
+                echo "<td>" . $dosenArr[$d] . "</td>";
+
+                // Menampilkan nilai Poin Dosen (Q1 sampai Q15)
+                for ($q = 0; $q < 15; $q++) {
+                    $nilai = "";
+                    if (isset($poinPertanyaanArr[$q])) {
+                        // Memisahkan poin antar dosen di dalam pertanyaan yang sama menggunakan '|'
+                        $skorDosen = explode('|', $poinPertanyaanArr[$q]);
+                        
+                        // Mengambil nilai khusus untuk indeks dosen ke-$d saat ini
+                        $nilai = isset($skorDosen[$d]) ? $skorDosen[$d] : "";
+                    }
+                    echo "<td>" . $nilai . "</td>";
+                }
+
+                echo "<td>" . $row->Saran . "</td>";
+                echo "</tr>";
+            }
+        }
+        
+        echo "</tbody>";
+        echo "</table>";
+    }
+
 	public function TA(){
 		if ($this->session->userdata('Akun') == 'Mhs') {
 			redirect(base_url('Mhs/Profil'));
