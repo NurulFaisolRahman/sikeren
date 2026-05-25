@@ -53,7 +53,7 @@
             border-color: #cbd5e1 !important;
             color: #1e293b;
             font-weight: 700;
-            min-width: 120px;
+            min-width: 140px;
         }
         .form-control, .form-select {
             border-color: #cbd5e1;
@@ -207,10 +207,14 @@
 <body>
 
 <?php 
-// ARRAY DATA MATA KULIAH DIGABUNG KARENA HOMEBASE DIHAPUS
-$MK = array('SMT 1 - PENGANTAR AKUNTANSI I','SMT 1 - BAHASA INGGRIS EKONOMI','SMT 1 - MATEMATIKA EKONOMI I','SMT 1 - MENTALITAS','SMT 1 - PENDIDIKAN KEWARGANEGARAAN','SMT 1 - PENGANTAR TEORI EKONOMI MAKRO','SMT 1 - PENGANTAR TEORI EKONOMI MIKRO','SMT 1 - PENDIDIKAN AGAMA ISLAM','SMT 1 - PENDIDIKAN AGAMA KRISTEN','SMT 1 - PENDIDIKAN AGAMA KATHOLIK','SMT 1 - PENDIDIKAN AGAMA HINDU','SMT 1 - PENDIDIKAN AGAMA BUDHA','SMT 1 - PENDIDIKAN AGAMA KHONGHUCHU','SMT 2 - MATEMATIKA EKONOMI II','SMT 2 - PENGANTAR MANAJEMEN DAN BISNIS','SMT 2 - SEJARAH PEMIKIRAN EKONOMI','SMT 2 - SOSIOLOGI KRITIS','SMT 2 - STATISTIK I','SMT 2 - TEORI EKONOMI MAKRO I','SMT 2 - TEORI EKONOMI MIKRO I','SMT 2 - BAHASA INDONESIA','SMT 3 - ASPEK HUKUM BISNIS','SMT 3 - EKONOMI KEPENDUDUKAN','SMT 3 - EKONOMI SDA DAN LINGKUNGAN','SMT 3 - PENGANTAR EKONOMI PEMBANGUNAN','SMT 3 - STATISTIK II','SMT 3 - TEORI EKONOMI MAKRO II','SMT 3 - TEORI EKONOMI MIKRO II','SMT 3 - KOPERASI DAN KEWIRAUSAHAAN','SMT 3 - ISLAM DAN EKONOMI','SMT 3 - MASALAH DAN KEBIJAKAN PEMBANGUNAN','SMT 4 - APLIKASI KOMPUTASI EKONOMI','SMT 4 - EKONOMI INDUSTRI','SMT 4 - EKONOMI MONETER','SMT 4 - EKONOMI PEMBANGUNAN','SMT 4 - EKONOMI PUBLIK','SMT 4 - ESDM DAN KETENAGAKERJAAN','SMT 5 - BANK DAN LEMBAGA KEUANGAN','SMT 5 - METODOLOGI PENELITIAN','SMT 5 - PEREKONOMIAN INDONESIA','SMT 5 - PERENCANAAN PEMBANGUNAN','SMT 5 - EKONOMI KELEMBAGAAN','SMT 5 - EKONOMI MONETER LANJUTAN (KONS. MONETER DAN PERBANKAN)','SMT 5 - STUDI KEBANKSENTRALAN (KONS. EK MONETER DAN PERBANKAN)','SMT 5 - EKONOMI REGIONAL (KONS. PERENCANAAN PEMBANGUNAN)','SMT 5 - KEUANGAN DAERAH (KONS PERENCANAAN PEMBANGUNAN)','SMT 5 - KEUANGAN DAERAH (KONS EK PUBLIK)','SMT 5 - EKONOMI PUBLIK LANJUTAN (KONS EK. PUBLIK)','SMT 6 - EKONOMETRIKA','SMT 6 - EKONOMI INTERNASIONAL','SMT 6 - EKONOMI PERKOTAAN DAN TRANSPORTASI','SMT 6 - EVALUASI PROYEK','SMT 6 - MANAJEMEN KEUANGAN DAERAH (KONS PERENCANAAN PEMBANGUNAN)','SMT 6 - PERENCANAAN STRATEGIS (KONS PERENCANAAN PEMBANGUNAN)','SMT 6 - ANALISA PASAR KEUANGAN (KONS MONETER DAN PERBANKAN)','SMT 6 - EKONOMI PERBANKAN (KONS MONETER DAN PERBANKAN)','SMT 6 - ANALISA KEBUTUHAN PUBLIK (KONS EK PUBLIK)','SMT 6 - PENGANGGARAN SEKTOR PUBLIK (KONS EK PUBLIK)','SMT 7 - SEMINAR EKONOMI MONETER DAN PERBANKAN (KONS EK. MONETER DAN PERBANKAN)','SMT 7 - SEMINAR PERENCANAAN PEMBANGUNAN (KONS PERENCANAAN PEMBANGUNAN)','SMT 7 - SEMINAR EKONOMI PUBLIK (KONS EK PUBLIK)','SMT 7 - EKONOMI POLITIK (MATKUL PILIHAN)','SMT 7 - EKONOMI PERDESAAN DAN PERTANIAN (MATKUL PILIHAN)','SMT 7 - EKONOMI MONETER INTERNASIONAL (MATKUL PILIHAN)','SMT 7 - ISLAM DAN EKONOMI (MATKUL PILIHAN)','SMT 7 - BADAN LEMBAGA KEUANGAN SYARIAH (MATKUL PILIHAN)','SMT 7 - KKN');
+// ARRAY DATA MATA KULIAH S1
+$MK_S1 = array('SMT 1 - PENGANTAR AKUNTANSI I','SMT 1 - BAHASA INGGRIS EKONOMI','SMT 1 - MATEMATIKA EKONOMI I','SMT 1 - MENTALITAS','SMT 1 - PENDIDIKAN KEWARGANEGARAAN','SMT 1 - PENGANTAR TEORI EKONOMI MAKRO','SMT 1 - PENGANTAR TEORI EKONOMI MIKRO','SMT 1 - PENDIDIKAN AGAMA ISLAM','SMT 1 - PENDIDIKAN AGAMA KRISTEN','SMT 1 - PENDIDIKAN AGAMA KATHOLIK','SMT 1 - PENDIDIKAN AGAMA HINDU','SMT 1 - PENDIDIKAN AGAMA BUDHA','SMT 1 - PENDIDIKAN AGAMA KHONGHUCHU','SMT 2 - MATEMATIKA EKONOMI II','SMT 2 - PENGANTAR MANAJEMEN DAN BISNIS','SMT 2 - SEJARAH PEMIKIRAN EKONOMI','SMT 2 - SOSIOLOGI KRITIS','SMT 2 - STATISTIK I','SMT 2 - TEORI EKONOMI MAKRO I','SMT 2 - TEORI EKONOMI MIKRO I','SMT 2 - BAHASA INDONESIA','SMT 3 - ASPEK HUKUM BISNIS','SMT 3 - EKONOMI KEPENDUDUKAN','SMT 3 - EKONOMI SDA DAN LINGKUNGAN','SMT 3 - PENGANTAR EKONOMI PEMBANGUNAN','SMT 3 - STATISTIK II','SMT 3 - TEORI EKONOMI MAKRO II','SMT 3 - TEORI EKONOMI MIKRO II','SMT 3 - KOPERASI DAN KEWIRAUSAHAAN','SMT 3 - ISLAM DAN EKONOMI','SMT 3 - MASALAH DAN KEBIJAKAN PEMBANGUNAN','SMT 4 - APLIKASI KOMPUTASI EKONOMI','SMT 4 - EKONOMI INDUSTRI','SMT 4 - EKONOMI MONETER','SMT 4 - EKONOMI PEMBANGUNAN','SMT 4 - EKONOMI PUBLIK','SMT 4 - ESDM DAN KETENAGAKERJAAN','SMT 5 - BANK DAN LEMBAGA KEUANGAN','SMT 5 - METODOLOGI PENELITIAN','SMT 5 - PEREKONOMIAN INDONESIA','SMT 5 - PERENCANAAN PEMBANGUNAN','SMT 5 - EKONOMI KELEMBAGAAN','SMT 5 - EKONOMI MONETER LANJUTAN (KONS. MONETER DAN PERBANKAN)','SMT 5 - STUDI KEBANKSENTRALAN (KONS. EK MONETER DAN PERBANKAN)','SMT 5 - EKONOMI REGIONAL (KONS. PERENCANAAN PEMBANGUNAN)','SMT 5 - KEUANGAN DAERAH (KONS PERENCANAAN PEMBANGUNAN)','SMT 5 - KEUANGAN DAERAH (KONS EK PUBLIK)','SMT 5 - EKONOMI PUBLIK LANJUTAN (KONS EK. PUBLIK)','SMT 6 - EKONOMETRIKA','SMT 6 - EKONOMI INTERNASIONAL','SMT 6 - EKONOMI PERKOTAAN DAN TRANSPORTASI','SMT 6 - EVALUASI PROYEK','SMT 6 - MANAJEMEN KEUANGAN DAERAH (KONS PERENCANAAN PEMBANGUNAN)','SMT 6 - PERENCANAAN STRATEGIS (KONS PERENCANAAN PEMBANGUNAN)','SMT 6 - ANALISA PASAR KEUANGAN (KONS MONETER DAN PERBANKAN)','SMT 6 - EKONOMI PERBANKAN (KONS MONETER DAN PERBANKAN)','SMT 6 - ANALISA KEBUTUHAN PUBLIK (KONS EK PUBLIK)','SMT 6 - PENGANGGARAN SEKTOR PUBLIK (KONS EK PUBLIK)','SMT 7 - SEMINAR EKONOMI MONETER DAN PERBANKAN (KONS EK. MONETER DAN PERBANKAN)','SMT 7 - SEMINAR PERENCANAAN PEMBANGUNAN (KONS PERENCANAAN PEMBANGUNAN)','SMT 7 - SEMINAR EKONOMI PUBLIK (KONS EK PUBLIK)','SMT 7 - EKONOMI POLITIK (MATKUL PILIHAN)','SMT 7 - EKONOMI PERDESAAN DAN PERTANIAN (MATKUL PILIHAN)','SMT 7 - EKONOMI MONETER INTERNASIONAL (MATKUL PILIHAN)','SMT 7 - ISLAM DAN EKONOMI (MATKUL PILIHAN)','SMT 7 - BADAN LEMBAGA KEUANGAN SYARIAH (MATKUL PILIHAN)','SMT 7 - KKN');
 
-$Dosen = array( 'ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MSA., Ak., CA','ADI DARMAWAN ERVANTO, S.E.,M.A.,Ak.,CA','AHMAD KAMIL, S.E., M.Ec. Dev','AHMAD MUZAWWIR S, M.Pd.I','ALEXANDER ANGGONO, SE., M.Si., Ph.D','ALVIN S. PRASETYO, S.E., M.SE.','AMBARIYANTO, S.E., M.Si.','ATIK EMILIA SULA, S.E., M.Ak.','ALIFAH ROKHMAH IDIALIS, SE., M.Sc','ANDRI WIJANARKO, SE, ME','ALVIN SUGENG PRASETYO, S.E., M.SE.','ANIS WULANDARI, SE., MSA., AK.,CA','ANITA CAROLINA, SE., MBusAdv., AK., QIA.,CA','ANITA KRISTINA, S.E., M.Si ,Dr.','ANUGRAHINI IRAWATI, Dra., MM','APRILINA SUSANDINI, SE., MSM','ARDI HAMZAH, SE., MSI., AK','ARIE SETYO DWI PURNOMO S.PD., M.SC.','BAMBANG HARYADI, DR. SE., MSI., AK.,CA','BAMBANG SUDARSONO, Drs., M.M','BONDAN SATRIAWAN, SE., M.Econ, ST','BOY SINGGIH GITAYUDA, S.E.,MM','CITRA NURHAYATI, SE., MA., Ak., CA','CHAIRUL ANAM, Drs Ec., M.Kes, Dr.','CITRA LUTFIA, S.E., M.A.','CRISANTY SUTRITYANINGTYAS TITIK, S.E., M.E.','DIAH WAHYUNINGSIH, S.E., M.Si ,Dr.','ECHSAN GANI, SE., M.Si','EMI RAHMAWATI, SE., MSI','ENI SRI RAHAYUNINGSIH, S.E., M.E, Dr.','ERFAN MUHAMMAD, S.E., M.Ak., CPA','EVALIATI AMANIYAH, SE., MSM','FAIDAL S.E., M.M','FARIYANA KUSUMAWATI, SE., MSI','FATHOR AS, SE., MM','FITRI AHMAD KURNIAWAN, SE, M.AK, AK, CA','FRIDA FANANI ROHMA, S.AKUN., M.SC.','GATOT HERU PRANJOTO, SE., MM','GITA ARASY HARWIDA, SE., MTax., AK., QIA.,CA','HABIBULLAH, S.E., M.Akun','HADI PURNOMO, SE.,MM','HANIF YUSUF SEPUTRO S.PD., M.AK.','HELMI BUYUNG AULIA SAFRIZAL, ST.,SE.,MMT','HENNY OKTAVIANTI, SE., M.Si.','HERY PURWANTO, S.PT., ME.','HERRY YULISTIYO, SE., M.Si','IMAM AGUS FAISOL, SE., M.Ak','DARUL ISLAM, S.E., M.M.','IRIANI ISMAIL, Dra., M.M., Dr.','JAKFAR SADIK, SE., ME','JUNAIDI, SE., MSI., AK.,CA','KHYSH NUSRI LEAPATRA CHAMALINDA, S.E., M.Akun','KURNIYATI INDAHSARI, M.Si, Dr.','MERIE SATYA ANGRAINI, S.E., M. AK.','MOCHAMAD REZA ADIYANTO S.P., M.M.','MOHAMAD TAMBRIN, Drs., MM','MOHAMMAD ARIEF, S.E., M.M., Dr.','MOHAMMAD YASKUN, S.E., M.M.','MOHTAR RASYID, S.E., M.Si, Dr.','MUDJI KUSWINARNO, Drs. Ec., M.Si','MUH. SYARIF, Drs. Ec, M.Si, Dr.','MUHAMMAD ALKIROM WILDAN, S.E., M.Si. Dr.',"MUHAMMAD ASIM ASY'ARI SE.,M.Ak.",'MUHAMMAD SYAM KUSUFI, S.E., M.Sc.','MUHAMMAD ZAINURI, Ir., M. Sc., Prof. Dr.','MUKHAMMAD BAHKRUDDIN, M.Pd. I','NIZARUL ALIM, SE., M.Si., Ak,Prof. Dr.','NORITA VIBRIYANTO, S.E, M.Si','NUR AZIZAH, SE., MM','NURITA ANDRIANI, Ir., M.M., Dr.','NUR HAYATI, S.E., MSA., Ak.,DR QIA., CA','PRASETYO NUGROHO, S.Pi.,MM','PRASETYONO, SE., MSI., AK, Dr.','PRIBANUS WANTARA, Drs.,MM, Dr.','PURNAMAWATI, SE, M.Si','RAHAYU DEWI ZAKIYAH RF, S.E., M.AKUN.','RIFAI AFIN, S.E, M.Sc','RIS YUWONO YUDHO NUGROHO, S.E., M.Si','RITA YULIANA, SE., M.SA., Ak., CA, Dr.','RM. MOCH. WISPANDONO, S.E., M.S, Dr.','ROBIATUL AULIYAH, SE, MSA','R. JOHNNY HADI RAHARJO, SE., MM','SANIMAN, SE., M.PSDM','SARIYANI, S.E., M.SE.','SELAMET JOKO U, SE., ME','SITI MUSYAROFAH, SE., M.Si., Ak, Dr.','SUMARTO, S.E., M.E','SUTIKNO, S.E., M.E, Dr.','SUYONO, S.E.,M.S.M','SAMSUKI, S.E., M.SM.','TARJO, S.E, M.Si, Dr., CFE','TITO IM. RAHMAN HAKIM, S.E., M.S.A.',"TITOV CHUK'S MAYVANI, SE., ME",'USWATUN HASANAH, S.E.,M.Sc','MIFTAHUL JANNAH, S.E., M.SC','YAHYA SURYA WINATA, S.E., M.Si, Dr.','YUDHI PRASETYA MADA, SE., MM','YUFITA, S.E., M.E.','YUNI RIMAWATI, SE., MSAk.,Ak.,CA','YUSTINA CHRISMARDANI, S.Si., MM','VIDI HADYARTI, S.M., M.M.','WIDITA KURNIASARI, S.E., M.E,DR','ZAKIK, SE., M.Si');
+// ARRAY DATA MATA KULIAH S2
+$MK_S2 = array('SMT 1 - EKONOMI MIKRO LANJUTAN','SMT 1 - EKONOMI MAKRO LANJUTAN','SMT 1 - METODE PENELITIAN KUANTITATIF','SMT 1 - METODE PENELITIAN KUALITATIF','SMT 1 - EKONOMETRIKA TERAPAN','SMT 2 - KEBIJAKAN PEMBANGUNAN EKONOMI','SMT 2 - EKONOMI INTERNASIONAL','SMT 2 - EKONOMI KELEMBAGAAN','SMT 2 - EKONOMI PUBLIK','SMT 2 - PERENCANAAN DAN PENGANGGARAN PEMBANGUNAN DAERAH','SMT 2 - TEKNIK ANALISIS PERENCANAAN PEMBANGUNAN EKONOMI REGIONAL','SMT 2 - PEMBANGUNAN EKONOMI LOKAL & PERENCANAAN PARTISIPATIF','SMT 2 - EKONOMI KELAUTAN DAN MARITIM','SMT 2 - ANALISIS DAYA DUKUNG WILAYAH PESISIR & PULAU KECIL','SMT 2 - PEMETAAN POTENSI WILAYAH PESISIR & PULAU KECIL','SMT 2 - EKONOMI SYARIAH','SMT 2 - PEMIKIRAN EKONOMI ISLAM','SMT 2 - KELEMBAGAAN KEUANGAN SYARIAH','SMT 3 - FILOSOFI ILMU EKONOMI','SMT 3 - FIQIH EKONOMI','SMT 3 - METODE RISET EKONOMI SYARIAH');
+
+// ARRAY DOSEN
+$Dosen = array('ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MSA., Ak., CA','ADI DARMAWAN ERVANTO, S.E.,M.A.,Ak.,CA','AHMAD KAMIL, S.E., M.Ec. Dev','AHMAD MUZAWWIR S, M.Pd.I','ALEXANDER ANGGONO, SE., M.Si., Ph.D','ALVIN S. PRASETYO, S.E., M.SE.','AMBARIYANTO, S.E., M.Si.','ATIK EMILIA SULA, S.E., M.Ak.','ALIFAH ROKHMAH IDIALIS, SE., M.Sc','ANDRI WIJANARKO, SE, ME','ALVIN SUGENG PRASETYO, S.E., M.SE.','ANIS WULANDARI, SE., MSA., AK.,CA','ANITA CAROLINA, SE., MBusAdv., AK., QIA.,CA','ANITA KRISTINA, S.E., M.Si ,Dr.','ANUGRAHINI IRAWATI, Dra., MM','APRILINA SUSANDINI, SE., MSM','ARDI HAMZAH, SE., MSI., AK','ARIE SETYO DWI PURNOMO S.PD., M.SC.','BAMBANG HARYADI, DR. SE., MSI., AK.,CA','BAMBANG SUDARSONO, Drs., M.M','BONDAN SATRIAWAN, SE., M.Econ, ST','BOY SINGGIH GITAYUDA, S.E.,MM','CITRA NURHAYATI, SE., MA., Ak., CA','CHAIRUL ANAM, Drs Ec., M.Kes, Dr.','CITRA LUTFIA, S.E., M.A.','CRISANTY SUTRITYANINGTYAS TITIK, S.E., M.E.','DIAH WAHYUNINGSIH, S.E., M.Si ,Dr.','ECHSAN GANI, SE., M.Si','EMI RAHMAWATI, SE., MSI','ENI SRI RAHAYUNINGSIH, S.E., M.E, Dr.','ERFAN MUHAMMAD, S.E., M.Ak., CPA','EVALIATI AMANIYAH, SE., MSM','FAIDAL S.E., M.M','FARIYANA KUSUMAWATI, SE., MSI','FATHOR AS, SE., MM','FITRI AHMAD KURNIAWAN, SE, M.AK, AK, CA','FRIDA FANANI ROHMA, S.AKUN., M.SC.','GATOT HERU PRANJOTO, SE., MM','GITA ARASY HARWIDA, SE., MTax., AK., QIA.,CA','HABIBULLAH, S.E., M.Akun','HADI PURNOMO, SE.,MM','HANIF YUSUF SEPUTRO S.PD., M.AK.','HELMI BUYUNG AULIA SAFRIZAL, ST.,SE.,MMT','HENNY OKTAVIANTI, SE., M.Si.','HERY PURWANTO, S.PT., ME.','HERRY YULISTIYO, SE., M.Si','IMAM AGUS FAISOL, SE., M.Ak','DARUL ISLAM, S.E., M.M.','IRIANI ISMAIL, Dra., M.M., Dr.','JAKFAR SADIK, SE., ME','JUNAIDI, SE., MSI., AK.,CA','KHYSH NUSRI LEAPATRA CHAMALINDA, S.E., M.Akun','KURNIYATI INDAHSARI, M.Si, Dr.','MERIE SATYA ANGRAINI, S.E., M. AK.','MOCHAMAD REZA ADIYANTO S.P., M.M.','MOHAMAD TAMBRIN, Drs., MM','MOHAMMAD ARIEF, S.E., M.M., Dr.','MOHAMMAD YASKUN, S.E., M.M.','MOHTAR RASYID, S.E., M.Si, Dr.','MUDJI KUSWINARNO, Drs. Ec., M.Si','MUH. SYARIF, Drs. Ec, M.Si, Dr.','MUHAMMAD ALKIROM WILDAN, S.E., M.Si. Dr.',"MUHAMMAD ASIM ASY'ARI SE.,M.Ak.",'MUHAMMAD SYAM KUSUFI, S.E., M.Sc.','MUHAMMAD ZAINURI, Ir., M. Sc., Prof. Dr.','MUKHAMMAD BAHKRUDDIN, M.Pd. I','NIZARUL ALIM, SE., M.Si., Ak,Prof. Dr.','NORITA VIBRIYANTO, S.E, M.Si','NUR AZIZAH, SE., MM','NURITA ANDRIANI, Ir., M.M., Dr.','NUR HAYATI, S.E., MSA., Ak.,DR QIA., CA','PRASETYO NUGROHO, S.Pi.,MM','PRASETYONO, SE., MSI., AK, Dr.','PRIBANUS WANTARA, Drs.,MM, Dr.','PURNAMAWATI, SE, M.Si','RAHAYU DEWI ZAKIYAH RF, S.E., M.AKUN.','RIFAI AFIN, S.E, M.Sc','RIS YUWONO YUDHO NUGROHO, S.E., M.Si','RITA YULIANA, SE., M.SA., Ak., CA, Dr.','RM. MOCH. WISPANDONO, S.E., M.S, Dr.','ROBIATUL AULIYAH, SE, MSA','R. JOHNNY HADI RAHARJO, SE., MM','SANIMAN, SE., M.PSDM','SARIYANI, S.E., M.SE.','SELAMET JOKO U, SE., ME','SITI MUSYAROFAH, SE., M.Si., Ak, Dr.','SUMARTO, S.E., M.E','SUTIKNO, S.E., M.E, Dr.','SUYONO, S.E.,M.S.M','SAMSUKI, S.E., M.SM.','TARJO, S.E, M.Si, Dr., CFE','TITO IM. RAHMAN HAKIM, S.E., M.S.A.',"TITOV CHUK'S MAYVANI, SE., ME",'USWATUN HASANAH, S.E.,M.Sc','MIFTAHUL JANNAH, S.E., M.SC','YAHYA SURYA WINATA, S.E., M.Si, Dr.','YUDHI PRASETYA MADA, SE., MM','YUFITA, S.E., M.E.','YUNI RIMAWATI, SE., MSAk.,Ak.,CA','YUSTINA CHRISMARDANI, S.Si., MM','VIDI HADYARTI, S.M., M.M.','WIDITA KURNIASARI, S.E., M.E,DR','ZAKIK, SE., M.Si');
 ?>
 
 <div class="container mt-4">
@@ -249,6 +253,18 @@ $Dosen = array( 'ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MS
                             <input class="form-control" type="text" id="Nama" placeholder="Nama Lengkap">
                         </div>
                     </div>
+
+                    <!-- Program Studi ditambahkan di sini -->
+                    <div class="col-md-6">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text bg-primary">Program Studi</span>
+                            <select class="form-select" id="ProgramStudi">
+                                <option value="" disabled selected>Pilih Program Studi</option>                  
+                                <option value="S1 Ekonomi Pembangunan">S1 Ekonomi Pembangunan</option>
+                                <option value="S2 Ilmu Ekonomi">S2 Ilmu Ekonomi</option>
+                            </select>
+                        </div>
+                    </div>
                     
                     <div class="col-md-6">
                         <div class="input-group input-group-lg">
@@ -256,6 +272,16 @@ $Dosen = array( 'ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MS
                             <select class="form-select" id="Semester">
                                 <option value="" disabled selected>Pilih Semester</option>                  
                                 <?php for($s=1; $s<=14; $s++) echo "<option value='$s'>Semester $s</option>"; ?>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-6">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text bg-primary">Mata Kuliah</span>
+                            <select class="form-select" id="MataKuliah">
+                                <!-- Option akan diisi oleh JavaScript berdasarkan Program Studi -->
+                                <option value="" disabled selected>Pilih Program Studi Terlebih Dahulu</option> 
                             </select>
                         </div>
                     </div>
@@ -268,16 +294,6 @@ $Dosen = array( 'ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MS
                                 <option value="2">2 Dosen Mengajar</option>
                                 <option value="3">3 Dosen Mengajar</option>
                                 <option value="4">4 Dosen Mengajar</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="col-12">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-text bg-primary">Mata Kuliah</span>
-                            <select class="form-select" id="MataKuliah">
-                                <option value="" disabled selected>Pilih Mata Kuliah</option> 
-                                <?php foreach($MK as $m) echo "<option value='$m'>$m</option>"; ?>                  
                             </select>
                         </div>
                     </div>
@@ -329,9 +345,33 @@ $Dosen = array( 'ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MS
         $('[data-mask]').inputmask();
         var BaseURL = '<?=base_url()?>';
         
-        // Data array diteruskan ke JS
+        // Data array dari PHP diteruskan ke JS
         var DosenList = <?= json_encode($Dosen) ?>;
+        var mkS1List = <?= json_encode($MK_S1) ?>;
+        var mkS2List = <?= json_encode($MK_S2) ?>;
         
+        // Filter Mata Kuliah berdasarkan Pilihan Program Studi
+        $("#ProgramStudi").change(function() {
+            var prodi = $(this).val();
+            var mkSelect = $("#MataKuliah");
+            
+            // Kosongkan dan set default option
+            mkSelect.empty();
+            mkSelect.append('<option value="" disabled selected>Pilih Mata Kuliah</option>');
+            
+            var options = [];
+            if(prodi === "S1 Ekonomi Pembangunan") {
+                options = mkS1List;
+            } else if(prodi === "S2 Ilmu Ekonomi") {
+                options = mkS2List;
+            }
+            
+            // Populate select option
+            $.each(options, function(index, value) {
+                mkSelect.append('<option value="'+value+'">'+value+'</option>');
+            });
+        });
+
         // Data Pertanyaan Sesuai Gambar (Diperbarui Skala 1-5 & Penomoran)
         var Q_PBM = [
             { cat: "A. Kemampuan memberikan pelayanan sesuai dengan yang dijanjikan secara handal dan akurat", text: "1. Dosen mengajar sesuai dengan Rencana Pembelajaran Semester (RPS)" },
@@ -429,6 +469,10 @@ $Dosen = array( 'ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MS
             if ($("#Nama").val() === "") {
                 alert('Nama Wajib Diisi!'); $("#Nama").focus(); return false;
             }
+            // Validasi Program Studi
+            if ($("#ProgramStudi").val() === null) {
+                alert('Program Studi Wajib Dipilih!'); $("#ProgramStudi").focus(); return false;
+            }
             if ($("#Semester").val() === null) {
                 alert('Semester Wajib Dipilih!'); $("#Semester").focus(); return false;
             }
@@ -467,8 +511,8 @@ $Dosen = array( 'ABDUR ROHMAN, S. Ag, MEI, Dr.','ACHDIAR REDY SETIAWAN, S.E., MS
             }
 
             // Setup Payload Data
-            // Catatan: PBM, AppDosen, dan Kendala diset "-" untuk menghindari Undefined Variable di backend
             var DataPayload = { 
+                ProgramStudi: $("#ProgramStudi").val(), // Menyisipkan data Program Studi ke Payload
                 NIM: $("#NIM").val(),
                 Nama: $("#Nama").val(),
                 Semester: $("#Semester").val(),

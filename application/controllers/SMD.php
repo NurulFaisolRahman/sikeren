@@ -198,7 +198,7 @@ class SMD extends CI_Controller {
 	}
 
 	public function epbm_excel() {
-		// Mengatur zona waktu ke Waktu Indonesia Barat (WIB)
+        // Mengatur zona waktu ke Waktu Indonesia Barat (WIB)
         date_default_timezone_set('Asia/Jakarta');
         // Ambil semua data dari tabel epbm
         // Disarankan menambahkan order by created_at DESC agar data terbaru di atas
@@ -223,6 +223,7 @@ class SMD extends CI_Controller {
                     <th style='background-color: #f2f2f2;'>Waktu Input</th>
                     <th style='background-color: #f2f2f2;'>NIM</th>
                     <th style='background-color: #f2f2f2;'>Nama Mahasiswa</th>
+                    <th style='background-color: #f2f2f2;'>Program Studi</th>
                     <th style='background-color: #f2f2f2;'>Semester</th>
                     <th style='background-color: #f2f2f2;'>Mata Kuliah</th>
                     <th style='background-color: #f2f2f2;'>Nama Dosen</th>
@@ -262,6 +263,7 @@ class SMD extends CI_Controller {
                 echo "<td>" . $row->created_at . "</td>";
                 echo "<td>" . $row->NIM . "</td>";
                 echo "<td>" . $row->Nama . "</td>";
+                echo "<td>" . $row->ProgramStudi . "</td>"; // Tambahan Output Program Studi
                 echo "<td>" . $row->Semester . "</td>";
                 echo "<td>" . $row->MataKuliah . "</td>";
                 
